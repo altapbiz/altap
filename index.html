@@ -1,945 +1,1956 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Altap.Biz — Elan Platforması</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+<title>Altap.Biz — Elan Saytı</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#08090d;
+    color:#fff;
+    min-height:100vh;
+}
+
+:root{
+    --neon:#00f7ff;
+    --neon2:#8b5cff;
+    --bg:#08090d;
+    --card:#11131a;
+    --border:#242733;
+    --muted:#9ba0ad;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(8,9,13,.94);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid var(--border);
+}
+
+.nav{
+    max-width:1200px;
+    margin:auto;
+    padding:17px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    font-size:27px;
+    font-weight:900;
+    color:#fff;
+    text-decoration:none;
+    text-shadow:0 0 12px rgba(0,247,255,.65);
+}
+
+.logo span{
+    color:var(--neon);
+}
+
+.nav-links{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.nav-links button{
+    background:transparent;
+    border:1px solid transparent;
+    color:#ddd;
+    padding:10px 13px;
+    border-radius:9px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.nav-links button:hover{
+    color:var(--neon);
+    border-color:rgba(0,247,255,.3);
+    background:rgba(0,247,255,.05);
+}
+
+.btn{
+    border:none;
+    cursor:pointer;
+    border-radius:10px;
+    padding:12px 18px;
+    font-weight:800;
+    transition:.2s;
+}
+
+.btn-neon{
+    background:var(--neon);
+    color:#001013;
+    box-shadow:0 0 18px rgba(0,247,255,.25);
+}
+
+.btn-neon:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 25px rgba(0,247,255,.5);
+}
+
+.btn-dark{
+    background:#171a22;
+    color:#fff;
+    border:1px solid #2a2e3a;
+}
+
+.btn-danger{
+    background:#30151b;
+    color:#ff7180;
+    border:1px solid #57212b;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:30px 20px 60px;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.hero{
+    padding:60px 20px 45px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:clamp(34px,6vw,65px);
+    line-height:1.05;
+    margin-bottom:18px;
+    text-shadow:0 0 25px rgba(0,247,255,.2);
+}
+
+.hero h1 span{
+    color:var(--neon);
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+    color:var(--muted);
+    font-size:17px;
+    line-height:1.6;
+}
+
+.search-box{
+    max-width:850px;
+    margin:30px auto 0;
+    display:flex;
+    gap:10px;
+}
+
+.search-box input{
+    flex:1;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    background:#0e1016;
+    border:1px solid #292d39;
+    color:#fff;
+    border-radius:10px;
+    padding:14px;
+    outline:none;
+    font-size:15px;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:var(--neon);
+    box-shadow:0 0 12px rgba(0,247,255,.12);
+}
+
+textarea{
+    min-height:130px;
+    resize:vertical;
+}
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin:25px 0 18px;
+}
+
+.section-title h2{
+    font-size:23px;
+}
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:12px;
+}
+
+.category{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:13px;
+    padding:20px 15px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.category:hover{
+    border-color:var(--neon);
+    transform:translateY(-3px);
+    box-shadow:0 0 20px rgba(0,247,255,.1);
+}
+
+.category-icon{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.category strong{
+    display:block;
+    font-size:15px;
+}
+
+.category small{
+    color:var(--muted);
+    display:block;
+    margin-top:5px;
+}
+
+.listings{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+    gap:18px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    overflow:hidden;
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+    border-color:rgba(0,247,255,.5);
+}
+
+.card-image{
+    height:190px;
+    background:#151821;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.card-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.no-image{
+    color:#666b78;
+    font-size:45px;
+}
+
+.card-body{
+    padding:16px;
+}
+
+.card-title{
+    font-size:17px;
+    font-weight:800;
+    margin-bottom:8px;
+}
+
+.price{
+    color:var(--neon);
+    font-weight:900;
+    font-size:19px;
+    margin-bottom:8px;
+}
+
+.meta{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.form-box{
+    max-width:600px;
+    margin:35px auto;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:28px;
+    box-shadow:0 0 35px rgba(0,0,0,.25);
+}
+
+.form-box h2{
+    margin-bottom:8px;
+    text-align:center;
+}
+
+.form-subtitle{
+    text-align:center;
+    color:var(--muted);
+    margin-bottom:25px;
+    line-height:1.5;
+}
+
+.form-group{
+    margin-bottom:16px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:7px;
+    font-size:14px;
+    color:#ddd;
+}
+
+.form-box .btn{
+    width:100%;
+    margin-top:5px;
+}
+
+.switch-text{
+    text-align:center;
+    margin-top:18px;
+    color:var(--muted);
+    font-size:14px;
+}
+
+.switch-text button{
+    border:none;
+    background:none;
+    color:var(--neon);
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.error{
+    color:#ff6575;
+    background:rgba(255,50,80,.08);
+    border:1px solid rgba(255,50,80,.2);
+    padding:11px;
+    border-radius:8px;
+    margin-bottom:15px;
+    display:none;
+    font-size:14px;
+}
+
+.success{
+    color:#4cffb0;
+    background:rgba(40,255,150,.07);
+    border:1px solid rgba(40,255,150,.2);
+    padding:11px;
+    border-radius:8px;
+    margin-bottom:15px;
+    display:none;
+    font-size:14px;
+}
+
+.phone-row{
+    display:flex;
+    gap:8px;
+}
+
+.phone-prefix{
+    width:95px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#171a22;
+    border:1px solid #292d39;
+    border-radius:10px;
+    color:#fff;
+    font-weight:bold;
+}
+
+.image-upload{
+    border:1px dashed #3a3f4d;
+    border-radius:12px;
+    padding:20px;
+    text-align:center;
+    cursor:pointer;
+    background:#0d0f15;
+}
+
+.image-upload:hover{
+    border-color:var(--neon);
+}
+
+.image-upload input{
+    display:none;
+}
+
+.image-preview{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:12px;
+}
+
+.preview-item{
+    position:relative;
+    height:120px;
+    border-radius:10px;
+    overflow:hidden;
+    border:1px solid #303440;
+}
+
+.preview-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.remove-img{
+    position:absolute;
+    top:5px;
+    right:5px;
+    width:25px;
+    height:25px;
+    border:none;
+    border-radius:50%;
+    background:#111;
+    color:#fff;
+    cursor:pointer;
+}
+
+.account-box{
+    max-width:800px;
+    margin:30px auto;
+}
+
+.profile{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.profile h2{
+    color:var(--neon);
+    margin-bottom:10px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.stat{
+    background:#0d0f15;
+    border:1px solid var(--border);
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+}
+
+.stat b{
+    display:block;
+    font-size:25px;
+    color:var(--neon);
+}
+
+.empty{
+    text-align:center;
+    padding:45px 20px;
+    color:var(--muted);
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+}
+
+footer{
+    border-top:1px solid var(--border);
+    margin-top:40px;
+    padding:30px 20px;
+    text-align:center;
+    color:#777c88;
+    font-size:13px;
+}
+
+@media(max-width:700px){
+    .nav{
+        flex-direction:column;
+        align-items:stretch;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #0b0d12;
-      color: #fff;
-      min-height: 100vh;
+    .nav-links{
+        justify-content:center;
     }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: #11151d;
-      border-bottom: 1px solid #252b36;
+    .search-box{
+        flex-direction:column;
     }
 
-    .nav {
-      max-width: 1200px;
-      margin: auto;
-      min-height: 70px;
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+    .stats{
+        grid-template-columns:1fr;
     }
 
-    .logo {
-      font-size: 25px;
-      font-weight: 800;
-      color: #00e5ff;
-      text-decoration: none;
+    .form-box{
+        padding:20px;
     }
 
-    .nav-buttons {
-      display: flex;
-      gap: 10px;
-      align-items: center;
+    .image-preview{
+        grid-template-columns:repeat(2,1fr);
     }
-
-    button,
-    .btn {
-      border: 0;
-      cursor: pointer;
-      text-decoration: none;
-      border-radius: 10px;
-      padding: 11px 17px;
-      font-weight: 700;
-      color: #fff;
-      background: #202632;
-      transition: .2s;
-    }
-
-    button:hover,
-    .btn:hover {
-      transform: translateY(-1px);
-      background: #2b3443;
-    }
-
-    .primary {
-      background: #00a8c6;
-    }
-
-    .primary:hover {
-      background: #00c6e8;
-    }
-
-    main {
-      max-width: 1200px;
-      margin: auto;
-      padding: 35px 20px 60px;
-    }
-
-    .hero {
-      padding: 50px 25px;
-      border: 1px solid #252b36;
-      border-radius: 22px;
-      background: linear-gradient(135deg, #111722, #10131a);
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .hero h1 {
-      font-size: clamp(32px, 6vw, 58px);
-      margin-bottom: 14px;
-    }
-
-    .hero h1 span {
-      color: #00e5ff;
-    }
-
-    .hero p {
-      color: #aeb7c5;
-      font-size: 17px;
-      margin-bottom: 25px;
-    }
-
-    .search {
-      display: flex;
-      gap: 10px;
-      max-width: 750px;
-      margin: auto;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      border: 1px solid #303846;
-      outline: none;
-      background: #151a23;
-      color: #fff;
-      border-radius: 10px;
-      padding: 13px;
-    }
-
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .search button {
-      min-width: 120px;
-    }
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 30px 0 15px;
-    }
-
-    .section-title h2 {
-      font-size: 23px;
-    }
-
-    .muted {
-      color: #8993a3;
-    }
-
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .category {
-      background: #141922;
-      border: 1px solid #252c38;
-      border-radius: 14px;
-      padding: 20px;
-      text-align: center;
-      cursor: pointer;
-      transition: .2s;
-    }
-
-    .category:hover {
-      border-color: #00e5ff;
-      transform: translateY(-2px);
-    }
-
-    .category-icon {
-      font-size: 30px;
-      margin-bottom: 8px;
-    }
-
-    .listings {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-    }
-
-    .card {
-      overflow: hidden;
-      border-radius: 15px;
-      border: 1px solid #252c38;
-      background: #141922;
-    }
-
-    .card-img {
-      height: 170px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #1b222d;
-      font-size: 55px;
-    }
-
-    .card-body {
-      padding: 17px;
-    }
-
-    .card h3 {
-      margin-bottom: 8px;
-    }
-
-    .price {
-      color: #00e5ff;
-      font-size: 20px;
-      font-weight: 800;
-      margin: 10px 0;
-    }
-
-    .card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #8993a3;
-      font-size: 13px;
-    }
-
-    .page {
-      display: none;
-    }
-
-    .page.active {
-      display: block;
-    }
-
-    .form-box {
-      max-width: 500px;
-      margin: 30px auto;
-      background: #141922;
-      border: 1px solid #252c38;
-      border-radius: 18px;
-      padding: 25px;
-    }
-
-    .form-box h2 {
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .form-group {
-      margin-bottom: 14px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 7px;
-      color: #b9c2d0;
-    }
-
-    .form-box .primary {
-      width: 100%;
-      margin-top: 8px;
-    }
-
-    .account {
-      background: #141922;
-      border: 1px solid #252c38;
-      border-radius: 18px;
-      padding: 25px;
-    }
-
-    .account-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .stat {
-      background: #1a202b;
-      padding: 20px;
-      border-radius: 14px;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 25px;
-      margin-top: 7px;
-      color: #00e5ff;
-    }
-
-    footer {
-      border-top: 1px solid #252b36;
-      color: #7f8998;
-      text-align: center;
-      padding: 25px 15px;
-    }
-
-    .back {
-      margin-bottom: 20px;
-    }
-
-    .notice {
-      background: #17202a;
-      border: 1px solid #263444;
-      color: #b9c7d8;
-      padding: 14px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      line-height: 1.5;
-    }
-
-    @media (max-width: 800px) {
-      .categories {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .listings {
-        grid-template-columns: 1fr;
-      }
-
-      .account-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .search {
-        flex-direction: column;
-      }
-
-      .nav {
-        flex-wrap: wrap;
-        padding-top: 12px;
-        padding-bottom: 12px;
-      }
-
-      .nav-buttons {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="nav">
-    <a href="#" class="logo" onclick="showPage('home')">Altap.Biz</a>
+    <div class="nav">
 
-    <div class="nav-buttons">
-      <button onclick="showPage('listings')">Elanlar</button>
-      <button onclick="showPage('post')">Elan yerləşdir</button>
-      <button onclick="showPage('login')" id="loginBtn">Giriş</button>
-      <button onclick="showPage('register')" id="registerBtn">Qeydiyyat</button>
-      <button onclick="showPage('account')" id="accountBtn" style="display:none;">Kabinet</button>
+        <a href="#" class="logo" onclick="showPage('home')">
+            Altap<span>.Biz</span>
+        </a>
+
+        <div class="nav-links">
+            <button onclick="showPage('home')">Ana səhifə</button>
+            <button onclick="showPage('listings')">Elanlar</button>
+            <button onclick="showPage('post')">Elan yerləşdir</button>
+            <button id="loginBtn" onclick="showPage('login')">Daxil ol</button>
+            <button id="registerBtn" onclick="showPage('register')">Qeydiyyat</button>
+            <button id="accountBtn" style="display:none" onclick="showPage('account')">Kabinet</button>
+        </div>
+
     </div>
-  </div>
 </header>
 
-<main>
 
-  <!-- ANA SƏHİFƏ -->
-  <section id="home" class="page active">
+<main class="container">
+
+<!-- ANA SƏHİFƏ -->
+
+<section id="home" class="page active">
 
     <div class="hero">
-      <h1>Altap<span>.Biz</span></h1>
-      <p>Al, sat, elan yerləşdir və axtardığını rahat tap.</p>
 
-      <div class="search">
-        <input id="homeSearch" type="text" placeholder="Nə axtarırsan?">
-        <button class="primary" onclick="searchListings()">Axtar</button>
-      </div>
+        <h1>
+            Lazım olanı <span>Altap.Biz</span>-də tap
+        </h1>
+
+        <p>
+            Almaq, satmaq və elan yerləşdirmək üçün sadə və rahat elan platforması.
+        </p>
+
+        <div class="search-box">
+
+            <input
+                id="homeSearch"
+                type="text"
+                placeholder="Məsələn: iPhone 15, avtomobil, mənzil..."
+            >
+
+            <button class="btn btn-neon" onclick="searchFromHome()">
+                Axtar
+            </button>
+
+        </div>
+
     </div>
 
+
     <div class="section-title">
-      <h2>Kateqoriyalar</h2>
+        <h2>Kateqoriyalar</h2>
     </div>
 
     <div class="categories">
 
-      <div class="category" onclick="filterCategory('Avtomobil')">
-        <div class="category-icon">🚗</div>
-        <strong>Avtomobil</strong>
-      </div>
+        <div class="category" onclick="filterCategory('Elektronika')">
+            <div class="category-icon">📱</div>
+            <strong>Elektronika</strong>
+            <small>Telefon, kompüter və s.</small>
+        </div>
 
-      <div class="category" onclick="filterCategory('Elektronika')">
-        <div class="category-icon">📱</div>
-        <strong>Elektronika</strong>
-      </div>
+        <div class="category" onclick="filterCategory('Avtomobil')">
+            <div class="category-icon">🚗</div>
+            <strong>Avtomobil</strong>
+            <small>Maşın və nəqliyyat</small>
+        </div>
 
-      <div class="category" onclick="filterCategory('Əmlak')">
-        <div class="category-icon">🏠</div>
-        <strong>Əmlak</strong>
-      </div>
+        <div class="category" onclick="filterCategory('Daşınmaz əmlak')">
+            <div class="category-icon">🏠</div>
+            <strong>Daşınmaz əmlak</strong>
+            <small>Ev, mənzil, torpaq</small>
+        </div>
 
-      <div class="category" onclick="filterCategory('İş')">
-        <div class="category-icon">💼</div>
-        <strong>İş elanları</strong>
-      </div>
+        <div class="category" onclick="filterCategory('İş')">
+            <div class="category-icon">💼</div>
+            <strong>İş</strong>
+            <small>Vakansiyalar</small>
+        </div>
+
+        <div class="category" onclick="filterCategory('Xidmətlər')">
+            <div class="category-icon">🛠️</div>
+            <strong>Xidmətlər</strong>
+            <small>Müxtəlif xidmətlər</small>
+        </div>
+
+        <div class="category" onclick="filterCategory('Digər')">
+            <div class="category-icon">📦</div>
+            <strong>Digər</strong>
+            <small>Digər elanlar</small>
+        </div>
 
     </div>
 
+
     <div class="section-title">
-      <h2>Son elanlar</h2>
-      <button onclick="showPage('listings')">Hamısına bax</button>
+        <h2>Son elanlar</h2>
+
+        <button class="btn btn-dark" onclick="showPage('listings')">
+            Bütün elanlar
+        </button>
     </div>
 
     <div id="homeListings" class="listings"></div>
 
-  </section>
+</section>
 
 
-  <!-- ELANLAR -->
-  <section id="listings" class="page">
+<!-- ELANLAR -->
 
-    <button class="back" onclick="showPage('home')">← Geri</button>
+<section id="listings" class="page">
 
     <div class="section-title">
-      <h2>Bütün elanlar</h2>
-      <span class="muted" id="listingCount"></span>
+        <h2>Bütün elanlar</h2>
     </div>
 
-    <div class="search">
-      <input id="listingSearch" type="text" placeholder="Elan axtar...">
-      <button class="primary" onclick="searchAll()">Axtar</button>
+    <div class="search-box">
+
+        <input
+            id="listingSearch"
+            type="text"
+            placeholder="Elan axtar..."
+            oninput="searchListings()"
+        >
+
+        <select id="listingCategory" onchange="searchListings()">
+            <option value="">Bütün kateqoriyalar</option>
+            <option>Elektronika</option>
+            <option>Avtomobil</option>
+            <option>Daşınmaz əmlak</option>
+            <option>İş</option>
+            <option>Xidmətlər</option>
+            <option>Digər</option>
+        </select>
+
     </div>
 
     <br>
 
     <div id="allListings" class="listings"></div>
 
-  </section>
+</section>
 
 
-  <!-- GİRİŞ -->
-  <section id="login" class="page">
+<!-- GİRİŞ -->
 
-    <div class="form-box">
-
-      <h2>Giriş</h2>
-
-      <div class="form-group">
-        <label>E-mail</label>
-        <input id="loginEmail" type="email" placeholder="E-mail">
-      </div>
-
-      <div class="form-group">
-        <label>Şifrə</label>
-        <input id="loginPassword" type="password" placeholder="Şifrə">
-      </div>
-
-      <button class="primary" onclick="login()">Daxil ol</button>
-
-      <p style="text-align:center;margin-top:15px;color:#8993a3;">
-        Hesabın yoxdur?
-        <a href="#" onclick="showPage('register')" style="color:#00e5ff;">Qeydiyyatdan keç</a>
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <!-- QEYDİYYAT -->
-  <section id="register" class="page">
+<section id="login" class="page">
 
     <div class="form-box">
 
-      <h2>Qeydiyyat</h2>
+        <h2>Hesaba daxil ol</h2>
 
-      <div class="form-group">
-        <label>Ad və soyad</label>
-        <input id="regName" type="text" placeholder="Ad Soyad">
-      </div>
+        <p class="form-subtitle">
+            Hesabına daxil olmaq üçün məlumatlarını düzgün yaz.
+        </p>
 
-      <div class="form-group">
-        <label>E-mail</label>
-        <input id="regEmail" type="email" placeholder="E-mail">
-      </div>
+        <div id="loginError" class="error"></div>
 
-      <div class="form-group">
-        <label>Şifrə</label>
-        <input id="regPassword" type="password" placeholder="Şifrə">
-      </div>
+        <div class="form-group">
 
-      <button class="primary" onclick="register()">Hesab yarat</button>
+            <label>Telefon nömrəsi</label>
 
-      <p style="text-align:center;margin-top:15px;color:#8993a3;">
-        Artıq hesabın var?
-        <a href="#" onclick="showPage('login')" style="color:#00e5ff;">Giriş et</a>
-      </p>
+            <div class="phone-row">
+
+                <div class="phone-prefix">
+                    +994
+                </div>
+
+                <input
+                    id="loginPhone"
+                    type="tel"
+                    placeholder="50 123 45 67"
+                    maxlength="9"
+                >
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Şifrə</label>
+
+            <input
+                id="loginPassword"
+                type="password"
+                placeholder="Şifrənizi yazın"
+            >
+
+        </div>
+
+        <button class="btn btn-neon" onclick="login()">
+            Daxil ol
+        </button>
+
+        <div class="switch-text">
+            Hesabın yoxdur?
+            <button onclick="showPage('register')">
+                Qeydiyyatdan keç
+            </button>
+        </div>
 
     </div>
 
-  </section>
+</section>
 
 
-  <!-- ELAN YERLƏŞDİR -->
-  <section id="post" class="page">
+<!-- QEYDİYYAT -->
+
+<section id="register" class="page">
 
     <div class="form-box">
 
-      <h2>Elan yerləşdir</h2>
+        <h2>Qeydiyyatdan keç</h2>
 
-      <div id="postNotice" class="notice">
-        Elan yerləşdirmək üçün hesabına daxil olmalısan.
-      </div>
+        <p class="form-subtitle">
+            Altap.Biz-də elan yerləşdirmək üçün hesab yarat.
+        </p>
 
-      <div id="postForm" style="display:none;">
+        <div id="registerError" class="error"></div>
 
-        <div class="form-group">
-          <label>Elan başlığı</label>
-          <input id="postTitle" type="text" placeholder="Məsələn: iPhone 15 satılır">
-        </div>
+        <div id="registerSuccess" class="success"></div>
 
         <div class="form-group">
-          <label>Kateqoriya</label>
-          <select id="postCategory">
-            <option value="Avtomobil">Avtomobil</option>
-            <option value="Elektronika">Elektronika</option>
-            <option value="Əmlak">Əmlak</option>
-            <option value="İş">İş</option>
-            <option value="Digər">Digər</option>
-          </select>
+
+            <label>Ad və soyad</label>
+
+            <input
+                id="registerName"
+                type="text"
+                placeholder="Məsələn: Əli Məmmədov"
+            >
+
         </div>
+
 
         <div class="form-group">
-          <label>Qiymət (AZN)</label>
-          <input id="postPrice" type="number" placeholder="0">
+
+            <label>Telefon nömrəsi</label>
+
+            <div class="phone-row">
+
+                <div class="phone-prefix">
+                    +994
+                </div>
+
+                <input
+                    id="registerPhone"
+                    type="tel"
+                    placeholder="50 123 45 67"
+                    maxlength="9"
+                >
+
+            </div>
+
         </div>
+
 
         <div class="form-group">
-          <label>Açıqlama</label>
-          <textarea id="postDescription" placeholder="Elan haqqında məlumat"></textarea>
+
+            <label>Şifrə</label>
+
+            <input
+                id="registerPassword"
+                type="password"
+                placeholder="Minimum 6 simvol"
+            >
+
         </div>
 
-        <button class="primary" onclick="createListing()">Elanı yerləşdir</button>
 
-      </div>
+        <div class="form-group">
+
+            <label>Şifrəni təkrar yaz</label>
+
+            <input
+                id="registerPassword2"
+                type="password"
+                placeholder="Şifrəni yenidən yazın"
+            >
+
+        </div>
+
+
+        <button class="btn btn-neon" onclick="register()">
+            Qeydiyyatdan keç
+        </button>
+
+
+        <div class="switch-text">
+
+            Artıq hesabın var?
+
+            <button onclick="showPage('login')">
+                Daxil ol
+            </button>
+
+        </div>
 
     </div>
 
-  </section>
+</section>
 
 
-  <!-- ŞƏXSİ KABİNET -->
-  <section id="account" class="page">
+<!-- ELAN YERLƏŞDİR -->
 
-    <button class="back" onclick="showPage('home')">← Ana səhifə</button>
+<section id="post" class="page">
 
-    <div class="account">
+    <div class="form-box">
 
-      <h2>Şəxsi kabinet</h2>
+        <h2>Elan yerləşdir</h2>
 
-      <p style="margin-top:8px;color:#9da8b8;">
-        Xoş gəlmisən, <strong id="accountName"></strong>
-      </p>
+        <p class="form-subtitle">
+            Elanın haqqında düzgün və ətraflı məlumat yaz.
+        </p>
 
-      <div class="account-grid">
+        <div id="postError" class="error"></div>
 
-        <div class="stat">
-          Elanlarım
-          <strong id="myListingCount">0</strong>
+        <div id="postSuccess" class="success"></div>
+
+
+        <div class="form-group">
+
+            <label>Elanın adı *</label>
+
+            <input
+                id="postTitle"
+                type="text"
+                placeholder="Məsələn: iPhone 15 Pro 256 GB"
+                maxlength="80"
+            >
+
         </div>
 
-        <div class="stat">
-          Hesab statusu
-          <strong style="font-size:18px;">Aktiv</strong>
+
+        <div class="form-group">
+
+            <label>Kateqoriya *</label>
+
+            <select id="postCategory">
+
+                <option value="">Kateqoriya seç</option>
+
+                <option>Elektronika</option>
+                <option>Avtomobil</option>
+                <option>Daşınmaz əmlak</option>
+                <option>İş</option>
+                <option>Xidmətlər</option>
+                <option>Digər</option>
+
+            </select>
+
         </div>
 
-        <div class="stat">
-          Premium
-          <strong style="font-size:18px;">Yoxdur</strong>
+
+        <div class="form-group">
+
+            <label>Qiymət (AZN) *</label>
+
+            <input
+                id="postPrice"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="Məsələn: 1200"
+            >
+
         </div>
 
-      </div>
 
-      <br>
+        <div class="form-group">
 
-      <button class="primary" onclick="showPage('post')">
-        + Yeni elan yerləşdir
-      </button>
+            <label>Şəhər / rayon *</label>
 
-      <button onclick="logout()">
-        Hesabdan çıx
-      </button>
+            <input
+                id="postLocation"
+                type="text"
+                placeholder="Məsələn: Bakı"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Elanın açıqlaması *</label>
+
+            <textarea
+                id="postDescription"
+                maxlength="2000"
+                placeholder="Məhsul və ya xidmət haqqında ətraflı məlumat yazın..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Şəkillər *</label>
+
+            <label class="image-upload">
+
+                <input
+                    id="postImages"
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onchange="previewImages(event)"
+                >
+
+                <div style="font-size:35px;">📷</div>
+
+                <strong>
+                    Şəkil seç
+                </strong>
+
+                <div style="color:#777;margin-top:7px;font-size:13px;">
+                    Minimum 1, maksimum 6 şəkil
+                </div>
+
+            </label>
+
+            <div id="imagePreview" class="image-preview"></div>
+
+        </div>
+
+
+        <button
+            class="btn btn-neon"
+            onclick="createListing()"
+        >
+            Elanı yerləşdir
+        </button>
 
     </div>
 
-  </section>
+</section>
+
+
+<!-- KABİNET -->
+
+<section id="account" class="page">
+
+    <div class="account-box">
+
+        <div class="profile">
+
+            <h2 id="accountName">
+                Hesab
+            </h2>
+
+            <p id="accountPhone">
+                —
+            </p>
+
+        </div>
+
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <b id="myListingsCount">
+                    0
+                </b>
+
+                Elanlarım
+
+            </div>
+
+            <div class="stat">
+
+                <b>
+                    0
+                </b>
+
+                Favorilər
+
+            </div>
+
+            <div class="stat">
+
+                <b>
+                    0
+                </b>
+
+                Aktiv elan
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <button
+            class="btn btn-neon"
+            onclick="showPage('post')"
+        >
+            + Yeni elan yerləşdir
+        </button>
+
+        <button
+            class="btn btn-danger"
+            onclick="logout()"
+            style="margin-left:8px;"
+        >
+            Çıxış
+        </button>
+
+    </div>
+
+</section>
 
 </main>
 
+
 <footer>
-  © 2026 Altap.Biz — Bütün hüquqlar qorunur.
+
+    © 2026 Altap.Biz — Elan platforması
+
 </footer>
 
 
 <script>
 
-  let currentUser = JSON.parse(localStorage.getItem("altapUser")) || null;
+let currentUser =
+    JSON.parse(localStorage.getItem("altapUser")) || null;
 
-  let listings = JSON.parse(localStorage.getItem("altapListings")) || [
-    {
-      title: "iPhone 15 Pro",
-      category: "Elektronika",
-      price: 1450,
-      description: "Təmiz vəziyyətdə iPhone 15 Pro.",
-      owner: "Demo"
-    },
-    {
-      title: "Toyota Corolla",
-      category: "Avtomobil",
-      price: 18500,
-      description: "Yaxşı vəziyyətdə avtomobil.",
-      owner: "Demo"
-    },
-    {
-      title: "2 otaqlı mənzil",
-      category: "Əmlak",
-      price: 850,
-      description: "Kirayə 2 otaqlı mənzil.",
-      owner: "Demo"
-    }
-  ];
+let listings =
+    JSON.parse(localStorage.getItem("altapListings")) || [];
+
+let selectedImages = [];
 
 
-  function saveListings() {
-    localStorage.setItem("altapListings", JSON.stringify(listings));
-  }
+/* SƏHİFƏ KEÇİDLƏRİ */
 
+function showPage(pageId){
 
-  function showPage(pageId) {
+    if(pageId === "post" && !currentUser){
 
-    if (pageId === "post" && !currentUser) {
-      pageId = "login";
-      alert("Elan yerləşdirmək üçün əvvəlcə giriş etməlisən.");
+        alert(
+            "Elan yerləşdirmək üçün əvvəlcə hesaba daxil olmalısan."
+        );
+
+        pageId = "login";
     }
 
-    document.querySelectorAll(".page").forEach(page => {
-      page.classList.remove("active");
-    });
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+            page.classList.remove("active");
+        });
 
-    const page = document.getElementById(pageId);
+    const page =
+        document.getElementById(pageId);
 
-    if (page) {
-      page.classList.add("active");
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    if(page){
+        page.classList.add("active");
     }
 
     updateUI();
 
-    if (pageId === "home") renderHome();
-    if (pageId === "listings") renderListings();
-  }
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
 
 
-  function updateUI() {
+/* UI */
 
-    document.getElementById("loginBtn").style.display =
-      currentUser ? "none" : "inline-block";
+function updateUI(){
 
-    document.getElementById("registerBtn").style.display =
-      currentUser ? "none" : "inline-block";
+    const loginBtn =
+        document.getElementById("loginBtn");
 
-    document.getElementById("accountBtn").style.display =
-      currentUser ? "inline-block" : "none";
+    const registerBtn =
+        document.getElementById("registerBtn");
 
-    if (currentUser) {
+    const accountBtn =
+        document.getElementById("accountBtn");
 
-      document.getElementById("accountName").textContent =
-        currentUser.name;
 
-      const mine = listings.filter(x => x.owner === currentUser.email);
+    if(currentUser){
 
-      document.getElementById("myListingCount").textContent =
-        mine.length;
+        loginBtn.style.display = "none";
 
-      document.getElementById("postNotice").style.display = "none";
-      document.getElementById("postForm").style.display = "block";
+        registerBtn.style.display = "none";
 
-    } else {
+        accountBtn.style.display = "inline-block";
 
-      document.getElementById("postNotice").style.display = "block";
-      document.getElementById("postForm").style.display = "none";
+        document.getElementById("accountName").textContent =
+            currentUser.name;
+
+        document.getElementById("accountPhone").textContent =
+            "+994 " + currentUser.phone;
+
+        const mine =
+            listings.filter(
+                item => item.userPhone === currentUser.phone
+            );
+
+        document.getElementById("myListingsCount").textContent =
+            mine.length;
+
+    }else{
+
+        loginBtn.style.display = "inline-block";
+
+        registerBtn.style.display = "inline-block";
+
+        accountBtn.style.display = "none";
 
     }
-  }
+
+}
 
 
-  function register() {
+/* TELEFON YOXLANIŞI */
 
-    const name = document.getElementById("regName").value.trim();
-    const email = document.getElementById("regEmail").value.trim();
-    const password = document.getElementById("regPassword").value;
+function validPhone(phone){
 
-    if (!name || !email || !password) {
-      alert("Bütün xanaları doldur.");
-      return;
+    phone =
+        phone.replace(/\D/g,"");
+
+    return /^[0-9]{9}$/.test(phone);
+}
+
+
+/* QEYDİYYAT */
+
+function register(){
+
+    const error =
+        document.getElementById("registerError");
+
+    const success =
+        document.getElementById("registerSuccess");
+
+    error.style.display = "none";
+
+    success.style.display = "none";
+
+
+    const name =
+        document.getElementById("registerName")
+        .value.trim();
+
+    const phone =
+        document.getElementById("registerPhone")
+        .value.replace(/\D/g,"");
+
+    const password =
+        document.getElementById("registerPassword")
+        .value;
+
+    const password2 =
+        document.getElementById("registerPassword2")
+        .value;
+
+
+    if(name.length < 3){
+
+        error.textContent =
+            "Ad və soyadı düzgün yaz.";
+
+        error.style.display = "block";
+
+        return;
     }
+
+
+    if(!validPhone(phone)){
+
+        error.textContent =
+            "Telefon nömrəsini düzgün yaz. Məsələn: 50 123 45 67";
+
+        error.style.display = "block";
+
+        return;
+    }
+
+
+    if(password.length < 6){
+
+        error.textContent =
+            "Şifrə minimum 6 simvoldan ibarət olmalıdır.";
+
+        error.style.display = "block";
+
+        return;
+    }
+
+
+    if(password !== password2){
+
+        error.textContent =
+            "Şifrələr eyni deyil.";
+
+        error.style.display = "block";
+
+        return;
+    }
+
+
+    const oldUser =
+        JSON.parse(localStorage.getItem("altapUser"));
+
+
+    if(oldUser && oldUser.phone === phone){
+
+        error.textContent =
+            "Bu telefon nömrəsi artıq qeydiyyatdan keçib.";
+
+        error.style.display = "block";
+
+        return;
+    }
+
 
     const user = {
-      name: name,
-      email: email,
-      password: password
+
+        name:name,
+
+        phone:phone,
+
+        password:password
+
     };
 
-    localStorage.setItem("altapUser", JSON.stringify(user));
+
+    localStorage.setItem(
+        "altapUser",
+        JSON.stringify(user)
+    );
+
 
     currentUser = user;
 
-    alert("Qeydiyyat uğurla tamamlandı!");
+
+    success.textContent =
+        "Qeydiyyat uğurla tamamlandı.";
+
+    success.style.display = "block";
+
+
+    setTimeout(() => {
+
+        showPage("account");
+
+    },800);
+
+}
+
+
+/* GİRİŞ */
+
+function login(){
+
+    const error =
+        document.getElementById("loginError");
+
+    error.style.display = "none";
+
+
+    const phone =
+        document.getElementById("loginPhone")
+        .value.replace(/\D/g,"");
+
+    const password =
+        document.getElementById("loginPassword")
+        .value;
+
+
+    if(!validPhone(phone)){
+
+        error.textContent =
+            "Telefon nömrəsini düzgün yaz.";
+
+        error.style.display = "block";
+
+        return;
+    }
+
+
+    if(!password){
+
+        error.textContent =
+            "Şifrəni yaz.";
+
+        error.style.display = "block";
+
+        return;
+    }
+
+
+    const user =
+        JSON.parse(localStorage.getItem("altapUser"));
+
+
+    if(!user){
+
+        error.textContent =
+            "Bu nömrə ilə qeydiyyatdan keçmiş hesab tapılmadı.";
+
+        error.style.display = "block";
+
+        return;
+    }
+
+
+    if(
+        user.phone !== phone ||
+        user.password !== password
+    ){
+
+        error.textContent =
+            "Telefon nömrəsi və ya şifrə yanlışdır.";
+
+        error.style.display = "block";
+
+        return;
+    }
+
+
+    currentUser = user;
+
 
     showPage("account");
-  }
+
+}
 
 
-  function login() {
+/* ÇIXIŞ */
 
-    const email = document.getElementById("loginEmail").value.trim();
-    const password = document.getElementById("loginPassword").value;
-
-    const savedUser = JSON.parse(localStorage.getItem("altapUser"));
-
-    if (!savedUser) {
-      alert("Hesab tapılmadı. Əvvəlcə qeydiyyatdan keç.");
-      return;
-    }
-
-    if (
-      savedUser.email === email &&
-      savedUser.password === password
-    ) {
-
-      currentUser = savedUser;
-
-      alert("Uğurla daxil oldun!");
-
-      showPage("account");
-
-    } else {
-
-      alert("E-mail və ya şifrə yanlışdır.");
-
-    }
-  }
-
-
-  function logout() {
+function logout(){
 
     currentUser = null;
+
     localStorage.removeItem("altapUser");
 
-    alert("Hesabdan çıxıldı.");
-
     showPage("home");
-  }
+
+}
 
 
-  function createListing() {
+/* ŞƏKİL SEÇİMİ */
 
-    if (!currentUser) {
-      showPage("login");
-      return;
+function previewImages(event){
+
+    const files =
+        Array.from(event.target.files);
+
+
+    if(files.length < 1){
+
+        selectedImages = [];
+
+        document.getElementById("imagePreview").innerHTML = "";
+
+        return;
     }
 
-    const title = document.getElementById("postTitle").value.trim();
-    const category = document.getElementById("postCategory").value;
-    const price = document.getElementById("postPrice").value;
+
+    if(files.length > 6){
+
+        alert(
+            "Maksimum 6 şəkil seçə bilərsən."
+        );
+
+        event.target.value = "";
+
+        selectedImages = [];
+
+        document.getElementById("imagePreview").innerHTML = "";
+
+        return;
+    }
+
+
+    selectedImages = files;
+
+
+    const preview =
+        document.getElementById("imagePreview");
+
+    preview.innerHTML = "";
+
+
+    files.forEach((file,index) => {
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload = function(e){
+
+            const div =
+                document.createElement("div");
+
+            div.className =
+                "preview-item";
+
+
+            div.innerHTML = `
+
+                <img src="${e.target.result}">
+
+                <button
+                    class="remove-img"
+                    onclick="removeImage(${index})"
+                    type="button"
+                >
+                    ×
+                </button>
+
+            `;
+
+
+            preview.appendChild(div);
+
+        };
+
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
+
+
+/* ŞƏKİL SİLMƏ */
+
+function removeImage(index){
+
+    selectedImages.splice(index,1);
+
+    const input =
+        document.getElementById("postImages");
+
+    const dataTransfer =
+        new DataTransfer();
+
+
+    selectedImages.forEach(file => {
+
+        dataTransfer.items.add(file);
+
+    });
+
+
+    input.files =
+        dataTransfer.files;
+
+
+    previewImages({
+        target:input
+    });
+
+}
+
+
+/* ELAN YARAT */
+
+function createListing(){
+
+    if(!currentUser){
+
+        showPage("login");
+
+        return;
+    }
+
+
+    const error =
+        document.getElementById("postError");
+
+    const success =
+        document.getElementById("postSuccess");
+
+
+    error.style.display = "none";
+
+    success.style.display = "none";
+
+
+    const title =
+        document.getElementById("postTitle")
+        .value.trim();
+
+    const category =
+        document.getElementById("postCategory")
+        .value;
+
+    const price =
+        document.getElementById("postPrice")
+        .value;
+
+    const location =
+        document.getElementById("postLocation")
+        .value.trim();
+
     const description =
-      document.getElementById("postDescription").value.trim();
+        document.getElementById("postDescription")
+        .value.trim();
 
-    if (!title || !price || !description) {
-      alert("Bütün məlumatları doldur.");
-      return;
+
+    if(title.length < 5){
+
+        error.textContent =
+            "Elanın adını düzgün yaz.";
+
+        error.style.display = "block";
+
+        return;
     }
 
-    const newListing = {
-      title: title,
-      category: category,
-      price: Number(price),
-      description: description,
-      owner: currentUser.email
-    };
 
-    listings.unshift(newListing);
+    if(!category){
 
-    saveListings();
+        error.textContent =
+            "Kateqoriya seç.";
 
-    document.getElementById("postTitle").value = "";
-    document.getElementById("postPrice").value = "";
-    document.getElementById("postDescription").value = "";
+        error.style.display = "block";
 
-    alert("Elanın qəbul edildi və yadda saxlanıldı.");
-
-    showPage("listings");
-  }
+        return;
+    }
 
 
-  function createCard(item) {
+    if(price === "" || Number(price) < 0){
 
-    return `
-      <div class="card">
+        error.textContent =
+            "Qiyməti düzgün yaz.";
 
-        <div class="card-img">
-          ${getIcon(item.category)}
+        error.style.display = "block";
+
+        return;
+    }
+
+
+    if(location.length < 2){
+
+        error.textContent =
+            "Şəhər və ya rayonu yaz.";
+
+        error.style.display = "block";
+
+        return;
+    }
+
+
+    if(description.length < 15){
+
+        error.textContent =
+            "Elanın açıqlamasını daha ətraflı yaz.";
+
+        error.style.display = "block";
+
+        return;
+    }
+
+
+    if(selectedImages.length < 1){
+
+        error.textContent =
+            "Elana minimum 1 şəkil əlavə etməlisən.";
+
+        error.style.display = "block";
+
+        return;
+    }
+
+
+    if(selectedImages.length > 6){
+
+        error.textContent =
+            "Maksimum 6 şəkil əlavə etmək olar.";
+
+        error.style.display = "block";
+
+        return;
+    }
+
+
+    /*
+       DEMO ÜÇÜN ŞƏKİLLƏRİ BASE64 SAXLAYIRIQ.
+       REAL SUPABASE SİSTEMİNDƏ BUNU STORAGE İLƏ DƏYİŞƏCƏYİK.
+    */
+
+    const imagePromises =
+        selectedImages.map(file => {
+
+            return new Promise(resolve => {
+
+                const reader =
+                    new FileReader();
+
+                reader.onload =
+                    e => resolve(e.target.result);
+
+                reader.readAsDataURL(file);
+
+            });
+
+        });
+
+
+    Promise.all(imagePromises)
+    .then(images => {
+
+        const newListing = {
+
+            id:Date.now(),
+
+            title:title,
+
+            category:category,
+
+            price:Number(price),
+
+            location:location,
+
+            description:description,
+
+            images:images,
+
+            userPhone:currentUser.phone,
+
+            userName:currentUser.name,
+
+            date:new Date().toLocaleDateString("az-AZ")
+
+        };
+
+
+        listings.unshift(newListing);
+
+
+        localStorage.setItem(
+            "altapListings",
+            JSON.stringify(listings)
+        );
+
+
+        success.textContent =
+            "Elan uğurla əlavə edildi.";
+
+        success.style.display = "block";
+
+
+        document.getElementById("postTitle").value = "";
+
+        document.getElementById("postCategory").value = "";
+
+        document.getElementById("postPrice").value = "";
+
+        document.getElementById("postLocation").value = "";
+
+        document.getElementById("postDescription").value = "";
+
+        document.getElementById("postImages").value = "";
+
+        document.getElementById("imagePreview").innerHTML = "";
+
+        selectedImages = [];
+
+
+        renderHome();
+
+        renderListings();
+
+
+        updateUI();
+
+    });
+
+}
+
+
+/* ELAN KARTI */
+
+function createCard(item){
+
+    const card =
+        document.createElement("div");
+
+    card.className = "card";
+
+
+    let imageHTML =
+        `<div class="no-image">📷</div>`;
+
+
+    if(item.images && item.images.length > 0){
+
+        imageHTML =
+            `<img src="${item.images[0]}" alt="${escapeHTML(item.title)}">`;
+
+    }
+
+
+    card.innerHTML = `
+
+        <div class="card-image">
+
+            ${imageHTML}
+
         </div>
 
         <div class="card-body">
 
-          <h3>${escapeHTML(item.title)}</h3>
+            <div class="card-title">
+                ${escapeHTML(item.title)}
+            </div>
 
-          <div class="muted">
-            ${escapeHTML(item.category)}
-          </div>
+            <div class="price">
+                ${Number(item.price).toLocaleString("az-AZ")} AZN
+            </div>
 
-          <div class="price">
-            ${Number(item.price).toLocaleString("az-AZ")} AZN
-          </div>
+            <div class="meta">
+                📍 ${escapeHTML(item.location)}
+            </div>
 
-          <p class="muted">
-            ${escapeHTML(item.description)}
-          </p>
-
-          <br>
-
-          <div class="card-footer">
-            <span>${escapeHTML(item.owner)}</span>
-            <button onclick="alert('Elan detalları növbəti mərhələdə əlavə ediləcək.')">
-              Bax
-            </button>
-          </div>
+            <div class="meta" style="margin-top:6px;">
+                ${escapeHTML(item.category)}
+            </div>
 
         </div>
 
-      </div>
     `;
-  }
 
 
-  function getIcon(category) {
+    return card;
 
-    const icons = {
-      "Avtomobil": "🚗",
-      "Elektronika": "📱",
-      "Əmlak": "🏠",
-      "İş": "💼",
-      "Digər": "📦"
-    };
-
-    return icons[category] || "📦";
-  }
+}
 
 
-  function renderHome() {
+/* ANA SƏHİFƏ ELANLARI */
 
-    const container = document.getElementById("homeListings");
+function renderHome(){
 
-    container.innerHTML =
-      listings.slice(0, 6).map(createCard).join("");
+    const box =
+        document.getElementById("homeListings");
 
-  }
-
-
-  function renderListings(data = listings) {
-
-    const container = document.getElementById("allListings");
-
-    container.innerHTML =
-      data.length
-        ? data.map(createCard).join("")
-        : `<p class="muted">Heç bir elan tapılmadı.</p>`;
-
-    document.getElementById("listingCount").textContent =
-      `${data.length} elan`;
-
-  }
+    box.innerHTML = "";
 
 
-  function searchListings() {
+    const latest =
+        listings.slice(0,6);
 
-    const value =
-      document.getElementById("homeSearch").value.toLowerCase().trim();
+
+    if(latest.length === 0){
+
+        box.innerHTML = `
+
+            <div class="empty">
+
+                Hələ elan yerləşdirilməyib.
+
+                <br><br>
+
+                İlk elanı sən yerləşdirə bilərsən.
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    latest.forEach(item => {
+
+        box.appendChild(
+            createCard(item)
+        );
+
+    });
+
+}
+
+
+/* BÜTÜN ELANLAR */
+
+function renderListings(data = listings){
+
+    const box =
+        document.getElementById("allListings");
+
+    box.innerHTML = "";
+
+
+    if(data.length === 0){
+
+        box.innerHTML = `
+
+            <div class="empty">
+
+                Axtarışa uyğun elan tapılmadı.
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    data.forEach(item => {
+
+        box.appendChild(
+            createCard(item)
+        );
+
+    });
+
+}
+
+
+/* ELAN AXTARIŞI */
+
+function searchListings(){
+
+    const search =
+        document.getElementById("listingSearch")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const category =
+        document.getElementById("listingCategory")
+        .value;
+
+
+    const filtered =
+        listings.filter(item => {
+
+            const matchesSearch =
+                !search ||
+                item.title.toLowerCase().includes(search) ||
+                item.description.toLowerCase().includes(search) ||
+                item.location.toLowerCase().includes(search);
+
+
+            const matchesCategory =
+                !category ||
+                item.category === category;
+
+
+            return matchesSearch && matchesCategory;
+
+        });
+
+
+    renderListings(filtered);
+
+}
+
+
+/* ANA SƏHİFƏDƏN AXTARIŞ */
+
+function searchFromHome(){
+
+    const search =
+        document.getElementById("homeSearch")
+        .value
+        .toLowerCase()
+        .trim();
+
 
     showPage("listings");
 
-    if (!value) {
-      renderListings();
-      return;
-    }
 
-    const result = listings.filter(item =>
-      item.title.toLowerCase().includes(value) ||
-      item.category.toLowerCase().includes(value) ||
-      item.description.toLowerCase().includes(value)
-    );
-
-    renderListings(result);
-  }
+    document.getElementById("listingSearch").value =
+        search;
 
 
-  function searchAll() {
+    searchListings();
 
-    const value =
-      document.getElementById("listingSearch").value.toLowerCase().trim();
-
-    if (!value) {
-      renderListings();
-      return;
-    }
-
-    const result = listings.filter(item =>
-      item.title.toLowerCase().includes(value) ||
-      item.category.toLowerCase().includes(value) ||
-      item.description.toLowerCase().includes(value)
-    );
-
-    renderListings(result);
-  }
+}
 
 
-  function filterCategory(category) {
+/* KATEQORİYA */
+
+function filterCategory(category){
 
     showPage("listings");
 
-    const result =
-      listings.filter(item => item.category === category);
+    document.getElementById("listingCategory").value =
+        category;
 
-    renderListings(result);
-  }
+    searchListings();
+
+}
 
 
-  function escapeHTML(text) {
+/* HTML TƏHLÜKƏSİZLİYİ */
+
+function escapeHTML(text){
 
     return String(text)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
-  }
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
 
 
-  updateUI();
-  renderHome();
+/* BAŞLANĞIC */
+
+updateUI();
+
+renderHome();
+
+renderListings();
 
 </script>
 
