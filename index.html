@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="az">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WhatsApp Plus 2026 — Скачать APK</title>
+<title>WhatsApp Plus 2026 — Yüklə</title>
 
 <meta name="description"
-content="WhatsApp Plus 2026 для Android. Дополнительные функции, настройки приватности и персонализация интерфейса.">
+content="WhatsApp Plus 2026 haqqında məlumat, funksiyalar və yükləmə.">
 
 <style>
 *{
@@ -21,15 +21,11 @@ html{
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
     background:#020604;
     color:#fff;
     overflow-x:hidden;
 }
-
-/* =========================
-   GLOBAL
-========================= */
 
 :root{
     --green:#62ff32;
@@ -55,7 +51,7 @@ section{
 }
 
 /* =========================
-   BACKGROUND
+   ARXA FON
 ========================= */
 
 body::before{
@@ -93,7 +89,7 @@ header{
     top:0;
     z-index:1000;
     height:80px;
-    background:rgba(2,6,4,.86);
+    background:rgba(2,6,4,.88);
     backdrop-filter:blur(20px);
     border-bottom:1px solid rgba(255,255,255,.05);
 }
@@ -109,13 +105,13 @@ header{
     display:flex;
     align-items:center;
     gap:10px;
-    font-size:21px;
+    font-size:20px;
     font-weight:800;
 }
 
 .logo-icon{
-    width:38px;
-    height:38px;
+    width:40px;
+    height:40px;
     border:3px solid var(--green);
     border-radius:50%;
     display:flex;
@@ -132,7 +128,7 @@ header{
 
 .nav-links{
     display:flex;
-    gap:38px;
+    gap:32px;
     align-items:center;
 }
 
@@ -166,16 +162,10 @@ header{
     border:1px solid rgba(255,255,255,.1);
     background:#0b1510;
     border-radius:30px;
-    padding:11px 16px;
-    display:flex;
-    gap:8px;
-    align-items:center;
-    font-size:14px;
+    padding:10px 16px;
+    color:#fff;
+    font-size:13px;
 }
-
-/* =========================
-   MOBILE MENU
-========================= */
 
 .menu-btn{
     display:none;
@@ -267,7 +257,7 @@ header{
 }
 
 /* =========================
-   BUTTONS
+   DÜYMƏLƏR
 ========================= */
 
 .buttons{
@@ -283,7 +273,7 @@ header{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    gap:12px;
+    gap:10px;
     font-weight:800;
     font-size:15px;
     transition:.3s;
@@ -326,7 +316,7 @@ header{
 }
 
 /* =========================
-   PHONE
+   TELEFON
 ========================= */
 
 .phone-area{
@@ -473,8 +463,6 @@ header{
     box-shadow:0 0 25px rgba(98,255,50,.4);
 }
 
-/* feature floating cards */
-
 .float-card{
     position:absolute;
     z-index:5;
@@ -520,7 +508,7 @@ header{
 }
 
 /* =========================
-   FEATURES
+   FUNKSİYALAR
 ========================= */
 
 .features{
@@ -571,7 +559,7 @@ header{
 }
 
 /* =========================
-   DOWNLOAD
+   YÜKLƏMƏ
 ========================= */
 
 .download{
@@ -628,7 +616,7 @@ header{
 
 .version-info h2{
     font-size:22px;
-    margin-bottom:12px;
+    margin-bottom:14px;
 }
 
 .latest{
@@ -642,7 +630,8 @@ header{
 
 .stats{
     display:flex;
-    gap:35px;
+    gap:28px;
+    flex-wrap:wrap;
 }
 
 .stat{
@@ -658,6 +647,11 @@ header{
 .stat span{
     font-size:14px;
     font-weight:700;
+}
+
+.price{
+    color:var(--green);
+    font-size:25px !important;
 }
 
 .download-btn{
@@ -684,10 +678,6 @@ header{
     font-weight:500;
     margin-top:8px;
 }
-
-/* =========================
-   WARNING
-========================= */
 
 .warning{
     margin-top:20px;
@@ -717,7 +707,7 @@ header{
 }
 
 /* =========================
-   FAQ
+   TƏLİMAT / FAQ
 ========================= */
 
 .faq{
@@ -773,6 +763,57 @@ header{
 }
 
 /* =========================
+   ƏLAQƏ
+========================= */
+
+.contact-section{
+    padding:70px 0;
+}
+
+.contact-box{
+    border:1px solid rgba(98,255,50,.2);
+    background:linear-gradient(145deg,#07100b,#030906);
+    border-radius:18px;
+    padding:40px;
+    text-align:center;
+}
+
+.contact-box h2{
+    font-size:32px;
+    margin-bottom:12px;
+}
+
+.contact-box h2 span{
+    color:var(--green);
+}
+
+.contact-box p{
+    color:#9ba49e;
+    margin-bottom:25px;
+    line-height:1.6;
+}
+
+.phone-number{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 25px;
+    border:1px solid rgba(98,255,50,.35);
+    border-radius:12px;
+    color:var(--green);
+    font-size:23px;
+    font-weight:900;
+    margin-bottom:20px;
+}
+
+.contact-buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+/* =========================
    FOOTER
 ========================= */
 
@@ -816,24 +857,6 @@ footer{
     line-height:1.6;
     max-width:270px;
     margin-top:15px;
-}
-
-.socials{
-    display:flex;
-    gap:9px;
-    margin-top:20px;
-}
-
-.social{
-    width:35px;
-    height:35px;
-    border:1px solid rgba(98,255,50,.4);
-    color:var(--green);
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:13px;
 }
 
 .footer-bottom{
@@ -910,7 +933,7 @@ footer{
 }
 
 /* =========================
-   RESPONSIVE
+   MOBİL
 ========================= */
 
 @media(max-width:1000px){
@@ -1067,6 +1090,14 @@ footer{
     .section-title{
         font-size:24px;
     }
+
+    .contact-box{
+        padding:28px 18px;
+    }
+
+    .phone-number{
+        font-size:20px;
+    }
 }
 </style>
 </head>
@@ -1087,20 +1118,40 @@ footer{
     </a>
 
     <nav class="nav-links" id="navLinks">
-        <a href="#home" class="active">Главная</a>
-        <a href="#features">Функции</a>
-        <a href="#download">Скачать</a>
-        <a href="#faq">FAQ</a>
-        <a href="#guide">Инструкция</a>
-        <a href="#contacts">Контакты</a>
+
+        <a href="#home" class="active">
+            Ana səhifə
+        </a>
+
+        <a href="#features">
+            Funksiyalar
+        </a>
+
+        <a href="#download">
+            Yüklə
+        </a>
+
+        <a href="#guide">
+            Təlimat
+        </a>
+
+        <a href="#faq">
+            Suallar
+        </a>
+
+        <a href="#contacts">
+            Əlaqə
+        </a>
+
     </nav>
 
     <div class="lang">
-        🇷🇺 RU
-        <span>⌄</span>
+        🇦🇿 AZ
     </div>
 
-    <button class="menu-btn" id="menuBtn">☰</button>
+    <button class="menu-btn" id="menuBtn">
+        ☰
+    </button>
 
 </div>
 
@@ -1118,7 +1169,7 @@ footer{
     <div>
 
         <div class="badge">
-            НОВАЯ ВЕРСИЯ 2026
+            YENİ VERSİYA 2026
         </div>
 
         <h1>
@@ -1127,31 +1178,31 @@ footer{
         </h1>
 
         <p class="hero-text">
-            Расширенная версия WhatsApp с дополнительными
-            функциями, настройками приватности и возможностями
-            персонализации интерфейса.
+            WhatsApp Plus üçün əlavə funksiyalar,
+            məxfilik seçimləri və fərdiləşdirilə bilən
+            interfeys imkanları.
         </p>
 
         <div class="check-list">
 
             <div class="check">
                 <div class="check-icon">✓</div>
-                Больше настроек приватности
+                Daha çox məxfilik seçimləri
             </div>
 
             <div class="check">
                 <div class="check-icon">✓</div>
-                Улучшенный интерфейс
+                Yenilənmiş interfeys
             </div>
 
             <div class="check">
                 <div class="check-icon">✓</div>
-                Дополнительные функции
+                Əlavə funksiyalar
             </div>
 
             <div class="check">
                 <div class="check-icon">✓</div>
-                Персонализация приложения
+                Fərdiləşdirilə bilən görünüş
             </div>
 
         </div>
@@ -1159,24 +1210,24 @@ footer{
         <div class="buttons">
 
             <a href="#download" class="btn btn-primary">
-                ⬇️ СКАЧАТЬ APK
+                ⬇️ 20 ₼ — YÜKLƏ
             </a>
 
             <a href="#guide" class="btn btn-outline">
-                📖 ИНСТРУКЦИЯ
+                📖 TƏLİMAT
             </a>
 
         </div>
 
         <div class="security">
-            🛡️ <b>Внимание:</b>
-            скачивайте APK только из доверенного источника.
+            🛡️ <b>Diqqət:</b>
+            APK faylını yalnız etibarlı mənbədən yükləyin.
         </div>
 
     </div>
 
 
-    <!-- PHONE -->
+    <!-- TELEFON -->
 
     <div class="phone-area">
 
@@ -1187,6 +1238,7 @@ footer{
             <div class="notch"></div>
 
             <div class="phone-top">
+
                 <div class="phone-title">
                     WhatsApp
                 </div>
@@ -1194,20 +1246,21 @@ footer{
                 <div class="phone-icons">
                     ⌕ ⋮
                 </div>
+
             </div>
 
             <div class="tabs">
 
                 <div class="selected">
-                    ЧАТЫ
+                    ÇATLAR
                 </div>
 
                 <div>
-                    СТАТУС
+                    STATUS
                 </div>
 
                 <div>
-                    ЗВОНКИ
+                    ZƏNGLƏR
                 </div>
 
             </div>
@@ -1218,18 +1271,27 @@ footer{
                 <div class="avatar"></div>
 
                 <div class="chat-info">
+
                     <div class="chat-name">
-                        Алексей
+                        Alex
                     </div>
 
                     <div class="chat-message">
-                        Привет! Как дела?
+                        Salam! Necəsən?
                     </div>
+
                 </div>
 
                 <div>
-                    <div class="chat-time">14:35</div>
-                    <div class="online">2</div>
+
+                    <div class="chat-time">
+                        14:35
+                    </div>
+
+                    <div class="online">
+                        2
+                    </div>
+
                 </div>
 
             </div>
@@ -1240,18 +1302,27 @@ footer{
                 <div class="avatar"></div>
 
                 <div class="chat-info">
+
                     <div class="chat-name">
-                        Мария
+                        Maria
                     </div>
 
                     <div class="chat-message">
-                        📷 Фото
+                        📷 Şəkil
                     </div>
+
                 </div>
 
                 <div>
-                    <div class="chat-time">13:20</div>
-                    <div class="online">1</div>
+
+                    <div class="chat-time">
+                        13:20
+                    </div>
+
+                    <div class="online">
+                        1
+                    </div>
+
                 </div>
 
             </div>
@@ -1262,18 +1333,27 @@ footer{
                 <div class="avatar"></div>
 
                 <div class="chat-info">
+
                     <div class="chat-name">
-                        Друзья
+                        Dostlar
                     </div>
 
                     <div class="chat-message">
-                        Иван: Отлично! 👍
+                        Əla! 👍
                     </div>
+
                 </div>
 
                 <div>
-                    <div class="chat-time">12:45</div>
-                    <div class="online">5</div>
+
+                    <div class="chat-time">
+                        12:45
+                    </div>
+
+                    <div class="online">
+                        5
+                    </div>
+
                 </div>
 
             </div>
@@ -1284,13 +1364,15 @@ footer{
                 <div class="avatar"></div>
 
                 <div class="chat-info">
+
                     <div class="chat-name">
-                        Работа
+                        İş
                     </div>
 
                     <div class="chat-message">
-                        📄 Документ
+                        📄 Sənəd
                     </div>
+
                 </div>
 
                 <div class="chat-time">
@@ -1305,20 +1387,23 @@ footer{
                 <div class="avatar"></div>
 
                 <div class="chat-info">
+
                     <div class="chat-name">
-                        Оля
+                        Aysel
                     </div>
 
                     <div class="chat-message">
-                        Спасибо! 😊
+                        Çox sağ ol 😊
                     </div>
+
                 </div>
 
                 <div class="chat-time">
-                    Вчера
+                    Dünən
                 </div>
 
             </div>
+
 
             <div class="plus-btn">
                 +
@@ -1328,18 +1413,44 @@ footer{
 
 
         <div class="float-card card-one">
-            <div class="fc-icon">🛡</div>
-            <p>Защита<br>приватности</p>
+
+            <div class="fc-icon">
+                🛡
+            </div>
+
+            <p>
+                Məxfilik<br>
+                qorunması
+            </p>
+
         </div>
+
 
         <div class="float-card card-two">
-            <div class="fc-icon">✎</div>
-            <p>Темы и<br>настройки</p>
+
+            <div class="fc-icon">
+                ✎
+            </div>
+
+            <p>
+                Mövzular və<br>
+                görünüş
+            </p>
+
         </div>
 
+
         <div class="float-card card-three">
-            <div class="fc-icon">🔒</div>
-            <p>Скрытие<br>онлайн</p>
+
+            <div class="fc-icon">
+                🔒
+            </div>
+
+            <p>
+                Onlayn<br>
+                statusu gizlət
+            </p>
+
         </div>
 
     </div>
@@ -1350,7 +1461,7 @@ footer{
 
 
 <!-- =========================
-     FEATURES
+     FUNKSİYALAR
 ========================= -->
 
 <section class="features" id="features">
@@ -1358,40 +1469,92 @@ footer{
 <div class="container">
 
     <h2 class="section-title">
-        ПОЧЕМУ ВЫБИРАЮТ
-        <span>WHATSAPP PLUS?</span>
+        NİYƏ <span>WHATSAPP PLUS?</span>
     </h2>
 
     <div class="feature-grid">
 
         <div class="feature">
-            <div class="feature-icon">◉</div>
-            <h3>Скрытие онлайн<br>и печати</h3>
+
+            <div class="feature-icon">
+                ◉
+            </div>
+
+            <h3>
+                Onlayn və yazır<br>
+                statusunu gizlət
+            </h3>
+
         </div>
 
-        <div class="feature">
-            <div class="feature-icon">♲</div>
-            <h3>Просмотр удалённых<br>сообщений</h3>
-        </div>
 
         <div class="feature">
-            <div class="feature-icon">↓</div>
-            <h3>Скачивание<br>статусов</h3>
+
+            <div class="feature-icon">
+                ♲
+            </div>
+
+            <h3>
+                Silinmiş mesajlara<br>
+                baxış
+            </h3>
+
         </div>
 
-        <div class="feature">
-            <div class="feature-icon">➤</div>
-            <h3>Отправка больших<br>файлов</h3>
-        </div>
 
         <div class="feature">
-            <div class="feature-icon">🔒</div>
-            <h3>Дополнительные<br>настройки</h3>
+
+            <div class="feature-icon">
+                ↓
+            </div>
+
+            <h3>
+                Statusları<br>
+                yadda saxla
+            </h3>
+
         </div>
 
+
         <div class="feature">
-            <div class="feature-icon">🎨</div>
-            <h3>Кастомные темы<br>и интерфейс</h3>
+
+            <div class="feature-icon">
+                ➤
+            </div>
+
+            <h3>
+                Böyük faylların<br>
+                göndərilməsi
+            </h3>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔒
+            </div>
+
+            <h3>
+                Əlavə məxfilik<br>
+                seçimləri
+            </h3>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🎨
+            </div>
+
+            <h3>
+                Mövzular və<br>
+                fərdiləşdirmə
+            </h3>
+
         </div>
 
     </div>
@@ -1402,7 +1565,7 @@ footer{
 
 
 <!-- =========================
-     DOWNLOAD
+     YÜKLƏMƏ
 ========================= -->
 
 <section class="download" id="download">
@@ -1412,8 +1575,10 @@ footer{
     <div class="download-box">
 
         <h2 class="download-title">
-            СКАЧАТЬ <span>WHATSAPP PLUS 2026</span>
+            <span>WHATSAPP PLUS 2026</span>
+            YÜKLƏ
         </h2>
+
 
         <div class="download-grid">
 
@@ -1427,26 +1592,50 @@ footer{
 
                     <h2>
                         WhatsApp Plus 2026
+
                         <span class="latest">
-                            НОВАЯ ВЕРСИЯ
+                            YENİ
                         </span>
                     </h2>
 
                     <div class="stats">
 
                         <div class="stat">
-                            <small>Размер</small>
-                            <span>72.6 MB</span>
+
+                            <small>
+                                Ölçü
+                            </small>
+
+                            <span>
+                                72.6 MB
+                            </span>
+
                         </div>
 
-                        <div class="stat">
-                            <small>Android</small>
-                            <span>5.0+</span>
-                        </div>
 
                         <div class="stat">
-                            <small>Обновлено</small>
-                            <span>12.08.2026</span>
+
+                            <small>
+                                Android
+                            </small>
+
+                            <span>
+                                5.0+
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <small>
+                                Qiymət
+                            </small>
+
+                            <span class="price">
+                                20 ₼
+                            </span>
+
                         </div>
 
                     </div>
@@ -1458,10 +1647,10 @@ footer{
 
             <button class="download-btn" id="downloadBtn">
 
-                🤖 &nbsp; СКАЧАТЬ ДЛЯ ANDROID
+                💳 &nbsp; 20 ₼ — İNDİ YÜKLƏ
 
                 <small>
-                    WhatsApp_Plus_2026.apk
+                    WhatsApp Plus 2026 APK
                 </small>
 
             </button>
@@ -1478,13 +1667,14 @@ footer{
             <div>
 
                 <h3>
-                    ВНИМАНИЕ!
+                    DİQQƏT!
                 </h3>
 
                 <p>
-                    WhatsApp Plus не является официальным приложением
-                    WhatsApp. Использование сторонних модификаций может
-                    привести к временной или постоянной блокировке аккаунта.
+                    WhatsApp Plus rəsmi WhatsApp tətbiqi deyil.
+                    Qeyri-rəsmi modifikasiyalardan istifadə hesabın
+                    məhdudlaşdırılması və ya bloklanması riski yarada bilər.
+                    Faylı quraşdırmazdan əvvəl mənbəni yoxlayın.
                 </p>
 
             </div>
@@ -1499,7 +1689,7 @@ footer{
 
 
 <!-- =========================
-     GUIDE
+     TƏLİMAT
 ========================= -->
 
 <section class="faq" id="guide">
@@ -1507,23 +1697,34 @@ footer{
 <div class="container">
 
     <h2 class="section-title">
-        ИНСТРУКЦИЯ
+        <span>QURAŞDIRMA</span> TƏLİMATI
     </h2>
 
     <div class="faq-grid">
 
+
         <div class="faq-item open">
 
             <div class="faq-question">
-                <span>01</span>
-                Как установить приложение?
-                <b class="arrow">⌄</b>
+
+                <span>
+                    01
+                </span>
+
+                APK necə yüklənir?
+
+                <b class="arrow">
+                    ⌄
+                </b>
+
             </div>
 
             <div class="faq-answer">
-                Скачайте APK-файл, откройте его на Android-устройстве
-                и следуйте инструкциям системы. Перед установкой
-                рекомендуется проверить источник файла.
+
+                Yükləmə bölməsindəki düyməyə klikləyin.
+                Ödəniş və fayl təqdimetmə prosesi tamamlandıqdan
+                sonra APK faylını əldə edə bilərsiniz.
+
             </div>
 
         </div>
@@ -1532,15 +1733,25 @@ footer{
         <div class="faq-item">
 
             <div class="faq-question">
-                <span>02</span>
-                Какие разрешения необходимы?
-                <b class="arrow">⌄</b>
+
+                <span>
+                    02
+                </span>
+
+                Android-də necə quraşdırılır?
+
+                <b class="arrow">
+                    ⌄
+                </b>
+
             </div>
 
             <div class="faq-answer">
-                Разрешения зависят от версии приложения и функций,
-                которые используются. Не предоставляйте приложению
-                ненужные разрешения.
+
+                APK faylını Android cihazınıza endirin və faylı açın.
+                Sistem tələb edərsə, həmin mənbədən tətbiq quraşdırmağa
+                icazə verin.
+
             </div>
 
         </div>
@@ -1549,14 +1760,26 @@ footer{
         <div class="faq-item">
 
             <div class="faq-question">
-                <span>03</span>
-                Можно ли использовать старую версию?
-                <b class="arrow">⌄</b>
+
+                <span>
+                    03
+                </span>
+
+                Qiymət nə qədərdir?
+
+                <b class="arrow">
+                    ⌄
+                </b>
+
             </div>
 
             <div class="faq-answer">
-                Используйте только ту версию, которую вы считаете
-                надёжной и которая совместима с вашим устройством.
+
+                WhatsApp Plus 2026 üçün göstərilən qiymət
+                <strong style="color:#62ff32;">
+                    20 ₼
+                </strong>-dir.
+
             </div>
 
         </div>
@@ -1565,15 +1788,24 @@ footer{
         <div class="faq-item">
 
             <div class="faq-question">
-                <span>04</span>
-                Как обновить приложение?
-                <b class="arrow">⌄</b>
+
+                <span>
+                    04
+                </span>
+
+                Yeniləmə necə olacaq?
+
+                <b class="arrow">
+                    ⌄
+                </b>
+
             </div>
 
             <div class="faq-answer">
-                Перед обновлением рекомендуется сохранить важные
-                данные. После этого скачайте новую версию из
-                доверенного источника.
+
+                Yeni versiya yayımlandıqda saytda yeni APK
+                versiyası yerləşdirilə bilər.
+
             </div>
 
         </div>
@@ -1586,7 +1818,7 @@ footer{
 
 
 <!-- =========================
-     FAQ
+     SUALLAR
 ========================= -->
 
 <section class="faq" id="faq">
@@ -1594,22 +1826,34 @@ footer{
 <div class="container">
 
     <h2 class="section-title">
-        ЧАСТО ЗАДАВАЕМЫЕ <span>ВОПРОСЫ</span>
+        TEZ-TEZ VERİLƏN <span>SUALLAR</span>
     </h2>
 
     <div class="faq-grid">
 
+
         <div class="faq-item">
 
             <div class="faq-question">
-                <span>?</span>
-                Является ли WhatsApp Plus официальным?
-                <b class="arrow">⌄</b>
+
+                <span>
+                    ?
+                </span>
+
+                WhatsApp Plus rəsmi tətbiqdirmi?
+
+                <b class="arrow">
+                    ⌄
+                </b>
+
             </div>
 
             <div class="faq-answer">
-                Нет. WhatsApp Plus является сторонней модификацией
-                и не является официальным приложением WhatsApp.
+
+                Xeyr. WhatsApp Plus üçüncü tərəf tərəfindən
+                hazırlanmış modifikasiya ola bilər və rəsmi
+                WhatsApp tətbiqi deyil.
+
             </div>
 
         </div>
@@ -1618,14 +1862,24 @@ footer{
         <div class="faq-item">
 
             <div class="faq-question">
-                <span>?</span>
-                Чем он отличается от WhatsApp?
-                <b class="arrow">⌄</b>
+
+                <span>
+                    ?
+                </span>
+
+                WhatsApp Plus hansı cihaz üçündür?
+
+                <b class="arrow">
+                    ⌄
+                </b>
+
             </div>
 
             <div class="faq-answer">
-                Сторонние модификации могут предлагать дополнительные
-                настройки интерфейса и приватности.
+
+                Bu səhifədə Android cihazlar üçün APK versiyası
+                nəzərdə tutulur.
+
             </div>
 
         </div>
@@ -1634,15 +1888,25 @@ footer{
         <div class="faq-item">
 
             <div class="faq-question">
-                <span>?</span>
-                Могут ли заблокировать мой аккаунт?
-                <b class="arrow">⌄</b>
+
+                <span>
+                    ?
+                </span>
+
+                Hesab bloklana bilər?
+
+                <b class="arrow">
+                    ⌄
+                </b>
+
             </div>
 
             <div class="faq-answer">
-                Да. Использование неофициальных модификаций может
-                нарушать правила официального сервиса и привести
-                к ограничению или блокировке аккаунта.
+
+                Qeyri-rəsmi WhatsApp modifikasiyalarından istifadə
+                hesabın məhdudlaşdırılması və ya bloklanması riskini
+                yarada bilər.
+
             </div>
 
         </div>
@@ -1651,15 +1915,77 @@ footer{
         <div class="faq-item">
 
             <div class="faq-question">
-                <span>?</span>
-                Работает ли приложение на Android?
-                <b class="arrow">⌄</b>
+
+                <span>
+                    ?
+                </span>
+
+                Dəstək üçün hara yazım?
+
+                <b class="arrow">
+                    ⌄
+                </b>
+
             </div>
 
             <div class="faq-answer">
-                Совместимость зависит от конкретной версии APK
-                и версии Android на устройстве.
+
+                Əlaqə bölməsində göstərilən
+                <strong style="color:#62ff32;">
+                    055 614 56 57
+                </strong>
+                nömrəsi ilə əlaqə saxlaya bilərsiniz.
+
             </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     ƏLAQƏ
+========================= -->
+
+<section class="contact-section" id="contacts">
+
+<div class="container">
+
+    <div class="contact-box">
+
+        <h2>
+            BİZİMLƏ <span>ƏLAQƏ</span>
+        </h2>
+
+        <p>
+            WhatsApp Plus haqqında sualınız varsa,
+            bizimlə əlaqə saxlaya bilərsiniz.
+        </p>
+
+        <div class="phone-number">
+            📞 055 614 56 57
+        </div>
+
+        <div class="contact-buttons">
+
+            <a
+                href="tel:+994556145657"
+                class="btn btn-primary"
+            >
+                📞 ZƏNG ET
+            </a>
+
+            <a
+                href="https://wa.me/994556145657"
+                target="_blank"
+                class="btn btn-outline"
+            >
+                💬 WHATSAPP-A YAZ
+            </a>
 
         </div>
 
@@ -1674,36 +2000,57 @@ footer{
      FOOTER
 ========================= -->
 
-<footer id="contacts">
+<footer>
 
 <div class="container">
 
     <div class="footer-grid">
 
+
         <div>
 
             <a href="#home" class="logo">
-                <div class="logo-icon">✆</div>
+
+                <div class="logo-icon">
+                    ✆
+                </div>
+
                 WhatsApp <span>Plus</span>
+
             </a>
 
             <p class="footer-description">
-                Информационный сайт о сторонней версии WhatsApp
-                и дополнительных возможностях приложения.
+
+                WhatsApp Plus haqqında məlumat,
+                funksiyalar və yükləmə səhifəsi.
+
             </p>
 
-            <div class="socials">
+        </div>
 
-                <a href="#" class="social">
-                    VK
+
+        <div>
+
+            <div class="footer-title">
+                MENYU
+            </div>
+
+            <div class="footer-links">
+
+                <a href="#home">
+                    Ana səhifə
                 </a>
 
-                <a href="#" class="social">
-                    TG
+                <a href="#features">
+                    Funksiyalar
                 </a>
 
-                <a href="#" class="social">
-                    ▶
+                <a href="#download">
+                    Yüklə
+                </a>
+
+                <a href="#guide">
+                    Təlimat
                 </a>
 
             </div>
@@ -1714,53 +2061,39 @@ footer{
         <div>
 
             <div class="footer-title">
-                ССЫЛКИ
+                MƏLUMAT
             </div>
 
             <div class="footer-links">
 
-                <a href="#home">Главная</a>
-                <a href="#features">Функции</a>
-                <a href="#download">Скачать</a>
-                <a href="#guide">Инструкция</a>
-                <a href="#faq">FAQ</a>
-
-            </div>
-
-        </div>
-
-
-        <div>
-
-            <div class="footer-title">
-                ПОДДЕРЖКА
-            </div>
-
-            <div class="footer-links">
-
-                <a href="#contacts">Контакты</a>
-                <a href="#">Политика конфиденциальности</a>
-                <a href="#">Условия использования</a>
-
-            </div>
-
-        </div>
-
-
-        <div>
-
-            <div class="footer-title">
-                КОНТАКТЫ
-            </div>
-
-            <div class="footer-links">
-
-                <a href="#">
-                    Telegram: @WhatsAppPlus_RU
+                <a href="#faq">
+                    Tez-tez verilən suallar
                 </a>
 
-                <a href="mailto:support@example.com">
-                    Email: support@example.com
+                <a href="#contacts">
+                    Əlaqə
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <div class="footer-title">
+                ƏLAQƏ
+            </div>
+
+            <div class="footer-links">
+
+                <a href="tel:+994556145657">
+                    📞 055 614 56 57
+                </a>
+
+                <a href="https://wa.me/994556145657"
+                   target="_blank">
+                    💬 WhatsApp
                 </a>
 
             </div>
@@ -1777,7 +2110,7 @@ footer{
         </span>
 
         <span>
-            Сторонний информационный сайт
+            Bütün hüquqlar qorunur.
         </span>
 
     </div>
@@ -1800,34 +2133,41 @@ footer{
     </button>
 
     <h2>
-        Скачать WhatsApp Plus
+        WhatsApp Plus 2026
     </h2>
 
     <p>
-        Перед скачиванием ознакомьтесь с информацией
-        о сторонних модификациях WhatsApp.
+        Yükləmə qiyməti:
+        <strong style="color:#62ff32;font-size:20px;">
+            20 ₼
+        </strong>
     </p>
 
     <div class="modal-list">
 
         <div>
-            📱 Только для Android
+            📱 Android üçün
         </div>
 
         <div>
-            ⚠️ Неофициальное приложение
+            💰 Qiymət: 20 ₼
         </div>
 
         <div>
-            🔐 Проверьте источник APK перед установкой
+            📞 Əlaqə: 055 614 56 57
         </div>
 
     </div>
 
     <br>
 
-    <a href="#" class="btn btn-primary" style="width:100%;">
-        ⬇️ ПРОДОЛЖИТЬ
+    <a
+        href="https://wa.me/994556145657?text=Salam%2C%20WhatsApp%20Plus%202026%20almaq%20ist%C9%99yir%C9%99m."
+        target="_blank"
+        class="btn btn-primary"
+        style="width:100%;"
+    >
+        💬 20 ₼ — SİFARİŞ ET
     </a>
 
 </div>
@@ -1838,32 +2178,44 @@ footer{
 <script>
 
 /* =========================
-   MOBILE MENU
+   MOBİL MENYU
 ========================= */
 
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
+const menuBtn =
+    document.getElementById("menuBtn");
+
+const navLinks =
+    document.getElementById("navLinks");
 
 menuBtn.addEventListener("click", () => {
+
     navLinks.classList.toggle("show");
 
     if(navLinks.classList.contains("show")){
+
         menuBtn.textContent = "✕";
+
     }else{
+
         menuBtn.textContent = "☰";
+
     }
+
 });
 
 
 /* =========================
-   CLOSE MOBILE MENU
+   MENYU BAĞLANSIN
 ========================= */
 
-document.querySelectorAll(".nav-links a").forEach(link => {
+document
+.querySelectorAll(".nav-links a")
+.forEach(link => {
 
     link.addEventListener("click", () => {
 
         navLinks.classList.remove("show");
+
         menuBtn.textContent = "☰";
 
     });
@@ -1875,11 +2227,14 @@ document.querySelectorAll(".nav-links a").forEach(link => {
    FAQ
 ========================= */
 
-document.querySelectorAll(".faq-question").forEach(question => {
+document
+.querySelectorAll(".faq-question")
+.forEach(question => {
 
     question.addEventListener("click", () => {
 
-        const item = question.parentElement;
+        const item =
+            question.parentElement;
 
         item.classList.toggle("open");
 
@@ -1889,12 +2244,18 @@ document.querySelectorAll(".faq-question").forEach(question => {
 
 
 /* =========================
-   DOWNLOAD MODAL
+   YÜKLƏMƏ MODALI
 ========================= */
 
-const downloadBtn = document.getElementById("downloadBtn");
-const modal = document.getElementById("modal");
-const closeModal = document.getElementById("closeModal");
+const downloadBtn =
+    document.getElementById("downloadBtn");
+
+const modal =
+    document.getElementById("modal");
+
+const closeModal =
+    document.getElementById("closeModal");
+
 
 downloadBtn.addEventListener("click", () => {
 
@@ -1922,45 +2283,7 @@ modal.addEventListener("click", (event) => {
 
 
 /* =========================
-   ACTIVE MENU
-========================= */
-
-const sections = document.querySelectorAll("section, footer");
-const menuItems = document.querySelectorAll(".nav-links a");
-
-window.addEventListener("scroll", () => {
-
-    let current = "";
-
-    sections.forEach(section => {
-
-        const sectionTop = section.offsetTop - 120;
-
-        if(window.scrollY >= sectionTop){
-
-            current = section.getAttribute("id");
-
-        }
-
-    });
-
-    menuItems.forEach(item => {
-
-        item.classList.remove("active");
-
-        if(item.getAttribute("href") === "#" + current){
-
-            item.classList.add("active");
-
-        }
-
-    });
-
-});
-
-
-/* =========================
-   ESC CLOSE MODAL
+   ESC
 ========================= */
 
 document.addEventListener("keydown", (event) => {
@@ -1970,6 +2293,61 @@ document.addEventListener("keydown", (event) => {
         modal.classList.remove("active");
 
     }
+
+});
+
+
+/* =========================
+   AKTİV MENYU
+========================= */
+
+const sections =
+    document.querySelectorAll(
+        "section"
+    );
+
+const menuItems =
+    document.querySelectorAll(
+        ".nav-links a"
+    );
+
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    sections.forEach(section => {
+
+        const sectionTop =
+            section.offsetTop - 150;
+
+        if(
+            window.scrollY >=
+            sectionTop
+        ){
+
+            current =
+                section.getAttribute("id");
+
+        }
+
+    });
+
+
+    menuItems.forEach(item => {
+
+        item.classList.remove("active");
+
+        if(
+            item.getAttribute("href")
+            ===
+            "#" + current
+        ){
+
+            item.classList.add("active");
+
+        }
+
+    });
 
 });
 
