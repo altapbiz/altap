@@ -317,6 +317,15 @@ header{
         var(--card);
 }
 
+/* GİRİŞ ETMƏYƏN İSTİFADƏÇİDƏ GİZLİDİR */
+#loggedInCTA{
+    display:none;
+}
+
+#loggedInCTA.visible{
+    display:block;
+}
+
 .cta h2{
     font-size:30px;
 }
@@ -761,7 +770,9 @@ Axtar 🔎
 </section>
 
 
-<section class="cta">
+<!-- GİRİŞDƏN SONRA GÖRÜNƏN ELAN BÖLMƏSİ -->
+
+<section class="cta" id="loggedInCTA">
 
 <h2>Elan yerləşdirmək istəyirsən?</h2>
 
@@ -1052,7 +1063,7 @@ Minimum 1, maksimum 6 şəkil seçə bilərsiniz.
 
 
 <button class="btn btn-primary full" onclick="submitAd()">
-Davam et — 1 AZN
+💳 Ödəniş et — 1 AZN
 </button>
 
 </div>
@@ -1079,6 +1090,35 @@ function saveUsers(users){
 function getCurrentUser(){
     return JSON.parse(localStorage.getItem("altap_current_user") || "null");
 }
+
+
+/* =========================
+   LOGIN CTA VISIBILITY
+========================= */
+
+function updateLoggedInCTA(){
+
+    const cta =
+        document.getElementById("loggedInCTA");
+
+    const user =
+        getCurrentUser();
+
+    if(user){
+
+        cta.classList.add("visible");
+
+    }else{
+
+        cta.classList.remove("visible");
+
+    }
+}
+
+
+/* =========================
+   LOGIN / REGISTER
+========================= */
 
 function openLogin(){
 
@@ -1121,7 +1161,9 @@ function switchAuth(){
 }
 
 function closeModal(){
-    document.getElementById("authModal").classList.remove("active");
+
+    document.getElementById("authModal")
+        .classList.remove("active");
 }
 
 function submitAuth(){
@@ -1134,21 +1176,27 @@ function submitAuth(){
 
     if(!phone || !password){
 
-        alert("Zəhmət olmasa telefon nömrəsini və şifrəni daxil edin.");
+        alert(
+            "Zəhmət olmasa telefon nömrəsini və şifrəni daxil edin."
+        );
 
         return;
     }
 
     if(phone.length < 7){
 
-        alert("Telefon nömrəsini düzgün daxil edin.");
+        alert(
+            "Telefon nömrəsini düzgün daxil edin."
+        );
 
         return;
     }
 
     if(password.length < 6){
 
-        alert("Şifrə minimum 6 simvoldan ibarət olmalıdır.");
+        alert(
+            "Şifrə minimum 6 simvoldan ibarət olmalıdır."
+        );
 
         return;
     }
@@ -1162,17 +1210,25 @@ function submitAuth(){
 
         if(exists){
 
-            alert("Bu telefon nömrəsi ilə artıq hesab mövcuddur.");
+            alert(
+                "Bu telefon nömrəsi ilə artıq hesab mövcuddur."
+            );
 
             return;
         }
 
         const newUser = {
+
             id: Date.now(),
+
             phone: phone,
+
             password: password,
+
             createdAt: new Date().toISOString(),
+
             ads: []
+
         };
 
         users.push(newUser);
@@ -1186,7 +1242,11 @@ function submitAuth(){
 
         closeModal();
 
-        alert("✅ Qeydiyyat uğurla tamamlandı!");
+        alert(
+            "✅ Qeydiyyat uğurla tamamlandı!"
+        );
+
+        updateLoggedInCTA();
 
         openCabinet();
 
@@ -1215,7 +1275,11 @@ function submitAuth(){
 
         closeModal();
 
-        alert("✅ Giriş uğurludur!");
+        alert(
+            "✅ Giriş uğurludur!"
+        );
+
+        updateLoggedInCTA();
 
         openCabinet();
     }
@@ -1228,10 +1292,13 @@ function submitAuth(){
 
 function openCabinet(){
 
-    const user = getCurrentUser();
+    const user =
+        getCurrentUser();
 
     if(!user){
+
         openLogin();
+
         return;
     }
 
@@ -1240,6 +1307,8 @@ function openCabinet(){
 
     document.getElementById("cabinetModal")
         .classList.add("active");
+
+    updateLoggedInCTA();
 }
 
 function closeCabinet(){
@@ -1250,11 +1319,17 @@ function closeCabinet(){
 
 function logout(){
 
-    localStorage.removeItem("altap_current_user");
+    localStorage.removeItem(
+        "altap_current_user"
+    );
 
     closeCabinet();
 
-    alert("Hesabdan çıxış edildi.");
+    updateLoggedInCTA();
+
+    alert(
+        "Hesabdan çıxış edildi."
+    );
 }
 
 
@@ -1264,7 +1339,8 @@ function logout(){
 
 function requireLogin(){
 
-    const user = getCurrentUser();
+    const user =
+        getCurrentUser();
 
     if(!user){
 
@@ -1360,6 +1436,11 @@ function previewImages(){
     });
 }
 
+
+/* =========================
+   AD PAYMENT → WHATSAPP
+========================= */
+
 function submitAd(){
 
     const title =
@@ -1411,18 +1492,27 @@ function submitAd(){
         return;
     }
 
-    alert(
-        "💰 Elan yerləşdirmək üçün 1 AZN ödəniş tələb olunur.\n\n" +
-        "Növbəti mərhələdə ödəniş sistemi açılacaq."
+
+    /* =========================
+       WHATSAPP ÖDƏNİŞ KEÇİDİ
+    ========================= */
+
+    const whatsappNumber =
+        "994556145657";
+
+    const message =
+        "Salam elan yerləşdirmək üçün 1 ₼ ödəniş etmək istəyirəm zəhmət olmasa mənə kart nömrəsi göndərin";
+
+    const whatsappURL =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+    window.open(
+        whatsappURL,
+        "_blank"
     );
-
-    /*
-       REAL ÖDƏNİŞ SİSTEMİ SONRA BURAYA
-       QOŞULACAQ.
-
-       Ödəniş uğurlu olduqdan sonra elan
-       admin moderasiyasına göndəriləcək.
-    */
 }
 
 
@@ -1439,7 +1529,9 @@ function searchAds(){
 
     if(!value){
 
-        alert("Axtarış sözünü yazın.");
+        alert(
+            "Axtarış sözünü yazın."
+        );
 
         return;
     }
@@ -1455,24 +1547,31 @@ function searchAds(){
    AUTO CHECK LOGIN
 ========================= */
 
-window.addEventListener("load", function(){
+window.addEventListener(
+    "load",
+    function(){
 
-    const user = getCurrentUser();
-
-    if(user){
+        const user =
+            getCurrentUser();
 
         /*
-           İstifadəçi əvvəlki girişini
-           həmin brauzerdə saxlayır.
+           Sayt açıldıqda əvvəlki giriş
+           vəziyyətini yoxlayır.
         */
 
-        console.log(
-            "Altap.Biz istifadəçisi aktivdir:",
-            user.phone
-        );
-    }
+        updateLoggedInCTA();
 
-});
+        if(user){
+
+            console.log(
+                "Altap.Biz istifadəçisi aktivdir:",
+                user.phone
+            );
+
+        }
+
+    }
+);
 
 </script>
 
