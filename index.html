@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AlTap.biz — Al. Sat. Tap.</title>
+
+<title>Altap.Biz — Al. Sat. Tap.</title>
+<meta name="description" content="Altap.Biz — Azərbaycanda yeni elan marketplace platforması. Al, sat və tap.">
 
 <style>
 * {
@@ -13,62 +15,91 @@
 }
 
 :root {
-    --bg: #080811;
-    --card: #11111d;
-    --card2: #171727;
+    --bg: #07070d;
+    --bg2: #0b0b14;
+    --card: rgba(18,18,31,.78);
+    --card-solid: #11111d;
     --purple: #8b5cf6;
     --purple2: #6d28d9;
     --blue: #38bdf8;
-    --text: #ffffff;
-    --muted: #9ca3af;
+    --pink: #ec4899;
+    --green: #22c55e;
+    --yellow: #facc15;
+    --white: #fff;
+    --text: #e5e7eb;
+    --muted: #8d91a1;
     --border: rgba(139,92,246,.18);
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background:
-        radial-gradient(circle at 10% 10%, rgba(139,92,246,.15), transparent 30%),
-        radial-gradient(circle at 90% 20%, rgba(56,189,248,.10), transparent 25%),
-        var(--bg);
     color: var(--text);
+    background:
+        radial-gradient(circle at 15% 0%, rgba(139,92,246,.20), transparent 28%),
+        radial-gradient(circle at 90% 10%, rgba(56,189,248,.13), transparent 25%),
+        radial-gradient(circle at 50% 60%, rgba(139,92,246,.05), transparent 35%),
+        var(--bg);
     min-height: 100vh;
 }
 
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+    background-size: 45px 45px;
+    mask-image: linear-gradient(to bottom, black, transparent 75%);
+}
+
 a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
+}
+
+button,
+input {
+    font-family: inherit;
 }
 
 /* HEADER */
 
 header {
-    width: 100%;
-    border-bottom: 1px solid var(--border);
-    background: rgba(8,8,17,.85);
-    backdrop-filter: blur(15px);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    background: rgba(7,7,13,.78);
+    backdrop-filter: blur(20px);
 }
 
 .nav {
-    max-width: 1200px;
+    max-width: 1250px;
+    height: 76px;
     margin: auto;
-    height: 75px;
+    padding: 0 22px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
 }
 
 .logo {
-    font-size: 28px;
+    font-size: 29px;
     font-weight: 900;
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
 }
 
 .logo span {
-    color: var(--purple);
+    background: linear-gradient(90deg, #a78bfa, #38bdf8);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 .nav-links {
@@ -78,8 +109,9 @@ header {
 }
 
 .nav-links a {
-    color: #d1d5db;
+    color: #aeb2c1;
     font-size: 14px;
+    transition: .2s;
 }
 
 .nav-links a:hover {
@@ -87,273 +119,585 @@ header {
 }
 
 .btn {
-    border: none;
+    border: 0;
     cursor: pointer;
     padding: 12px 18px;
-    border-radius: 10px;
-    font-weight: 700;
-    transition: .2s;
-}
-
-.btn-login {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: white;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, var(--purple), var(--purple2));
-    color: white;
-    box-shadow: 0 0 25px rgba(139,92,246,.25);
+    border-radius: 11px;
+    font-weight: 800;
+    transition: .25s;
 }
 
 .btn:hover {
     transform: translateY(-2px);
 }
 
+.btn-login {
+    color: white;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.10);
+}
+
+.btn-primary {
+    color: white;
+    background: linear-gradient(135deg, var(--purple), var(--blue));
+    box-shadow: 0 0 30px rgba(139,92,246,.25);
+}
+
 /* HERO */
 
 .hero {
-    max-width: 1200px;
+    max-width: 1250px;
     margin: auto;
-    padding: 90px 20px 55px;
+    padding: 105px 22px 75px;
     text-align: center;
+    position: relative;
+}
+
+.hero-glow {
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    background: rgba(139,92,246,.15);
+    filter: blur(100px);
+    border-radius: 50%;
+    left: 50%;
+    top: 70px;
+    transform: translateX(-50%);
+    pointer-events: none;
 }
 
 .badge {
-    display: inline-block;
-    padding: 8px 14px;
-    border: 1px solid var(--border);
-    background: rgba(139,92,246,.08);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 9px 15px;
+    border-radius: 999px;
+
     color: #c4b5fd;
-    border-radius: 30px;
     font-size: 13px;
-    margin-bottom: 25px;
+
+    background: rgba(139,92,246,.08);
+    border: 1px solid rgba(139,92,246,.25);
+
+    position: relative;
+}
+
+.badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 12px #22c55e;
 }
 
 .hero h1 {
-    font-size: clamp(42px, 7vw, 76px);
-    line-height: 1;
-    letter-spacing: -3px;
-    margin-bottom: 20px;
+    margin-top: 27px;
+    font-size: clamp(50px, 8vw, 92px);
+    line-height: .95;
+    letter-spacing: -5px;
+    color: white;
+    position: relative;
 }
 
-.gradient {
-    background: linear-gradient(90deg, #a78bfa, #38bdf8);
+.hero h1 span {
+    background: linear-gradient(90deg, #a78bfa, #38bdf8, #ec4899);
     -webkit-background-clip: text;
     color: transparent;
 }
 
-.hero p {
+.hero-text {
+    max-width: 690px;
+    margin: 28px auto 0;
     color: var(--muted);
+    line-height: 1.7;
     font-size: 18px;
-    max-width: 650px;
-    margin: auto;
-    line-height: 1.6;
 }
 
 /* SEARCH */
 
+.search-wrapper {
+    max-width: 900px;
+    margin: 38px auto 0;
+    position: relative;
+}
+
 .search-box {
-    max-width: 800px;
-    margin: 35px auto 0;
     display: flex;
-    background: var(--card);
-    border: 1px solid var(--border);
     padding: 7px;
-    border-radius: 15px;
-    box-shadow: 0 15px 50px rgba(0,0,0,.3);
+
+    background: rgba(17,17,29,.92);
+    border: 1px solid rgba(139,92,246,.28);
+    border-radius: 17px;
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.45),
+        0 0 40px rgba(139,92,246,.08);
+}
+
+.search-icon {
+    width: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
 }
 
 .search-box input {
     flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
+    border: 0;
+    outline: 0;
     color: white;
-    padding: 15px;
+    background: transparent;
     font-size: 15px;
 }
 
-.search-box button {
-    background: var(--purple);
+.search-box input::placeholder {
+    color: #6f7383;
+}
+
+.search-btn {
+    border: 0;
+    cursor: pointer;
+    padding: 0 27px;
+    border-radius: 12px;
     color: white;
-    border: none;
-    padding: 0 25px;
-    border-radius: 10px;
-    font-weight: 700;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--purple), var(--blue));
+}
+
+.quick-search {
+    margin-top: 13px;
+    color: #666b7b;
+    font-size: 12px;
+}
+
+.quick-search span {
+    color: #a78bfa;
+    margin-left: 8px;
+}
+
+/* STATS */
+
+.stats {
+    max-width: 800px;
+    margin: 48px auto 0;
+
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 12px;
+}
+
+.stat {
+    padding: 20px;
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 15px;
+    background: rgba(255,255,255,.025);
+}
+
+.stat strong {
+    display: block;
+    font-size: 23px;
+    color: white;
+}
+
+.stat span {
+    display: block;
+    margin-top: 5px;
+    color: #777b8b;
+    font-size: 12px;
+}
+
+/* MAIN */
+
+.container {
+    max-width: 1250px;
+    margin: auto;
+    padding: 0 22px;
+}
+
+.section {
+    padding: 35px 0 75px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 24px;
+}
+
+.section-heading h2 {
+    font-size: 27px;
+    color: white;
+}
+
+.section-heading p {
+    color: #747888;
+    font-size: 13px;
+    margin-top: 7px;
+}
+
+.view-all {
+    color: #a78bfa;
+    font-size: 13px;
 }
 
 /* CATEGORIES */
 
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 20px;
-}
-
-.section-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.section-title h2 {
-    font-size: 24px;
-}
-
-.section-title span {
-    color: var(--muted);
-    font-size: 13px;
-}
-
 .categories {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 12px;
-    margin-bottom: 65px;
+    grid-template-columns: repeat(6,1fr);
+    gap: 13px;
 }
 
 .category {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 22px 10px;
+    padding: 23px 12px;
     text-align: center;
-    border-radius: 14px;
-    transition: .2s;
+    border-radius: 17px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.045),
+        rgba(255,255,255,.018)
+    );
+
+    border: 1px solid rgba(255,255,255,.07);
+    transition: .25s;
 }
 
 .category:hover {
-    transform: translateY(-4px);
-    border-color: rgba(139,92,246,.6);
-    background: var(--card2);
+    transform: translateY(-5px);
+    border-color: rgba(139,92,246,.45);
+    box-shadow: 0 15px 40px rgba(0,0,0,.25);
 }
 
 .category-icon {
-    font-size: 30px;
-    margin-bottom: 10px;
+    width: 53px;
+    height: 53px;
+    margin: 0 auto 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+    font-size: 25px;
+
+    background: rgba(139,92,246,.12);
 }
 
 .category strong {
     font-size: 13px;
 }
 
-/* ADS */
+/* PRODUCTS */
 
-.ads {
+.products {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
     gap: 18px;
-    padding-bottom: 70px;
 }
 
-.ad {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
+.product {
     overflow: hidden;
+    border-radius: 18px;
+
+    background: rgba(17,17,29,.85);
+    border: 1px solid rgba(255,255,255,.07);
+
     transition: .25s;
 }
 
-.ad:hover {
-    transform: translateY(-5px);
-    border-color: rgba(139,92,246,.55);
+.product:hover {
+    transform: translateY(-6px);
+    border-color: rgba(139,92,246,.45);
+    box-shadow: 0 20px 55px rgba(0,0,0,.35);
 }
 
-.ad-image {
-    height: 160px;
+.product-image {
+    height: 190px;
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 55px;
+
+    font-size: 66px;
+
     background:
-        linear-gradient(135deg, rgba(139,92,246,.35), rgba(56,189,248,.08));
+        radial-gradient(circle at 50% 40%, rgba(139,92,246,.25), transparent 50%),
+        linear-gradient(135deg,#141423,#0d0d16);
 }
 
-.ad-content {
+.product-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+
+    padding: 5px 9px;
+    border-radius: 7px;
+
+    color: white;
+    font-size: 10px;
+    font-weight: 900;
+
+    background: linear-gradient(135deg,var(--purple),var(--blue));
+}
+
+.favorite {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: rgba(0,0,0,.35);
+    backdrop-filter: blur(10px);
+}
+
+.product-content {
     padding: 17px;
 }
 
-.ad-content h3 {
+.product-title {
     font-size: 15px;
-    margin-bottom: 9px;
+    font-weight: 800;
+    color: white;
 }
 
-.location {
-    color: var(--muted);
-    font-size: 12px;
-    margin-bottom: 14px;
+.product-location {
+    color: #707486;
+    font-size: 11px;
+    margin-top: 9px;
 }
 
-.price {
+.product-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-top: 17px;
+}
+
+.product-price {
     color: #c4b5fd;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 900;
 }
 
-.ad-user {
-    color: #6b7280;
-    font-size: 11px;
+.product-user {
+    color: #707486;
+    font-size: 10px;
+}
+
+/* FEATURED */
+
+.featured {
+    position: relative;
+    overflow: hidden;
+
+    padding: 40px;
+    border-radius: 24px;
+
+    border: 1px solid rgba(139,92,246,.24);
+
+    background:
+        radial-gradient(circle at 80% 20%, rgba(56,189,248,.15), transparent 30%),
+        radial-gradient(circle at 10% 80%, rgba(139,92,246,.18), transparent 35%),
+        #10101b;
+}
+
+.featured-content {
+    max-width: 650px;
+    position: relative;
+    z-index: 2;
+}
+
+.featured-label {
+    color: #a78bfa;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.featured h2 {
+    margin-top: 12px;
+    font-size: 32px;
+    color: white;
+}
+
+.featured p {
+    margin-top: 13px;
+    color: #858999;
+    line-height: 1.6;
+}
+
+.featured button {
+    margin-top: 23px;
+}
+
+.featured-orb {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background:
+        radial-gradient(circle at 35% 30%, #a78bfa, #6d28d9 35%, transparent 70%);
+
+    filter: blur(2px);
+    opacity: .65;
+}
+
+/* HOW IT WORKS */
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+}
+
+.step {
+    padding: 27px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(255,255,255,.06);
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+    color: white;
+    font-weight: 900;
+
+    background: linear-gradient(135deg,var(--purple),var(--blue));
+}
+
+.step h3 {
+    margin-top: 18px;
+    color: white;
+    font-size: 17px;
+}
+
+.step p {
     margin-top: 9px;
+    color: #777b8b;
+    line-height: 1.55;
+    font-size: 13px;
 }
 
 /* CTA */
 
 .cta {
-    margin-bottom: 70px;
-    padding: 45px;
-    border-radius: 22px;
-    border: 1px solid var(--border);
-    background:
-        radial-gradient(circle at 80% 50%, rgba(56,189,248,.13), transparent 35%),
-        radial-gradient(circle at 20% 50%, rgba(139,92,246,.18), transparent 35%),
-        var(--card);
+    margin: 20px 0 80px;
+    padding: 55px 25px;
+
     text-align: center;
+    border-radius: 25px;
+
+    border: 1px solid rgba(139,92,246,.2);
+
+    background:
+        radial-gradient(circle at 50% 0%, rgba(139,92,246,.2), transparent 45%),
+        #0e0e18;
 }
 
 .cta h2 {
-    font-size: 30px;
-    margin-bottom: 12px;
+    font-size: 31px;
+    color: white;
 }
 
 .cta p {
-    color: var(--muted);
-    margin-bottom: 25px;
+    margin: 12px auto 25px;
+    color: #7c8090;
 }
 
 /* FOOTER */
 
 footer {
-    border-top: 1px solid var(--border);
-    padding: 35px 20px;
-    color: var(--muted);
-    text-align: center;
-    font-size: 13px;
+    border-top: 1px solid rgba(255,255,255,.06);
+    padding: 45px 22px;
+
+    background: rgba(4,4,8,.5);
 }
 
-footer strong {
+.footer-inner {
+    max-width: 1250px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-logo {
+    font-size: 21px;
+    font-weight: 900;
+}
+
+.footer-logo span {
+    color: var(--purple);
+}
+
+.footer-text {
+    color: #666b7b;
+    font-size: 12px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 18px;
+}
+
+.footer-links a {
+    color: #777b8b;
+    font-size: 12px;
+}
+
+.footer-links a:hover {
     color: white;
 }
 
 /* MOBILE */
 
-@media(max-width: 850px) {
+@media(max-width: 950px) {
 
     .nav-links a {
         display: none;
     }
 
     .categories {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3,1fr);
     }
 
-    .ads {
-        grid-template-columns: repeat(2, 1fr);
+    .products {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .featured-orb {
+        right: -60px;
     }
 }
 
-@media(max-width: 520px) {
+@media(max-width: 600px) {
 
     .nav {
         height: 65px;
@@ -364,41 +708,86 @@ footer strong {
     }
 
     .nav .btn {
-        padding: 9px 12px;
-        font-size: 12px;
+        padding: 9px 11px;
+        font-size: 11px;
     }
 
     .hero {
-        padding-top: 60px;
+        padding: 75px 17px 55px;
     }
 
     .hero h1 {
-        font-size: 43px;
+        font-size: 52px;
+        letter-spacing: -3px;
     }
 
-    .hero p {
+    .hero-text {
         font-size: 15px;
     }
 
     .search-box {
         flex-direction: column;
-        gap: 7px;
+        gap: 6px;
     }
 
-    .search-box button {
-        padding: 14px;
+    .search-icon {
+        display: none;
+    }
+
+    .search-box input {
+        padding: 16px;
+    }
+
+    .search-btn {
+        padding: 15px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+        max-width: 300px;
     }
 
     .categories {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
     }
 
-    .ads {
+    .products {
         grid-template-columns: 1fr;
     }
 
-    .cta {
-        padding: 30px 20px;
+    .section-heading {
+        align-items: start;
+    }
+
+    .featured {
+        padding: 30px 22px;
+    }
+
+    .featured h2 {
+        font-size: 26px;
+    }
+
+    .featured-orb {
+        opacity: .25;
+        right: -100px;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .cta h2 {
+        font-size: 25px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
+        flex-wrap: wrap;
     }
 }
 </style>
@@ -410,12 +799,13 @@ footer strong {
     <div class="nav">
 
         <a href="#" class="logo">
-            Al<span>Tap</span>
+            Al<span>Tap</span>.Biz
         </a>
 
         <div class="nav-links">
             <a href="#elanlar">Elanlar</a>
             <a href="#kateqoriyalar">Kateqoriyalar</a>
+            <a href="#nece-isleyir">Necə işləyir?</a>
             <a href="#haqqimizda">Haqqımızda</a>
 
             <button class="btn btn-login">
@@ -423,7 +813,7 @@ footer strong {
             </button>
 
             <button class="btn btn-primary">
-                Elan yerləşdir — 1 AZN
+                + Elan yerləşdir
             </button>
         </div>
 
@@ -433,25 +823,67 @@ footer strong {
 
 <section class="hero">
 
+    <div class="hero-glow"></div>
+
     <div class="badge">
-        🇦🇿 Azərbaycanın yeni elan platforması
+        <span class="badge-dot"></span>
+        Azərbaycanın yeni marketplace platforması
     </div>
 
     <h1>
-        Al. Sat. <span class="gradient">Tap.</span>
+        Al. Sat. <span>Tap.</span>
     </h1>
 
-    <p>
-        İstədiyin məhsulu tap, elanını yerləşdir və
-        Azərbaycanda alıcılarla əlaqə qur.
+    <p class="hero-text">
+        İstədiyin məhsulu saniyələr içində tap.
+        Elanını yerləşdir, alıcılarla əlaqə qur və
+        təhlükəsiz şəkildə alıb-sat.
     </p>
 
-    <div class="search-box">
-        <input
-            type="text"
-            placeholder="Nə axtarırsan? Məsələn: iPhone, PS5, avtomobil..."
-        >
-        <button>Axtar 🔎</button>
+    <div class="search-wrapper">
+
+        <div class="search-box">
+
+            <div class="search-icon">⌕</div>
+
+            <input
+                type="text"
+                placeholder="Nə axtarırsan?  Məsələn: iPhone, avtomobil, PS5..."
+            >
+
+            <button class="search-btn">
+                Axtar
+            </button>
+
+        </div>
+
+        <div class="quick-search">
+            Populyar:
+            <span>iPhone</span>
+            <span>Avtomobil</span>
+            <span>PlayStation</span>
+            <span>Gaming PC</span>
+        </div>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+            <strong>10K+</strong>
+            <span>Aktiv elan</span>
+        </div>
+
+        <div class="stat">
+            <strong>5K+</strong>
+            <span>Qeydiyyatlı istifadəçi</span>
+        </div>
+
+        <div class="stat">
+            <strong>24/7</strong>
+            <span>Platforma aktivdir</span>
+        </div>
+
     </div>
 
 </section>
@@ -459,12 +891,22 @@ footer strong {
 
 <main class="container">
 
-<section id="kateqoriyalar">
 
-    <div class="section-title">
-        <h2>Kateqoriyalar</h2>
-        <span>Hamısına bax →</span>
+<section class="section" id="kateqoriyalar">
+
+    <div class="section-heading">
+
+        <div>
+            <h2>Kateqoriyalar</h2>
+            <p>Axtardığını daha tez tap</p>
+        </div>
+
+        <a href="#" class="view-all">
+            Hamısına bax →
+        </a>
+
     </div>
+
 
     <div class="categories">
 
@@ -503,53 +945,291 @@ footer strong {
 </section>
 
 
-<section id="elanlar">
+<section class="section" id="elanlar">
 
-    <div class="section-title">
-        <h2>🔥 Son elanlar</h2>
-        <span>Bütün elanlara bax →</span>
+    <div class="section-heading">
+
+        <div>
+            <h2>🔥 Seçilmiş elanlar</h2>
+            <p>Platformadakı maraqlı elanlar</p>
+        </div>
+
+        <a href="#" class="view-all">
+            Bütün elanlar →
+        </a>
+
     </div>
 
-    <div class="ads">
 
-        <div class="ad">
-            <div class="ad-image">📱</div>
-            <div class="ad-content">
-                <h3>iPhone 15 Pro 256GB</h3>
-                <div class="location">📍 Bakı</div>
-                <div class="price">1 450 AZN</div>
-                <div class="ad-user">👤 AlTap istifadəçisi</div>
+    <div class="products">
+
+
+        <div class="product">
+
+            <div class="product-image">
+
+                <div class="product-badge">
+                    VIP
+                </div>
+
+                <div class="favorite">
+                    ♡
+                </div>
+
+                📱
+
             </div>
+
+            <div class="product-content">
+
+                <div class="product-title">
+                    iPhone 15 Pro 256GB
+                </div>
+
+                <div class="product-location">
+                    📍 Bakı · Bu gün
+                </div>
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+                        1 450 AZN
+                    </div>
+
+                    <div class="product-user">
+                        ★ 4.9 · 23
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="ad">
-            <div class="ad-image">🎮</div>
-            <div class="ad-content">
-                <h3>PlayStation 5 Slim</h3>
-                <div class="location">📍 Gəncə</div>
-                <div class="price">950 AZN</div>
-                <div class="ad-user">👤 gamer_az</div>
+
+        <div class="product">
+
+            <div class="product-image">
+
+                <div class="product-badge">
+                    TƏCİLİ
+                </div>
+
+                <div class="favorite">
+                    ♡
+                </div>
+
+                🎮
+
             </div>
+
+            <div class="product-content">
+
+                <div class="product-title">
+                    PlayStation 5 Slim
+                </div>
+
+                <div class="product-location">
+                    📍 Gəncə · 2 saat əvvəl
+                </div>
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+                        950 AZN
+                    </div>
+
+                    <div class="product-user">
+                        ★ 5.0 · 18
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="ad">
-            <div class="ad-image">💻</div>
-            <div class="ad-content">
-                <h3>Gaming PC RTX 4060</h3>
-                <div class="location">📍 Sumqayıt</div>
-                <div class="price">1 800 AZN</div>
-                <div class="ad-user">👤 TechStore</div>
+
+        <div class="product">
+
+            <div class="product-image">
+
+                <div class="product-badge">
+                    VIP
+                </div>
+
+                <div class="favorite">
+                    ♡
+                </div>
+
+                💻
+
             </div>
+
+            <div class="product-content">
+
+                <div class="product-title">
+                    Gaming PC RTX 4060
+                </div>
+
+                <div class="product-location">
+                    📍 Sumqayıt · Bu gün
+                </div>
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+                        1 800 AZN
+                    </div>
+
+                    <div class="product-user">
+                        ★ 4.8 · 41
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="ad">
-            <div class="ad-image">🚗</div>
-            <div class="ad-content">
-                <h3>Avtomobil elanları</h3>
-                <div class="location">📍 Ağstafa</div>
-                <div class="price">12 500 AZN</div>
-                <div class="ad-user">👤 satıcı123</div>
+
+        <div class="product">
+
+            <div class="product-image">
+
+                <div class="product-badge">
+                    YENİ
+                </div>
+
+                <div class="favorite">
+                    ♡
+                </div>
+
+                🚗
+
             </div>
+
+            <div class="product-content">
+
+                <div class="product-title">
+                    Mercedes-Benz C-Class
+                </div>
+
+                <div class="product-location">
+                    📍 Ağstafa · Dün
+                </div>
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+                        24 500 AZN
+                    </div>
+
+                    <div class="product-user">
+                        ★ 4.7 · 12
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="featured">
+
+        <div class="featured-content">
+
+            <div class="featured-label">
+                ALTAP.BIZ
+            </div>
+
+            <h2>
+                Sənin də satacağın bir şey var?
+            </h2>
+
+            <p>
+                Elanını yerləşdir və məhsulunu minlərlə
+                potensial alıcıya göstər.
+                Sadə, sürətli və rahat.
+            </p>
+
+            <button class="btn btn-primary">
+                📢 Elan yerləşdir — 1 AZN
+            </button>
+
+        </div>
+
+        <div class="featured-orb"></div>
+
+    </div>
+
+</section>
+
+
+<section class="section" id="nece-isleyir">
+
+    <div class="section-heading">
+
+        <div>
+            <h2>Necə işləyir?</h2>
+            <p>Bir neçə sadə addımla elanını yerləşdir</p>
+        </div>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">
+                01
+            </div>
+
+            <h3>Qeydiyyatdan keç</h3>
+
+            <p>
+                Hesabını yarat və şəxsi kabinetinə daxil ol.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                02
+            </div>
+
+            <h3>Elanını yerləşdir</h3>
+
+            <p>
+                Məhsulunu, qiymətini və məlumatlarını əlavə et.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                03
+            </div>
+
+            <h3>Alıcı ilə əlaqə saxla</h3>
+
+            <p>
+                Elanın təsdiqləndikdən sonra alıcılarla əlaqə qur.
+            </p>
+
         </div>
 
     </div>
@@ -559,25 +1239,57 @@ footer strong {
 
 <section class="cta">
 
-    <h2>Sənin də satacağın bir şey var?</h2>
+    <h2>
+        Hazırsan? Al. Sat. Tap. 🚀
+    </h2>
 
     <p>
-        Elanını yerləşdir, minlərlə potensial alıcıya çat.
+        Altap.Biz-də ilk elanını indi yerləşdir.
     </p>
 
     <button class="btn btn-primary">
-        📢 Elan yerləşdir — 1 AZN
+        + Elan yerləşdir — 1 AZN
     </button>
 
 </section>
+
 
 </main>
 
 
 <footer id="haqqimizda">
-    <strong>AlTap.biz</strong> — Al. Sat. Tap.
-    <br><br>
-    © 2026 AlTap.biz. Bütün hüquqlar qorunur.
+
+    <div class="footer-inner">
+
+        <div>
+
+            <div class="footer-logo">
+                Al<span>Tap</span>.Biz
+            </div>
+
+            <div class="footer-text">
+                Al. Sat. Tap.
+            </div>
+
+        </div>
+
+
+        <div class="footer-text">
+            © 2026 Altap.Biz. Bütün hüquqlar qorunur.
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="#">Haqqımızda</a>
+            <a href="#">Qaydalar</a>
+            <a href="#">Əlaqə</a>
+            <a href="#">Məxfilik</a>
+
+        </div>
+
+    </div>
+
 </footer>
 
 
