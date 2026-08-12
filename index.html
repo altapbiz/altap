@@ -5,789 +5,591 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Altap.Biz — Al. Sat. Tap.</title>
-<meta name="description" content="Altap.Biz — Azərbaycanda yeni elan marketplace platforması. Al, sat və tap.">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-:root {
-    --bg: #07070d;
-    --bg2: #0b0b14;
-    --card: rgba(18,18,31,.78);
-    --card-solid: #11111d;
-    --purple: #8b5cf6;
-    --purple2: #6d28d9;
-    --blue: #38bdf8;
-    --pink: #ec4899;
-    --green: #22c55e;
-    --yellow: #facc15;
-    --white: #fff;
-    --text: #e5e7eb;
-    --muted: #8d91a1;
-    --border: rgba(139,92,246,.18);
+:root{
+    --bg:#07070d;
+    --card:#11111d;
+    --card2:#171726;
+    --purple:#8b5cf6;
+    --purple2:#6d28d9;
+    --blue:#38bdf8;
+    --pink:#ec4899;
+    --green:#22c55e;
+    --red:#ef4444;
+    --text:#fff;
+    --muted:#9296a8;
+    --border:rgba(139,92,246,.20);
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--text);
+body{
+    font-family:Arial,Helvetica,sans-serif;
     background:
-        radial-gradient(circle at 15% 0%, rgba(139,92,246,.20), transparent 28%),
-        radial-gradient(circle at 90% 10%, rgba(56,189,248,.13), transparent 25%),
-        radial-gradient(circle at 50% 60%, rgba(139,92,246,.05), transparent 35%),
+        radial-gradient(circle at 10% 0%,rgba(139,92,246,.18),transparent 28%),
+        radial-gradient(circle at 90% 10%,rgba(56,189,248,.12),transparent 25%),
         var(--bg);
-    min-height: 100vh;
+    color:var(--text);
+    min-height:100vh;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
-    background-size: 45px 45px;
-    mask-image: linear-gradient(to bottom, black, transparent 75%);
+button,input,select,textarea{
+    font-family:inherit;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
+button{
+    cursor:pointer;
 }
 
-button,
-input {
-    font-family: inherit;
+a{
+    color:inherit;
+    text-decoration:none;
 }
 
 /* HEADER */
 
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255,255,255,.06);
-    background: rgba(7,7,13,.78);
-    backdrop-filter: blur(20px);
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    border-bottom:1px solid rgba(255,255,255,.07);
+    background:rgba(7,7,13,.82);
+    backdrop-filter:blur(20px);
 }
 
-.nav {
-    max-width: 1250px;
-    height: 76px;
-    margin: auto;
-    padding: 0 22px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.nav{
+    max-width:1250px;
+    height:76px;
+    margin:auto;
+    padding:0 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-.logo {
-    font-size: 29px;
-    font-weight: 900;
-    letter-spacing: -1.5px;
+.logo{
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:-1px;
 }
 
-.logo span {
-    background: linear-gradient(90deg, #a78bfa, #38bdf8);
-    -webkit-background-clip: text;
-    color: transparent;
+.logo span{
+    background:linear-gradient(90deg,#a78bfa,#38bdf8);
+    -webkit-background-clip:text;
+    color:transparent;
 }
 
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 25px;
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:18px;
 }
 
-.nav-links a {
-    color: #aeb2c1;
-    font-size: 14px;
-    transition: .2s;
+.nav-links a{
+    color:#b0b3c0;
+    font-size:14px;
 }
 
-.nav-links a:hover {
-    color: white;
+.nav-links a:hover{
+    color:white;
 }
 
-.btn {
-    border: 0;
-    cursor: pointer;
-    padding: 12px 18px;
-    border-radius: 11px;
-    font-weight: 800;
-    transition: .25s;
+.btn{
+    border:0;
+    border-radius:11px;
+    padding:12px 18px;
+    font-weight:800;
+    transition:.2s;
 }
 
-.btn:hover {
-    transform: translateY(-2px);
+.btn:hover{
+    transform:translateY(-2px);
 }
 
-.btn-login {
-    color: white;
-    background: rgba(255,255,255,.04);
-    border: 1px solid rgba(255,255,255,.10);
+.btn-primary{
+    color:white;
+    background:linear-gradient(135deg,var(--purple),var(--blue));
+    box-shadow:0 0 25px rgba(139,92,246,.25);
 }
 
-.btn-primary {
-    color: white;
-    background: linear-gradient(135deg, var(--purple), var(--blue));
-    box-shadow: 0 0 30px rgba(139,92,246,.25);
+.btn-dark{
+    color:white;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.10);
 }
 
 /* HERO */
 
-.hero {
-    max-width: 1250px;
-    margin: auto;
-    padding: 105px 22px 75px;
-    text-align: center;
-    position: relative;
+.hero{
+    max-width:1200px;
+    margin:auto;
+    padding:100px 22px 70px;
+    text-align:center;
 }
 
-.hero-glow {
-    position: absolute;
-    width: 500px;
-    height: 300px;
-    background: rgba(139,92,246,.15);
-    filter: blur(100px);
-    border-radius: 50%;
-    left: 50%;
-    top: 70px;
-    transform: translateX(-50%);
-    pointer-events: none;
+.badge{
+    display:inline-block;
+    padding:9px 15px;
+    border-radius:30px;
+    color:#c4b5fd;
+    background:rgba(139,92,246,.08);
+    border:1px solid var(--border);
+    font-size:13px;
 }
 
-.badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-
-    padding: 9px 15px;
-    border-radius: 999px;
-
-    color: #c4b5fd;
-    font-size: 13px;
-
-    background: rgba(139,92,246,.08);
-    border: 1px solid rgba(139,92,246,.25);
-
-    position: relative;
+.hero h1{
+    margin-top:25px;
+    font-size:clamp(50px,8vw,90px);
+    line-height:.95;
+    letter-spacing:-5px;
 }
 
-.badge-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #22c55e;
-    box-shadow: 0 0 12px #22c55e;
+.gradient{
+    background:linear-gradient(90deg,#a78bfa,#38bdf8,#ec4899);
+    -webkit-background-clip:text;
+    color:transparent;
 }
 
-.hero h1 {
-    margin-top: 27px;
-    font-size: clamp(50px, 8vw, 92px);
-    line-height: .95;
-    letter-spacing: -5px;
-    color: white;
-    position: relative;
-}
-
-.hero h1 span {
-    background: linear-gradient(90deg, #a78bfa, #38bdf8, #ec4899);
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-.hero-text {
-    max-width: 690px;
-    margin: 28px auto 0;
-    color: var(--muted);
-    line-height: 1.7;
-    font-size: 18px;
+.hero p{
+    max-width:680px;
+    margin:25px auto;
+    color:var(--muted);
+    line-height:1.7;
+    font-size:17px;
 }
 
 /* SEARCH */
 
-.search-wrapper {
-    max-width: 900px;
-    margin: 38px auto 0;
-    position: relative;
+.search-box{
+    max-width:850px;
+    margin:35px auto 0;
+    padding:7px;
+    display:flex;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
 }
 
-.search-box {
-    display: flex;
-    padding: 7px;
-
-    background: rgba(17,17,29,.92);
-    border: 1px solid rgba(139,92,246,.28);
-    border-radius: 17px;
-
-    box-shadow:
-        0 20px 70px rgba(0,0,0,.45),
-        0 0 40px rgba(139,92,246,.08);
+.search-box input{
+    flex:1;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:white;
+    padding:15px;
 }
 
-.search-icon {
-    width: 52px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-}
-
-.search-box input {
-    flex: 1;
-    border: 0;
-    outline: 0;
-    color: white;
-    background: transparent;
-    font-size: 15px;
-}
-
-.search-box input::placeholder {
-    color: #6f7383;
-}
-
-.search-btn {
-    border: 0;
-    cursor: pointer;
-    padding: 0 27px;
-    border-radius: 12px;
-    color: white;
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--purple), var(--blue));
-}
-
-.quick-search {
-    margin-top: 13px;
-    color: #666b7b;
-    font-size: 12px;
-}
-
-.quick-search span {
-    color: #a78bfa;
-    margin-left: 8px;
-}
-
-/* STATS */
-
-.stats {
-    max-width: 800px;
-    margin: 48px auto 0;
-
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 12px;
-}
-
-.stat {
-    padding: 20px;
-    border: 1px solid rgba(255,255,255,.06);
-    border-radius: 15px;
-    background: rgba(255,255,255,.025);
-}
-
-.stat strong {
-    display: block;
-    font-size: 23px;
-    color: white;
-}
-
-.stat span {
-    display: block;
-    margin-top: 5px;
-    color: #777b8b;
-    font-size: 12px;
+.search-box button{
+    border:0;
+    border-radius:10px;
+    padding:0 28px;
+    color:white;
+    font-weight:800;
+    background:linear-gradient(135deg,var(--purple),var(--blue));
 }
 
 /* MAIN */
 
-.container {
-    max-width: 1250px;
-    margin: auto;
-    padding: 0 22px;
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:0 22px;
 }
 
-.section {
-    padding: 35px 0 75px;
+.section{
+    padding:30px 0 70px;
 }
 
-.section-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    margin-bottom: 24px;
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:22px;
 }
 
-.section-heading h2 {
-    font-size: 27px;
-    color: white;
+.section-title h2{
+    font-size:26px;
 }
 
-.section-heading p {
-    color: #747888;
-    font-size: 13px;
-    margin-top: 7px;
-}
-
-.view-all {
-    color: #a78bfa;
-    font-size: 13px;
+.section-title span{
+    color:#777b8c;
+    font-size:13px;
 }
 
 /* CATEGORIES */
 
-.categories {
-    display: grid;
-    grid-template-columns: repeat(6,1fr);
-    gap: 13px;
+.categories{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:13px;
 }
 
-.category {
-    padding: 23px 12px;
-    text-align: center;
-    border-radius: 17px;
-
-    background: linear-gradient(
-        145deg,
-        rgba(255,255,255,.045),
-        rgba(255,255,255,.018)
-    );
-
-    border: 1px solid rgba(255,255,255,.07);
-    transition: .25s;
+.category{
+    padding:23px 10px;
+    text-align:center;
+    border-radius:17px;
+    background:rgba(255,255,255,.025);
+    border:1px solid rgba(255,255,255,.07);
+    transition:.2s;
 }
 
-.category:hover {
-    transform: translateY(-5px);
-    border-color: rgba(139,92,246,.45);
-    box-shadow: 0 15px 40px rgba(0,0,0,.25);
+.category:hover{
+    transform:translateY(-4px);
+    border-color:rgba(139,92,246,.5);
 }
 
-.category-icon {
-    width: 53px;
-    height: 53px;
-    margin: 0 auto 13px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 15px;
-    font-size: 25px;
-
-    background: rgba(139,92,246,.12);
+.category-icon{
+    font-size:30px;
+    margin-bottom:10px;
 }
 
-.category strong {
-    font-size: 13px;
+.category strong{
+    font-size:13px;
 }
 
-/* PRODUCTS */
+/* ADS */
 
-.products {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 18px;
+.ads{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
 }
 
-.product {
-    overflow: hidden;
-    border-radius: 18px;
-
-    background: rgba(17,17,29,.85);
-    border: 1px solid rgba(255,255,255,.07);
-
-    transition: .25s;
+.ad{
+    overflow:hidden;
+    border-radius:18px;
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.07);
 }
 
-.product:hover {
-    transform: translateY(-6px);
-    border-color: rgba(139,92,246,.45);
-    box-shadow: 0 20px 55px rgba(0,0,0,.35);
-}
-
-.product-image {
-    height: 190px;
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 66px;
-
+.ad-image{
+    height:180px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:65px;
     background:
-        radial-gradient(circle at 50% 40%, rgba(139,92,246,.25), transparent 50%),
-        linear-gradient(135deg,#141423,#0d0d16);
+        radial-gradient(circle,rgba(139,92,246,.25),transparent 60%),
+        #11111c;
 }
 
-.product-badge {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-
-    padding: 5px 9px;
-    border-radius: 7px;
-
-    color: white;
-    font-size: 10px;
-    font-weight: 900;
-
-    background: linear-gradient(135deg,var(--purple),var(--blue));
+.ad-content{
+    padding:17px;
 }
 
-.favorite {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-
-    width: 34px;
-    height: 34px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-    background: rgba(0,0,0,.35);
-    backdrop-filter: blur(10px);
+.ad-content h3{
+    font-size:15px;
 }
 
-.product-content {
-    padding: 17px;
+.location{
+    margin-top:8px;
+    color:#727688;
+    font-size:11px;
 }
 
-.product-title {
-    font-size: 15px;
-    font-weight: 800;
-    color: white;
-}
-
-.product-location {
-    color: #707486;
-    font-size: 11px;
-    margin-top: 9px;
-}
-
-.product-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    margin-top: 17px;
-}
-
-.product-price {
-    color: #c4b5fd;
-    font-size: 19px;
-    font-weight: 900;
-}
-
-.product-user {
-    color: #707486;
-    font-size: 10px;
-}
-
-/* FEATURED */
-
-.featured {
-    position: relative;
-    overflow: hidden;
-
-    padding: 40px;
-    border-radius: 24px;
-
-    border: 1px solid rgba(139,92,246,.24);
-
-    background:
-        radial-gradient(circle at 80% 20%, rgba(56,189,248,.15), transparent 30%),
-        radial-gradient(circle at 10% 80%, rgba(139,92,246,.18), transparent 35%),
-        #10101b;
-}
-
-.featured-content {
-    max-width: 650px;
-    position: relative;
-    z-index: 2;
-}
-
-.featured-label {
-    color: #a78bfa;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.featured h2 {
-    margin-top: 12px;
-    font-size: 32px;
-    color: white;
-}
-
-.featured p {
-    margin-top: 13px;
-    color: #858999;
-    line-height: 1.6;
-}
-
-.featured button {
-    margin-top: 23px;
-}
-
-.featured-orb {
-    position: absolute;
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
-
-    right: 70px;
-    top: 50%;
-    transform: translateY(-50%);
-
-    background:
-        radial-gradient(circle at 35% 30%, #a78bfa, #6d28d9 35%, transparent 70%);
-
-    filter: blur(2px);
-    opacity: .65;
-}
-
-/* HOW IT WORKS */
-
-.steps {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 18px;
-}
-
-.step {
-    padding: 27px;
-    border-radius: 18px;
-    background: rgba(255,255,255,.025);
-    border: 1px solid rgba(255,255,255,.06);
-}
-
-.step-number {
-    width: 40px;
-    height: 40px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 12px;
-    color: white;
-    font-weight: 900;
-
-    background: linear-gradient(135deg,var(--purple),var(--blue));
-}
-
-.step h3 {
-    margin-top: 18px;
-    color: white;
-    font-size: 17px;
-}
-
-.step p {
-    margin-top: 9px;
-    color: #777b8b;
-    line-height: 1.55;
-    font-size: 13px;
+.price{
+    margin-top:15px;
+    color:#c4b5fd;
+    font-size:20px;
+    font-weight:900;
 }
 
 /* CTA */
 
-.cta {
-    margin: 20px 0 80px;
-    padding: 55px 25px;
-
-    text-align: center;
-    border-radius: 25px;
-
-    border: 1px solid rgba(139,92,246,.2);
-
+.cta{
+    margin:10px 0 70px;
+    padding:50px 25px;
+    text-align:center;
+    border-radius:23px;
+    border:1px solid var(--border);
     background:
-        radial-gradient(circle at 50% 0%, rgba(139,92,246,.2), transparent 45%),
-        #0e0e18;
+        radial-gradient(circle at 50% 0%,rgba(139,92,246,.20),transparent 45%),
+        var(--card);
 }
 
-.cta h2 {
-    font-size: 31px;
-    color: white;
+.cta h2{
+    font-size:30px;
 }
 
-.cta p {
-    margin: 12px auto 25px;
-    color: #7c8090;
+.cta p{
+    color:var(--muted);
+    margin:12px 0 25px;
+}
+
+/* MODAL */
+
+.modal-bg{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:3000;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(10px);
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal-bg.active{
+    display:flex;
+}
+
+.modal{
+    width:100%;
+    max-width:480px;
+    max-height:92vh;
+    overflow-y:auto;
+    padding:28px;
+    border-radius:20px;
+    background:#10101b;
+    border:1px solid var(--border);
+    box-shadow:0 30px 100px rgba(0,0,0,.65);
+}
+
+.modal-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:22px;
+}
+
+.modal-head h2{
+    font-size:23px;
+}
+
+.close{
+    width:35px;
+    height:35px;
+    border:0;
+    border-radius:50%;
+    color:white;
+    background:rgba(255,255,255,.07);
+    font-size:20px;
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:7px;
+    color:#aeb2c0;
+    font-size:12px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    border:1px solid rgba(255,255,255,.09);
+    outline:0;
+    border-radius:11px;
+    padding:13px;
+    color:white;
+    background:#080811;
+}
+
+.form-group textarea{
+    min-height:110px;
+    resize:vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:var(--purple);
+}
+
+.full{
+    width:100%;
+}
+
+.switch-text{
+    text-align:center;
+    margin-top:17px;
+    color:#777b8c;
+    font-size:12px;
+}
+
+.switch-text span{
+    color:#a78bfa;
+    cursor:pointer;
+    font-weight:700;
+}
+
+/* NOTICE */
+
+.notice{
+    padding:15px;
+    margin-bottom:18px;
+    border-radius:12px;
+    background:rgba(250,204,21,.07);
+    border:1px solid rgba(250,204,21,.18);
+    color:#facc15;
+    font-size:13px;
+    line-height:1.5;
+}
+
+/* CABINET */
+
+.profile-card{
+    padding:22px;
+    border-radius:16px;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.07);
+    margin-bottom:15px;
+}
+
+.profile-phone{
+    margin-top:7px;
+    color:#85899a;
+    font-size:13px;
+}
+
+.cabinet-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:18px;
+}
+
+/* IMAGE UPLOAD */
+
+.upload-box{
+    border:1px dashed rgba(139,92,246,.45);
+    border-radius:14px;
+    padding:22px;
+    text-align:center;
+    background:rgba(139,92,246,.04);
+}
+
+.upload-box input{
+    display:none;
+}
+
+.upload-label{
+    display:inline-block;
+    padding:11px 16px;
+    border-radius:10px;
+    background:rgba(139,92,246,.15);
+    color:#c4b5fd;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:800;
+}
+
+.upload-info{
+    margin-top:9px;
+    color:#777b8c;
+    font-size:11px;
+}
+
+.preview-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-top:12px;
+}
+
+.preview-grid img{
+    width:100%;
+    height:80px;
+    object-fit:cover;
+    border-radius:9px;
 }
 
 /* FOOTER */
 
-footer {
-    border-top: 1px solid rgba(255,255,255,.06);
-    padding: 45px 22px;
-
-    background: rgba(4,4,8,.5);
+footer{
+    padding:35px 22px;
+    border-top:1px solid rgba(255,255,255,.06);
+    text-align:center;
+    color:#666b7b;
+    font-size:12px;
 }
 
-.footer-inner {
-    max-width: 1250px;
-    margin: auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.footer-logo {
-    font-size: 21px;
-    font-weight: 900;
-}
-
-.footer-logo span {
-    color: var(--purple);
-}
-
-.footer-text {
-    color: #666b7b;
-    font-size: 12px;
-}
-
-.footer-links {
-    display: flex;
-    gap: 18px;
-}
-
-.footer-links a {
-    color: #777b8b;
-    font-size: 12px;
-}
-
-.footer-links a:hover {
-    color: white;
+footer strong{
+    color:white;
 }
 
 /* MOBILE */
 
-@media(max-width: 950px) {
+@media(max-width:900px){
 
-    .nav-links a {
-        display: none;
+    .nav-links a{
+        display:none;
     }
 
-    .categories {
-        grid-template-columns: repeat(3,1fr);
+    .categories{
+        grid-template-columns:repeat(3,1fr);
     }
 
-    .products {
-        grid-template-columns: repeat(2,1fr);
-    }
-
-    .featured-orb {
-        right: -60px;
+    .ads{
+        grid-template-columns:repeat(2,1fr);
     }
 }
 
-@media(max-width: 600px) {
+@media(max-width:550px){
 
-    .nav {
-        height: 65px;
+    .nav{
+        height:65px;
     }
 
-    .logo {
-        font-size: 23px;
+    .logo{
+        font-size:23px;
     }
 
-    .nav .btn {
-        padding: 9px 11px;
-        font-size: 11px;
+    .nav-links{
+        gap:7px;
     }
 
-    .hero {
-        padding: 75px 17px 55px;
+    .nav-links .btn{
+        padding:9px 10px;
+        font-size:11px;
     }
 
-    .hero h1 {
-        font-size: 52px;
-        letter-spacing: -3px;
+    .hero{
+        padding:70px 16px 55px;
     }
 
-    .hero-text {
-        font-size: 15px;
+    .hero h1{
+        font-size:52px;
+        letter-spacing:-3px;
     }
 
-    .search-box {
-        flex-direction: column;
-        gap: 6px;
+    .hero p{
+        font-size:15px;
     }
 
-    .search-icon {
-        display: none;
+    .search-box{
+        flex-direction:column;
     }
 
-    .search-box input {
-        padding: 16px;
+    .search-box button{
+        padding:14px;
     }
 
-    .search-btn {
-        padding: 15px;
+    .categories{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .stats {
-        grid-template-columns: 1fr;
-        max-width: 300px;
+    .ads{
+        grid-template-columns:1fr;
     }
 
-    .categories {
-        grid-template-columns: repeat(2,1fr);
-    }
-
-    .products {
-        grid-template-columns: 1fr;
-    }
-
-    .section-heading {
-        align-items: start;
-    }
-
-    .featured {
-        padding: 30px 22px;
-    }
-
-    .featured h2 {
-        font-size: 26px;
-    }
-
-    .featured-orb {
-        opacity: .25;
-        right: -100px;
-    }
-
-    .steps {
-        grid-template-columns: 1fr;
-    }
-
-    .cta h2 {
-        font-size: 25px;
-    }
-
-    .footer-inner {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .footer-links {
-        justify-content: center;
-        flex-wrap: wrap;
+    .cabinet-buttons{
+        grid-template-columns:1fr;
     }
 }
 </style>
@@ -796,95 +598,62 @@ footer {
 <body>
 
 <header>
-    <div class="nav">
 
-        <a href="#" class="logo">
-            Al<span>Tap</span>.Biz
-        </a>
+<div class="nav">
 
-        <div class="nav-links">
-            <a href="#elanlar">Elanlar</a>
-            <a href="#kateqoriyalar">Kateqoriyalar</a>
-            <a href="#nece-isleyir">Necə işləyir?</a>
-            <a href="#haqqimizda">Haqqımızda</a>
+<a href="#" class="logo">
+Al<span>Tap</span>.Biz
+</a>
 
-            <button class="btn btn-login">
-                Giriş
-            </button>
+<div class="nav-links">
 
-            <button class="btn btn-primary">
-                + Elan yerləşdir
-            </button>
-        </div>
+<a href="#elanlar">Elanlar</a>
+<a href="#kateqoriyalar">Kateqoriyalar</a>
+<a href="#haqqimizda">Haqqımızda</a>
 
-    </div>
+<button class="btn btn-dark" onclick="openLogin()">
+Giriş
+</button>
+
+<button class="btn btn-primary" onclick="openRegister()">
+Qeydiyyat
+</button>
+
+</div>
+
+</div>
+
 </header>
 
 
 <section class="hero">
 
-    <div class="hero-glow"></div>
+<div class="badge">
+🇦🇿 Azərbaycanın yeni elan platforması
+</div>
 
-    <div class="badge">
-        <span class="badge-dot"></span>
-        Azərbaycanın yeni marketplace platforması
-    </div>
+<h1>
+Al. Sat. <span class="gradient">Tap.</span>
+</h1>
 
-    <h1>
-        Al. Sat. <span>Tap.</span>
-    </h1>
+<p>
+İstədiyin məhsulu tap, elanını yerləşdir və
+Azərbaycanda alıcılarla rahat əlaqə qur.
+</p>
 
-    <p class="hero-text">
-        İstədiyin məhsulu saniyələr içində tap.
-        Elanını yerləşdir, alıcılarla əlaqə qur və
-        təhlükəsiz şəkildə alıb-sat.
-    </p>
+<div class="search-box">
 
-    <div class="search-wrapper">
+<input
+id="searchInput"
+type="text"
+placeholder="Nə axtarırsan? Məsələn: iPhone, avtomobil, PS5..."
+>
 
-        <div class="search-box">
+<button onclick="searchAds()">
+Axtar 🔎
+</button>
 
-            <div class="search-icon">⌕</div>
-
-            <input
-                type="text"
-                placeholder="Nə axtarırsan?  Məsələn: iPhone, avtomobil, PS5..."
-            >
-
-            <button class="search-btn">
-                Axtar
-            </button>
-
-        </div>
-
-        <div class="quick-search">
-            Populyar:
-            <span>iPhone</span>
-            <span>Avtomobil</span>
-            <span>PlayStation</span>
-            <span>Gaming PC</span>
-        </div>
-
-    </div>
-
-    <div class="stats">
-
-        <div class="stat">
-            <strong>10K+</strong>
-            <span>Aktiv elan</span>
-        </div>
-
-        <div class="stat">
-            <strong>5K+</strong>
-            <span>Qeydiyyatlı istifadəçi</span>
-        </div>
-
-        <div class="stat">
-            <strong>24/7</strong>
-            <span>Platforma aktivdir</span>
-        </div>
-
-    </div>
+</div>
 
 </section>
 
@@ -894,362 +663,115 @@ footer {
 
 <section class="section" id="kateqoriyalar">
 
-    <div class="section-heading">
+<div class="section-title">
 
-        <div>
-            <h2>Kateqoriyalar</h2>
-            <p>Axtardığını daha tez tap</p>
-        </div>
+<h2>Kateqoriyalar</h2>
 
-        <a href="#" class="view-all">
-            Hamısına bax →
-        </a>
+<span>Hamısına bax →</span>
 
-    </div>
+</div>
 
+<div class="categories">
 
-    <div class="categories">
+<div class="category">
+<div class="category-icon">🚗</div>
+<strong>Avtomobil</strong>
+</div>
 
-        <div class="category">
-            <div class="category-icon">🚗</div>
-            <strong>Avtomobil</strong>
-        </div>
+<div class="category">
+<div class="category-icon">📱</div>
+<strong>Telefon</strong>
+</div>
 
-        <div class="category">
-            <div class="category-icon">📱</div>
-            <strong>Telefon</strong>
-        </div>
+<div class="category">
+<div class="category-icon">💻</div>
+<strong>Elektronika</strong>
+</div>
 
-        <div class="category">
-            <div class="category-icon">💻</div>
-            <strong>Elektronika</strong>
-        </div>
+<div class="category">
+<div class="category-icon">🏠</div>
+<strong>Ev & Bağ</strong>
+</div>
 
-        <div class="category">
-            <div class="category-icon">🏠</div>
-            <strong>Ev & Bağ</strong>
-        </div>
+<div class="category">
+<div class="category-icon">👕</div>
+<strong>Geyim</strong>
+</div>
 
-        <div class="category">
-            <div class="category-icon">👕</div>
-            <strong>Geyim</strong>
-        </div>
+<div class="category">
+<div class="category-icon">🛠️</div>
+<strong>Xidmətlər</strong>
+</div>
 
-        <div class="category">
-            <div class="category-icon">🛠️</div>
-            <strong>Xidmətlər</strong>
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
 <section class="section" id="elanlar">
 
-    <div class="section-heading">
-
-        <div>
-            <h2>🔥 Seçilmiş elanlar</h2>
-            <p>Platformadakı maraqlı elanlar</p>
-        </div>
-
-        <a href="#" class="view-all">
-            Bütün elanlar →
-        </a>
-
-    </div>
-
-
-    <div class="products">
-
-
-        <div class="product">
-
-            <div class="product-image">
-
-                <div class="product-badge">
-                    VIP
-                </div>
-
-                <div class="favorite">
-                    ♡
-                </div>
-
-                📱
-
-            </div>
-
-            <div class="product-content">
-
-                <div class="product-title">
-                    iPhone 15 Pro 256GB
-                </div>
-
-                <div class="product-location">
-                    📍 Bakı · Bu gün
-                </div>
-
-                <div class="product-bottom">
-
-                    <div class="product-price">
-                        1 450 AZN
-                    </div>
-
-                    <div class="product-user">
-                        ★ 4.9 · 23
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="product">
-
-            <div class="product-image">
-
-                <div class="product-badge">
-                    TƏCİLİ
-                </div>
-
-                <div class="favorite">
-                    ♡
-                </div>
-
-                🎮
-
-            </div>
-
-            <div class="product-content">
-
-                <div class="product-title">
-                    PlayStation 5 Slim
-                </div>
-
-                <div class="product-location">
-                    📍 Gəncə · 2 saat əvvəl
-                </div>
-
-                <div class="product-bottom">
-
-                    <div class="product-price">
-                        950 AZN
-                    </div>
-
-                    <div class="product-user">
-                        ★ 5.0 · 18
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="product">
-
-            <div class="product-image">
-
-                <div class="product-badge">
-                    VIP
-                </div>
-
-                <div class="favorite">
-                    ♡
-                </div>
-
-                💻
-
-            </div>
-
-            <div class="product-content">
-
-                <div class="product-title">
-                    Gaming PC RTX 4060
-                </div>
-
-                <div class="product-location">
-                    📍 Sumqayıt · Bu gün
-                </div>
-
-                <div class="product-bottom">
-
-                    <div class="product-price">
-                        1 800 AZN
-                    </div>
-
-                    <div class="product-user">
-                        ★ 4.8 · 41
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="product">
-
-            <div class="product-image">
-
-                <div class="product-badge">
-                    YENİ
-                </div>
-
-                <div class="favorite">
-                    ♡
-                </div>
-
-                🚗
-
-            </div>
-
-            <div class="product-content">
-
-                <div class="product-title">
-                    Mercedes-Benz C-Class
-                </div>
-
-                <div class="product-location">
-                    📍 Ağstafa · Dün
-                </div>
-
-                <div class="product-bottom">
-
-                    <div class="product-price">
-                        24 500 AZN
-                    </div>
-
-                    <div class="product-user">
-                        ★ 4.7 · 12
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<section class="section">
-
-    <div class="featured">
-
-        <div class="featured-content">
-
-            <div class="featured-label">
-                ALTAP.BIZ
-            </div>
-
-            <h2>
-                Sənin də satacağın bir şey var?
-            </h2>
-
-            <p>
-                Elanını yerləşdir və məhsulunu minlərlə
-                potensial alıcıya göstər.
-                Sadə, sürətli və rahat.
-            </p>
-
-            <button class="btn btn-primary">
-                📢 Elan yerləşdir — 1 AZN
-            </button>
-
-        </div>
-
-        <div class="featured-orb"></div>
-
-    </div>
-
-</section>
-
-
-<section class="section" id="nece-isleyir">
-
-    <div class="section-heading">
-
-        <div>
-            <h2>Necə işləyir?</h2>
-            <p>Bir neçə sadə addımla elanını yerləşdir</p>
-        </div>
-
-    </div>
-
-
-    <div class="steps">
-
-        <div class="step">
-
-            <div class="step-number">
-                01
-            </div>
-
-            <h3>Qeydiyyatdan keç</h3>
-
-            <p>
-                Hesabını yarat və şəxsi kabinetinə daxil ol.
-            </p>
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">
-                02
-            </div>
-
-            <h3>Elanını yerləşdir</h3>
-
-            <p>
-                Məhsulunu, qiymətini və məlumatlarını əlavə et.
-            </p>
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">
-                03
-            </div>
-
-            <h3>Alıcı ilə əlaqə saxla</h3>
-
-            <p>
-                Elanın təsdiqləndikdən sonra alıcılarla əlaqə qur.
-            </p>
-
-        </div>
-
-    </div>
+<div class="section-title">
+
+<h2>🔥 Seçilmiş elanlar</h2>
+
+<span>Yeni elanlar</span>
+
+</div>
+
+<div class="ads">
+
+<div class="ad">
+<div class="ad-image">📱</div>
+<div class="ad-content">
+<h3>iPhone 15 Pro 256GB</h3>
+<div class="location">📍 Bakı</div>
+<div class="price">1 450 AZN</div>
+</div>
+</div>
+
+<div class="ad">
+<div class="ad-image">🎮</div>
+<div class="ad-content">
+<h3>PlayStation 5 Slim</h3>
+<div class="location">📍 Gəncə</div>
+<div class="price">950 AZN</div>
+</div>
+</div>
+
+<div class="ad">
+<div class="ad-image">💻</div>
+<div class="ad-content">
+<h3>Gaming PC RTX 4060</h3>
+<div class="location">📍 Sumqayıt</div>
+<div class="price">1 800 AZN</div>
+</div>
+</div>
+
+<div class="ad">
+<div class="ad-image">🚗</div>
+<div class="ad-content">
+<h3>Mercedes-Benz C-Class</h3>
+<div class="location">📍 Ağstafa</div>
+<div class="price">24 500 AZN</div>
+</div>
+</div>
+
+</div>
 
 </section>
 
 
 <section class="cta">
 
-    <h2>
-        Hazırsan? Al. Sat. Tap. 🚀
-    </h2>
+<h2>Elan yerləşdirmək istəyirsən?</h2>
 
-    <p>
-        Altap.Biz-də ilk elanını indi yerləşdir.
-    </p>
+<p>
+Altap.Biz-də elan yerləşdirmək üçün hesabına daxil ol.
+</p>
 
-    <button class="btn btn-primary">
-        + Elan yerləşdir — 1 AZN
-    </button>
+<button class="btn btn-primary" onclick="requireLogin()">
+📢 Elan yerləşdir
+</button>
 
 </section>
 
@@ -1259,39 +781,700 @@ footer {
 
 <footer id="haqqimizda">
 
-    <div class="footer-inner">
+<strong>AlTap.Biz</strong> — Al. Sat. Tap.
 
-        <div>
+<br><br>
 
-            <div class="footer-logo">
-                Al<span>Tap</span>.Biz
-            </div>
-
-            <div class="footer-text">
-                Al. Sat. Tap.
-            </div>
-
-        </div>
-
-
-        <div class="footer-text">
-            © 2026 Altap.Biz. Bütün hüquqlar qorunur.
-        </div>
-
-
-        <div class="footer-links">
-
-            <a href="#">Haqqımızda</a>
-            <a href="#">Qaydalar</a>
-            <a href="#">Əlaqə</a>
-            <a href="#">Məxfilik</a>
-
-        </div>
-
-    </div>
+© 2026 Altap.Biz. Bütün hüquqlar qorunur.
 
 </footer>
 
+
+<!-- LOGIN / REGISTER MODAL -->
+
+<div class="modal-bg" id="authModal">
+
+<div class="modal">
+
+<div class="modal-head">
+
+<h2 id="authTitle">
+Giriş
+</h2>
+
+<button class="close" onclick="closeModal()">
+×
+</button>
+
+</div>
+
+
+<div id="authForm">
+
+<div class="form-group">
+
+<label>
+Telefon nömrəsi
+</label>
+
+<input
+id="phone"
+type="tel"
+placeholder="+994 50 123 45 67"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Şifrə
+</label>
+
+<input
+id="password"
+type="password"
+placeholder="Şifrənizi daxil edin"
+>
+
+</div>
+
+
+<button class="btn btn-primary full" onclick="submitAuth()">
+Daxil ol
+</button>
+
+<div class="switch-text" id="switchText">
+Hesabınız yoxdur?
+<span onclick="switchAuth()">Qeydiyyatdan keç</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CABINET MODAL -->
+
+<div class="modal-bg" id="cabinetModal">
+
+<div class="modal">
+
+<div class="modal-head">
+
+<h2>Şəxsi kabinet</h2>
+
+<button class="close" onclick="closeCabinet()">
+×
+</button>
+
+</div>
+
+
+<div class="profile-card">
+
+<h3 id="cabinetName">
+Altap istifadəçisi
+</h3>
+
+<div class="profile-phone" id="cabinetPhone"></div>
+
+<div class="cabinet-buttons">
+
+<button class="btn btn-primary" onclick="openAdModal()">
++ Elan yerləşdir
+</button>
+
+<button class="btn btn-dark" onclick="logout()">
+Çıxış
+</button>
+
+</div>
+
+</div>
+
+
+<div class="profile-card">
+
+<h3>📋 Hesabınız</h3>
+
+<p style="color:#85899a;font-size:13px;line-height:1.6;margin-top:10px;">
+Buradan elanlarınızı idarə edə, yeni elan yerləşdirə
+və hesab məlumatlarınıza baxa bilərsiniz.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- AD MODAL -->
+
+<div class="modal-bg" id="adModal">
+
+<div class="modal">
+
+<div class="modal-head">
+
+<h2>Elan yerləşdir</h2>
+
+<button class="close" onclick="closeAdModal()">
+×
+</button>
+
+</div>
+
+
+<div class="notice">
+💰 <strong>Diqqət:</strong> Elan yerləşdirmək üçün
+<strong>1 AZN ödəniş tələb olunur.</strong>
+Elanınız ödənişdən və moderasiyadan sonra yayımlanacaq.
+</div>
+
+
+<div class="form-group">
+
+<label>
+Elan başlığı
+</label>
+
+<input
+id="adTitle"
+type="text"
+placeholder="Məsələn: iPhone 15 Pro satılır"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Kateqoriya
+</label>
+
+<select id="adCategory">
+
+<option value="">
+Kateqoriya seçin
+</option>
+
+<option>Avtomobil</option>
+<option>Telefon</option>
+<option>Elektronika</option>
+<option>Ev & Bağ</option>
+<option>Geyim</option>
+<option>Xidmətlər</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Qiymət (AZN)
+</label>
+
+<input
+id="adPrice"
+type="number"
+placeholder="Məsələn: 1450"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Şəhər / rayon
+</label>
+
+<input
+id="adLocation"
+type="text"
+placeholder="Məsələn: Bakı"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Elan haqqında
+</label>
+
+<textarea
+id="adDescription"
+placeholder="Məhsul haqqında ətraflı məlumat yazın..."
+></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Şəkillər — minimum 1, maksimum 6
+</label>
+
+<div class="upload-box">
+
+<label class="upload-label" for="adImages">
+🖼️ Şəkil seç
+</label>
+
+<input
+id="adImages"
+type="file"
+accept="image/*"
+multiple
+onchange="previewImages()"
+>
+
+<div class="upload-info" id="uploadInfo">
+Minimum 1, maksimum 6 şəkil seçə bilərsiniz.
+</div>
+
+<div class="preview-grid" id="previewGrid"></div>
+
+</div>
+
+</div>
+
+
+<button class="btn btn-primary full" onclick="submitAd()">
+Davam et — 1 AZN
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   LOCAL ACCOUNT SYSTEM
+========================= */
+
+let authMode = "login";
+
+function getUsers(){
+    return JSON.parse(localStorage.getItem("altap_users") || "[]");
+}
+
+function saveUsers(users){
+    localStorage.setItem("altap_users", JSON.stringify(users));
+}
+
+function getCurrentUser(){
+    return JSON.parse(localStorage.getItem("altap_current_user") || "null");
+}
+
+function openLogin(){
+
+    authMode = "login";
+
+    document.getElementById("authTitle").textContent = "Giriş";
+
+    document.querySelector("#authForm button").textContent =
+        "Daxil ol";
+
+    document.getElementById("switchText").innerHTML =
+        'Hesabınız yoxdur? <span onclick="switchAuth()">Qeydiyyatdan keç</span>';
+
+    document.getElementById("authModal").classList.add("active");
+}
+
+function openRegister(){
+
+    authMode = "register";
+
+    document.getElementById("authTitle").textContent =
+        "Qeydiyyatdan keç";
+
+    document.querySelector("#authForm button").textContent =
+        "Qeydiyyatdan keç";
+
+    document.getElementById("switchText").innerHTML =
+        'Artıq hesabınız var? <span onclick="switchAuth()">Giriş edin</span>';
+
+    document.getElementById("authModal").classList.add("active");
+}
+
+function switchAuth(){
+
+    if(authMode === "login"){
+        openRegister();
+    }else{
+        openLogin();
+    }
+}
+
+function closeModal(){
+    document.getElementById("authModal").classList.remove("active");
+}
+
+function submitAuth(){
+
+    const phone =
+        document.getElementById("phone").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    if(!phone || !password){
+
+        alert("Zəhmət olmasa telefon nömrəsini və şifrəni daxil edin.");
+
+        return;
+    }
+
+    if(phone.length < 7){
+
+        alert("Telefon nömrəsini düzgün daxil edin.");
+
+        return;
+    }
+
+    if(password.length < 6){
+
+        alert("Şifrə minimum 6 simvoldan ibarət olmalıdır.");
+
+        return;
+    }
+
+    let users = getUsers();
+
+    if(authMode === "register"){
+
+        const exists =
+            users.find(user => user.phone === phone);
+
+        if(exists){
+
+            alert("Bu telefon nömrəsi ilə artıq hesab mövcuddur.");
+
+            return;
+        }
+
+        const newUser = {
+            id: Date.now(),
+            phone: phone,
+            password: password,
+            createdAt: new Date().toISOString(),
+            ads: []
+        };
+
+        users.push(newUser);
+
+        saveUsers(users);
+
+        localStorage.setItem(
+            "altap_current_user",
+            JSON.stringify(newUser)
+        );
+
+        closeModal();
+
+        alert("✅ Qeydiyyat uğurla tamamlandı!");
+
+        openCabinet();
+
+    }else{
+
+        const user =
+            users.find(
+                user =>
+                user.phone === phone &&
+                user.password === password
+            );
+
+        if(!user){
+
+            alert(
+                "Telefon nömrəsi və ya şifrə yanlışdır."
+            );
+
+            return;
+        }
+
+        localStorage.setItem(
+            "altap_current_user",
+            JSON.stringify(user)
+        );
+
+        closeModal();
+
+        alert("✅ Giriş uğurludur!");
+
+        openCabinet();
+    }
+}
+
+
+/* =========================
+   CABINET
+========================= */
+
+function openCabinet(){
+
+    const user = getCurrentUser();
+
+    if(!user){
+        openLogin();
+        return;
+    }
+
+    document.getElementById("cabinetPhone").textContent =
+        "📱 " + user.phone;
+
+    document.getElementById("cabinetModal")
+        .classList.add("active");
+}
+
+function closeCabinet(){
+
+    document.getElementById("cabinetModal")
+        .classList.remove("active");
+}
+
+function logout(){
+
+    localStorage.removeItem("altap_current_user");
+
+    closeCabinet();
+
+    alert("Hesabdan çıxış edildi.");
+}
+
+
+/* =========================
+   LOGIN REQUIRED
+========================= */
+
+function requireLogin(){
+
+    const user = getCurrentUser();
+
+    if(!user){
+
+        alert(
+            "Elan yerləşdirmək üçün əvvəlcə qeydiyyatdan keçin və ya hesabınıza daxil olun."
+        );
+
+        openLogin();
+
+        return;
+    }
+
+    openAdModal();
+}
+
+
+/* =========================
+   AD SYSTEM
+========================= */
+
+function openAdModal(){
+
+    closeCabinet();
+
+    document.getElementById("adModal")
+        .classList.add("active");
+}
+
+function closeAdModal(){
+
+    document.getElementById("adModal")
+        .classList.remove("active");
+}
+
+function previewImages(){
+
+    const input =
+        document.getElementById("adImages");
+
+    const files =
+        Array.from(input.files);
+
+    const info =
+        document.getElementById("uploadInfo");
+
+    const preview =
+        document.getElementById("previewGrid");
+
+    preview.innerHTML = "";
+
+    if(files.length === 0){
+
+        info.textContent =
+            "Minimum 1, maksimum 6 şəkil seçə bilərsiniz.";
+
+        return;
+    }
+
+    if(files.length > 6){
+
+        alert(
+            "Maksimum 6 şəkil seçə bilərsiniz."
+        );
+
+        input.value = "";
+
+        info.textContent =
+            "Minimum 1, maksimum 6 şəkil seçə bilərsiniz.";
+
+        return;
+    }
+
+    info.textContent =
+        files.length + " şəkil seçildi.";
+
+    files.forEach(file => {
+
+        const reader =
+            new FileReader();
+
+        reader.onload = function(e){
+
+            const img =
+                document.createElement("img");
+
+            img.src = e.target.result;
+
+            preview.appendChild(img);
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+}
+
+function submitAd(){
+
+    const title =
+        document.getElementById("adTitle").value.trim();
+
+    const category =
+        document.getElementById("adCategory").value;
+
+    const price =
+        document.getElementById("adPrice").value;
+
+    const location =
+        document.getElementById("adLocation").value.trim();
+
+    const description =
+        document.getElementById("adDescription").value.trim();
+
+    const images =
+        document.getElementById("adImages").files;
+
+    if(!title ||
+       !category ||
+       !price ||
+       !location ||
+       !description){
+
+        alert(
+            "Zəhmət olmasa bütün məlumatları doldurun."
+        );
+
+        return;
+    }
+
+    if(images.length < 1){
+
+        alert(
+            "Elan üçün minimum 1 şəkil əlavə etməlisiniz."
+        );
+
+        return;
+    }
+
+    if(images.length > 6){
+
+        alert(
+            "Maksimum 6 şəkil əlavə edə bilərsiniz."
+        );
+
+        return;
+    }
+
+    alert(
+        "💰 Elan yerləşdirmək üçün 1 AZN ödəniş tələb olunur.\n\n" +
+        "Növbəti mərhələdə ödəniş sistemi açılacaq."
+    );
+
+    /*
+       REAL ÖDƏNİŞ SİSTEMİ SONRA BURAYA
+       QOŞULACAQ.
+
+       Ödəniş uğurlu olduqdan sonra elan
+       admin moderasiyasına göndəriləcək.
+    */
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchAds(){
+
+    const value =
+        document.getElementById("searchInput")
+        .value
+        .trim();
+
+    if(!value){
+
+        alert("Axtarış sözünü yazın.");
+
+        return;
+    }
+
+    alert(
+        '"' + value +
+        '" üçün elanlar axtarılır...'
+    );
+}
+
+
+/* =========================
+   AUTO CHECK LOGIN
+========================= */
+
+window.addEventListener("load", function(){
+
+    const user = getCurrentUser();
+
+    if(user){
+
+        /*
+           İstifadəçi əvvəlki girişini
+           həmin brauzerdə saxlayır.
+        */
+
+        console.log(
+            "Altap.Biz istifadəçisi aktivdir:",
+            user.phone
+        );
+    }
+
+});
+
+</script>
 
 </body>
 </html>
