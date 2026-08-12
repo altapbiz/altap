@@ -3,115 +3,147 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Altap.Biz</title>
+
+<title>WhatsApp Plus</title>
 
 <style>
-    * {
-        box-sizing: border-box;
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    width: 92%;
+    max-width: 700px;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+.text {
+    margin: 22px 0;
+    font-weight: 900;
+    line-height: 1.35;
+    color: #00ffcc;
+    animation: neon 3s infinite;
+}
+
+.main {
+    font-size: clamp(26px, 7vw, 48px);
+}
+
+.price {
+    font-size: clamp(32px, 8vw, 55px);
+}
+
+.info {
+    font-size: clamp(19px, 5vw, 30px);
+}
+
+.button {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 18px 30px;
+    border: 2px solid #00ffcc;
+    border-radius: 14px;
+    color: #00ffcc;
+    background: transparent;
+    text-decoration: none;
+    font-size: clamp(18px, 4.5vw, 27px);
+    font-weight: 900;
+    animation: buttonNeon 2.7s infinite;
+}
+
+.delay1 {
+    animation-delay: .8s;
+}
+
+.delay2 {
+    animation-delay: 1.6s;
+}
+
+.delay3 {
+    animation-delay: 2.4s;
+}
+
+@keyframes neon {
+    0%, 100% {
+        opacity: .25;
+        text-shadow:
+            0 0 3px #00ffcc,
+            0 0 7px #00ffcc;
     }
 
-    body {
-        margin: 0;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #000;
-        font-family: Arial, sans-serif;
-        overflow: hidden;
+    50% {
+        opacity: 1;
+        text-shadow:
+            0 0 5px #00ffcc,
+            0 0 15px #00ffcc,
+            0 0 30px #00ffcc,
+            0 0 55px #00ffcc;
+    }
+}
+
+@keyframes buttonNeon {
+    0%, 100% {
+        opacity: .3;
+        box-shadow:
+            0 0 5px #00ffcc;
     }
 
-    .box {
-        width: 92%;
-        max-width: 600px;
-        text-align: center;
-        padding: 40px 20px;
+    50% {
+        opacity: 1;
+        box-shadow:
+            0 0 10px #00ffcc,
+            0 0 25px #00ffcc,
+            0 0 45px #00ffcc;
     }
-
-    .line {
-        margin: 14px 0;
-        font-weight: 900;
-        letter-spacing: 2px;
-        animation: neon 2s infinite alternate;
-    }
-
-    .title {
-        font-size: clamp(28px, 7vw, 52px);
-    }
-
-    .whatsapp {
-        font-size: clamp(24px, 6vw, 44px);
-    }
-
-    .price {
-        font-size: clamp(30px, 7vw, 48px);
-    }
-
-    .site {
-        font-size: clamp(34px, 8vw, 60px);
-    }
-
-    .support {
-        font-size: clamp(18px, 4.5vw, 28px);
-        line-height: 1.5;
-        margin-top: 28px;
-    }
-
-    .delay1 { animation-delay: 0.4s; }
-    .delay2 { animation-delay: 0.9s; }
-    .delay3 { animation-delay: 1.4s; }
-    .delay4 { animation-delay: 1.9s; }
-    .delay5 { animation-delay: 2.4s; }
-    .delay6 { animation-delay: 2.9s; }
-
-    @keyframes neon {
-        0% {
-            opacity: 0.25;
-            text-shadow:
-                0 0 2px #00ffff,
-                0 0 5px #00ffff;
-        }
-
-        50% {
-            opacity: 1;
-            text-shadow:
-                0 0 5px #00ffff,
-                0 0 15px #00ffff,
-                0 0 30px #00ffff,
-                0 0 50px #00ffff;
-        }
-
-        100% {
-            opacity: 0.35;
-            text-shadow:
-                0 0 3px #00ffff,
-                0 0 8px #00ffff;
-        }
-    }
+}
 </style>
 </head>
 
 <body>
 
-<div class="box">
+<div class="container">
 
-    <div class="line title">YALNIZ RUSİYADA</div>
-
-    <div class="line title delay1">YAŞAYANLAR ÜÇÜN</div>
-
-    <div class="line whatsapp delay2">📲 WHATSAPP PLUS</div>
-
-    <div class="line whatsapp delay3">YÜKLƏMƏ SAYTI</div>
-
-    <div class="line site delay4">Altap.Biz</div>
-
-    <div class="line price delay5">20 AZN</div>
-
-    <div class="line support delay6">
-        WhatsApp Plus yükləmək istəyənlər bizə yazın WhatsApp da dəstək xidməti olsun
+    <div class="text main">
+        Yalnız Rusiyada yaşayanlar üçün
     </div>
 
-    <div class="line site delay1">Altap.Biz</div>
+    <div class="text main delay1">
+        WhatsApp Plus istifadə edin
+    </div>
+
+    <div class="text price delay2">
+        Qiymət cəmi 20 AZN
+    </div>
+
+    <div class="text info delay3">
+        Heç bir problem yaratmır, əksinə original WhatsApp-dan daha güclü işləyir
+    </div>
+
+    <a
+        class="button"
+        href="https://wa.me/994556145657?text=Salam%2C%20WhatsApp%20Plus%20aktiv%20etmek%20isteyirem."
+        target="_blank"
+        rel="noopener noreferrer">
+        WhatsApp Plus Aktiv et
+    </a>
 
 </div>
 
