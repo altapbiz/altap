@@ -13,7 +13,7 @@ const race = {
   ua: { points: 0, distance: 0 }
 };
 
-// Server yoxlama
+// Ana səhifə
 app.get("/", (req, res) => {
   res.send("Altap.Biz LIVE server işləyir 🏎️🎁");
 });
@@ -59,6 +59,45 @@ app.post("/gift", (req, res) => {
   });
 });
 
+// TikTool bağlantısı
+async function startTikTok() {
+  try {
+    const { TikTokLive } = await import("@tiktool/live");
+
+    const username = process.env.TIKTOK_USERNAME;
+    const apiKey = process.env.TIKTOOL_API_KEY;
+
+    if (!username) {
+      console.log("❌ TIKTOK_USERNAME tapılmadı");
+      return;
+    }
+
+    if (!apiKey) {
+      console.log("❌ TIKTOOL_API_KEY tapılmadı");
+      return;
+    }
+
+    const client = new TikTokLive({
+      uniqueId: username,
+      apiKey: apiKey
+    });
+
+    client.on("gift", (event) => {
+      console.log("🎁 TikTok hədiyyəsi:", event);
+
+      // Hələlik yalnız hədiyyəni görürük.
+      // Ölkə və xal xəritələndirməsini növbəti addımda edəcəyik.
+    });
+
+    await client.connect();
+
+    console.log(`🎵 TikTok LIVE qoşuldu: @${username}`);
+  } catch (error) {
+    console.error("❌ TikTok bağlantı xətası:", error);
+  }
+}
+
 app.listen(PORT, () => {
   console.log(`Altap.Biz server ${PORT} portunda işləyir 🏎️`);
+  startTikTok();
 });
