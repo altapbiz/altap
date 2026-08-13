@@ -15,24 +15,33 @@ body {
   background: #070707;
   color: white;
   font-family: Arial, sans-serif;
-  padding: 15px;
+  padding: 8px;
 }
 
 h1 {
   text-align: center;
-  margin: 10px 0 25px;
+  font-size: 20px;
+  margin: 5px 0 10px;
+}
+
+.status {
+  text-align: center;
+  color: #aaa;
+  font-size: 12px;
+  margin-bottom: 8px;
 }
 
 .race {
-  max-width: 900px;
+  width: 100%;
+  max-width: 600px;
   margin: auto;
 }
 
 .country {
   background: #151515;
-  border-radius: 18px;
-  padding: 14px;
-  margin-bottom: 18px;
+  border-radius: 12px;
+  padding: 8px;
+  margin-bottom: 8px;
   border: 1px solid #292929;
 }
 
@@ -40,61 +49,55 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 17px;
+  font-size: 13px;
   font-weight: bold;
 }
 
 .track {
   position: relative;
-  height: 75px;
-  margin-top: 12px;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      #303030 0px,
-      #303030 35px,
-      #202020 35px,
-      #202020 70px
-    );
-  border-radius: 14px;
+  height: 48px;
+  margin-top: 7px;
+  background: repeating-linear-gradient(
+    90deg,
+    #303030 0px,
+    #303030 25px,
+    #202020 25px,
+    #202020 50px
+  );
+  border-radius: 9px;
   overflow: hidden;
-  border-bottom: 5px solid #777;
+  border-bottom: 3px solid #777;
 }
 
 .car {
   position: absolute;
   left: 0;
-  bottom: 5px;
-  font-size: 43px;
+  bottom: 1px;
+  font-size: 30px;
   transition: left 0.8s linear;
   will-change: left;
 }
 
 .finish {
   position: absolute;
-  right: 10px;
+  right: 5px;
   top: 0;
   height: 100%;
-  width: 8px;
+  width: 5px;
   background: repeating-linear-gradient(
     45deg,
     white 0px,
-    white 8px,
-    black 8px,
-    black 16px
+    white 5px,
+    black 5px,
+    black 10px
   );
 }
 
 .points {
-  margin-top: 8px;
+  margin-top: 4px;
   color: #00ff88;
+  font-size: 11px;
   font-weight: bold;
-}
-
-.status {
-  text-align: center;
-  color: #aaa;
-  margin-bottom: 15px;
 }
 </style>
 </head>
