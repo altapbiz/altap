@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Altap.Biz — Ölkələr Yarışı</title>
+  <title>Altap.Biz LIVE Race</title>
 
   <style>
     * {
@@ -13,308 +12,124 @@
 
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0b12;
+      background: #090909;
       color: white;
-      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      padding: 20px;
     }
 
-    header {
+    h1 {
       text-align: center;
-      padding: 25px 15px;
-      background: #11111c;
-      border-bottom: 1px solid #29293a;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-    }
-
-    header p {
-      color: #aaa;
-      margin-bottom: 0;
+      margin-bottom: 25px;
     }
 
     .race {
-      width: 95%;
-      max-width: 800px;
-      margin: 25px auto;
+      max-width: 700px;
+      margin: auto;
     }
 
     .country {
-      background: #151521;
-      border: 1px solid #29293a;
+      background: #151515;
       border-radius: 15px;
       padding: 15px;
       margin-bottom: 15px;
     }
 
-    .country-top {
+    .top {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 10px;
-    }
-
-    .country-name {
+      align-items: center;
       font-size: 18px;
       font-weight: bold;
     }
 
-    .stats {
-      color: #aaa;
-      font-size: 14px;
-      margin-top: 5px;
-    }
-
     .track {
       position: relative;
-      height: 70px;
-      margin-top: 15px;
-      background: #222231;
+      height: 55px;
+      background: #252525;
       border-radius: 12px;
+      margin-top: 12px;
       overflow: hidden;
-      border: 1px solid #333347;
-    }
-
-    .finish {
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 4px;
-      height: 100%;
-      background: white;
     }
 
     .car {
       position: absolute;
       left: 0;
-      top: 12px;
-      width: 80px;
-      height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      top: 7px;
       font-size: 38px;
-      transition: left 0.8s ease;
+      transition: left 0.5s ease;
     }
 
-    .gift-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 15px;
-    }
-
-    button {
-      border: 0;
-      border-radius: 10px;
-      padding: 10px 13px;
-      background: #24243a;
-      color: white;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    button:active {
-      transform: scale(0.96);
-    }
-
-    .reset {
-      display: block;
-      margin: 25px auto 40px;
-      background: #33334b;
-      padding: 12px 20px;
-    }
-
-    .winner {
-      text-align: center;
-      margin: 20px auto;
-      font-size: 20px;
+    .points {
+      color: #00ff88;
+      margin-top: 8px;
       font-weight: bold;
-      color: #ffd54a;
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>🏎️ Altap.Biz Ölkələr Yarışı</h1>
-  <p>🎁 Hədiyyə göndər → xal qazan → maşını irəli apar</p>
-</header>
+  <h1>🏎️ Altap.Biz LIVE Race 🎁</h1>
 
-<div class="race" id="race"></div>
+  <div class="race" id="race"></div>
 
-<div class="winner" id="winner"></div>
+  <script>
+    const API = "https://altap-production.up.railway.app";
 
-<button class="reset" onclick="resetRace()">
-  🔄 Yarışı sıfırla
-</button>
+    const countries = {
+      az: { name: "Azərbaycan", flag: "🇦🇿" },
+      tr: { name: "Türkiyə", flag: "🇹🇷" },
+      ru: { name: "Rusiya", flag: "🇷🇺" },
+      ge: { name: "Gürcüstan", flag: "🇬🇪" },
+      ua: { name: "Ukrayna", flag: "🇺🇦" }
+    };
 
-<script src="countries.js"></script>
-<script src="cars.js"></script>
+    async function updateRace() {
+      try {
+        const response = await fetch(API + "/race");
+        const data = await response.json();
 
-<script>
+        const race = document.getElementById("race");
 
-const gifts = [
-  {
-    name: "🌹 Rose",
-    points: 10
-  },
-  {
-    name: "🎁 Kiçik hədiyyə",
-    points: 20
-  },
-  {
-    name: "💎 Orta hədiyyə",
-    points: 100
-  },
-  {
-    name: "🏆 Böyük hədiyyə",
-    points: 500
-  }
-];
+        race.innerHTML = "";
 
-function renderRace() {
+        for (const id in countries) {
+          const country = countries[id];
+          const points = data[id]?.points || 0;
 
-  const race = document.getElementById("race");
+          const maxPoints = 5000;
+          const position = Math.min((points / maxPoints) * 100, 95);
 
-  race.innerHTML = "";
+          race.innerHTML += `
+            <div class="country">
+              <div class="top">
+                <span>${country.flag} ${country.name}</span>
+                <span>${points} xal</span>
+              </div>
 
-  cars.forEach(car => {
+              <div class="track">
+                <div class="car" style="left:${position}%">
+                  🏎️
+                </div>
+              </div>
 
-    const country = document.createElement("div");
+              <div class="points">
+                Məsafə: ${data[id]?.distance || 0}
+              </div>
+            </div>
+          `;
+        }
 
-    country.className = "country";
-
-    country.innerHTML = `
-      <div class="country-top">
-        <div>
-          <div class="country-name">
-            ${car.flag} ${car.country}
-          </div>
-
-          <div class="stats">
-            ${car.car} · Xal: <span id="points-${car.countryId}">${car.points}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="track">
-
-        <div class="finish"></div>
-
-        <div
-          class="car"
-          id="car-${car.countryId}"
-        >
-          🏎️
-        </div>
-
-      </div>
-
-      <div class="gift-buttons">
-
-        ${gifts.map(gift => `
-          <button
-            onclick="sendGift('${car.countryId}', ${gift.points})"
-          >
-            ${gift.name} +${gift.points}
-          </button>
-        `).join("")}
-
-      </div>
-    `;
-
-    race.appendChild(country);
-
-  });
-
-  updateCars();
-}
-
-function sendGift(countryId, points) {
-
-  const car = cars.find(
-    item => item.countryId === countryId
-  );
-
-  if (!car) return;
-
-  car.points += points;
-  car.distance += points;
-
-  updateCars();
-
-  checkWinner();
-}
-
-function updateCars() {
-
-  cars.forEach(car => {
-
-    const carElement =
-      document.getElementById(`car-${car.countryId}`);
-
-    const pointsElement =
-      document.getElementById(`points-${car.countryId}`);
-
-    if (!carElement) return;
-
-    if (pointsElement) {
-      pointsElement.textContent = car.points;
+      } catch (error) {
+        console.log("Server bağlantısı yoxdur:", error);
+      }
     }
 
-    const maxDistance = 5000;
+    updateRace();
 
-    const percentage =
-      Math.min(
-        (car.distance / maxDistance) * 100,
-        100
-      );
-
-    carElement.style.left =
-      `calc(${percentage}% - 40px)`;
-
-  });
-
-}
-
-function checkWinner() {
-
-  const winnerElement =
-    document.getElementById("winner");
-
-  const winner =
-    cars.find(car => car.distance >= 5000);
-
-  if (winner) {
-
-    winnerElement.innerHTML =
-      `🏆 ${winner.flag} ${winner.country} yarışı qazandı!`;
-
-  }
-
-}
-
-function resetRace() {
-
-  cars.forEach(car => {
-    car.points = 0;
-    car.distance = 0;
-  });
-
-  document.getElementById("winner").innerHTML = "";
-
-  updateCars();
-
-}
-
-renderRace();
-
-</script>
+    setInterval(updateRace, 1000);
+  </script>
 
 </body>
 </html>
