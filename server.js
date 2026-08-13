@@ -1,9 +1,13 @@
 const express = require("express");
+const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+
+// index.html və digər faylları göstər
+app.use(express.static(path.join(__dirname)));
 
 const race = {
   az: { points: 0, distance: 0 },
@@ -15,7 +19,7 @@ const race = {
 
 // Ana səhifə
 app.get("/", (req, res) => {
-  res.send("Altap.Biz LIVE server işləyir 🏎️🎁");
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 // Yarış məlumatları
@@ -59,7 +63,7 @@ app.post("/gift", (req, res) => {
   });
 });
 
-// TikTool bağlantısı
+// TikTok LIVE bağlantısı
 async function startTikTok() {
   try {
     const { TikTokLive } = await import("@tiktool/live");
@@ -84,9 +88,6 @@ async function startTikTok() {
 
     client.on("gift", (event) => {
       console.log("🎁 TikTok hədiyyəsi:", event);
-
-      // Hələlik yalnız hədiyyəni görürük.
-      // Ölkə və xal xəritələndirməsini növbəti addımda edəcəyik.
     });
 
     await client.connect();
