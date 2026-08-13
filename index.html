@@ -1,621 +1,318 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WhatsApp Plus — altap.biz</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-}
+  <title>Altap.Biz — Ölkələr Yarışı</title>
 
-body{
-    min-height:100vh;
-    background:
-        radial-gradient(circle at 50% 10%, rgba(37,211,102,.13), transparent 35%),
-        #080b0f;
-    color:#fff;
-    padding:25px 15px 50px;
-}
-
-.site-name{
-    width:max-content;
-    margin:0 auto 28px;
-    padding:10px 24px;
-    background:#f1f3f5;
-    color:#111;
-    border-radius:30px;
-    font-size:17px;
-    font-weight:600;
-    box-shadow:0 8px 25px rgba(0,0,0,.3);
-}
-
-.container{
-    width:100%;
-    max-width:620px;
-    margin:auto;
-    background:linear-gradient(145deg,#151a22,#10151c);
-    border:1px solid #29323d;
-    border-radius:30px;
-    padding:40px 28px;
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.55),
-        0 0 45px rgba(37,211,102,.06);
-}
-
-/* WHATSAPP LOGO */
-
-.logo-wrap{
-    width:105px;
-    height:105px;
-    margin:0 auto 22px;
-    border-radius:50%;
-    background:#25D366;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    box-shadow:0 0 45px rgba(37,211,102,.28);
-}
-
-.whatsapp-logo{
-    width:62px;
-    height:62px;
-}
-
-/* HEADER */
-
-h1{
-    text-align:center;
-    font-size:38px;
-    font-weight:800;
-    letter-spacing:-1px;
-    margin-bottom:10px;
-}
-
-.subtitle{
-    text-align:center;
-    color:#aeb7c2;
-    font-size:16px;
-    line-height:1.5;
-    margin-bottom:38px;
-}
-
-/* STEPS */
-
-.step{
-    margin-bottom:30px;
-}
-
-.step-title{
-    font-size:19px;
-    font-weight:750;
-    margin-bottom:15px;
-}
-
-/* PHONE CARDS */
-
-.phone-options{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-}
-
-.phone-card{
-    min-height:205px;
-    border:1px solid #35404c;
-    background:linear-gradient(145deg,#1b222c,#141a22);
-    border-radius:22px;
-    cursor:pointer;
-    position:relative;
-    overflow:hidden;
-    transition:.25s;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-}
-
-.phone-card:hover{
-    transform:translateY(-3px);
-    border-color:#25D366;
-}
-
-.phone-card.selected{
-    border:2px solid #25D366;
-    background:linear-gradient(145deg,#14291d,#151e20);
-    box-shadow:0 0 25px rgba(37,211,102,.12);
-}
-
-/* REALISTIC CSS PHONE */
-
-.phone{
-    width:62px;
-    height:112px;
-    border-radius:13px;
-    background:#050607;
-    border:3px solid #555e68;
-    position:relative;
-    box-shadow:0 10px 22px rgba(0,0,0,.45);
-    margin-bottom:15px;
-}
-
-.phone::before{
-    content:"";
-    position:absolute;
-    width:24px;
-    height:5px;
-    border-radius:10px;
-    background:#111;
-    top:5px;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:2;
-}
-
-.phone-screen{
-    position:absolute;
-    inset:4px;
-    border-radius:9px;
-    background:
-        linear-gradient(145deg,#15252d,#111923 50%,#0b1512);
-    overflow:hidden;
-}
-
-.phone-screen::after{
-    content:"";
-    position:absolute;
-    width:35px;
-    height:35px;
-    border-radius:50%;
-    background:#25D366;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    opacity:.95;
-}
-
-.phone-screen::before{
-    content:"";
-    position:absolute;
-    width:17px;
-    height:17px;
-    border:3px solid white;
-    border-radius:50%;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    z-index:2;
-}
-
-.iphone{
-    border-color:#737b84;
-    border-radius:15px;
-}
-
-.android{
-    border-color:#4c5964;
-    border-radius:11px;
-}
-
-.phone-name{
-    font-size:18px;
-    font-weight:700;
-}
-
-/* COUNTRY */
-
-select{
-    width:100%;
-    height:58px;
-    padding:0 18px;
-    border-radius:16px;
-    border:1px solid #35404c;
-    background:#1a212a;
-    color:white;
-    outline:none;
-    font-size:16px;
-    appearance:auto;
-}
-
-select:focus{
-    border-color:#25D366;
-}
-
-/* BUTTON */
-
-.confirm{
-    width:100%;
-    height:62px;
-    border:0;
-    border-radius:17px;
-    background:#25D366;
-    color:#061109;
-    font-size:19px;
-    font-weight:800;
-    cursor:pointer;
-    transition:.2s;
-    box-shadow:0 12px 30px rgba(37,211,102,.18);
-}
-
-.confirm:hover{
-    background:#20bd5c;
-    transform:translateY(-2px);
-}
-
-/* ERROR */
-
-.error{
-    display:none;
-    color:#ff7777;
-    font-size:14px;
-    margin-top:10px;
-}
-
-/* MODAL */
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.78);
-    backdrop-filter:blur(7px);
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    z-index:100;
-}
-
-.modal-card{
-    width:100%;
-    max-width:430px;
-    background:#151b23;
-    border:1px solid #303b47;
-    border-radius:25px;
-    padding:30px 25px;
-    text-align:center;
-    box-shadow:0 25px 80px rgba(0,0,0,.7);
-    animation:popup .25s ease;
-}
-
-@keyframes popup{
-    from{
-        opacity:0;
-        transform:scale(.94) translateY(15px);
-    }
-    to{
-        opacity:1;
-        transform:scale(1) translateY(0);
-    }
-}
-
-.modal-logo{
-    width:75px;
-    height:75px;
-    margin:0 auto 18px;
-    border-radius:50%;
-    background:#25D366;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.modal-logo svg{
-    width:43px;
-    height:43px;
-}
-
-.modal h2{
-    font-size:25px;
-    margin-bottom:14px;
-}
-
-.modal p{
-    color:#c1c9d2;
-    font-size:15px;
-    line-height:1.65;
-    margin-bottom:23px;
-}
-
-.price{
-    font-size:28px;
-    font-weight:800;
-    color:#25D366;
-    margin-bottom:20px;
-}
-
-.continue{
-    width:100%;
-    height:56px;
-    border:0;
-    border-radius:15px;
-    background:#25D366;
-    color:#061109;
-    font-size:17px;
-    font-weight:800;
-    cursor:pointer;
-}
-
-.cancel{
-    margin-top:15px;
-    background:none;
-    border:0;
-    color:#8f99a4;
-    cursor:pointer;
-    font-size:14px;
-}
-
-/* MOBILE */
-
-@media(max-width:480px){
-
-    body{
-        padding:18px 10px 35px;
+  <style>
+    * {
+      box-sizing: border-box;
     }
 
-    .container{
-        padding:30px 18px;
-        border-radius:25px;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0b12;
+      color: white;
+      min-height: 100vh;
     }
 
-    h1{
-        font-size:32px;
+    header {
+      text-align: center;
+      padding: 25px 15px;
+      background: #11111c;
+      border-bottom: 1px solid #29293a;
     }
 
-    .subtitle{
-        font-size:15px;
+    header h1 {
+      margin: 0;
+      font-size: 28px;
     }
 
-    .phone-card{
-        min-height:180px;
+    header p {
+      color: #aaa;
+      margin-bottom: 0;
     }
 
-    .step-title{
-        font-size:17px;
+    .race {
+      width: 95%;
+      max-width: 800px;
+      margin: 25px auto;
     }
-}
-</style>
+
+    .country {
+      background: #151521;
+      border: 1px solid #29293a;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .country-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .country-name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .stats {
+      color: #aaa;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .track {
+      position: relative;
+      height: 70px;
+      margin-top: 15px;
+      background: #222231;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #333347;
+    }
+
+    .finish {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: white;
+    }
+
+    .car {
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 80px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      transition: left 0.8s ease;
+    }
+
+    .gift-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 13px;
+      background: #24243a;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button:active {
+      transform: scale(0.96);
+    }
+
+    .reset {
+      display: block;
+      margin: 25px auto 40px;
+      background: #33334b;
+      padding: 12px 20px;
+    }
+
+    .winner {
+      text-align: center;
+      margin: 20px auto;
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffd54a;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="site-name">
-    altap.biz
-</div>
+<header>
+  <h1>🏎️ Altap.Biz Ölkələr Yarışı</h1>
+  <p>🎁 Hədiyyə göndər → xal qazan → maşını irəli apar</p>
+</header>
 
-<div class="container">
+<div class="race" id="race"></div>
 
-    <!-- WhatsApp Logo -->
+<div class="winner" id="winner"></div>
 
-    <div class="logo-wrap">
+<button class="reset" onclick="resetRace()">
+  🔄 Yarışı sıfırla
+</button>
 
-        <svg class="whatsapp-logo" viewBox="0 0 64 64" fill="none">
-            <path
-                d="M32 7C18.2 7 7 17.8 7 31.2C7 36.1 8.5 40.6 11.1 44.4L7.5 56.5L20 53.2C23.6 55.1 27.7 56.1 32 56.1C45.8 56.1 57 45.2 57 31.7C57 18.3 45.8 7 32 7Z"
-                fill="white"/>
-            <path
-                d="M43.5 36.7C42.9 36.4 39.8 34.9 39.3 34.7C38.7 34.5 38.3 34.4 37.9 35C37.5 35.6 36.3 37.1 35.9 37.5C35.5 37.9 35.1 38 34.5 37.7C33.9 37.4 31.8 36.7 29.3 34.5C27.4 32.8 26.1 30.8 25.7 30.2C25.3 29.5 25.6 29.1 26 28.7C26.4 28.3 26.8 27.7 27.1 27.3C27.4 26.9 27.5 26.6 27.7 26.1C27.9 25.6 27.8 25.2 27.6 24.8C27.4 24.4 26.1 21.3 25.6 20C25.2 18.8 24.8 18.9 24.4 18.9C24 18.9 23.5 18.9 23 18.9C22.5 18.9 21.7 19.1 21.1 19.8C20.5 20.4 18.8 22 18.8 25.1C18.8 28.2 21.1 31.2 21.4 31.6C21.7 32 25.9 38.5 32.3 41.1C33.8 41.8 35 42.2 35.9 42.5C37.4 43 38.8 42.9 39.9 42.7C41.1 42.5 43.6 41.1 44.1 39.6C44.6 38.1 44.6 36.9 44.4 36.7C44.2 36.5 43.9 36.4 43.5 36.7Z"
-                fill="#25D366"/>
-        </svg>
-
-    </div>
-
-    <h1>WhatsApp Plus</h1>
-
-    <div class="subtitle">
-        WhatsApp Plus istifadə etmək üçün məlumatları seçin
-    </div>
-
-
-    <!-- PHONE -->
-
-    <div class="step">
-
-        <div class="step-title">
-            1. Telefon markanızı seçin
-        </div>
-
-        <div class="phone-options">
-
-            <div class="phone-card"
-                 onclick="selectPhone(this,'iPhone')">
-
-                <div class="phone iphone">
-                    <div class="phone-screen"></div>
-                </div>
-
-                <div class="phone-name">
-                    iPhone
-                </div>
-
-            </div>
-
-
-            <div class="phone-card"
-                 onclick="selectPhone(this,'Android')">
-
-                <div class="phone android">
-                    <div class="phone-screen"></div>
-                </div>
-
-                <div class="phone-name">
-                    Android
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- COUNTRY -->
-
-    <div class="step">
-
-        <div class="step-title">
-            2. Hazırda hansı ölkədən daxil olursunuz?
-        </div>
-
-        <select id="country">
-
-            <option value="">
-                Ölkənizi seçin
-            </option>
-
-            <option value="Azərbaycan">
-                🇦🇿 Azərbaycan
-            </option>
-
-            <option value="Rusiya">
-                🇷🇺 Rusiya
-            </option>
-
-            <option value="Gürcüstan">
-                🇬🇪 Gürcüstan
-            </option>
-
-            <option value="Türkiyə">
-                🇹🇷 Türkiyə
-            </option>
-
-            <option value="Almaniya">
-                🇩🇪 Almaniya
-            </option>
-
-            <option value="Ukrayna">
-                🇺🇦 Ukrayna
-            </option>
-
-            <option value="Qazaxıstan">
-                🇰🇿 Qazaxıstan
-            </option>
-
-            <option value="Digər">
-                🌍 Digər
-            </option>
-
-        </select>
-
-        <div class="error" id="error">
-            Telefon markasını və ölkəni seçin.
-        </div>
-
-    </div>
-
-
-    <button class="confirm" onclick="confirmSelection()">
-        Təsdiq et
-    </button>
-
-</div>
-
-
-<!-- MODAL -->
-
-<div class="modal" id="modal">
-
-    <div class="modal-card">
-
-        <div class="modal-logo">
-
-            <svg viewBox="0 0 64 64" fill="none">
-                <path
-                    d="M32 7C18.2 7 7 17.8 7 31.2C7 36.1 8.5 40.6 11.1 44.4L7.5 56.5L20 53.2C23.6 55.1 27.7 56.1 32 56.1C45.8 56.1 57 45.2 57 31.7C57 18.3 45.8 7 32 7Z"
-                    fill="white"/>
-                <path
-                    d="M43.5 36.7C42.9 36.4 39.8 34.9 39.3 34.7C38.7 34.5 38.3 34.4 37.9 35C37.5 35.6 36.3 37.1 35.9 37.5C35.5 37.9 35.1 38 34.5 37.7C33.9 37.4 31.8 36.7 29.3 34.5C27.4 32.8 26.1 30.8 25.7 30.2C25.3 29.5 25.6 29.1 26 28.7C26.4 28.3 26.8 27.7 27.1 27.3C27.4 26.9 27.5 26.6 27.7 26.1C27.9 25.6 27.8 25.2 27.6 24.8C27.4 24.4 26.1 21.3 25.6 20C25.2 18.8 24.8 18.9 24.4 18.9C24 18.9 23.5 18.9 23 18.9C22.5 18.9 21.7 19.1 21.1 19.8C20.5 20.4 18.8 22 18.8 25.1C18.8 28.2 21.1 31.2 21.4 31.6C21.7 32 25.9 38.5 32.3 41.1C33.8 41.8 35 42.2 35.9 42.5C37.4 43 38.8 42.9 39.9 42.7C41.1 42.5 43.6 41.1 44.1 39.6C44.6 38.1 44.6 36.9 44.4 36.7C44.2 36.5 43.9 36.4 43.5 36.7Z"
-                    fill="#25D366"/>
-            </svg>
-
-        </div>
-
-        <h2>WhatsApp Plus</h2>
-
-        <p>
-            WhatsApp Plus istifadə etmək üçün
-            aşağıdakı məbləğdə ödəniş tələb olunur.
-            Davam etmək istəyirsiniz?
-        </p>
-
-        <div class="price">
-            20 AZN
-        </div>
-
-        <button class="continue" onclick="goWhatsApp()">
-            DAVAM ET
-        </button>
-
-        <button class="cancel" onclick="closeModal()">
-            Ləğv et
-        </button>
-
-    </div>
-
-</div>
-
+<script src="countries.js"></script>
+<script src="cars.js"></script>
 
 <script>
 
-let selectedPhone = "";
+const gifts = [
+  {
+    name: "🌹 Rose",
+    points: 10
+  },
+  {
+    name: "🎁 Kiçik hədiyyə",
+    points: 20
+  },
+  {
+    name: "💎 Orta hədiyyə",
+    points: 100
+  },
+  {
+    name: "🏆 Böyük hədiyyə",
+    points: 500
+  }
+];
 
-function selectPhone(element, phone){
+function renderRace() {
 
-    document.querySelectorAll(".phone-card")
-        .forEach(card => card.classList.remove("selected"));
+  const race = document.getElementById("race");
 
-    element.classList.add("selected");
+  race.innerHTML = "";
 
-    selectedPhone = phone;
+  cars.forEach(car => {
 
-    document.getElementById("error").style.display = "none";
+    const country = document.createElement("div");
+
+    country.className = "country";
+
+    country.innerHTML = `
+      <div class="country-top">
+        <div>
+          <div class="country-name">
+            ${car.flag} ${car.country}
+          </div>
+
+          <div class="stats">
+            ${car.car} · Xal: <span id="points-${car.countryId}">${car.points}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="track">
+
+        <div class="finish"></div>
+
+        <div
+          class="car"
+          id="car-${car.countryId}"
+        >
+          🏎️
+        </div>
+
+      </div>
+
+      <div class="gift-buttons">
+
+        ${gifts.map(gift => `
+          <button
+            onclick="sendGift('${car.countryId}', ${gift.points})"
+          >
+            ${gift.name} +${gift.points}
+          </button>
+        `).join("")}
+
+      </div>
+    `;
+
+    race.appendChild(country);
+
+  });
+
+  updateCars();
 }
 
+function sendGift(countryId, points) {
 
-function confirmSelection(){
+  const car = cars.find(
+    item => item.countryId === countryId
+  );
 
-    const country =
-        document.getElementById("country").value;
+  if (!car) return;
 
-    const error =
-        document.getElementById("error");
+  car.points += points;
+  car.distance += points;
 
-    if(selectedPhone === "" || country === ""){
+  updateCars();
 
-        error.style.display = "block";
+  checkWinner();
+}
 
-        return;
+function updateCars() {
+
+  cars.forEach(car => {
+
+    const carElement =
+      document.getElementById(`car-${car.countryId}`);
+
+    const pointsElement =
+      document.getElementById(`points-${car.countryId}`);
+
+    if (!carElement) return;
+
+    if (pointsElement) {
+      pointsElement.textContent = car.points;
     }
 
-    error.style.display = "none";
+    const maxDistance = 5000;
 
-    document.getElementById("modal").style.display = "flex";
+    const percentage =
+      Math.min(
+        (car.distance / maxDistance) * 100,
+        100
+      );
+
+    carElement.style.left =
+      `calc(${percentage}% - 40px)`;
+
+  });
+
 }
 
+function checkWinner() {
 
-function closeModal(){
+  const winnerElement =
+    document.getElementById("winner");
 
-    document.getElementById("modal").style.display = "none";
+  const winner =
+    cars.find(car => car.distance >= 5000);
+
+  if (winner) {
+
+    winnerElement.innerHTML =
+      `🏆 ${winner.flag} ${winner.country} yarışı qazandı!`;
+
+  }
+
 }
 
+function resetRace() {
 
-function goWhatsApp(){
+  cars.forEach(car => {
+    car.points = 0;
+    car.distance = 0;
+  });
 
-    const country =
-        document.getElementById("country").value;
+  document.getElementById("winner").innerHTML = "";
 
-    const message =
-        "Salam. WhatsApp Plus istifadə etmək istəyirəm.%0A%0A" +
-        "Telefon markam: " + selectedPhone + "%0A" +
-        "Hazırda olduğum ölkə: " + country + "%0A%0A" +
-        "20 AZN ödəniş və istifadə haqqında məlumat almaq istəyirəm.";
+  updateCars();
 
-    window.location.href =
-        "https://wa.me/994556145657?text=" + message;
 }
+
+renderRace();
 
 </script>
 
