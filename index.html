@@ -31,6 +31,14 @@ h1 {
   margin-bottom: 8px;
 }
 
+.selected {
+  text-align: center;
+  color: #00ff88;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
 .race {
   width: 100%;
   max-width: 600px;
@@ -51,6 +59,22 @@ h1 {
   align-items: center;
   font-size: 13px;
   font-weight: bold;
+}
+
+.selectBtn {
+  margin-top: 6px;
+  width: 100%;
+  border: 0;
+  border-radius: 7px;
+  padding: 6px;
+  background: #292929;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.selectBtn.active {
+  background: #00a86b;
 }
 
 .track {
@@ -75,7 +99,6 @@ h1 {
   bottom: 1px;
   font-size: 30px;
   transition: left 0.8s linear;
-  will-change: left;
 }
 
 .finish {
@@ -110,6 +133,10 @@ h1 {
   🔴 Yarış başlayır...
 </div>
 
+<div class="selected" id="selected">
+  Ölkə seçilməyib
+</div>
+
 <div class="race" id="race"></div>
 
 <script>
@@ -123,6 +150,29 @@ const countries = {
   ge: { name: "Gürcüstan", flag: "🇬🇪" }
 };
 
+let selectedCountry = null;
+
+function selectCountry(id) {
+  selectedCountry = id;
+
+  document.getElementById("selected").textContent =
+    countries[id].flag + " " +
+    countries[id].name +
+    " seçildi";
+
+  document.querySelectorAll(".selectBtn").forEach(btn => {
+    btn.classList.remove("active");
+    btn.textContent = "Ölkəni seç";
+  });
+
+  const button = document.getElementById("btn-" + id);
+
+  if (button) {
+    button.classList.add("active");
+    button.textContent = "✓ Seçildi";
+  }
+}
+
 function createRace() {
   const race = document.getElementById("race");
 
@@ -131,10 +181,25 @@ function createRace() {
   for (const id in countries) {
     race.innerHTML += `
       <div class="country">
+
         <div class="top">
-          <span>${countries[id].flag} ${countries[id].name}</span>
-          <span id="points-${id}">0 xal</span>
+          <span>
+            ${countries[id].flag}
+            ${countries[id].name}
+          </span>
+
+          <span id="points-${id}">
+            0 xal
+          </span>
         </div>
+
+        <button
+          class="selectBtn"
+          id="btn-${id}"
+          onclick="selectCountry('${id}')"
+        >
+          Ölkəni seç
+        </button>
 
         <div class="track">
           <div class="finish"></div>
@@ -147,6 +212,7 @@ function createRace() {
         <div class="points" id="distance-${id}">
           Məsafə: 0
         </div>
+
       </div>
     `;
   }
@@ -154,7 +220,9 @@ function createRace() {
 
 async function updateRace() {
   try {
-    const response = await fetch(API + "/race?t=" + Date.now());
+    const response = await fetch(
+      API + "/race?t=" + Date.now()
+    );
 
     if (!response.ok) {
       throw new Error("Server xətası");
@@ -166,28 +234,37 @@ async function updateRace() {
       "🟢 LIVE — Yarış canlı yenilənir";
 
     for (const id in countries) {
-      const points = Number(data[id]?.points || 0);
-      const distance = Number(data[id]?.distance || 0);
 
-      const position = Math.min(
-        (points / 5000) * 92,
-        92
-      );
+      const points =
+        Number(data[id]?.points || 0);
 
-      const car = document.getElementById("car-" + id);
+      const distance =
+        Number(data[id]?.distance || 0);
+
+      const position =
+        Math.min((points / 5000) * 92, 92);
+
+      const car =
+        document.getElementById("car-" + id);
 
       if (car) {
-        car.style.left = position + "%";
+        car.style.left =
+          position + "%";
       }
 
-      document.getElementById("points-" + id).textContent =
+      document.getElementById(
+        "points-" + id
+      ).textContent =
         points + " xal";
 
-      document.getElementById("distance-" + id).textContent =
+      document.getElementById(
+        "distance-" + id
+      ).textContent =
         "Məsafə: " + distance;
     }
 
   } catch (error) {
+
     document.getElementById("status").textContent =
       "🔴 Serverə qoşulmaq mümkün olmadı";
   }
