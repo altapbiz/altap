@@ -11,7 +11,7 @@ const race = {
   am: { points: 0, distance: 0 },
   ge: { points: 0, distance: 0 }
 };
-// Hədiyyə dəyərləri
+// Hədiyyə → xal
 const giftPoints = {
   "5 jeton": 5,
   "10 jeton": 10,
@@ -19,9 +19,18 @@ const giftPoints = {
   "1 tac": 150,
   "200 jeton": 450
 };
+const countryNames = {
+  az: "Azərbaycan",
+  tr: "Türkiyə",
+  ru: "Rusiya",
+  am: "Ermənistan",
+  ge: "Gürcüstan"
+};
+// Sayt
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
+// Yarış məlumatları
 app.get("/race", (req, res) => {
   res.json(race);
 });
@@ -44,7 +53,7 @@ app.post("/gift", (req, res) => {
   race[countryId].points += points;
   race[countryId].distance += points;
   console.log(
-    `🎁 ${giftName} → ${countriesName(countryId)} → +${points} xal`
+    `🎁 ${giftName} → ${countryNames[countryId]} → +${points} xal`
   );
   res.json({
     success: true,
@@ -54,24 +63,18 @@ app.post("/gift", (req, res) => {
     race: race[countryId]
   });
 });
-function countriesName(id) {
-  const names = {
-    az: "Azərbaycan",
-    tr: "Türkiyə",
-    ru: "Rusiya",
-    am: "Ermənistan",
-    ge: "Gürcüstan"
-  };
-  return names[id] || id;
-}
 // TikTok LIVE
 async function startTikTok() {
   try {
     const { TikTokLive } = await import("@tiktool/live");
     const username = process.env.TIKTOK_USERNAME;
     const apiKey = process.env.TIKTOOL_API_KEY;
-    if (!username || !apiKey) {
-      console.log("❌ TikTok dəyişənləri tapılmadı");
+    if (!username) {
+      console.log("❌ TIKTOK_USERNAME tapılmadı");
+      return;
+    }
+    if (!apiKey) {
+      console.log("❌ TIKTOOL_API_KEY tapılmadı");
       return;
     }
     const client = new TikTokLive({
@@ -79,7 +82,8 @@ async function startTikTok() {
       apiKey: apiKey
     });
     client.on("gift", (event) => {
-      console.log("🎁 TikTok hədiyyəsi:", event);
+      console.log("🎁 TikTok hədiyyəsi gəldi:");
+      console.log(JSON.stringify(event, null, 2));
     });
     await client.connect();
     console.log(`🎵 TikTok LIVE qoşuldu: @${username}`);
