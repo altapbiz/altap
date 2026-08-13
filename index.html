@@ -1,135 +1,200 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Altap.Biz LIVE Race</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Altap.Biz LIVE Race</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      background: #090909;
-      color: white;
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
+body {
+  margin: 0;
+  background: #070707;
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 15px;
+}
 
-    h1 {
-      text-align: center;
-      margin-bottom: 25px;
-    }
+h1 {
+  text-align: center;
+  margin: 10px 0 25px;
+}
 
-    .race {
-      max-width: 700px;
-      margin: auto;
-    }
+.race {
+  max-width: 900px;
+  margin: auto;
+}
 
-    .country {
-      background: #151515;
-      border-radius: 15px;
-      padding: 15px;
-      margin-bottom: 15px;
-    }
+.country {
+  background: #151515;
+  border-radius: 18px;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 1px solid #292929;
+}
 
-    .top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 18px;
-      font-weight: bold;
-    }
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+  font-weight: bold;
+}
 
-    .track {
-      position: relative;
-      height: 55px;
-      background: #252525;
-      border-radius: 12px;
-      margin-top: 12px;
-      overflow: hidden;
-    }
+.track {
+  position: relative;
+  height: 75px;
+  margin-top: 12px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #303030 0px,
+      #303030 35px,
+      #202020 35px,
+      #202020 70px
+    );
+  border-radius: 14px;
+  overflow: hidden;
+  border-bottom: 5px solid #777;
+}
 
-    .car {
-      position: absolute;
-      left: 0;
-      top: 7px;
-      font-size: 38px;
-      transition: left 0.5s ease;
-    }
+.car {
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  font-size: 43px;
+  transition: left 0.8s linear;
+  will-change: left;
+}
 
-    .points {
-      color: #00ff88;
-      margin-top: 8px;
-      font-weight: bold;
-    }
-  </style>
+.finish {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  height: 100%;
+  width: 8px;
+  background: repeating-linear-gradient(
+    45deg,
+    white 0px,
+    white 8px,
+    black 8px,
+    black 16px
+  );
+}
+
+.points {
+  margin-top: 8px;
+  color: #00ff88;
+  font-weight: bold;
+}
+
+.status {
+  text-align: center;
+  color: #aaa;
+  margin-bottom: 15px;
+}
+</style>
 </head>
 
 <body>
 
-  <h1>🏎️ Altap.Biz LIVE Race 🎁</h1>
+<h1>🏎️ Altap.Biz LIVE Race 🎁</h1>
 
-  <div class="race" id="race"></div>
+<div class="status" id="status">
+  🔴 Yarış başlayır...
+</div>
 
-  <script>
-    const API = "https://altap-production.up.railway.app";
+<div class="race" id="race"></div>
 
-    const countries = {
-      az: { name: "Azərbaycan", flag: "🇦🇿" },
-      tr: { name: "Türkiyə", flag: "🇹🇷" },
-      ru: { name: "Rusiya", flag: "🇷🇺" },
-      ge: { name: "Gürcüstan", flag: "🇬🇪" },
-      ua: { name: "Ukrayna", flag: "🇺🇦" }
-    };
+<script>
+const API = "https://altap-production.up.railway.app";
 
-    async function updateRace() {
-      try {
-        const response = await fetch(API + "/race");
-        const data = await response.json();
+const countries = {
+  az: { name: "Azərbaycan", flag: "🇦🇿" },
+  tr: { name: "Türkiyə", flag: "🇹🇷" },
+  ru: { name: "Rusiya", flag: "🇷🇺" },
+  ge: { name: "Gürcüstan", flag: "🇬🇪" },
+  ua: { name: "Ukrayna", flag: "🇺🇦" }
+};
 
-        const race = document.getElementById("race");
+function createRace() {
+  const race = document.getElementById("race");
 
-        race.innerHTML = "";
+  race.innerHTML = "";
 
-        for (const id in countries) {
-          const country = countries[id];
-          const points = data[id]?.points || 0;
+  for (const id in countries) {
+    race.innerHTML += `
+      <div class="country">
+        <div class="top">
+          <span>${countries[id].flag} ${countries[id].name}</span>
+          <span id="points-${id}">0 xal</span>
+        </div>
 
-          const maxPoints = 5000;
-          const position = Math.min((points / maxPoints) * 100, 95);
+        <div class="track">
+          <div class="finish"></div>
 
-          race.innerHTML += `
-            <div class="country">
-              <div class="top">
-                <span>${country.flag} ${country.name}</span>
-                <span>${points} xal</span>
-              </div>
+          <div class="car" id="car-${id}">
+            🏎️
+          </div>
+        </div>
 
-              <div class="track">
-                <div class="car" style="left:${position}%">
-                  🏎️
-                </div>
-              </div>
+        <div class="points" id="distance-${id}">
+          Məsafə: 0
+        </div>
+      </div>
+    `;
+  }
+}
 
-              <div class="points">
-                Məsafə: ${data[id]?.distance || 0}
-              </div>
-            </div>
-          `;
-        }
+async function updateRace() {
+  try {
+    const response = await fetch(API + "/race?t=" + Date.now());
 
-      } catch (error) {
-        console.log("Server bağlantısı yoxdur:", error);
-      }
+    if (!response.ok) {
+      throw new Error("Server xətası");
     }
 
-    updateRace();
+    const data = await response.json();
 
-    setInterval(updateRace, 1000);
-  </script>
+    document.getElementById("status").textContent =
+      "🟢 LIVE — Yarış canlı yenilənir";
+
+    for (const id in countries) {
+      const points = Number(data[id]?.points || 0);
+      const distance = Number(data[id]?.distance || 0);
+
+      const position = Math.min(
+        (points / 5000) * 92,
+        92
+      );
+
+      const car = document.getElementById("car-" + id);
+
+      if (car) {
+        car.style.left = position + "%";
+      }
+
+      document.getElementById("points-" + id).textContent =
+        points + " xal";
+
+      document.getElementById("distance-" + id).textContent =
+        "Məsafə: " + distance;
+    }
+
+  } catch (error) {
+    document.getElementById("status").textContent =
+      "🔴 Serverə qoşulmaq mümkün olmadı";
+  }
+}
+
+createRace();
+updateRace();
+
+setInterval(updateRace, 500);
+</script>
 
 </body>
 </html>
