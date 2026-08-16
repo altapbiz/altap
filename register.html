@@ -9,6 +9,7 @@
     input {display: block; margin: 10px 0; padding: 10px; width: 100%; box-sizing: border-box; border: 1px solid #ccc; border-radius: 5px}
     button {padding: 10px; width: 100%; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer}
     button:hover {background: #218838}
+    #msg {margin-top:10px; font-weight:bold}
   </style>
 </head>
 <body>
@@ -20,18 +21,20 @@
       <input type="password" id="password" placeholder="Şifrə" required>
       <button type="submit">Qeydiyyat Ol</button>
     </form>
-    <p id="msg" style="color:green; font-weight:bold; margin-top:10px"></p>
+    <p id="msg"></p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     const SUPABASE_URL = 'https://cdtozogkdnimetuzyhqn.supabase.co'
-    const SUPABASE_KEY = 'sb_publishable_tuMFC93Lepe-F-RD4XJgMw_wA4bo'  // Buraya öz tam açarını yapışdır
+    const SUPABASE_KEY = 'sb_publishable_tuMFC93Lepe-F-RD4XJgMw_wA4bo'
     const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY)
 
-    document.getElementById('registerForm').addListener('submit', async (e) => {
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
       e.preventDefault()
-      document.getElementById('msg').innerText = 'Gözləyin...'
+      const msg = document.getElementById('msg')
+      msg.style.color='black'
+      msg.innerText = 'Gözləyin...'
       
       const { error } = await supabase.from('users').insert([{ 
         full_name: document.getElementById('full_name').value,
@@ -40,11 +43,12 @@
       }])
       
       if(error) {
-        document.getElementById('msg').style.color='red'
-        document.getElementById('msg').innerText = 'Xəta: ' + error.message
+        msg.style.color='red'
+        msg.innerText = 'Xəta: ' + error.message
+        console.log(error)
       } else {
-        document.getElementById('msg').style.color='green'
-        document.getElementById('msg').innerText = 'Qeydiyyat uğurlu! ✅'
+        msg.style.color='green'
+        msg.innerText = 'Qeydiyyat uğurlu! ✅'
         document.getElementById('registerForm').reset()
       }
     })
