@@ -25,11 +25,11 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
-    const SUPABASE_URL = 'https://iubtzsfempgodtiyurpk.supabase.co'
-    const SUPABASE_KEY = 'sb_publishable_mY6ievftzM_hcNab4yyrCQ_1cBKQP7f'
+    const SUPABASE_URL = 'https://cdtozogkdnimetuzyhqn.supabase.co'
+    const SUPABASE_KEY = 'sb_publishable_tuMFC93Lepe-F-RD4XJgMw_wA4bo'  // Buraya öz tam açarını yapışdır
     const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY)
 
-    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+    document.getElementById('registerForm').addListener('submit', async (e) => {
       e.preventDefault()
       document.getElementById('msg').innerText = 'Gözləyin...'
       
