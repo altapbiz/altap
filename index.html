@@ -1,279 +1,631 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Altap.Biz LIVE Race</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-* {
-  box-sizing: border-box;
-}
+  <title>Altap.Biz — Virtual Nömrələr</title>
 
-body {
-  margin: 0;
-  background: #070707;
-  color: white;
-  font-family: Arial, sans-serif;
-  padding: 8px;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                   "Segoe UI", Arial, sans-serif;
+    }
 
-h1 {
-  text-align: center;
-  font-size: 20px;
-  margin: 5px 0 10px;
-}
+    body {
+      background: #f6f4fb;
+      color: #17151d;
+      padding-bottom: 90px;
+    }
 
-.status {
-  text-align: center;
-  color: #aaa;
-  font-size: 12px;
-  margin-bottom: 8px;
-}
+    .app {
+      max-width: 520px;
+      margin: auto;
+      min-height: 100vh;
+    }
 
-.selected {
-  text-align: center;
-  color: #00ff88;
-  font-size: 13px;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
+    /* HEADER */
+    header {
+      padding: 22px 18px 15px;
+      background: linear-gradient(135deg, #6d28d9, #9333ea);
+      color: white;
+      border-radius: 0 0 28px 28px;
+      box-shadow: 0 8px 25px rgba(109, 40, 217, 0.22);
+    }
 
-.race {
-  width: 100%;
-  max-width: 600px;
-  margin: auto;
-}
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-.country {
-  background: #151515;
-  border-radius: 12px;
-  padding: 8px;
-  margin-bottom: 8px;
-  border: 1px solid #292929;
-}
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+    }
 
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
-  font-weight: bold;
-}
+    .logo span {
+      opacity: .75;
+    }
 
-.selectBtn {
-  margin-top: 6px;
-  width: 100%;
-  border: 0;
-  border-radius: 7px;
-  padding: 6px;
-  background: #292929;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-}
+    .user-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      backdrop-filter: blur(10px);
+    }
 
-.selectBtn.active {
-  background: #00a86b;
-}
+    .welcome {
+      margin-top: 22px;
+    }
 
-.track {
-  position: relative;
-  height: 48px;
-  margin-top: 7px;
-  background: repeating-linear-gradient(
-    90deg,
-    #303030 0px,
-    #303030 25px,
-    #202020 25px,
-    #202020 50px
-  );
-  border-radius: 9px;
-  overflow: hidden;
-  border-bottom: 3px solid #777;
-}
+    .welcome h1 {
+      font-size: 27px;
+      line-height: 1.15;
+    }
 
-.car {
-  position: absolute;
-  left: 0;
-  bottom: 1px;
-  font-size: 30px;
-  transition: left 0.8s linear;
-}
+    .welcome p {
+      margin-top: 7px;
+      font-size: 14px;
+      opacity: .85;
+    }
 
-.finish {
-  position: absolute;
-  right: 5px;
-  top: 0;
-  height: 100%;
-  width: 5px;
-  background: repeating-linear-gradient(
-    45deg,
-    white 0px,
-    white 5px,
-    black 5px,
-    black 10px
-  );
-}
+    /* SEARCH */
+    .search-box {
+      padding: 18px;
+    }
 
-.points {
-  margin-top: 4px;
-  color: #00ff88;
-  font-size: 11px;
-  font-weight: bold;
-}
-</style>
+    .search {
+      background: white;
+      border-radius: 16px;
+      padding: 13px 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.06);
+    }
+
+    .search span {
+      font-size: 19px;
+    }
+
+    .search input {
+      border: none;
+      outline: none;
+      width: 100%;
+      font-size: 15px;
+      background: transparent;
+    }
+
+    /* SECTION */
+    .section-title {
+      padding: 0 18px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-title h2 {
+      font-size: 20px;
+    }
+
+    .section-title small {
+      color: #7c3aed;
+      font-weight: 600;
+    }
+
+    /* CARDS */
+    .numbers {
+      padding: 0 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 17px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.055);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .country {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .flag {
+      width: 43px;
+      height: 43px;
+      border-radius: 13px;
+      background: #f3efff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+    }
+
+    .country h3 {
+      font-size: 16px;
+    }
+
+    .country p {
+      margin-top: 3px;
+      color: #8a8791;
+      font-size: 12px;
+    }
+
+    .vip {
+      background: #fff4cc;
+      color: #a66b00;
+      border-radius: 8px;
+      padding: 5px 8px;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .number {
+      margin-top: 17px;
+      font-size: 20px;
+      font-weight: 750;
+      letter-spacing: .3px;
+    }
+
+    .services {
+      margin-top: 8px;
+      display: flex;
+      gap: 7px;
+    }
+
+    .service {
+      font-size: 11px;
+      padding: 5px 8px;
+      background: #f5f3f8;
+      border-radius: 7px;
+      color: #69656f;
+    }
+
+    .bottom {
+      margin-top: 17px;
+      padding-top: 14px;
+      border-top: 1px solid #eeeaf2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: 800;
+      color: #6d28d9;
+    }
+
+    .price small {
+      font-size: 11px;
+      color: #99939f;
+      font-weight: 500;
+    }
+
+    .buy {
+      border: none;
+      background: linear-gradient(135deg, #6d28d9, #9333ea);
+      color: white;
+      padding: 11px 17px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 5px 13px rgba(109,40,217,.22);
+    }
+
+    .buy:active {
+      transform: scale(.96);
+    }
+
+    /* INFO */
+    .info {
+      margin: 20px 18px;
+      background: #eee9ff;
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .info-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: #7c3aed;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .info h4 {
+      font-size: 13px;
+    }
+
+    .info p {
+      margin-top: 4px;
+      font-size: 11px;
+      color: #716a80;
+      line-height: 1.4;
+    }
+
+    /* BOTTOM NAV */
+    .nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 520px;
+      height: 72px;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(15px);
+      border-top: 1px solid #eeeaf2;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .nav-item {
+      text-align: center;
+      color: #96919c;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .nav-item div {
+      font-size: 20px;
+      margin-bottom: 3px;
+    }
+
+    .nav-item.active {
+      color: #7c3aed;
+    }
+
+    .add {
+      width: 51px;
+      height: 51px;
+      border-radius: 17px;
+      background: linear-gradient(135deg,#6d28d9,#9333ea);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 7px 20px rgba(109,40,217,.3);
+    }
+
+    /* EMPTY SEARCH */
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>🏎️ Altap.Biz LIVE Race 🎁</h1>
+<div class="app">
 
-<div class="status" id="status">
-  🔴 Yarış başlayır...
-</div>
+  <!-- HEADER -->
+  <header>
+    <div class="top">
+      <div class="logo">Altap<span>.Biz</span></div>
+      <div class="user-btn">👤</div>
+    </div>
 
-<div class="selected" id="selected">
-  Ölkə seçilməyib
-</div>
+    <div class="welcome">
+      <h1>Virtual Nömrələr</h1>
+      <p>WhatsApp və Telegram üçün nömrəni seç.</p>
+    </div>
+  </header>
 
-<div class="race" id="race"></div>
+  <!-- SEARCH -->
+  <div class="search-box">
+    <div class="search">
+      <span>🔎</span>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Ölkə və ya nömrə axtar..."
+        onkeyup="searchNumbers()"
+      >
+    </div>
+  </div>
 
-<script>
-const API = "https://altap-production.up.railway.app";
+  <!-- TITLE -->
+  <div class="section-title">
+    <h2>Mövcud nömrələr</h2>
+    <small>6 nömrə</small>
+  </div>
 
-const countries = {
-  az: { name: "Azərbaycan", flag: "🇦🇿" },
-  tr: { name: "Türkiyə", flag: "🇹🇷" },
-  ru: { name: "Rusiya", flag: "🇷🇺" },
-  am: { name: "Ermənistan", flag: "🇦🇲" },
-  ge: { name: "Gürcüstan", flag: "🇬🇪" }
-};
+  <!-- NUMBERS -->
+  <div class="numbers" id="numbers">
 
-let selectedCountry = null;
-
-function selectCountry(id) {
-  selectedCountry = id;
-
-  document.getElementById("selected").textContent =
-    countries[id].flag + " " +
-    countries[id].name +
-    " seçildi";
-
-  document.querySelectorAll(".selectBtn").forEach(btn => {
-    btn.classList.remove("active");
-    btn.textContent = "Ölkəni seç";
-  });
-
-  const button = document.getElementById("btn-" + id);
-
-  if (button) {
-    button.classList.add("active");
-    button.textContent = "✓ Seçildi";
-  }
-}
-
-function createRace() {
-  const race = document.getElementById("race");
-
-  race.innerHTML = "";
-
-  for (const id in countries) {
-    race.innerHTML += `
-      <div class="country">
-
-        <div class="top">
-          <span>
-            ${countries[id].flag}
-            ${countries[id].name}
-          </span>
-
-          <span id="points-${id}">
-            0 xal
-          </span>
-        </div>
-
-        <button
-          class="selectBtn"
-          id="btn-${id}"
-          onclick="selectCountry('${id}')"
-        >
-          Ölkəni seç
-        </button>
-
-        <div class="track">
-          <div class="finish"></div>
-
-          <div class="car" id="car-${id}">
-            🏎️
+    <!-- USA -->
+    <div class="card number-card">
+      <div class="card-top">
+        <div class="country">
+          <div class="flag">🇺🇸</div>
+          <div>
+            <h3>ABŞ</h3>
+            <p>United States</p>
           </div>
         </div>
-
-        <div class="points" id="distance-${id}">
-          Məsafə: 0
-        </div>
-
+        <div class="vip">VIP</div>
       </div>
-    `;
+
+      <div class="number">+1 202 555 ****</div>
+
+      <div class="services">
+        <span class="service">WhatsApp</span>
+        <span class="service">Telegram</span>
+      </div>
+
+      <div class="bottom">
+        <div class="price">15 <small>AZN</small></div>
+        <button class="buy" onclick="buyNumber('🇺🇸 ABŞ', '15 AZN')">
+          Nömrəni al
+        </button>
+      </div>
+    </div>
+
+    <!-- RUSSIA -->
+    <div class="card number-card">
+      <div class="card-top">
+        <div class="country">
+          <div class="flag">🇷🇺</div>
+          <div>
+            <h3>Rusiya</h3>
+            <p>Russia</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="number">+7 916 234 ****</div>
+
+      <div class="services">
+        <span class="service">WhatsApp</span>
+        <span class="service">Telegram</span>
+      </div>
+
+      <div class="bottom">
+        <div class="price">20 <small>AZN</small></div>
+        <button class="buy" onclick="buyNumber('🇷🇺 Rusiya', '20 AZN')">
+          Nömrəni al
+        </button>
+      </div>
+    </div>
+
+    <!-- GEORGIA -->
+    <div class="card number-card">
+      <div class="card-top">
+        <div class="country">
+          <div class="flag">🇬🇪</div>
+          <div>
+            <h3>Gürcüstan</h3>
+            <p>Georgia</p>
+          </div>
+        </div>
+        <div class="vip">VIP</div>
+      </div>
+
+      <div class="number">+995 599 123 ****</div>
+
+      <div class="services">
+        <span class="service">WhatsApp</span>
+        <span class="service">Telegram</span>
+      </div>
+
+      <div class="bottom">
+        <div class="price">18 <small>AZN</small></div>
+        <button class="buy" onclick="buyNumber('🇬🇪 Gürcüstan', '18 AZN')">
+          Nömrəni al
+        </button>
+      </div>
+    </div>
+
+    <!-- GERMANY -->
+    <div class="card number-card">
+      <div class="card-top">
+        <div class="country">
+          <div class="flag">🇩🇪</div>
+          <div>
+            <h3>Almaniya</h3>
+            <p>Germany</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="number">+49 151 234 ****</div>
+
+      <div class="services">
+        <span class="service">WhatsApp</span>
+        <span class="service">Telegram</span>
+      </div>
+
+      <div class="bottom">
+        <div class="price">22 <small>AZN</small></div>
+        <button class="buy" onclick="buyNumber('🇩🇪 Almaniya', '22 AZN')">
+          Nömrəni al
+        </button>
+      </div>
+    </div>
+
+    <!-- TURKEY -->
+    <div class="card number-card">
+      <div class="card-top">
+        <div class="country">
+          <div class="flag">🇹🇷</div>
+          <div>
+            <h3>Türkiyə</h3>
+            <p>Turkey</p>
+          </div>
+        </div>
+        <div class="vip">VIP</div>
+      </div>
+
+      <div class="number">+90 532 456 ****</div>
+
+      <div class="services">
+        <span class="service">WhatsApp</span>
+        <span class="service">Telegram</span>
+      </div>
+
+      <div class="bottom">
+        <div class="price">25 <small>AZN</small></div>
+        <button class="buy" onclick="buyNumber('🇹🇷 Türkiyə', '25 AZN')">
+          Nömrəni al
+        </button>
+      </div>
+    </div>
+
+    <!-- BELARUS -->
+    <div class="card number-card">
+      <div class="card-top">
+        <div class="country">
+          <div class="flag">🇧🇾</div>
+          <div>
+            <h3>Belarus</h3>
+            <p>Belarus</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="number">+375 29 123 ****</div>
+
+      <div class="services">
+        <span class="service">WhatsApp</span>
+        <span class="service">Telegram</span>
+      </div>
+
+      <div class="bottom">
+        <div class="price">19 <small>AZN</small></div>
+        <button class="buy" onclick="buyNumber('🇧🇾 Belarus', '19 AZN')">
+          Nömrəni al
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- INFO -->
+  <div class="info">
+    <div class="info-icon">✓</div>
+    <div>
+      <h4>Sifariş necə edilir?</h4>
+      <p>
+        Bəyəndiyiniz nömrənin “Nömrəni al” düyməsinə
+        basın. Sifariş üçün WhatsApp-a yönləndiriləcəksiniz.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="nav">
+
+  <div class="nav-item active">
+    <div>⌂</div>
+    Əsas
+  </div>
+
+  <div class="nav-item">
+    <div>⭐</div>
+    VIP
+  </div>
+
+  <div class="add">+</div>
+
+  <div class="nav-item">
+    <div>🔎</div>
+    Axtarış
+  </div>
+
+  <div class="nav-item">
+    <div>👤</div>
+    Kabinet
+  </div>
+
+</nav>
+
+
+<script>
+
+  /* WHATSAPP SİFARİŞ */
+  function buyNumber(country, price) {
+
+    const whatsappNumber = "212649276900";
+
+    const message =
+      "Salam! " +
+      country +
+      " virtual nömrəsini almaq istəyirəm. " +
+      "Qiymət: " +
+      price;
+
+    const url =
+      "https://wa.me/" +
+      whatsappNumber +
+      "?text=" +
+      encodeURIComponent(message);
+
+    window.location.href = url;
   }
-}
 
-async function updateRace() {
-  try {
-    const response = await fetch(
-      API + "/race?t=" + Date.now()
-    );
 
-    if (!response.ok) {
-      throw new Error("Server xətası");
-    }
+  /* AXTARIŞ */
+  function searchNumbers() {
 
-    const data = await response.json();
+    const input =
+      document.getElementById("searchInput")
+      .value
+      .toLowerCase()
+      .trim();
 
-    document.getElementById("status").textContent =
-      "🟢 LIVE — Yarış canlı yenilənir";
+    const cards =
+      document.querySelectorAll(".number-card");
 
-    for (const id in countries) {
+    cards.forEach(function(card) {
 
-      const points =
-        Number(data[id]?.points || 0);
+      const text =
+        card.innerText.toLowerCase();
 
-      const distance =
-        Number(data[id]?.distance || 0);
-
-      const position =
-        Math.min((points / 5000) * 92, 92);
-
-      const car =
-        document.getElementById("car-" + id);
-
-      if (car) {
-        car.style.left =
-          position + "%";
+      if (text.includes(input)) {
+        card.classList.remove("hidden");
+      } else {
+        card.classList.add("hidden");
       }
 
-      document.getElementById(
-        "points-" + id
-      ).textContent =
-        points + " xal";
-
-      document.getElementById(
-        "distance-" + id
-      ).textContent =
-        "Məsafə: " + distance;
-    }
-
-  } catch (error) {
-
-    document.getElementById("status").textContent =
-      "🔴 Serverə qoşulmaq mümkün olmadı";
+    });
   }
-}
 
-createRace();
-updateRace();
-
-setInterval(updateRace, 500);
 </script>
 
 </body>
