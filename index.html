@@ -19,13 +19,8 @@ body{
     padding-bottom:85px;
 }
 
-button,input{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
+button,input{font:inherit}
+button{cursor:pointer}
 
 .app{
     max-width:540px;
@@ -34,10 +29,9 @@ button{
 }
 
 /* HEADER */
-
 header{
     background:linear-gradient(135deg,#6424d8,#9839ed);
-    color:white;
+    color:#fff;
     padding:20px 18px 25px;
     border-radius:0 0 28px 28px;
     box-shadow:0 8px 25px rgba(100,36,216,.25);
@@ -54,9 +48,7 @@ header{
     font-weight:900;
 }
 
-.logo span{
-    opacity:.55;
-}
+.logo span{opacity:.55}
 
 .profile{
     width:42px;
@@ -80,23 +72,14 @@ header p{
 }
 
 /* PAGES */
-
-.page{
-    display:none;
-}
-
-.page.active{
-    display:block;
-}
+.page{display:none}
+.page.active{display:block}
 
 /* SEARCH */
-
-.search-wrap{
-    padding:16px 18px;
-}
+.search-wrap{padding:16px 18px}
 
 .search{
-    background:white;
+    background:#fff;
     border-radius:16px;
     padding:13px 15px;
     display:flex;
@@ -114,7 +97,6 @@ header p{
 }
 
 /* CATEGORIES */
-
 .categories{
     display:flex;
     gap:8px;
@@ -122,14 +104,12 @@ header p{
     padding:0 18px 17px;
 }
 
-.categories::-webkit-scrollbar{
-    display:none;
-}
+.categories::-webkit-scrollbar{display:none}
 
 .cat{
     white-space:nowrap;
     border:none;
-    background:white;
+    background:#fff;
     color:#777;
     padding:9px 14px;
     border-radius:12px;
@@ -139,11 +119,10 @@ header p{
 
 .cat.active{
     background:#7229dc;
-    color:white;
+    color:#fff;
 }
 
 /* SECTION */
-
 .section{
     padding:0 18px 12px;
     display:flex;
@@ -151,9 +130,7 @@ header p{
     align-items:center;
 }
 
-.section h2{
-    font-size:19px;
-}
+.section h2{font-size:19px}
 
 .section span{
     color:#7229dc;
@@ -162,7 +139,6 @@ header p{
 }
 
 /* CARDS */
-
 .numbers{
     padding:0 18px;
     display:grid;
@@ -170,7 +146,7 @@ header p{
 }
 
 .card{
-    background:white;
+    background:#fff;
     border-radius:20px;
     padding:16px;
     box-shadow:0 5px 18px rgba(0,0,0,.05);
@@ -198,9 +174,7 @@ header p{
     font-size:25px;
 }
 
-.country h3{
-    font-size:15px;
-}
+.country h3{font-size:15px}
 
 .country p{
     color:#999;
@@ -259,7 +233,7 @@ header p{
 
 .buy{
     border:none;
-    color:white;
+    color:#fff;
     background:linear-gradient(135deg,#6926d9,#9737ed);
     padding:11px 15px;
     border-radius:12px;
@@ -267,12 +241,9 @@ header p{
     font-weight:800;
 }
 
-.buy:active{
-    transform:scale(.96);
-}
+.buy:active{transform:scale(.96)}
 
 /* EMPTY */
-
 .empty{
     text-align:center;
     padding:45px 20px;
@@ -285,9 +256,8 @@ header p{
 }
 
 /* CABINET */
-
 .profile-box{
-    background:white;
+    background:#fff;
     margin:20px 18px 0;
     padding:22px;
     border-radius:20px;
@@ -301,7 +271,7 @@ header p{
     margin:auto;
     border-radius:50%;
     background:linear-gradient(135deg,#7029dc,#9b3df0);
-    color:white;
+    color:#fff;
     display:grid;
     place-items:center;
     font-size:30px;
@@ -319,7 +289,7 @@ header p{
 }
 
 .account-row{
-    background:white;
+    background:#fff;
     margin:12px 18px 0;
     padding:17px;
     border-radius:16px;
@@ -338,7 +308,6 @@ header p{
 }
 
 /* BOTTOM NAV */
-
 .nav{
     position:fixed;
     left:50%;
@@ -369,17 +338,13 @@ header p{
     margin-bottom:3px;
 }
 
-.nav-item.active{
-    color:#7029dc;
-}
+.nav-item.active{color:#7029dc}
 </style>
 </head>
 
 <body>
 
 <div class="app">
-
-<!-- HEADER -->
 
 <header>
 
@@ -406,14 +371,13 @@ header p{
 </header>
 
 
-<!-- ƏSAS SƏHİFƏ -->
+<!-- ƏSAS -->
 
 <section id="home" class="page active">
 
     <div class="search-wrap">
 
         <div class="search">
-
             🔎
 
             <input
@@ -430,66 +394,48 @@ header p{
 
     <div class="categories">
 
-        <button
-            class="cat active"
-            onclick="filterCountry('all',this)"
-        >
+        <button class="cat active"
+                onclick="filterCountry('all',this)">
             Hamısı
         </button>
 
-        <button
-            class="cat"
-            onclick="filterCountry('AZ',this)"
-        >
+        <button class="cat"
+                onclick="filterCountry('AZ',this)">
             🇦🇿 Azərbaycan
         </button>
 
-        <button
-            class="cat"
-            onclick="filterCountry('US',this)"
-        >
+        <button class="cat"
+                onclick="filterCountry('US',this)">
             🇺🇸 ABŞ
         </button>
 
-        <button
-            class="cat"
-            onclick="filterCountry('GB',this)"
-        >
+        <button class="cat"
+                onclick="filterCountry('GB',this)">
             🇬🇧 İngiltərə
         </button>
 
-        <button
-            class="cat"
-            onclick="filterCountry('DE',this)"
-        >
+        <button class="cat"
+                onclick="filterCountry('DE',this)">
             🇩🇪 Almaniya
         </button>
 
-        <button
-            class="cat"
-            onclick="filterCountry('FR',this)"
-        >
+        <button class="cat"
+                onclick="filterCountry('FR',this)">
             🇫🇷 Fransa
         </button>
 
-        <button
-            class="cat"
-            onclick="filterCountry('TR',this)"
-        >
+        <button class="cat"
+                onclick="filterCountry('TR',this)">
             🇹🇷 Türkiyə
         </button>
 
-        <button
-            class="cat"
-            onclick="filterCountry('RU',this)"
-        >
+        <button class="cat"
+                onclick="filterCountry('RU',this)">
             🇷🇺 Rusiya
         </button>
 
-        <button
-            class="cat"
-            onclick="filterCountry('GE',this)"
-        >
+        <button class="cat"
+                onclick="filterCountry('GE',this)">
             🇬🇪 Gürcüstan
         </button>
 
@@ -498,9 +444,7 @@ header p{
 
     <div class="section">
 
-        <h2>
-            Mövcud nömrələr
-        </h2>
+        <h2>Mövcud nömrələr</h2>
 
         <span id="count">
             0 nömrə
@@ -509,22 +453,18 @@ header p{
     </div>
 
 
-    <div
-        class="numbers"
-        id="numbers"
-    ></div>
+    <div class="numbers" id="numbers"></div>
 
 </section>
 
 
-<!-- VIP SƏHİFƏ -->
+<!-- VIP -->
 
 <section id="vip" class="page">
 
     <div class="search-wrap">
 
         <div class="search">
-
             🔎
 
             <input
@@ -541,33 +481,25 @@ header p{
 
     <div class="section">
 
-        <h2>
-            ⭐ VIP nömrələr
-        </h2>
+        <h2>⭐ VIP nömrələr</h2>
 
-        <span>
-            Premium
-        </span>
+        <span>Premium</span>
 
     </div>
 
 
-    <div
-        class="numbers"
-        id="vipNumbers"
-    ></div>
+    <div class="numbers" id="vipNumbers"></div>
 
 </section>
 
 
-<!-- AXTARIŞ SƏHİFƏSİ -->
+<!-- AXTARIŞ -->
 
 <section id="searchPage" class="page">
 
     <div class="search-wrap">
 
         <div class="search">
-
             🔎
 
             <input
@@ -584,17 +516,12 @@ header p{
 
     <div class="section">
 
-        <h2>
-            Axtarış nəticələri
-        </h2>
+        <h2>Axtarış nəticələri</h2>
 
     </div>
 
 
-    <div
-        class="numbers"
-        id="searchResults"
-    ></div>
+    <div class="numbers" id="searchResults"></div>
 
 </section>
 
@@ -609,48 +536,34 @@ header p{
             👤
         </div>
 
-        <h2>
-            Mənim kabinetim
-        </h2>
+        <h2>Mənim kabinetim</h2>
 
-        <p>
-            Altap.Biz istifadəçisi
-        </p>
+        <p>Altap.Biz istifadəçisi</p>
 
     </div>
 
 
     <div class="account-row">
 
-        <span>
-            Sifarişlər
-        </span>
+        <span>Sifarişlər</span>
 
-        <span id="orderCount">
-            0
-        </span>
+        <span id="orderCount">0</span>
 
     </div>
 
 
     <div class="account-row">
 
-        <span>
-            VIP sifarişlər
-        </span>
+        <span>VIP sifarişlər</span>
 
-        <span>
-            0
-        </span>
+        <span>0</span>
 
     </div>
 
 
     <div class="account-row">
 
-        <span>
-            Hesab statusu
-        </span>
+        <span>Hesab statusu</span>
 
         <span style="color:#20a464">
             Aktiv
@@ -665,37 +578,26 @@ header p{
 
 <nav class="nav">
 
-    <div
-        class="nav-item active"
-        onclick="openPage('home',this)"
-    >
+    <div class="nav-item active"
+         onclick="openPage('home',this)">
         <div>⌂</div>
         Əsas
     </div>
 
-
-    <div
-        class="nav-item"
-        onclick="openPage('vip',this)"
-    >
+    <div class="nav-item"
+         onclick="openPage('vip',this)">
         <div>⭐</div>
         VIP
     </div>
 
-
-    <div
-        class="nav-item"
-        onclick="openPage('searchPage',this)"
-    >
+    <div class="nav-item"
+         onclick="openPage('searchPage',this)">
         <div>🔎</div>
         Axtarış
     </div>
 
-
-    <div
-        class="nav-item"
-        onclick="openPage('account',this)"
-    >
+    <div class="nav-item"
+         onclick="openPage('account',this)">
         <div>👤</div>
         Kabinet
     </div>
@@ -707,22 +609,28 @@ header p{
 
 <script>
 
-/* WHATSAPP */
-
 const whatsappNumber = "212649276900";
 
 
-/* NÖMRƏLƏR */
+/*
+    QİYMƏTLƏR:
+    40% daha ucuz
+    60% daha bahalı
+
+    Ümumi qiymətlər aşağı saxlanılıb.
+*/
 
 const numbers = [
+
+    /* AZ */
 
     {
         c:"AZ",
         f:"🇦🇿",
         country:"Azərbaycan",
         n:"+994 12 345 ****",
-        p:15,
-        v:true
+        p:9,
+        v:false
     },
 
     {
@@ -730,7 +638,7 @@ const numbers = [
         f:"🇦🇿",
         country:"Azərbaycan",
         n:"+994 10 321 ****",
-        p:17,
+        p:12,
         v:true
     },
 
@@ -739,7 +647,7 @@ const numbers = [
         f:"🇦🇿",
         country:"Azərbaycan",
         n:"+994 70 222 ****",
-        p:18,
+        p:15,
         v:false
     },
 
@@ -748,7 +656,7 @@ const numbers = [
         f:"🇦🇿",
         country:"Azərbaycan",
         n:"+994 77 456 ****",
-        p:20,
+        p:13,
         v:true
     },
 
@@ -757,18 +665,20 @@ const numbers = [
         f:"🇦🇿",
         country:"Azərbaycan",
         n:"+994 99 888 ****",
-        p:25,
+        p:18,
         v:false
     },
 
+
+    /* USA */
 
     {
         c:"US",
         f:"🇺🇸",
         country:"ABŞ",
         n:"+1 202 555 ****",
-        p:15,
-        v:true
+        p:10,
+        v:false
     },
 
     {
@@ -776,8 +686,8 @@ const numbers = [
         f:"🇺🇸",
         country:"ABŞ",
         n:"+1 305 442 ****",
-        p:18,
-        v:false
+        p:14,
+        v:true
     },
 
     {
@@ -785,16 +695,7 @@ const numbers = [
         f:"🇺🇸",
         country:"ABŞ",
         n:"+1 415 731 ****",
-        p:22,
-        v:true
-    },
-
-    {
-        c:"US",
-        f:"🇺🇸",
-        country:"ABŞ",
-        n:"+1 646 218 ****",
-        p:20,
+        p:17,
         v:false
     },
 
@@ -802,18 +703,29 @@ const numbers = [
         c:"US",
         f:"🇺🇸",
         country:"ABŞ",
-        n:"+1 917 654 ****",
-        p:25,
+        n:"+1 646 218 ****",
+        p:13,
         v:true
     },
 
+    {
+        c:"US",
+        f:"🇺🇸",
+        country:"ABŞ",
+        n:"+1 917 654 ****",
+        p:20,
+        v:true
+    },
+
+
+    /* UK */
 
     {
         c:"GB",
         f:"🇬🇧",
         country:"İngiltərə",
         n:"+44 7400 123 ****",
-        p:20,
+        p:12,
         v:false
     },
 
@@ -822,7 +734,7 @@ const numbers = [
         f:"🇬🇧",
         country:"İngiltərə",
         n:"+44 7700 456 ****",
-        p:24,
+        p:18,
         v:true
     },
 
@@ -831,7 +743,7 @@ const numbers = [
         f:"🇬🇧",
         country:"İngiltərə",
         n:"+44 7900 321 ****",
-        p:22,
+        p:15,
         v:false
     },
 
@@ -840,7 +752,7 @@ const numbers = [
         f:"🇬🇧",
         country:"İngiltərə",
         n:"+44 7300 777 ****",
-        p:28,
+        p:21,
         v:true
     },
 
@@ -849,17 +761,19 @@ const numbers = [
         f:"🇬🇧",
         country:"İngiltərə",
         n:"+44 7500 888 ****",
-        p:25,
+        p:16,
         v:false
     },
 
+
+    /* GERMANY */
 
     {
         c:"DE",
         f:"🇩🇪",
         country:"Almaniya",
         n:"+49 151 234 ****",
-        p:22,
+        p:14,
         v:true
     },
 
@@ -868,7 +782,7 @@ const numbers = [
         f:"🇩🇪",
         country:"Almaniya",
         n:"+49 152 555 ****",
-        p:20,
+        p:12,
         v:false
     },
 
@@ -877,7 +791,7 @@ const numbers = [
         f:"🇩🇪",
         country:"Almaniya",
         n:"+49 160 789 ****",
-        p:25,
+        p:19,
         v:true
     },
 
@@ -886,7 +800,7 @@ const numbers = [
         f:"🇩🇪",
         country:"Almaniya",
         n:"+49 170 321 ****",
-        p:24,
+        p:16,
         v:false
     },
 
@@ -895,17 +809,19 @@ const numbers = [
         f:"🇩🇪",
         country:"Almaniya",
         n:"+49 175 999 ****",
-        p:30,
+        p:22,
         v:true
     },
 
+
+    /* FRANCE */
 
     {
         c:"FR",
         f:"🇫🇷",
         country:"Fransa",
         n:"+33 6 12 34 ** **",
-        p:21,
+        p:13,
         v:false
     },
 
@@ -914,7 +830,7 @@ const numbers = [
         f:"🇫🇷",
         country:"Fransa",
         n:"+33 6 45 67 ** **",
-        p:25,
+        p:18,
         v:true
     },
 
@@ -923,7 +839,7 @@ const numbers = [
         f:"🇫🇷",
         country:"Fransa",
         n:"+33 7 11 22 ** **",
-        p:23,
+        p:15,
         v:false
     },
 
@@ -932,7 +848,7 @@ const numbers = [
         f:"🇫🇷",
         country:"Fransa",
         n:"+33 7 88 99 ** **",
-        p:29,
+        p:21,
         v:true
     },
 
@@ -941,17 +857,19 @@ const numbers = [
         f:"🇫🇷",
         country:"Fransa",
         n:"+33 6 55 66 ** **",
-        p:27,
+        p:17,
         v:false
     },
 
+
+    /* TURKEY */
 
     {
         c:"TR",
         f:"🇹🇷",
         country:"Türkiyə",
         n:"+90 532 456 ****",
-        p:25,
+        p:15,
         v:true
     },
 
@@ -960,7 +878,7 @@ const numbers = [
         f:"🇹🇷",
         country:"Türkiyə",
         n:"+90 535 123 ****",
-        p:22,
+        p:12,
         v:false
     },
 
@@ -969,7 +887,7 @@ const numbers = [
         f:"🇹🇷",
         country:"Türkiyə",
         n:"+90 542 777 ****",
-        p:28,
+        p:19,
         v:true
     },
 
@@ -978,7 +896,7 @@ const numbers = [
         f:"🇹🇷",
         country:"Türkiyə",
         n:"+90 545 888 ****",
-        p:24,
+        p:16,
         v:false
     },
 
@@ -987,17 +905,19 @@ const numbers = [
         f:"🇹🇷",
         country:"Türkiyə",
         n:"+90 552 999 ****",
-        p:30,
+        p:22,
         v:true
     },
 
+
+    /* RUSSIA */
 
     {
         c:"RU",
         f:"🇷🇺",
         country:"Rusiya",
         n:"+7 916 234 ****",
-        p:20,
+        p:11,
         v:false
     },
 
@@ -1006,7 +926,7 @@ const numbers = [
         f:"🇷🇺",
         country:"Rusiya",
         n:"+7 926 555 ****",
-        p:22,
+        p:16,
         v:true
     },
 
@@ -1015,7 +935,7 @@ const numbers = [
         f:"🇷🇺",
         country:"Rusiya",
         n:"+7 999 123 ****",
-        p:25,
+        p:14,
         v:false
     },
 
@@ -1024,7 +944,7 @@ const numbers = [
         f:"🇷🇺",
         country:"Rusiya",
         n:"+7 903 777 ****",
-        p:28,
+        p:20,
         v:true
     },
 
@@ -1033,17 +953,19 @@ const numbers = [
         f:"🇷🇺",
         country:"Rusiya",
         n:"+7 915 888 ****",
-        p:24,
+        p:17,
         v:false
     },
 
+
+    /* GEORGIA */
 
     {
         c:"GE",
         f:"🇬🇪",
         country:"Gürcüstan",
         n:"+995 599 123 ****",
-        p:18,
+        p:10,
         v:true
     },
 
@@ -1052,7 +974,7 @@ const numbers = [
         f:"🇬🇪",
         country:"Gürcüstan",
         n:"+995 555 456 ****",
-        p:20,
+        p:13,
         v:false
     },
 
@@ -1061,7 +983,7 @@ const numbers = [
         f:"🇬🇪",
         country:"Gürcüstan",
         n:"+995 577 777 ****",
-        p:25,
+        p:18,
         v:true
     },
 
@@ -1070,7 +992,7 @@ const numbers = [
         f:"🇬🇪",
         country:"Gürcüstan",
         n:"+995 593 888 ****",
-        p:22,
+        p:15,
         v:false
     },
 
@@ -1079,105 +1001,106 @@ const numbers = [
         f:"🇬🇪",
         country:"Gürcüstan",
         n:"+995 514 999 ****",
-        p:27,
+        p:21,
         v:true
     }
 
 ];
 
 
-/* KART */
+/* KART YARAT */
 
 function createCard(item){
 
     return `
+        <div class="card">
 
-    <div class="card">
+            <div class="card-top">
 
-        <div class="card-top">
+                <div class="country">
 
-            <div class="country">
+                    <div class="flag">
+                        ${item.f}
+                    </div>
 
-                <div class="flag">
-                    ${item.f}
+                    <div>
+
+                        <h3>
+                            ${item.country}
+                        </h3>
+
+                        <p>
+                            Virtual nömrə
+                        </p>
+
+                    </div>
+
                 </div>
 
-                <div>
-
-                    <h3>
-                        ${item.country}
-                    </h3>
-
-                    <p>
-                        Virtual nömrə
-                    </p>
-
-                </div>
+                ${
+                    item.v
+                    ?
+                    `<div class="badge">
+                        ⭐ VIP
+                    </div>`
+                    :
+                    ""
+                }
 
             </div>
 
 
-            ${
-                item.v
-                ?
-                `<div class="badge">
-                    ⭐ VIP
-                </div>`
-                :
-                ""
-            }
-
-        </div>
+            <div class="number">
+                ${item.n}
+            </div>
 
 
-        <div class="number">
-            ${item.n}
-        </div>
+            <div class="tags">
 
+                <span class="tag">
+                    WhatsApp
+                </span>
 
-        <div class="tags">
-
-            <span class="tag">
-                WhatsApp
-            </span>
-
-            <span class="tag">
-                Telegram
-            </span>
-
-        </div>
-
-
-        <div class="card-bottom">
-
-            <div class="price">
-
-                ${item.p}
-
-                <small>
-                    AZN
-                </small>
+                <span class="tag">
+                    Telegram
+                </span>
 
             </div>
 
 
-            <button
-                class="buy"
-                onclick="buyNumber('${item.country}','${item.n}','${item.p}')"
-            >
-                Nömrəni al
-            </button>
+            <div class="card-bottom">
+
+                <div class="price">
+
+                    ${item.p}
+
+                    <small>
+                        AZN
+                    </small>
+
+                </div>
+
+
+                <button
+                    class="buy"
+                    onclick="buyNumber(
+                        '${item.country}',
+                        '${item.n}',
+                        '${item.p}'
+                    )"
+                >
+                    Nömrəni al
+                </button>
+
+            </div>
 
         </div>
-
-    </div>
-
     `;
 
 }
 
 
-/* NÖMRƏLƏRİ GÖSTƏR */
+/* NÖMRƏLƏR */
 
 function renderNumbers(list){
 
@@ -1188,17 +1111,15 @@ function renderNumbers(list){
     if(!list.length){
 
         box.innerHTML = `
+            <div class="empty">
 
-        <div class="empty">
+                <div class="empty-icon">
+                    🔎
+                </div>
 
-            <div class="empty-icon">
-                🔎
+                Nəticə tapılmadı
+
             </div>
-
-            Nəticə tapılmadı
-
-        </div>
-
         `;
 
     }else{
@@ -1235,21 +1156,14 @@ function filterCountry(country,button){
     button.classList.add("active");
 
 
-    let result;
-
-
-    if(country === "all"){
-
-        result = numbers;
-
-    }else{
-
-        result =
-            numbers.filter(item =>
-                item.c === country
-            );
-
-    }
+    let result =
+        country === "all"
+        ?
+        numbers
+        :
+        numbers.filter(item =>
+            item.c === country
+        );
 
 
     renderNumbers(result);
@@ -1269,7 +1183,7 @@ function searchNumbers(){
 
 
     let result =
-        numbers.filter(item => {
+        numbers.filter(item=>{
 
             const text =
                 (
@@ -1279,6 +1193,7 @@ function searchNumbers(){
                     " " +
                     item.c
                 ).toLowerCase();
+
 
             return text.includes(q);
 
@@ -1311,17 +1226,15 @@ function renderVIP(list){
     if(!list.length){
 
         box.innerHTML = `
+            <div class="empty">
 
-        <div class="empty">
+                <div class="empty-icon">
+                    ⭐
+                </div>
 
-            <div class="empty-icon">
-                ⭐
+                VIP nömrə tapılmadı
+
             </div>
-
-            VIP nömrə tapılmadı
-
-        </div>
-
         `;
 
         return;
@@ -1345,7 +1258,7 @@ function searchVIP(){
 
 
     const result =
-        numbers.filter(item => {
+        numbers.filter(item=>{
 
             if(!item.v){
                 return false;
@@ -1384,7 +1297,7 @@ function globalSearch(){
 
 
     const result =
-        numbers.filter(item => {
+        numbers.filter(item=>{
 
             const text =
                 (
@@ -1408,17 +1321,15 @@ function globalSearch(){
     if(!result.length){
 
         box.innerHTML = `
+            <div class="empty">
 
-        <div class="empty">
+                <div class="empty-icon">
+                    🔎
+                </div>
 
-            <div class="empty-icon">
-                🔎
+                Nəticə tapılmadı
+
             </div>
-
-            Nəticə tapılmadı
-
-        </div>
-
         `;
 
     }else{
@@ -1483,7 +1394,7 @@ function openPage(page,nav){
 
 
         renderVIP(
-            numbers.filter(item => item.v)
+            numbers.filter(item=>item.v)
         );
 
     }
@@ -1542,7 +1453,8 @@ function buyNumber(country,number,price){
 
 
     document.getElementById("orderCount")
-        .textContent = orders;
+        .textContent =
+        orders;
 
 
     const message =
