@@ -6,18 +6,16 @@
 
 <title>ALTAP.BİZ — Xəbərlər</title>
 
-<style>
+<meta name="description" content="ALTAP.BİZ — Azərbaycanın və dünyanın ən son xəbərləri">
 
-:root{
-    --bg:#f4f6f9;
-    --card:#ffffff;
-    --text:#101828;
-    --muted:#667085;
-    --border:#e4e7ec;
-    --dark:#080d18;
-    --red:#e31b23;
-    --soft:#eef2f6;
-}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
 
 *{
     margin:0;
@@ -25,24 +23,30 @@
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    transition:.3s;
+:root{
+    --bg:#f3f5f9;
+    --card:#ffffff;
+    --text:#101828;
+    --muted:#667085;
+    --border:#e4e7ec;
+    --dark:#080d18;
+    --red:#ef233c;
+    --blue:#2563eb;
 }
 
 body.dark{
-    --bg:#080d18;
-    --card:#111827;
+    --bg:#070b14;
+    --card:#101827;
     --text:#f8fafc;
     --muted:#98a2b3;
-    --border:#263244;
-    --soft:#1b2432;
+    --border:#202b3d;
+}
+
+body{
+    font-family:"Inter",Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    transition:.3s;
 }
 
 /* HEADER */
@@ -53,23 +57,21 @@ header{
     position:sticky;
     top:0;
     z-index:1000;
-    box-shadow:0 5px 25px rgba(0,0,0,.2);
+    box-shadow:0 5px 25px rgba(0,0,0,.15);
 }
 
 .header{
-    max-width:1250px;
-    min-height:75px;
+    max-width:1200px;
     margin:auto;
-    padding:12px 18px;
-
+    padding:18px 20px;
     display:flex;
     align-items:center;
     justify-content:space-between;
 }
 
 .logo{
-    font-size:29px;
-    font-weight:950;
+    font-size:30px;
+    font-weight:900;
     letter-spacing:-1.5px;
 }
 
@@ -80,32 +82,59 @@ header{
 .header-right{
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:15px;
 }
 
-.datetime{
+.clock{
     text-align:right;
 }
 
-.time{
-    font-size:17px;
+.clock-time{
+    font-size:16px;
     font-weight:800;
 }
 
-.date{
-    color:#aab3c2;
+.clock-date{
+    color:#98a2b3;
     font-size:11px;
+    margin-top:3px;
 }
 
-.theme-btn{
-    width:43px;
-    height:43px;
-    border:1px solid #354052;
-    border-radius:12px;
-    background:#18202e;
+.theme{
+    width:45px;
+    height:45px;
+    border:1px solid #303b4d;
+    background:#151d2c;
     color:white;
-    font-size:21px;
+    border-radius:14px;
     cursor:pointer;
+    font-size:19px;
+}
+
+/* LIVE */
+
+.live-bar{
+    background:#101827;
+    border-top:1px solid #1c2636;
+    color:#cbd5e1;
+    font-size:12px;
+}
+
+.live-inner{
+    max-width:1200px;
+    margin:auto;
+    padding:9px 20px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.live-dot{
+    width:8px;
+    height:8px;
+    background:#ef233c;
+    border-radius:50%;
+    box-shadow:0 0 10px #ef233c;
 }
 
 /* NAV */
@@ -113,18 +142,18 @@ header{
 nav{
     background:var(--card);
     border-bottom:1px solid var(--border);
+    position:sticky;
+    top:88px;
+    z-index:900;
 }
 
 .nav{
-    max-width:1250px;
+    max-width:1200px;
     margin:auto;
-    padding:10px 15px;
-
     display:flex;
     gap:8px;
-
+    padding:12px 20px;
     overflow-x:auto;
-    scrollbar-width:none;
 }
 
 .nav::-webkit-scrollbar{
@@ -133,123 +162,48 @@ nav{
 
 .nav button{
     border:0;
-    background:var(--soft);
+    background:var(--bg);
     color:var(--text);
-
-    padding:10px 16px;
-    border-radius:22px;
-
-    font-size:13px;
-    font-weight:750;
-
-    white-space:nowrap;
+    padding:10px 17px;
+    border-radius:30px;
+    font-weight:700;
     cursor:pointer;
+    white-space:nowrap;
+    transition:.2s;
+}
+
+.nav button:hover{
+    background:#e5e7eb;
+}
+
+body.dark .nav button:hover{
+    background:#1d2939;
 }
 
 .nav button.active{
-    background:var(--red);
+    background:#111827;
     color:white;
 }
 
 /* MAIN */
 
 main{
-    max-width:1250px;
-    margin:25px auto;
-    padding:0 15px;
+    max-width:1200px;
+    margin:30px auto;
+    padding:0 20px;
 }
 
-/* BREAKING */
-
-.breaking{
-    display:flex;
-    align-items:center;
-
-    background:linear-gradient(
-        90deg,
-        #a90000,
-        #ed1c24
-    );
-
-    color:white;
-    min-height:48px;
-
-    border-radius:13px;
-    overflow:hidden;
-
-    margin-bottom:23px;
-}
-
-.breaking-title{
-    background:#8e0000;
-    height:48px;
-
-    display:flex;
-    align-items:center;
-
-    padding:0 17px;
-
-    font-size:12px;
-    font-weight:900;
-    white-space:nowrap;
-}
-
-.breaking-text{
-    padding:0 15px;
-
-    font-size:14px;
-    font-weight:650;
-
-    overflow:hidden;
-    white-space:nowrap;
-    text-overflow:ellipsis;
-}
-
-/* SEARCH */
-
-.search-box{
-    position:relative;
-    margin-bottom:25px;
-}
-
-.search-box input{
-    width:100%;
-    height:50px;
-
-    background:var(--card);
-    color:var(--text);
-
-    border:1px solid var(--border);
-    border-radius:13px;
-
-    padding:0 50px 0 17px;
-
-    font-size:14px;
-    outline:none;
-}
-
-.search-icon{
-    position:absolute;
-    right:17px;
-    top:14px;
-
-    color:var(--muted);
-    font-size:20px;
-}
-
-/* SECTION */
-
-.section-head{
+.top{
     display:flex;
     justify-content:space-between;
     align-items:end;
-
-    margin-bottom:18px;
+    margin-bottom:22px;
 }
 
-.section-head h1{
-    font-size:29px;
-    letter-spacing:-1px;
+.top h1{
+    font-size:34px;
+    font-weight:900;
+    letter-spacing:-1.2px;
 }
 
 .updated{
@@ -257,166 +211,75 @@ main{
     font-size:12px;
 }
 
-/* HERO */
-
-.hero{
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:18px;
-
-    margin-bottom:30px;
-}
-
-.hero-main{
-    position:relative;
-    min-height:390px;
-
-    border-radius:18px;
-    overflow:hidden;
-
-    cursor:pointer;
-    background:#111;
-}
-
-.hero-main img{
-    width:100%;
-    height:390px;
-    object-fit:cover;
-}
-
-.hero-overlay{
-    position:absolute;
-    inset:0;
-
-    display:flex;
-    align-items:end;
-
-    padding:27px;
-
-    background:
-    linear-gradient(
-        transparent 25%,
-        rgba(0,0,0,.9)
-    );
-}
-
-.hero-title{
-    color:white;
-    font-size:30px;
-    line-height:1.2;
-    font-weight:900;
-}
-
-.hero-label{
-    display:inline-block;
-
-    background:var(--red);
-    color:white;
-
-    padding:6px 10px;
-    border-radius:6px;
-
-    font-size:10px;
-    font-weight:900;
-
-    margin-bottom:10px;
-}
-
-.hero-side{
-    display:grid;
-    grid-template-rows:1fr 1fr;
-    gap:18px;
-}
-
-.side-card{
-    background:var(--card);
-
-    border:1px solid var(--border);
-    border-radius:17px;
-
-    overflow:hidden;
-
-    display:grid;
-    grid-template-columns:42% 58%;
-
-    cursor:pointer;
-}
-
-.side-card img{
-    width:100%;
-    height:100%;
-    min-height:175px;
-    object-fit:cover;
-}
-
-.side-content{
-    padding:15px;
-}
-
-.side-content h3{
-    font-size:16px;
-    line-height:1.35;
-}
-
 /* NEWS */
 
-.news-grid{
+.news{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:19px;
+    gap:20px;
 }
 
 .card{
     background:var(--card);
-
     border:1px solid var(--border);
-    border-radius:16px;
-
+    border-radius:18px;
     overflow:hidden;
     cursor:pointer;
-
-    transition:.2s;
+    transition:.25s;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
 }
 
 .card:hover{
-    transform:translateY(-4px);
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
 }
 
 .card img{
     width:100%;
-    height:205px;
+    height:200px;
     object-fit:cover;
+    display:block;
+    background:#d9dee7;
 }
 
-.card-body{
-    padding:16px;
+.content{
+    padding:17px;
 }
 
-.category{
-    color:var(--red);
+.badge{
+    display:inline-block;
+    background:#fee2e2;
+    color:#dc2626;
+    padding:5px 9px;
+    border-radius:7px;
     font-size:10px;
-    font-weight:900;
-
-    margin-bottom:8px;
-}
-
-.card h2{
-    font-size:18px;
-    line-height:1.4;
-
+    font-weight:800;
     margin-bottom:10px;
 }
 
-.card p{
+body.dark .badge{
+    background:#3b1720;
+    color:#ff6475;
+}
+
+.content h2{
+    font-size:17px;
+    line-height:1.4;
+    margin-bottom:10px;
+    font-weight:800;
+}
+
+.content p{
     color:var(--muted);
     font-size:13px;
     line-height:1.5;
-
-    margin-bottom:13px;
+    margin-bottom:12px;
 }
 
-.card-date{
-    color:var(--muted);
+.meta{
+    display:flex;
+    justify-content:space-between;
+    color:#98a2b3;
     font-size:11px;
 }
 
@@ -424,69 +287,38 @@ main{
 
 .loading{
     grid-column:1/-1;
-
     background:var(--card);
     border:1px solid var(--border);
-
-    border-radius:17px;
-
-    padding:50px;
-
+    padding:60px 20px;
+    border-radius:18px;
     text-align:center;
-
     color:var(--muted);
 }
 
-/* POPULAR */
-
-.popular{
-    margin-top:40px;
+.spinner{
+    width:40px;
+    height:40px;
+    border:4px solid #ddd;
+    border-top-color:#ef233c;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+    margin:0 auto 15px;
 }
 
-.popular-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.popular-card{
-    background:var(--card);
-    border:1px solid var(--border);
-
-    border-radius:15px;
-
-    padding:17px;
-
-    cursor:pointer;
-}
-
-.number{
-    color:var(--red);
-    font-size:28px;
-    font-weight:950;
-
-    margin-bottom:7px;
-}
-
-.popular-card h3{
-    font-size:15px;
-    line-height:1.4;
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
 }
 
 /* CONTACT */
 
 .contact{
-    margin-top:45px;
-
+    margin-top:50px;
     background:var(--card);
-
     border:1px solid var(--border);
-
-    border-radius:19px;
-
-    padding:28px;
-
-    box-shadow:0 8px 30px rgba(0,0,0,.06);
+    border-radius:22px;
+    padding:30px;
 }
 
 .contact h2{
@@ -496,250 +328,175 @@ main{
 
 .contact p{
     color:var(--muted);
-    font-size:16px;
+    line-height:1.6;
     margin-bottom:22px;
 }
 
-/* SOSIAL DÜYMƏLƏR */
-
-.social-buttons{
-    display:flex;
-    flex-wrap:wrap;
+.contact-buttons{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
     gap:12px;
 }
 
-.social{
-    min-height:53px;
-
-    padding:0 20px;
-
-    display:inline-flex;
+.contact-btn{
+    display:flex;
     align-items:center;
     justify-content:center;
-
     gap:10px;
-
+    padding:15px;
     border-radius:13px;
-
+    color:white;
     text-decoration:none;
-
-    font-size:14px;
     font-weight:800;
-
     transition:.2s;
 }
 
-.social:hover{
+.contact-btn:hover{
     transform:translateY(-3px);
+    opacity:.9;
 }
-
-/* WHATSAPP */
 
 .whatsapp{
     background:#25D366;
-    color:white;
 }
-
-/* TIKTOK */
 
 .tiktok{
-    background:#050505;
-    color:white;
+    background:#000000;
 }
-
-/* PHONE */
 
 .phone{
-    background:#e51d2a;
-    color:white;
+    background:#ef233c;
 }
-
-/* EMAIL */
 
 .email{
-    background:#e9eef4;
-    color:#101828;
+    background:#475467;
 }
 
-/* SVG */
-
-.social svg{
-    width:25px;
-    height:25px;
-
-    flex-shrink:0;
+.contact-btn i{
+    font-size:21px;
 }
 
 /* FOOTER */
 
 footer{
-    margin-top:45px;
-
-    background:#070a10;
+    margin-top:60px;
+    background:#080d18;
     color:#98a2b3;
-
-    padding:35px 18px;
+    padding:40px 20px;
 }
 
 .footer{
-    max-width:1250px;
+    max-width:1200px;
     margin:auto;
-
     display:grid;
     grid-template-columns:2fr 1fr 1fr;
-    gap:35px;
+    gap:40px;
 }
 
 .footer-logo{
     color:white;
-    font-size:25px;
+    font-size:28px;
     font-weight:900;
-
     margin-bottom:10px;
 }
 
-.footer-title{
+.footer-logo span{
+    color:#ef233c;
+}
+
+.footer h3{
     color:white;
-    font-weight:800;
-    margin-bottom:13px;
+    margin-bottom:15px;
 }
 
-.footer-links{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-}
-
-.footer-links a{
+.footer p,
+.footer a{
     color:#98a2b3;
     text-decoration:none;
-    font-size:13px;
-}
-
-.copyright{
-    max-width:1250px;
-    margin:25px auto 0;
-
-    border-top:1px solid #202631;
-
-    padding-top:20px;
-
-    font-size:12px;
-}
-
-/* TOP */
-
-#top{
-    position:fixed;
-
-    right:18px;
-    bottom:18px;
-
-    width:45px;
-    height:45px;
-
-    border:0;
-    border-radius:50%;
-
-    background:var(--red);
-    color:white;
-
-    font-size:20px;
-
-    cursor:pointer;
-
-    display:none;
+    display:block;
+    margin-bottom:9px;
 }
 
 /* MOBILE */
 
-@media(max-width:950px){
+@media(max-width:900px){
 
-    .hero{
-        grid-template-columns:1fr;
-    }
-
-    .hero-side{
-        grid-template-columns:1fr 1fr;
-        grid-template-rows:1fr;
-    }
-
-    .news-grid{
+    .news{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .popular-grid{
+    .contact-buttons{
         grid-template-columns:repeat(2,1fr);
     }
 
     .footer{
         grid-template-columns:1fr 1fr;
     }
-
 }
 
 @media(max-width:600px){
 
     .header{
-        min-height:68px;
+        padding:14px 15px;
     }
 
     .logo{
-        font-size:24px;
+        font-size:25px;
     }
 
-    .datetime{
+    .clock{
         display:none;
     }
 
-    .hero-main{
-        min-height:320px;
+    nav{
+        top:68px;
     }
 
-    .hero-main img{
-        height:320px;
+    .nav{
+        padding:10px 15px;
     }
 
-    .hero-title{
-        font-size:24px;
+    main{
+        margin:22px auto;
+        padding:0 15px;
     }
 
-    .hero-side{
-        display:grid;
-        grid-template-columns:1fr;
-    }
-
-    .news-grid{
-        grid-template-columns:1fr;
-    }
-
-    .popular-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .section-head{
+    .top{
         display:block;
+    }
+
+    .top h1{
+        font-size:29px;
     }
 
     .updated{
         margin-top:7px;
-        display:block;
+    }
+
+    .news{
+        grid-template-columns:1fr;
+    }
+
+    .card img{
+        height:220px;
+    }
+
+    .contact{
+        padding:22px 18px;
+    }
+
+    .contact-buttons{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .contact-btn{
+        padding:13px 8px;
+        font-size:13px;
     }
 
     .footer{
         grid-template-columns:1fr;
     }
-
-    .social-buttons{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-    }
-
-    .social{
-        width:100%;
-        padding:0 8px;
-    }
-
 }
 
 </style>
@@ -747,339 +504,211 @@ footer{
 
 <body>
 
-
 <!-- HEADER -->
 
 <header>
 
-<div class="header">
+    <div class="header">
 
-    <div class="logo">
-        ALTAP<span>.BİZ</span>
-    </div>
+        <div class="logo">
+            ALTAP<span>.BİZ</span>
+        </div>
 
-    <div class="header-right">
+        <div class="header-right">
 
-        <div class="datetime">
+            <div class="clock">
+                <div class="clock-time" id="clock">
+                    00:00:00
+                </div>
 
-            <div
-            class="time"
-            id="clock">
-                00:00:00
+                <div class="clock-date" id="date">
+                    00.00.0000
+                </div>
             </div>
 
-            <div
-            class="date"
-            id="today">
-                Yüklənir...
-            </div>
+            <button class="theme" onclick="toggleTheme()" id="themeBtn">
+                🌙
+            </button>
 
         </div>
 
-        <button
-        class="theme-btn"
-        id="themeBtn"
-        onclick="toggleTheme()">
-
-            🌙
-
-        </button>
-
     </div>
 
-</div>
+    <div class="live-bar">
+
+        <div class="live-inner">
+            <span class="live-dot"></span>
+            <strong>CANLI XƏBƏRLƏR</strong>
+            <span>• Xəbərlər avtomatik yenilənir</span>
+        </div>
+
+    </div>
 
 </header>
 
 
-<!-- NAV -->
+<!-- NAVIGATION -->
 
 <nav>
 
-<div class="nav">
+    <div class="nav">
 
-<button
-class="active"
-onclick="loadNews('all',this)">
-Bütün xəbərlər
-</button>
+        <button class="active"
+        onclick="loadNews('Azerbaijan',this)">
+            🇦🇿 Azərbaycan
+        </button>
 
-<button onclick="loadNews('Azerbaijan',this)">
-Azərbaycan
-</button>
+        <button
+        onclick="loadNews('World',this)">
+            🌍 Dünya
+        </button>
 
-<button onclick="loadNews('Politics',this)">
-Siyasət
-</button>
+        <button
+        onclick="loadNews('Politics',this)">
+            🏛 Siyasət
+        </button>
 
-<button onclick="loadNews('Economy',this)">
-İqtisadiyyat
-</button>
+        <button
+        onclick="loadNews('Economy',this)">
+            💰 İqtisadiyyat
+        </button>
 
-<button onclick="loadNews('Society',this)">
-Cəmiyyət
-</button>
+        <button
+        onclick="loadNews('Sports',this)">
+            ⚽ İdman
+        </button>
 
-<button onclick="loadNews('World',this)">
-Dünya
-</button>
+        <button
+        onclick="loadNews('Technology',this)">
+            💻 Texnologiya
+        </button>
 
-<button onclick="loadNews('Sports',this)">
-İdman
-</button>
+        <button
+        onclick="loadNews('Culture',this)">
+            🎭 Mədəniyyət
+        </button>
 
-<button onclick="loadNews('Culture',this)">
-Mədəniyyət
-</button>
+        <button
+        onclick="loadNews('Health',this)">
+            ❤️ Sağlamlıq
+        </button>
 
-<button onclick="loadNews('Technology',this)">
-Texnologiya
-</button>
+        <button
+        onclick="loadNews('Cars',this)">
+            🚗 Avtomobil
+        </button>
 
-<button onclick="loadNews('Science',this)">
-Elm
-</button>
+        <button
+        onclick="loadNews('Crime',this)">
+            🚨 Hadisə
+        </button>
 
-<button onclick="loadNews('Cars',this)">
-Avto
-</button>
-
-<button onclick="loadNews('Health',this)">
-Sağlamlıq
-</button>
-
-</div>
+    </div>
 
 </nav>
 
 
+<!-- MAIN -->
+
 <main>
 
-
-<!-- SON DƏQİQƏ -->
-
-<div class="breaking">
-
-    <div class="breaking-title">
-        🔴 SON DƏQİQƏ
-    </div>
-
-    <div
-    class="breaking-text"
-    id="breaking">
-        Xəbərlər yüklənir...
-    </div>
-
-</div>
-
-
-<!-- AXTARIŞ -->
-
-<div class="search-box">
-
-    <input
-    id="search"
-    type="search"
-    placeholder="Xəbər axtar..."
-    oninput="searchNews()">
-
-    <div class="search-icon">
-        ⌕
-    </div>
-
-</div>
-
-
-<!-- BAŞLIQ -->
-
-<div class="section-head">
-
-    <h1 id="sectionTitle">
-        Son xəbərlər
-    </h1>
-
-    <div
-    class="updated"
-    id="updated">
-        Xəbərlər yüklənir...
-    </div>
-
-</div>
-
-
-<!-- HERO -->
-
-<div
-class="hero"
-id="hero">
-
-    <div class="loading">
-        Xəbərlər yüklənir...
-    </div>
-
-</div>
-
-
-<!-- XƏBƏRLƏR -->
-
-<div
-class="news-grid"
-id="news">
-
-    <div class="loading">
-        Xəbərlər yüklənir...
-    </div>
-
-</div>
-
-
-<!-- POPULAR -->
-
-<section class="popular">
-
-<div class="section-head">
-
-    <h1>
-        🔥 Ən çox oxunanlar
-    </h1>
-
-</div>
-
-<div
-class="popular-grid"
-id="popular">
-</div>
-
-</section>
-
-
-<!-- ƏLAQƏ -->
-
-<section
-class="contact"
-id="contact">
-
-    <h2>
-        Əlaqə
-    </h2>
-
-    <p>
-        ALTAP.BİZ ilə əlaqə saxlamaq üçün
-        aşağıdakı kanallardan istifadə edə bilərsiniz.
-    </p>
-
-
-    <div class="social-buttons">
-
-
-        <!-- WHATSAPP -->
-
-        <a
-        class="social whatsapp"
-        href="https://wa.me/994501234567"
-        target="_blank">
-
-            <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-
-                <path
-                fill="white"
-                d="M20.52 3.48A11.84 11.84 0 0 0 12.04 0C5.48 0 .13 5.35.13 11.91c0 2.1.55 4.15 1.59 5.96L.03 24l6.28-1.65a11.9 11.9 0 0 0 5.73 1.46h.01c6.56 0 11.91-5.35 11.91-11.91 0-3.18-1.24-6.17-3.44-8.42ZM12.05 21.8h-.01a9.88 9.88 0 0 1-5.04-1.38l-.36-.21-3.73.98.99-3.64-.23-.37a9.86 9.86 0 0 1-1.51-5.27c0-5.46 4.44-9.9 9.9-9.9 2.65 0 5.14 1.03 7.01 2.9a9.86 9.86 0 0 1 2.89 7.01c0 5.46-4.44 9.9-9.91 9.9Zm5.43-7.41c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.69.15-.2.3-.79.97-.97 1.17-.18.2-.36.23-.66.08-.3-.15-1.25-.46-2.38-1.46-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.36.45-.54.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.69-1.66-.94-2.27-.25-.59-.5-.51-.69-.52h-.59c-.2 0-.53.08-.81.38-.28.3-1.06 1.03-1.06 2.51s1.08 2.91 1.23 3.11c.15.2 2.12 3.24 5.13 4.54.72.31 1.28.49 1.72.63.72.23 1.37.2 1.88.12.58-.09 1.77-.72 2.02-1.42.25-.69.25-1.29.18-1.42-.08-.12-.28-.2-.59-.35Z"/>
-
-            </svg>
-
-            WhatsApp
-
-        </a>
-
-
-        <!-- TIKTOK -->
-
-        <a
-        class="social tiktok"
-        href="https://www.tiktok.com/"
-        target="_blank">
-
-            <svg
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg">
-
-                <path
-                fill="#25F4EE"
-                d="M19.59 6.69a4.83 4.83 0 0 1-4.23-4.4h-3.26v13.67a2.89 2.89 0 1 1-2-2.75V9.9a6.2 6.2 0 1 0 5.27 6.06V9.04a8.1 8.1 0 0 0 4.22 1.18V6.69Z"/>
-
-                <path
-                fill="#FE2C55"
-                d="M20.06 7.17a4.83 4.83 0 0 1-4.23-4.4h-2.08c.32 1.78 1.49 3.34 3.12 4.2v3.25c1.18.01 2.29.24 3.32.66V7.17h-.13ZM12.1 13.91a2.89 2.89 0 1 0 2.72 3.84v-2.42a2.88 2.88 0 0 0-2.72-1.42Z"/>
-
-            </svg>
-
-            TikTok
-
-        </a>
-
-
-        <!-- TELEFON -->
-
-        <a
-        class="social phone"
-        href="tel:+994501234567">
-
-            <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-
-                <path
-                fill="white"
-                d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z"/>
-
-            </svg>
-
-            Zəng et
-
-        </a>
-
-
-        <!-- EMAIL -->
-
-        <a
-        class="social email"
-        href="mailto:info@altap.biz">
-
-            <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-
-                <rect
-                x="2.5"
-                y="4.5"
-                width="19"
-                height="15"
-                rx="2"
-                stroke="#344054"
-                stroke-width="1.8"/>
-
-                <path
-                d="M3.5 6L12 12.5L20.5 6"
-                stroke="#344054"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"/>
-
-            </svg>
-
-            E-mail
-
-        </a>
+    <div class="top">
+
+        <h1>
+            Son xəbərlər
+        </h1>
+
+        <div class="updated" id="updated">
+            Xəbərlər yüklənir...
+        </div>
 
     </div>
 
-</section>
 
+    <div class="news" id="news">
+
+        <div class="loading">
+
+            <div class="spinner"></div>
+
+            Xəbərlər yüklənir...
+
+        </div>
+
+    </div>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact">
+
+        <h2>
+            Əlaqə
+        </h2>
+
+        <p>
+            ALTAP.BİZ ilə əlaqə saxlamaq üçün
+            aşağıdakı kanallardan istifadə edə bilərsiniz.
+        </p>
+
+        <div class="contact-buttons">
+
+            <!-- WHATSAPP -->
+
+            <a
+            class="contact-btn whatsapp"
+            href="https://wa.me/994556145657"
+            target="_blank">
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                WhatsApp
+
+            </a>
+
+
+            <!-- TIKTOK -->
+
+            <a
+            class="contact-btn tiktok"
+            href="https://www.tiktok.com/@altap.biz"
+            target="_blank">
+
+                <i class="fa-brands fa-tiktok"></i>
+
+                TikTok
+
+            </a>
+
+
+            <!-- PHONE -->
+
+            <a
+            class="contact-btn phone"
+            href="tel:+994556145657">
+
+                <i class="fa-solid fa-phone"></i>
+
+                Zəng et
+
+            </a>
+
+
+            <!-- EMAIL -->
+
+            <a
+            class="contact-btn email"
+            href="mailto:info@altap.biz">
+
+                <i class="fa-solid fa-envelope"></i>
+
+                E-mail
+
+            </a>
+
+        </div>
+
+    </section>
 
 </main>
 
@@ -1088,77 +717,69 @@ id="contact">
 
 <footer>
 
-<div class="footer">
+    <div class="footer">
 
-    <div>
+        <div>
 
-        <div class="footer-logo">
-            ALTAP.BİZ
+            <div class="footer-logo">
+                ALTAP<span>.BİZ</span>
+            </div>
+
+            <p>
+                Azərbaycanın və dünyanın
+                ən son xəbərləri.
+            </p>
+
+            <p>
+                © 2026 ALTAP.BİZ
+            </p>
+
         </div>
 
-        <p>
-            Azərbaycanın və dünyanın
-            ən son xəbərləri.
-        </p>
 
-    </div>
+        <div>
 
+            <h3>Bölmələr</h3>
 
-    <div>
-
-        <div class="footer-title">
-            Bölmələr
-        </div>
-
-        <div class="footer-links">
-
-            <a href="#">
+            <a href="#" onclick="loadNews('Azerbaijan');return false;">
                 Azərbaycan
             </a>
 
-            <a href="#">
-                Siyasət
-            </a>
-
-            <a href="#">
-                İqtisadiyyat
-            </a>
-
-            <a href="#">
+            <a href="#" onclick="loadNews('World');return false;">
                 Dünya
             </a>
 
-            <a href="#">
+            <a href="#" onclick="loadNews('Economy');return false;">
+                İqtisadiyyat
+            </a>
+
+            <a href="#" onclick="loadNews('Sports');return false;">
                 İdman
             </a>
 
-        </div>
-
-    </div>
-
-
-    <div>
-
-        <div class="footer-title">
-            Əlaqə
-        </div>
-
-        <div class="footer-links">
-
-            <a href="#contact">
-                Əlaqə
+            <a href="#" onclick="loadNews('Technology');return false;">
+                Texnologiya
             </a>
 
-            <a
-            href="https://wa.me/994501234567"
+        </div>
+
+
+        <div>
+
+            <h3>Əlaqə</h3>
+
+            <a href="https://wa.me/994556145657"
             target="_blank">
                 WhatsApp
             </a>
 
-            <a
-            href="https://www.tiktok.com/"
+            <a href="https://www.tiktok.com/@altap.biz"
             target="_blank">
                 TikTok
+            </a>
+
+            <a href="tel:+994556145657">
+                055-614-56-57
             </a>
 
             <a href="mailto:info@altap.biz">
@@ -1169,31 +790,14 @@ id="contact">
 
     </div>
 
-</div>
-
-
-<div class="copyright">
-
-    © 2026 ALTAP.BİZ —
-    Bütün hüquqlar qorunur.
-
-</div>
-
 </footer>
-
-
-<button
-id="top"
-onclick="window.scrollTo({top:0,behavior:'smooth'})">
-↑
-</button>
 
 
 <script>
 
-/* ============================
-   SAAT
-============================ */
+/* =========================
+   SAAT VƏ TARİX
+========================= */
 
 function updateClock(){
 
@@ -1202,17 +806,13 @@ function updateClock(){
     document.getElementById("clock").innerText =
         now.toLocaleTimeString("az-AZ");
 
-    document.getElementById("today").innerText =
-        now.toLocaleDateString(
-            "az-AZ",
-            {
-                weekday:"long",
-                day:"numeric",
-                month:"long",
-                year:"numeric"
-            }
-        );
-
+    document.getElementById("date").innerText =
+        now.toLocaleDateString("az-AZ",{
+            weekday:"long",
+            year:"numeric",
+            month:"long",
+            day:"numeric"
+        });
 }
 
 updateClock();
@@ -1220,57 +820,149 @@ updateClock();
 setInterval(updateClock,1000);
 
 
-/* ============================
-   RSS XƏBƏRLƏR
-============================ */
+/* =========================
+   TEMA
+========================= */
 
-const newsBox =
-document.getElementById("news");
+function toggleTheme(){
 
-const heroBox =
-document.getElementById("hero");
+    document.body.classList.toggle("dark");
 
-const popularBox =
-document.getElementById("popular");
+    const btn =
+        document.getElementById("themeBtn");
 
-const breaking =
-document.getElementById("breaking");
+    if(document.body.classList.contains("dark")){
 
-const updated =
-document.getElementById("updated");
+        btn.innerText = "☀️";
 
-const sectionTitle =
-document.getElementById("sectionTitle");
+        localStorage.setItem(
+            "altap-theme",
+            "dark"
+        );
 
-let allNews = [];
+    }else{
 
-let currentCategory = "all";
+        btn.innerText = "🌙";
 
-
-/*
-Google News Azərbaycan
-*/
-
-function getRSS(category){
-
-    let query = "Azərbaycan";
-
-    if(category !== "all"){
-        query = category + " Azərbaycan";
+        localStorage.setItem(
+            "altap-theme",
+            "light"
+        );
     }
-
-    return "https://news.google.com/rss/search?q="
-        + encodeURIComponent(query)
-        + "&hl=az&gl=AZ&ceid=AZ:az";
 }
 
 
-/* ============================
+if(localStorage.getItem("altap-theme") === "dark"){
+
+    document.body.classList.add("dark");
+
+    document.getElementById("themeBtn").innerText =
+        "☀️";
+}
+
+
+/* =========================
+   XƏBƏR AYARLARI
+========================= */
+
+const newsContainer =
+    document.getElementById("news");
+
+const updated =
+    document.getElementById("updated");
+
+let currentCategory = "Azerbaijan";
+
+
+/*
+   BURADA HƏR BÖLMƏ ÜÇÜN
+   AZƏRBAYCANCA AXTARIŞ SÖZLƏRİ VAR
+*/
+
+const queries = {
+
+    Azerbaijan:
+        "Azərbaycan xəbərləri Bakı Azərbaycan son xəbərlər",
+
+    World:
+        "dünya xəbərləri beynəlxalq xəbərlər son xəbərlər",
+
+    Politics:
+        "Azərbaycan siyasət xəbərləri hökumət parlament prezident",
+
+    Economy:
+        "Azərbaycan iqtisadiyyat manat biznes iqtisadi xəbərlər",
+
+    Sports:
+        "Azərbaycan idman futbol basketbol yarış xəbərləri",
+
+    Technology:
+        "Azərbaycan texnologiya süni intellekt internet texnologiya",
+
+    Culture:
+        "Azərbaycan mədəniyyət incəsənət musiqi kino",
+
+    Health:
+        "Azərbaycan səhiyyə sağlamlıq tibb xəbərləri",
+
+    Cars:
+        "Azərbaycan avtomobil maşın yeni avtomobillər",
+
+    Crime:
+        "Azərbaycan hadisə qəza polis təhlükəsizlik xəbərləri"
+
+};
+
+
+/* =========================
+   RUSCA BAŞLIQLARI TUT
+========================= */
+
+function isRussian(text){
+
+    if(!text){
+        return true;
+    }
+
+    /*
+       Rus dilində əsas kiril hərflərindən
+       biri varsa xəbəri göstərmirik.
+    */
+
+    const russianLetters =
+        /[ыэъёыэюяйцукенгшщзхъфывапролджэячсмитьбю]/i;
+
+    return russianLetters.test(text);
+}
+
+
+/* =========================
+   HTML TƏMİZLƏ
+========================= */
+
+function cleanText(text){
+
+    if(!text){
+        return "";
+    }
+
+    const div =
+        document.createElement("div");
+
+    div.innerHTML = text;
+
+    return div.textContent
+        .replace(/\s+/g," ")
+        .trim();
+}
+
+
+/* =========================
    XƏBƏRLƏRİ YÜKLƏ
-============================ */
+========================= */
 
 async function loadNews(
-    category="all",
+    category="Azerbaijan",
     button=null
 ){
 
@@ -1281,520 +973,279 @@ async function loadNews(
 
         document
         .querySelectorAll(".nav button")
-        .forEach(
-            b => b.classList.remove("active")
+        .forEach(btn =>
+            btn.classList.remove("active")
         );
 
         button.classList.add("active");
-
     }
 
 
-    sectionTitle.innerText =
-        category === "all"
-        ? "Son xəbərlər"
-        : category;
+    newsContainer.innerHTML = `
 
-
-    heroBox.innerHTML = `
         <div class="loading">
-            Xəbərlər yüklənir...
+
+            <div class="spinner"></div>
+
+            Azərbaycan dilində xəbərlər
+            yüklənir...
+
         </div>
+
     `;
 
-    newsBox.innerHTML = `
-        <div class="loading">
-            Xəbərlər yüklənir...
-        </div>
-    `;
+
+    /*
+       Azərbaycan dilində axtarış
+    */
+
+    const searchQuery =
+        queries[category] ||
+        queries.Azerbaijan;
+
+
+    const rssURL =
+        "https://news.google.com/rss/search?q=" +
+        encodeURIComponent(searchQuery) +
+        "&hl=az&gl=AZ&ceid=AZ:az";
+
+
+    const apiURL =
+        "https://api.rss2json.com/v1/api.json?rss_url=" +
+        encodeURIComponent(rssURL);
 
 
     try{
 
-        const rss =
-            getRSS(category);
-
-
-        const api =
-            "https://api.rss2json.com/v1/api.json?rss_url="
-            +
-            encodeURIComponent(rss);
-
-
         const response =
-            await fetch(api);
+            await fetch(apiURL);
+
+        if(!response.ok){
+            throw new Error("API xətası");
+        }
 
 
         const data =
             await response.json();
 
 
-        if(
-            !data.items ||
-            data.items.length === 0
-        ){
+        if(!data.items ||
+           data.items.length === 0){
 
-            throw new Error(
-                "Xəbər tapılmadı"
-            );
-
+            throw new Error("Xəbər yoxdur");
         }
 
 
-        allNews =
-            data.items;
+        /*
+           Rusca başlıqları çıxarırıq
+           və yalnız uyğun xəbərləri götürürük.
+        */
+
+        const filtered =
+            data.items.filter(item => {
+
+                const title =
+                    cleanText(item.title || "");
+
+                return title.length > 10 &&
+                       !isRussian(title);
+
+            });
 
 
-        renderHero(
-            allNews.slice(0,3)
-        );
+        if(filtered.length === 0){
 
-
-        renderNews(
-            allNews.slice(3,21)
-        );
-
-
-        renderPopular(
-            allNews.slice(0,8)
-        );
-
-
-        breaking.innerText =
-            cleanText(
-                allNews[0].title
+            throw new Error(
+                "Azərbaycan dilində xəbər tapılmadı"
             );
+        }
+
+
+        newsContainer.innerHTML = "";
+
+
+        filtered
+        .slice(0,18)
+        .forEach((item,index) => {
+
+
+            let image =
+                item.enclosure &&
+                item.enclosure.link
+                ? item.enclosure.link
+                :
+                "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=85";
+
+
+            let title =
+                cleanText(item.title);
+
+
+            let text =
+                cleanText(item.description);
+
+
+            if(text.length > 180){
+
+                text =
+                    text.substring(0,180) + "...";
+            }
+
+
+            let date =
+                new Date(item.pubDate);
+
+
+            const card =
+                document.createElement("article");
+
+
+            card.className = "card";
+
+
+            card.innerHTML = `
+
+                <img
+                    src="${image}"
+                    loading="lazy"
+                    onerror="
+                        this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=85'
+                    "
+                >
+
+                <div class="content">
+
+                    <div class="badge">
+                        ALTAP.BİZ
+                    </div>
+
+                    <h2>
+                        ${title}
+                    </h2>
+
+                    <p>
+                        ${
+                            text ||
+                            "Ətraflı məlumat üçün xəbərə daxil olun."
+                        }
+                    </p>
+
+                    <div class="meta">
+
+                        <span>
+                            ${date.toLocaleDateString("az-AZ")}
+                        </span>
+
+                        <span>
+                            ${date.toLocaleTimeString(
+                                "az-AZ",
+                                {
+                                    hour:"2-digit",
+                                    minute:"2-digit"
+                                }
+                            )}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            card.onclick = function(){
+
+                if(item.link){
+
+                    window.open(
+                        item.link,
+                        "_blank"
+                    );
+
+                }
+
+            };
+
+
+            newsContainer.appendChild(card);
+
+        });
 
 
         updated.innerText =
-            "Son yenilənmə: "
-            +
-            new Date()
-            .toLocaleTimeString("az-AZ");
+            "Son yenilənmə: " +
+            new Date().toLocaleTimeString(
+                "az-AZ"
+            );
+
 
     }
 
     catch(error){
 
-        console.log(error);
+        console.error(error);
 
-        heroBox.innerHTML = `
+
+        newsContainer.innerHTML = `
+
             <div class="loading">
+
                 <h3>
                     Xəbərləri yükləmək mümkün olmadı
                 </h3>
 
-                <p style="margin-top:10px">
-                    Bir az sonra yenidən cəhd edin.
+                <p style="
+                    margin-top:10px;
+                    color:var(--muted);
+                ">
+                    İnternet bağlantısını yoxlayın
+                    və bir az sonra yenidən cəhd edin.
                 </p>
+
+                <button
+                    onclick="loadNews(currentCategory)"
+                    style="
+                        margin-top:18px;
+                        padding:11px 20px;
+                        border:0;
+                        border-radius:10px;
+                        background:#ef233c;
+                        color:white;
+                        font-weight:700;
+                        cursor:pointer;
+                    "
+                >
+                    Yenidən yoxla
+                </button>
+
             </div>
+
         `;
 
-        newsBox.innerHTML = "";
 
         updated.innerText =
-            "Yenilənmə xətası";
-
+            "Yenilənmə zamanı xəta baş verdi";
     }
 
 }
 
 
-/* ============================
-   HERO
-============================ */
+/* =========================
+   İLK YÜKLƏMƏ
+========================= */
 
-function renderHero(items){
+loadNews();
 
-    if(!items.length){
-        return;
-    }
 
+/* =========================
+   HƏR 5 DƏQİQƏDƏ YENİLƏ
+========================= */
 
-    const main = items[0];
-    const second = items[1];
-    const third = items[2];
+setInterval(function(){
 
+    loadNews(currentCategory);
 
-    heroBox.innerHTML = `
-
-        <div
-        class="hero-main"
-        onclick="openNews('${encodeURIComponent(main.link)}')">
-
-            <img
-            src="${getImage(main)}"
-            onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80'">
-
-            <div class="hero-overlay">
-
-                <div>
-
-                    <div class="hero-label">
-                        ƏSAS XƏBƏR
-                    </div>
-
-                    <div class="hero-title">
-                        ${cleanText(main.title)}
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="hero-side">
-
-            ${createSide(second)}
-
-            ${createSide(third)}
-
-        </div>
-    `;
-
-}
-
-
-function createSide(item){
-
-    if(!item){
-        return "";
-    }
-
-
-    return `
-
-        <div
-        class="side-card"
-        onclick="openNews('${encodeURIComponent(item.link)}')">
-
-            <img
-            src="${getImage(item)}">
-
-            <div class="side-content">
-
-                <div class="category">
-                    ALTAP.BİZ
-                </div>
-
-                <h3>
-                    ${cleanText(item.title)}
-                </h3>
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ============================
-   NEWS CARD
-============================ */
-
-function renderNews(items){
-
-    if(!items.length){
-
-        newsBox.innerHTML = `
-            <div class="loading">
-                Bu bölmədə xəbər tapılmadı.
-            </div>
-        `;
-
-        return;
-    }
-
-
-    newsBox.innerHTML = "";
-
-
-    items.forEach(item => {
-
-        const card =
-            document.createElement("div");
-
-
-        card.className = "card";
-
-
-        const date =
-            item.pubDate
-            ? new Date(item.pubDate)
-            : new Date();
-
-
-        card.innerHTML = `
-
-            <img
-            src="${getImage(item)}"
-            onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=900&q=80'">
-
-            <div class="card-body">
-
-                <div class="category">
-                    XƏBƏR
-                </div>
-
-                <h2>
-                    ${cleanText(item.title)}
-                </h2>
-
-                <p>
-                    ${cleanText(
-                        item.description || ""
-                    ).slice(0,170)}
-                </p>
-
-                <div class="card-date">
-                    ${date.toLocaleString("az-AZ")}
-                </div>
-
-            </div>
-        `;
-
-
-        card.onclick = () => {
-
-            openNews(
-                encodeURIComponent(item.link)
-            );
-
-        };
-
-
-        newsBox.appendChild(card);
-
-    });
-
-}
-
-
-/* ============================
-   POPULAR
-============================ */
-
-function renderPopular(items){
-
-    popularBox.innerHTML = "";
-
-
-    items.forEach(
-        (item,index) => {
-
-            const div =
-                document.createElement("div");
-
-
-            div.className =
-                "popular-card";
-
-
-            div.innerHTML = `
-
-                <div class="number">
-                    ${String(index+1).padStart(2,"0")}
-                </div>
-
-                <h3>
-                    ${cleanText(item.title)}
-                </h3>
-
-            `;
-
-
-            div.onclick = () => {
-
-                openNews(
-                    encodeURIComponent(item.link)
-                );
-
-            };
-
-
-            popularBox.appendChild(div);
-
-        }
-    );
-
-}
-
-
-/* ============================
-   IMAGE
-============================ */
-
-function getImage(item){
-
-    if(
-        item.enclosure &&
-        item.enclosure.link
-    ){
-
-        return item.enclosure.link;
-
-    }
-
-
-    return "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=80";
-
-}
-
-
-/* ============================
-   CLEAN TEXT
-============================ */
-
-function cleanText(text){
-
-    return (text || "")
-        .replace(/<[^>]*>/g,"")
-        .replace(/&nbsp;/g," ")
-        .replace(/&amp;/g,"&")
-        .trim();
-
-}
-
-
-/* ============================
-   OPEN NEWS
-============================ */
-
-function openNews(url){
-
-    const link =
-        decodeURIComponent(url);
-
-    if(link){
-
-        window.open(
-            link,
-            "_blank"
-        );
-
-    }
-
-}
-
-
-/* ============================
-   SEARCH
-============================ */
-
-function searchNews(){
-
-    const query =
-        document
-        .getElementById("search")
-        .value
-        .toLowerCase()
-        .trim();
-
-
-    if(!query){
-
-        renderNews(
-            allNews.slice(3,21)
-        );
-
-        return;
-
-    }
-
-
-    const result =
-        allNews.filter(
-            item =>
-            cleanText(item.title)
-            .toLowerCase()
-            .includes(query)
-        );
-
-
-    renderNews(result);
-
-}
-
-
-/* ============================
-   DARK MODE
-============================ */
-
-function toggleTheme(){
-
-    document.body.classList.toggle("dark");
-
-
-    const dark =
-        document.body.classList.contains("dark");
-
-
-    document.getElementById("themeBtn").innerText =
-        dark ? "☀️" : "🌙";
-
-
-    localStorage.setItem(
-        "altap-theme",
-        dark ? "dark" : "light"
-    );
-
-}
-
-
-if(
-    localStorage.getItem("altap-theme")
-    === "dark"
-){
-
-    document.body.classList.add("dark");
-
-    document.getElementById("themeBtn").innerText =
-        "☀️";
-
-}
-
-
-/* ============================
-   TOP BUTTON
-============================ */
-
-window.addEventListener(
-    "scroll",
-    function(){
-
-        document.getElementById("top").style.display =
-            window.scrollY > 400
-            ? "block"
-            : "none";
-
-    }
-);
-
-
-/* ============================
-   START
-============================ */
-
-loadNews("all");
-
-
-/* ============================
-   AUTO REFRESH
-   5 DƏQİQƏ
-============================ */
-
-setInterval(
-    function(){
-
-        loadNews(currentCategory);
-
-    },
-    300000
-);
+},300000);
 
 </script>
 
