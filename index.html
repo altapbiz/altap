@@ -1,748 +1,846 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>APK Plus 2026</title>
+<title>APK Plus 2026</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    color:#111;
+    transition:.3s;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:#fff;
+    border-bottom:1px solid #e5e7eb;
+    padding:18px 20px;
+}
+
+.header{
+    max-width:1150px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:800;
+}
+
+.theme-btn{
+    border:0;
+    background:#111;
+    color:#fff;
+    padding:10px 15px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.hero{
+    max-width:1150px;
+    margin:45px auto 25px;
+    padding:0 20px;
+}
+
+.hero h1{
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    color:#666;
+    font-size:16px;
+}
+
+.search{
+    max-width:1150px;
+    margin:20px auto 25px;
+    padding:0 20px;
+}
+
+.search input{
+    width:100%;
+    padding:16px 18px;
+    border:1px solid #ddd;
+    border-radius:13px;
+    outline:none;
+    font-size:16px;
+    background:#fff;
+    color:#111;
+}
+
+.apps{
+    max-width:1150px;
+    margin:auto;
+    padding:0 20px 60px;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(310px,1fr));
+    gap:18px;
+}
+
+.card{
+    background:#fff;
+    border:1px solid #e7e7e7;
+    border-radius:18px;
+    padding:17px;
+
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.04);
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 28px rgba(0,0,0,.09);
+}
+
+.icon{
+    width:60px;
+    height:60px;
+    border-radius:15px;
+    flex-shrink:0;
+    object-fit:cover;
+    background:#eee;
+}
+
+.info{
+    flex:1;
+    min-width:0;
+}
+
+.info h3{
+    font-size:17px;
+    line-height:1.3;
+    margin-bottom:6px;
+}
+
+.apk{
+    color:#777;
+    font-size:13px;
+}
+
+.download{
+    background:none;
+    border:0;
+    color:#087cff;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    padding:8px;
+}
+
+.download:hover{
+    text-decoration:underline;
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:999;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:430px;
+    background:#fff;
+    border-radius:22px;
+    padding:30px;
+    text-align:center;
+    animation:popup .2s ease;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(.9);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.modal-box h2{
+    font-size:23px;
+    margin-bottom:12px;
+}
+
+.modal-box p{
+    color:#555;
+    line-height:1.5;
+    margin-bottom:15px;
+}
+
+.price{
+    font-size:30px;
+    font-weight:800;
+    margin:15px 0 22px;
+}
+
+.whatsapp{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    width:100%;
+    padding:15px;
+
+    border-radius:13px;
+    background:#25D366;
+    color:white;
+
+    text-decoration:none;
+    font-size:16px;
+    font-weight:700;
+}
+
+.whatsapp img{
+    width:24px;
+    height:24px;
+}
+
+.close{
+    width:100%;
+    margin-top:12px;
+    padding:14px;
+    border:0;
+    border-radius:13px;
+    background:#eee;
+    color:#222;
+    font-weight:600;
+    cursor:pointer;
+}
+
+footer{
+    text-align:center;
+    padding:25px 20px;
+    color:#777;
+    border-top:1px solid #ddd;
+}
+
+/* DARK */
+
+body.dark{
+    background:#101114;
+    color:#fff;
+}
+
+body.dark header{
+    background:#17181c;
+    border-color:#292c31;
+}
+
+body.dark .hero p{
+    color:#aaa;
+}
+
+body.dark .search input{
+    background:#191a1f;
+    color:#fff;
+    border-color:#303238;
+}
+
+body.dark .card{
+    background:#191a1f;
+    border-color:#2b2d32;
+    box-shadow:none;
+}
+
+body.dark .apk{
+    color:#999;
+}
+
+body.dark .modal-box{
+    background:#191a1f;
+    color:#fff;
+}
+
+body.dark .modal-box p{
+    color:#aaa;
+}
+
+body.dark .close{
+    background:#2b2d32;
+    color:#fff;
+}
+
+body.dark footer{
+    border-color:#292c31;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .logo{
+        font-size:20px;
     }
 
-    body {
-      background: #f5f7fa;
-      color: #111;
-      transition: 0.3s;
+    .hero{
+        margin-top:30px;
     }
 
-    /* HEADER */
-    header {
-      background: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
-      padding: 18px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      transition: 0.3s;
+    .hero h1{
+        font-size:28px;
     }
 
-    .header-content {
-      max-width: 1100px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
+    .apps{
+        grid-template-columns:1fr;
     }
 
-    .logo {
-      font-size: 23px;
-      font-weight: 800;
+    .card{
+        padding:15px;
     }
 
-    .theme-btn {
-      border: none;
-      background: #111;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 14px;
+    .icon{
+        width:55px;
+        height:55px;
     }
 
-    /* HERO */
-    .hero {
-      max-width: 1100px;
-      margin: 45px auto 25px;
-      padding: 0 20px;
+    .info h3{
+        font-size:15px;
     }
 
-    .hero h1 {
-      font-size: 34px;
-      margin-bottom: 10px;
+    .download{
+        font-size:14px;
     }
-
-    .hero p {
-      color: #666;
-      font-size: 16px;
-    }
-
-    /* SEARCH */
-    .search-box {
-      max-width: 1100px;
-      margin: 20px auto;
-      padding: 0 20px;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 15px 18px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      outline: none;
-      font-size: 15px;
-      background: white;
-      color: #111;
-    }
-
-    /* APPS */
-    .apps {
-      max-width: 1100px;
-      margin: 25px auto 60px;
-      padding: 0 20px;
-
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 18px;
-    }
-
-    .app-card {
-      background: white;
-      border: 1px solid #e8e8e8;
-      border-radius: 17px;
-      padding: 18px;
-
-      display: flex;
-      align-items: center;
-      gap: 15px;
-
-      box-shadow: 0 5px 20px rgba(0,0,0,0.04);
-      transition: 0.25s;
-    }
-
-    .app-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    }
-
-    .app-icon {
-      width: 58px;
-      height: 58px;
-      border-radius: 14px;
-      object-fit: cover;
-      background: #eee;
-      flex-shrink: 0;
-    }
-
-    .app-info {
-      flex: 1;
-    }
-
-    .app-info h3 {
-      font-size: 17px;
-      margin-bottom: 5px;
-    }
-
-    .apk {
-      font-size: 13px;
-      color: #777;
-    }
-
-    .download-btn {
-      border: none;
-      background: transparent;
-      color: #087cff;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: 15px;
-      padding: 8px;
-    }
-
-    .download-btn:hover {
-      text-decoration: underline;
-    }
-
-    /* MODAL */
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-
-      display: none;
-      align-items: center;
-      justify-content: center;
-
-      padding: 20px;
-      z-index: 999;
-    }
-
-    .modal.active {
-      display: flex;
-    }
-
-    .modal-box {
-      width: 100%;
-      max-width: 420px;
-      background: white;
-      border-radius: 20px;
-      padding: 28px;
-      text-align: center;
-      animation: popup 0.2s ease;
-    }
-
-    @keyframes popup {
-      from {
-        transform: scale(0.9);
-        opacity: 0;
-      }
-
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
-    .modal-box h2 {
-      margin-bottom: 12px;
-      font-size: 23px;
-    }
-
-    .modal-box p {
-      color: #555;
-      line-height: 1.5;
-      margin-bottom: 12px;
-    }
-
-    .price {
-      font-size: 28px;
-      font-weight: 800;
-      margin: 12px 0 20px;
-    }
-
-    .whatsapp-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-
-      width: 100%;
-      padding: 14px;
-
-      background: #25D366;
-      color: white;
-      border-radius: 12px;
-
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 16px;
-    }
-
-    .whatsapp-icon {
-      width: 23px;
-      height: 23px;
-    }
-
-    .close-btn {
-      margin-top: 12px;
-      border: none;
-      background: #eee;
-      color: #222;
-      width: 100%;
-      padding: 13px;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 25px 20px;
-      border-top: 1px solid #ddd;
-      color: #777;
-      font-size: 14px;
-    }
-
-    /* DARK MODE */
-    body.dark {
-      background: #101114;
-      color: #fff;
-    }
-
-    body.dark header {
-      background: #17181c;
-      border-color: #292b30;
-    }
-
-    body.dark .hero p {
-      color: #aaa;
-    }
-
-    body.dark .search-box input {
-      background: #191a1f;
-      color: white;
-      border-color: #303238;
-    }
-
-    body.dark .app-card {
-      background: #191a1f;
-      border-color: #2b2d32;
-      box-shadow: none;
-    }
-
-    body.dark .apk {
-      color: #999;
-    }
-
-    body.dark .modal-box {
-      background: #191a1f;
-      color: white;
-    }
-
-    body.dark .modal-box p {
-      color: #aaa;
-    }
-
-    body.dark .close-btn {
-      background: #2b2d32;
-      color: white;
-    }
-
-    body.dark footer {
-      border-color: #292b30;
-    }
-
-    /* MOBILE */
-    @media (max-width: 600px) {
-
-      .hero {
-        margin-top: 30px;
-      }
-
-      .hero h1 {
-        font-size: 27px;
-      }
-
-      .apps {
-        grid-template-columns: 1fr;
-      }
-
-      .app-card {
-        padding: 15px;
-      }
-
-      .app-icon {
-        width: 52px;
-        height: 52px;
-      }
-
-      .app-info h3 {
-        font-size: 15px;
-      }
-
-      .download-btn {
-        font-size: 14px;
-      }
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-content">
+<header>
+    <div class="header">
+        <div class="logo">APK Plus 2026</div>
 
-      <div class="logo">
-        APK Plus 2026
-      </div>
-
-      <button class="theme-btn" onclick="toggleTheme()">
-        Tema dəyiş
-      </button>
-
+        <button class="theme-btn" onclick="toggleTheme()">
+            Tema dəyiş
+        </button>
     </div>
-  </header>
+</header>
 
 
-  <!-- HERO -->
-  <section class="hero">
-
+<section class="hero">
     <h1>Plus APK Versiyaları</h1>
-
-    <p>
-      2026-cı il üçün tətbiqlərin Plus APK versiyalarını burada tapa bilərsiniz.
-    </p>
-
-  </section>
+    <p>2026-cı il üçün Plus APK versiyalarını kəşf edin.</p>
+</section>
 
 
-  <!-- SEARCH -->
-  <div class="search-box">
-
+<div class="search">
     <input
-      type="text"
-      id="search"
-      placeholder="Proqram axtar..."
-      onkeyup="searchApps()"
+        type="text"
+        id="searchInput"
+        placeholder="Proqram axtar..."
+        onkeyup="searchApps()"
     >
-
-  </div>
-
-
-  <!-- APPS -->
-  <section class="apps" id="apps">
+</div>
 
 
-    <!-- INSTAGRAM -->
-    <div class="app-card">
+<section class="apps" id="apps">
 
-      <img
-        class="app-icon"
-        src="https://cdn.simpleicons.org/instagram"
-        alt="Instagram"
-      >
 
-      <div class="app-info">
+<!-- INSTAGRAM -->
 
+<div class="card">
+    <img class="icon"
+         src="https://cdn.simpleicons.org/instagram"
+         alt="Instagram">
+
+    <div class="info">
         <h3>Instagram Plus 2026</h3>
-
-        <div class="apk">
-          📦 APK Versiyası
-        </div>
-
-      </div>
-
-      <button
-        class="download-btn"
-        onclick="openModal('Instagram Plus 2026')"
-      >
-        Yüklə
-      </button>
-
+        <div class="apk">APK Versiyası</div>
     </div>
 
+    <button class="download"
+            onclick="openModal('Instagram Plus 2026')">
+        Yüklə
+    </button>
+</div>
 
-    <!-- TIKTOK -->
-    <div class="app-card">
 
-      <img
-        class="app-icon"
-        src="https://cdn.simpleicons.org/tiktok"
-        alt="TikTok"
-      >
+<!-- TIKTOK -->
 
-      <div class="app-info">
+<div class="card">
+    <img class="icon"
+         src="https://cdn.simpleicons.org/tiktok"
+         alt="TikTok">
 
+    <div class="info">
         <h3>TikTok Plus 2026</h3>
-
-        <div class="apk">
-          📦 APK Versiyası
-        </div>
-
-      </div>
-
-      <button
-        class="download-btn"
-        onclick="openModal('TikTok Plus 2026')"
-      >
-        Yüklə
-      </button>
-
+        <div class="apk">APK Versiyası</div>
     </div>
 
+    <button class="download"
+            onclick="openModal('TikTok Plus 2026')">
+        Yüklə
+    </button>
+</div>
 
-    <!-- TELEGRAM -->
-    <div class="app-card">
 
-      <img
-        class="app-icon"
-        src="https://cdn.simpleicons.org/telegram"
-        alt="Telegram"
-      >
+<!-- TELEGRAM -->
 
-      <div class="app-info">
+<div class="card">
+    <img class="icon"
+         src="https://cdn.simpleicons.org/telegram"
+         alt="Telegram">
 
+    <div class="info">
         <h3>Telegram Plus 2026</h3>
-
-        <div class="apk">
-          📦 APK Versiyası
-        </div>
-
-      </div>
-
-      <button
-        class="download-btn"
-        onclick="openModal('Telegram Plus 2026')"
-      >
-        Yüklə
-      </button>
-
+        <div class="apk">APK Versiyası</div>
     </div>
 
+    <button class="download"
+            onclick="openModal('Telegram Plus 2026')">
+        Yüklə
+    </button>
+</div>
 
-    <!-- FACEBOOK -->
-    <div class="app-card">
 
-      <img
-        class="app-icon"
-        src="https://cdn.simpleicons.org/facebook"
-        alt="Facebook"
-      >
+<!-- FACEBOOK -->
 
-      <div class="app-info">
+<div class="card">
+    <img class="icon"
+         src="https://cdn.simpleicons.org/facebook"
+         alt="Facebook">
 
+    <div class="info">
         <h3>Facebook Plus 2026</h3>
-
-        <div class="apk">
-          📦 APK Versiyası
-        </div>
-
-      </div>
-
-      <button
-        class="download-btn"
-        onclick="openModal('Facebook Plus 2026')"
-      >
-        Yüklə
-      </button>
-
+        <div class="apk">APK Versiyası</div>
     </div>
 
+    <button class="download"
+            onclick="openModal('Facebook Plus 2026')">
+        Yüklə
+    </button>
+</div>
 
-    <!-- WHATSAPP -->
-    <div class="app-card">
 
-      <img
-        class="app-icon"
-        src="https://cdn.simpleicons.org/whatsapp"
-        alt="WhatsApp"
-      >
+<!-- WHATSAPP -->
 
-      <div class="app-info">
+<div class="card">
+    <img class="icon"
+         src="https://cdn.simpleicons.org/whatsapp"
+         alt="WhatsApp">
 
+    <div class="info">
         <h3>WhatsApp Plus 2026</h3>
-
-        <div class="apk">
-          📦 APK Versiyası
-        </div>
-
-      </div>
-
-      <button
-        class="download-btn"
-        onclick="openModal('WhatsApp Plus 2026')"
-      >
-        Yüklə
-      </button>
-
+        <div class="apk">APK Versiyası</div>
     </div>
 
+    <button class="download"
+            onclick="openModal('WhatsApp Plus 2026')">
+        Yüklə
+    </button>
+</div>
 
-    <!-- GETCONTACT -->
-    <div class="app-card">
 
-      <img
-        class="app-icon"
-        src="https://cdn.simpleicons.org/getcontact"
-        alt="Getcontact"
-      >
+<!-- GETCONTACT -->
 
-      <div class="app-info">
+<div class="card">
+    <img class="icon"
+         src="https://cdn-icons-png.flaticon.com/512/906/906377.png"
+         alt="Getcontact">
 
+    <div class="info">
         <h3>Getcontact Plus 2026</h3>
-
-        <div class="apk">
-          📦 APK Versiyası
-        </div>
-
-      </div>
-
-      <button
-        class="download-btn"
-        onclick="openModal('Getcontact Plus 2026')"
-      >
-        Yüklə
-      </button>
-
+        <div class="apk">APK Versiyası</div>
     </div>
 
+    <button class="download"
+            onclick="openModal('Getcontact Plus 2026')">
+        Yüklə
+    </button>
+</div>
 
-    <!-- YOUTUBE -->
-    <div class="app-card">
 
-      <img
-        class="app-icon"
-        src="https://cdn.simpleicons.org/youtube"
-        alt="YouTube"
-      >
+<!-- YOUTUBE -->
 
-      <div class="app-info">
+<div class="card">
+    <img class="icon"
+         src="https://cdn.simpleicons.org/youtube"
+         alt="YouTube">
 
+    <div class="info">
         <h3>YouTube Plus 2026</h3>
-
-        <div class="apk">
-          📦 APK Versiyası
-        </div>
-
-      </div>
-
-      <button
-        class="download-btn"
-        onclick="openModal('YouTube Plus 2026')"
-      >
-        Yüklə
-      </button>
-
+        <div class="apk">APK Versiyası</div>
     </div>
 
-  </section>
+    <button class="download"
+            onclick="openModal('YouTube Plus 2026')">
+        Yüklə
+    </button>
+</div>
 
 
-  <!-- MODAL -->
-  <div class="modal" id="modal">
+<!-- REMINI -->
+
+<div class="card">
+    <img class="icon"
+         src="https://cdn.simpleicons.org/remini"
+         alt="Remini">
+
+    <div class="info">
+        <h3>Remini Plus 2026</h3>
+        <div class="apk">APK Versiyası</div>
+    </div>
+
+    <button class="download"
+            onclick="openModal('Remini Plus 2026')">
+        Yüklə
+    </button>
+</div>
+
+
+<!-- CHATGPT -->
+
+<div class="card">
+    <img class="icon"
+         src="https://cdn.simpleicons.org/openai"
+         alt="ChatGPT">
+
+    <div class="info">
+        <h3>ChatGPT Plus 2026</h3>
+        <div class="apk">APK Versiyası</div>
+    </div>
+
+    <button class="download"
+            onclick="openModal('ChatGPT Plus 2026')">
+        Yüklə
+    </button>
+</div>
+
+
+<!-- INSHOT -->
+
+<div class="card">
+    <img class="icon"
+         src="https://cdn.simpleicons.org/inshot"
+         alt="InShot">
+
+    <div class="info">
+        <h3>InShot Plus 2026</h3>
+        <div class="apk">APK Versiyası</div>
+    </div>
+
+    <button class="download"
+            onclick="openModal('InShot Plus 2026')">
+        Yüklə
+    </button>
+</div>
+
+
+<!-- YOUTUBE MUSIC -->
+
+<div class="card">
+    <img class="icon"
+         src="https://cdn.simpleicons.org/youtubemusic"
+         alt="YouTube Music">
+
+    <div class="info">
+        <h3>YouTube Music Plus 2026</h3>
+        <div class="apk">APK Versiyası</div>
+    </div>
+
+    <button class="download"
+            onclick="openModal('YouTube Music Plus 2026')">
+        Yüklə
+    </button>
+</div>
+
+
+<!-- SNAPCHAT -->
+
+<div class="card">
+    <img class="icon"
+         src="https://cdn.simpleicons.org/snapchat"
+         alt="Snapchat">
+
+    <div class="info">
+        <h3>Snapchat Plus 2026</h3>
+        <div class="apk">APK Versiyası</div>
+    </div>
+
+    <button class="download"
+            onclick="openModal('Snapchat Plus 2026')">
+        Yüklə
+    </button>
+</div>
+
+
+<!-- PINTEREST -->
+
+<div class="card">
+    <img class="icon"
+         src="https://cdn.simpleicons.org/pinterest"
+         alt="Pinterest">
+
+    <div class="info">
+        <h3>Pinterest Plus 2026</h3>
+        <div class="apk">APK Versiyası</div>
+    </div>
+
+    <button class="download"
+            onclick="openModal('Pinterest Plus 2026')">
+        Yüklə
+    </button>
+</div>
+
+
+<!-- SPOTIFY -->
+
+<div class="card">
+    <img class="icon"
+         src="https://cdn.simpleicons.org/spotify"
+         alt="Spotify">
+
+    <div class="info">
+        <h3>Spotify Plus 2026</h3>
+        <div class="apk">APK Versiyası</div>
+    </div>
+
+    <button class="download"
+            onclick="openModal('Spotify Plus 2026')">
+        Yüklə
+    </button>
+</div>
+
+
+<!-- NETFLIX -->
+
+<div class="card">
+    <img class="icon"
+         src="https://cdn.simpleicons.org/netflix"
+         alt="Netflix">
+
+    <div class="info">
+        <h3>Netflix Plus 2026</h3>
+        <div class="apk">APK Versiyası</div>
+    </div>
+
+    <button class="download"
+            onclick="openModal('Netflix Plus 2026')">
+        Yüklə
+    </button>
+</div>
+
+
+<!-- PICSART -->
+
+<div class="card">
+    <img class="icon"
+         src="https://cdn.simpleicons.org/picsart"
+         alt="Picsart">
+
+    <div class="info">
+        <h3>Picsart Plus 2026</h3>
+        <div class="apk">APK Versiyası</div>
+    </div>
+
+    <button class="download"
+            onclick="openModal('Picsart Plus 2026')">
+        Yüklə
+    </button>
+</div>
+
+
+<!-- CAPCUT -->
+
+<div class="card">
+    <img class="icon"
+         src="https://cdn.simpleicons.org/capcut"
+         alt="CapCut">
+
+    <div class="info">
+        <h3>CapCut Plus 2026</h3>
+        <div class="apk">APK Versiyası</div>
+    </div>
+
+    <button class="download"
+            onclick="openModal('CapCut Plus 2026')">
+        Yüklə
+    </button>
+</div>
+
+
+</section>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
 
     <div class="modal-box">
 
-      <h2 id="modalTitle">
-        APK Yükləmə
-      </h2>
+        <h2 id="modalTitle">
+            APK Yükləmə
+        </h2>
 
-      <p>
-        Yükləmək üçün ödəniş edib APK versiyasını əldə edə bilərsiniz!
-      </p>
+        <p>
+            Yükləmək üçün ödəniş edib APK versiyasını əldə edə bilərsiniz!
+        </p>
 
-      <div class="price">
-        5 AZN
-      </div>
+        <div class="price">
+            5 AZN
+        </div>
 
-      <a
-        id="whatsappLink"
-        class="whatsapp-btn"
-        href="#"
-        target="_blank"
-      >
-
-        <img
-          class="whatsapp-icon"
-          src="https://cdn.simpleicons.org/whatsapp/ffffff"
-          alt="WhatsApp"
+        <a
+            id="whatsappLink"
+            class="whatsapp"
+            href="#"
+            target="_blank"
+            rel="noopener"
         >
 
-        WhatsApp ilə sifariş et
+            <img
+                src="https://cdn.simpleicons.org/whatsapp/ffffff"
+                alt="WhatsApp"
+            >
 
-      </a>
+            WhatsApp ilə sifariş et
 
-      <button
-        class="close-btn"
-        onclick="closeModal()"
-      >
-        Bağla
-      </button>
+        </a>
+
+        <button class="close" onclick="closeModal()">
+            Bağla
+        </button>
 
     </div>
 
-  </div>
+</div>
 
 
-  <!-- FOOTER -->
-  <footer>
-
+<footer>
     © 2026 APK Plus — Bütün hüquqlar qorunur.
-
-  </footer>
-
-
-  <script>
-
-    /* TEMA */
-    function toggleTheme() {
-
-      document.body.classList.toggle("dark");
-
-    }
+</footer>
 
 
-    /* MODAL AÇ */
-    function openModal(appName) {
+<script>
 
-      document.getElementById("modalTitle").innerText =
+/* TEMA DƏYİŞDİR */
+
+function toggleTheme(){
+
+    document.body.classList.toggle("dark");
+
+}
+
+
+/* MODAL AÇ */
+
+function openModal(appName){
+
+    document.getElementById("modalTitle").innerText =
         appName;
 
-      const phone = "994556145657";
+    const phone = "994556145657";
 
-      const message =
+    const message =
         "Salam. " +
         appName +
         " APK versiyasını 5 AZN ödəyərək əldə etmək istəyirəm.";
 
-      const whatsappURL =
+    const whatsappURL =
         "https://wa.me/" +
         phone +
         "?text=" +
         encodeURIComponent(message);
 
-      document.getElementById("whatsappLink").href =
+    document.getElementById("whatsappLink").href =
         whatsappURL;
 
-      document
-        .getElementById("modal")
-        .classList.add("active");
+    document.getElementById("modal").classList.add("show");
+
+}
+
+
+/* MODAL BAĞLA */
+
+function closeModal(){
+
+    document.getElementById("modal").classList.remove("show");
+
+}
+
+
+/* MODALIN ÇÖLÜNƏ BASANDA BAĞLANSIN */
+
+document.getElementById("modal").addEventListener("click",function(e){
+
+    if(e.target === this){
+
+        closeModal();
 
     }
 
-
-    /* MODAL BAĞLA */
-    function closeModal() {
-
-      document
-        .getElementById("modal")
-        .classList.remove("active");
-
-    }
+});
 
 
-    /* BOŞ YERƏ BASANDA BAĞLA */
-    document
-      .getElementById("modal")
-      .addEventListener("click", function(e) {
+/* AXTARIŞ */
 
-        if (e.target === this) {
+function searchApps(){
 
-          closeModal();
+    const value =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
 
-        }
+    const cards =
+        document.querySelectorAll(".card");
 
-      });
-
-
-    /* AXTARIŞ */
-    function searchApps() {
-
-      const search =
-        document
-          .getElementById("search")
-          .value
-          .toLowerCase();
-
-      const cards =
-        document.querySelectorAll(".app-card");
-
-      cards.forEach(function(card) {
+    cards.forEach(function(card){
 
         const text =
-          card.innerText.toLowerCase();
+            card.innerText.toLowerCase();
 
-        if (text.includes(search)) {
+        if(text.includes(value)){
 
-          card.style.display = "flex";
+            card.style.display = "flex";
 
-        } else {
+        }else{
 
-          card.style.display = "none";
+            card.style.display = "none";
 
         }
 
-      });
+    });
 
-    }
+}
 
-  </script>
+</script>
 
 </body>
 </html>
