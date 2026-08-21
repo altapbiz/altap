@@ -4,151 +4,460 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<meta name="description" content="ALTAP.BİZ — Azərbaycanın ən son xəbərləri">
+<meta name="theme-color" content="#0b1220">
+
 <title>ALTAP.BİZ — Xəbərlər</title>
 
 <style>
+:root{
+    --bg:#f4f6f9;
+    --card:#ffffff;
+    --text:#101828;
+    --muted:#667085;
+    --border:#e4e7ec;
+    --primary:#0b1220;
+    --accent:#e31b23;
+    --soft:#eef2f6;
+    --shadow:0 8px 30px rgba(16,24,40,.08);
+}
+
+body.dark{
+    --bg:#080c13;
+    --card:#111827;
+    --text:#f8fafc;
+    --muted:#98a2b3;
+    --border:#253044;
+    --primary:#05070b;
+    --soft:#1a2230;
+    --shadow:0 8px 30px rgba(0,0,0,.35);
+}
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f4f5f7;
-    color:#111;
+html{
+    scroll-behavior:smooth;
 }
 
+body{
+    font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+    background:var(--bg);
+    color:var(--text);
+
+    transition:
+    background .25s,
+    color .25s;
+}
+
+/* HEADER */
+
 header{
-    background:#0b0b0b;
-    color:white;
+    background:var(--primary);
+    color:#fff;
     position:sticky;
     top:0;
     z-index:1000;
-    box-shadow:0 2px 12px rgba(0,0,0,.15);
+    box-shadow:0 3px 20px rgba(0,0,0,.18);
 }
 
 .header{
-    max-width:1200px;
+    max-width:1250px;
     margin:auto;
-    padding:17px 18px;
+    min-height:76px;
+    padding:12px 18px;
+
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
+    gap:20px;
 }
 
 .logo{
-    font-size:27px;
-    font-weight:900;
-    letter-spacing:-1px;
+    font-size:29px;
+    font-weight:950;
+    letter-spacing:-1.5px;
 }
 
-.live{
-    color:#ff3030;
-    font-size:12px;
+.logo span{
+    color:#ff3333;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.datetime{
+    text-align:right;
+    line-height:1.3;
+}
+
+.time{
+    font-size:18px;
     font-weight:800;
 }
 
+.date{
+    color:#b9c2d0;
+    font-size:11px;
+}
+
+.icon-btn{
+    width:40px;
+    height:40px;
+    border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.08);
+    color:white;
+    border-radius:11px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+/* NAVIGATION */
+
 nav{
-    background:white;
-    border-bottom:1px solid #ddd;
-    overflow-x:auto;
+    background:var(--card);
+    border-bottom:1px solid var(--border);
+    position:relative;
+    z-index:900;
 }
 
 .nav{
-    max-width:1200px;
+    max-width:1250px;
     margin:auto;
-    padding:11px 15px;
+
     display:flex;
     gap:7px;
+
+    padding:10px 15px;
+
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.nav::-webkit-scrollbar{
+    display:none;
 }
 
 .nav button{
     border:0;
-    background:#f0f1f2;
-    padding:9px 15px;
-    border-radius:20px;
+    background:var(--soft);
+    color:var(--text);
+
+    padding:10px 16px;
+
+    border-radius:22px;
+
     font-size:13px;
-    font-weight:700;
+    font-weight:750;
+
     cursor:pointer;
     white-space:nowrap;
+
+    transition:.2s;
+}
+
+.nav button:hover{
+    transform:translateY(-1px);
 }
 
 .nav button.active{
-    background:#111;
-    color:white;
+    background:var(--accent);
+    color:#fff;
 }
 
+/* MAIN */
+
 main{
-    max-width:1200px;
+    max-width:1250px;
     margin:25px auto;
     padding:0 15px;
 }
 
+/* BREAKING */
+
 .breaking{
-    background:#d90000;
+    background:linear-gradient(
+        90deg,
+        #b80000,
+        #ed1c24
+    );
+
     color:white;
-    border-radius:10px;
-    padding:11px 15px;
+
+    border-radius:13px;
+
+    min-height:48px;
+
     display:flex;
-    gap:12px;
     align-items:center;
-    margin-bottom:22px;
+
     overflow:hidden;
+
+    margin-bottom:24px;
+
+    box-shadow:
+    0 6px 20px rgba(227,27,35,.18);
 }
 
-.breaking strong{
+.breaking-label{
+    background:#970000;
+
+    height:100%;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 17px;
+
+    font-size:12px;
+    font-weight:900;
+
     white-space:nowrap;
 }
 
-.breaking span{
+.breaking-text{
+    padding:0 15px;
+
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
+
+    font-size:14px;
+    font-weight:650;
 }
 
-.heading{
+/* SEARCH */
+
+.tools{
+    display:flex;
+    gap:10px;
+    margin-bottom:23px;
+}
+
+.search{
+    flex:1;
+    position:relative;
+}
+
+.search input{
+    width:100%;
+    height:48px;
+
+    border:1px solid var(--border);
+    border-radius:13px;
+
+    background:var(--card);
+    color:var(--text);
+
+    padding:0 45px 0 16px;
+
+    outline:none;
+
+    font-size:14px;
+}
+
+.search input:focus{
+    border-color:#98a2b3;
+}
+
+.search-icon{
+    position:absolute;
+    right:16px;
+    top:14px;
+    font-size:18px;
+    color:var(--muted);
+}
+
+/* SECTION HEADER */
+
+.section-head{
     display:flex;
     justify-content:space-between;
-    align-items:center;
+    align-items:end;
+
     margin-bottom:18px;
 }
 
-.heading h1{
-    font-size:27px;
+.section-head h1{
+    font-size:29px;
+    letter-spacing:-.8px;
 }
 
 .updated{
-    color:#777;
+    color:var(--muted);
     font-size:12px;
 }
 
+/* HERO */
+
+.hero{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:18px;
+
+    margin-bottom:28px;
+}
+
+.hero-main{
+    min-height:390px;
+
+    position:relative;
+    overflow:hidden;
+
+    border-radius:18px;
+
+    background:#111;
+
+    cursor:pointer;
+
+    box-shadow:var(--shadow);
+}
+
+.hero-main img{
+    width:100%;
+    height:100%;
+    min-height:390px;
+    object-fit:cover;
+
+    transition:transform .5s;
+}
+
+.hero-main:hover img{
+    transform:scale(1.035);
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        transparent 25%,
+        rgba(0,0,0,.9) 100%
+    );
+
+    display:flex;
+    align-items:end;
+
+    padding:27px;
+}
+
+.hero-content{
+    color:white;
+}
+
+.hero-label{
+    display:inline-block;
+
+    background:var(--accent);
+    color:white;
+
+    padding:6px 10px;
+
+    border-radius:6px;
+
+    font-size:11px;
+    font-weight:900;
+
+    margin-bottom:10px;
+}
+
+.hero-title{
+    font-size:31px;
+    line-height:1.18;
+    font-weight:900;
+}
+
+.hero-side{
+    display:grid;
+    grid-template-rows:1fr 1fr;
+    gap:18px;
+}
+
+.side-news{
+    background:var(--card);
+    border-radius:17px;
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+    cursor:pointer;
+
+    display:grid;
+    grid-template-columns:42% 58%;
+}
+
+.side-news img{
+    width:100%;
+    height:100%;
+    min-height:175px;
+    object-fit:cover;
+}
+
+.side-content{
+    padding:15px;
+}
+
+.side-content h3{
+    font-size:16px;
+    line-height:1.35;
+}
+
+/* NEWS GRID */
+
 .news-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:19px;
 }
 
 .card{
-    background:white;
-    border-radius:15px;
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
     overflow:hidden;
-    box-shadow:0 3px 15px rgba(0,0,0,.07);
+
+    box-shadow:var(--shadow);
+
     cursor:pointer;
-    transition:.2s;
+
+    transition:
+    transform .22s,
+    box-shadow .22s;
 }
 
 .card:hover{
     transform:translateY(-4px);
-    box-shadow:0 7px 22px rgba(0,0,0,.12);
+
+    box-shadow:
+    0 14px 35px rgba(16,24,40,.13);
 }
 
 .card img{
     width:100%;
     height:205px;
+
     object-fit:cover;
-    display:block;
-    background:#ddd;
+
+    background:var(--soft);
 }
 
 .card-body{
@@ -156,74 +465,333 @@ main{
 }
 
 .category{
-    color:#d00000;
-    font-size:11px;
-    font-weight:800;
+    display:inline-block;
+
+    color:var(--accent);
+
+    font-size:10px;
+    font-weight:900;
+
+    margin-bottom:8px;
+
     text-transform:uppercase;
-    margin-bottom:7px;
 }
 
 .card h2{
     font-size:18px;
     line-height:1.4;
+
     margin-bottom:10px;
 }
 
 .card p{
-    color:#666;
-    font-size:14px;
+    color:var(--muted);
+
+    font-size:13px;
     line-height:1.5;
-    margin-bottom:13px;
+
+    margin-bottom:14px;
 }
 
-.date{
-    color:#999;
-    font-size:12px;
+.card-date{
+    color:var(--muted);
+    font-size:11px;
 }
+
+/* LOADING */
 
 .loading,
 .error{
     grid-column:1/-1;
-    background:white;
-    border-radius:15px;
-    padding:45px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    padding:50px;
+
     text-align:center;
+
+    color:var(--muted);
 }
 
-footer{
-    background:#0b0b0b;
-    color:#999;
-    text-align:center;
-    padding:30px 15px;
+/* POPULAR */
+
+.popular{
+    margin-top:35px;
+}
+
+.popular-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:15px;
+}
+
+.popular-card{
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    padding:16px;
+
+    cursor:pointer;
+}
+
+.popular-number{
+    font-size:28px;
+    font-weight:950;
+    color:var(--accent);
+
+    margin-bottom:7px;
+}
+
+.popular-card h3{
+    font-size:15px;
+    line-height:1.4;
+}
+
+/* CONTACT */
+
+.contact{
     margin-top:45px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:28px;
+
+    box-shadow:var(--shadow);
+}
+
+.contact h2{
+    margin-bottom:8px;
+}
+
+.contact p{
+    color:var(--muted);
+    margin-bottom:20px;
+}
+
+.contact-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.social{
+    display:inline-flex;
+
+    align-items:center;
+    gap:9px;
+
+    padding:11px 17px;
+
+    border-radius:11px;
+
+    text-decoration:none;
+
+    font-weight:750;
+
+    font-size:13px;
+
+    transition:.2s;
+}
+
+.social:hover{
+    transform:translateY(-2px);
+}
+
+.whatsapp{
+    background:#25D366;
+    color:#fff;
+}
+
+.tiktok{
+    background:#000;
+    color:#fff;
+}
+
+.email{
+    background:var(--soft);
+    color:var(--text);
+}
+
+.phone{
+    background:var(--accent);
+    color:white;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:45px;
+
+    background:#080b10;
+
+    color:#9aa4b2;
+
+    padding:35px 18px;
+}
+
+.footer-inner{
+    max-width:1250px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:30px;
+}
+
+.footer-logo{
+    color:white;
+    font-size:24px;
+    font-weight:900;
+
+    margin-bottom:10px;
+}
+
+.footer-title{
+    color:white;
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.footer-links a{
+    color:#9aa4b2;
+    text-decoration:none;
     font-size:13px;
 }
 
-@media(max-width:850px){
+.copyright{
+    max-width:1250px;
+    margin:25px auto 0;
+
+    padding-top:20px;
+
+    border-top:1px solid #202936;
+
+    font-size:12px;
+}
+
+/* TOP BUTTON */
+
+#topButton{
+    position:fixed;
+
+    right:18px;
+    bottom:18px;
+
+    width:45px;
+    height:45px;
+
+    border:0;
+    border-radius:50%;
+
+    background:var(--accent);
+    color:white;
+
+    font-size:19px;
+
+    cursor:pointer;
+
+    display:none;
+
+    z-index:2000;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+    .hero{
+        grid-template-columns:1fr;
+    }
+
+    .hero-side{
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:1fr;
+    }
+
     .news-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .popular-grid{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr 1fr;
     }
 }
 
 @media(max-width:600px){
 
     .header{
-        padding:15px;
+        min-height:66px;
+    }
+
+    .datetime{
+        display:none;
     }
 
     .logo{
         font-size:23px;
     }
 
+    .hero-main{
+        min-height:320px;
+    }
+
+    .hero-main img{
+        min-height:320px;
+    }
+
+    .hero-title{
+        font-size:24px;
+    }
+
+    .hero-side{
+        display:grid;
+        grid-template-columns:1fr;
+    }
+
+    .side-news{
+        min-height:140px;
+    }
+
     .news-grid{
         grid-template-columns:1fr;
     }
 
-    .card img{
-        height:220px;
+    .popular-grid{
+        grid-template-columns:1fr 1fr;
     }
 
-    .heading{
+    .tools{
+        display:block;
+    }
+
+    .section-head{
         display:block;
     }
 
@@ -232,8 +800,16 @@ footer{
         margin-top:7px;
     }
 
-    .breaking{
-        font-size:13px;
+    .footer-inner{
+        grid-template-columns:1fr;
+    }
+
+    .contact{
+        padding:22px 17px;
+    }
+
+    .breaking-label{
+        padding:0 11px;
     }
 }
 </style>
@@ -242,187 +818,423 @@ footer{
 <body>
 
 <header>
-    <div class="header">
-        <div class="logo">ALTAP.BİZ</div>
-        <div class="live">● CANLI XƏBƏRLƏR</div>
+
+<div class="header">
+
+    <div class="logo">
+        ALTAP<span>.BİZ</span>
     </div>
+
+    <div class="header-right">
+
+        <div class="datetime">
+
+            <div class="time" id="clock">
+                00:00:00
+            </div>
+
+            <div class="date" id="today">
+                Yüklənir...
+            </div>
+
+        </div>
+
+        <button
+        class="icon-btn"
+        id="themeButton"
+        onclick="toggleTheme()"
+        title="Tema dəyiş">
+            🌙
+        </button>
+
+    </div>
+
+</div>
+
 </header>
 
+
 <nav>
-    <div class="nav">
 
-        <button class="active" onclick="setCategory('all',this)">
-            Bütün xəbərlər
-        </button>
+<div class="nav">
 
-        <button onclick="setCategory('azerbaijan',this)">
-            Azərbaycan
-        </button>
+<button class="active"
+onclick="changeCategory('all',this)">
+Bütün xəbərlər
+</button>
 
-        <button onclick="setCategory('politics',this)">
-            Siyasət
-        </button>
+<button onclick="changeCategory('azerbaijan',this)">
+Azərbaycan
+</button>
 
-        <button onclick="setCategory('economy',this)">
-            İqtisadiyyat
-        </button>
+<button onclick="changeCategory('politics',this)">
+Siyasət
+</button>
 
-        <button onclick="setCategory('society',this)">
-            Cəmiyyət
-        </button>
+<button onclick="changeCategory('economy',this)">
+İqtisadiyyat
+</button>
 
-        <button onclick="setCategory('regions',this)">
-            Regionlar
-        </button>
+<button onclick="changeCategory('society',this)">
+Cəmiyyət
+</button>
 
-        <button onclick="setCategory('world',this)">
-            Dünya
-        </button>
+<button onclick="changeCategory('regions',this)">
+Regionlar
+</button>
 
-        <button onclick="setCategory('sport',this)">
-            İdman
-        </button>
+<button onclick="changeCategory('world',this)">
+Dünya
+</button>
 
-        <button onclick="setCategory('culture',this)">
-            Mədəniyyət
-        </button>
+<button onclick="changeCategory('sport',this)">
+İdman
+</button>
 
-        <button onclick="setCategory('science',this)">
-            Elm və təhsil
-        </button>
+<button onclick="changeCategory('culture',this)">
+Mədəniyyət
+</button>
 
-        <button onclick="setCategory('weather',this)">
-            Hava
-        </button>
+<button onclick="changeCategory('technology',this)">
+Texnologiya
+</button>
 
-        <button onclick="setCategory('incident',this)">
-            Hadisə
-        </button>
+<button onclick="changeCategory('science',this)">
+Elm və təhsil
+</button>
 
-    </div>
+<button onclick="changeCategory('auto',this)">
+Avto
+</button>
+
+<button onclick="changeCategory('health',this)">
+Sağlamlıq
+</button>
+
+<button onclick="changeCategory('incident',this)">
+Hadisə
+</button>
+
+</div>
+
 </nav>
+
 
 <main>
 
-    <div class="breaking">
-        <strong>🔴 SON DƏQİQƏ</strong>
-        <span id="breakingText">
-            Xəbərlər yüklənir...
-        </span>
+
+<!-- SON DƏQİQƏ -->
+
+<div class="breaking">
+
+    <div class="breaking-label">
+        🔴 SON DƏQİQƏ
     </div>
 
-    <div class="heading">
+    <div
+    class="breaking-text"
+    id="breakingText">
+        Xəbərlər yüklənir...
+    </div>
 
-        <h1 id="pageTitle">
-            Son xəbərlər
-        </h1>
+</div>
 
-        <div class="updated" id="updated">
-            Yenilənir...
+
+<!-- AXTARIŞ -->
+
+<div class="tools">
+
+    <div class="search">
+
+        <input
+        type="search"
+        id="searchInput"
+        placeholder="Xəbər axtar..."
+        oninput="searchNews()">
+
+        <div class="search-icon">
+            🔍
         </div>
 
     </div>
 
-    <div class="news-grid" id="news">
+</div>
 
-        <div class="loading">
-            Xəbərlər yüklənir...
-        </div>
+
+<!-- BAŞLIQ -->
+
+<div class="section-head">
+
+    <h1 id="sectionTitle">
+        Son xəbərlər
+    </h1>
+
+    <div
+    class="updated"
+    id="updated">
+        Xəbərlər yüklənir...
+    </div>
+
+</div>
+
+
+<!-- ƏSAS XƏBƏR -->
+
+<div
+class="hero"
+id="hero">
+
+    <div class="loading">
+        Əsas xəbərlər yüklənir...
+    </div>
+
+</div>
+
+
+<!-- XƏBƏRLƏR -->
+
+<div
+class="news-grid"
+id="news">
+
+    <div class="loading">
+        Xəbərlər yüklənir...
+    </div>
+
+</div>
+
+
+<!-- ƏN ÇOX OXUNANLAR -->
+
+<section class="popular">
+
+<div class="section-head">
+
+    <h1>
+        🔥 Ən çox oxunanlar
+    </h1>
+
+</div>
+
+<div
+class="popular-grid"
+id="popular">
+
+</div>
+
+</section>
+
+
+<!-- ƏLAQƏ -->
+
+<section
+class="contact"
+id="contact">
+
+    <h2>
+        Əlaqə
+    </h2>
+
+    <p>
+        ALTAP.BİZ ilə əlaqə saxlamaq üçün
+        aşağıdakı kanallardan istifadə edə bilərsiniz.
+    </p>
+
+    <div class="contact-links">
+
+        <a
+        class="social whatsapp"
+        href="https://wa.me/994501234567"
+        target="_blank">
+
+            <span>💬</span>
+            WhatsApp
+
+        </a>
+
+
+        <a
+        class="social tiktok"
+        href="https://www.tiktok.com/"
+        target="_blank">
+
+            <span>♪</span>
+            TikTok
+
+        </a>
+
+
+        <a
+        class="social phone"
+        href="tel:+994501234567">
+
+            <span>☎</span>
+            Telefon
+
+        </a>
+
+
+        <a
+        class="social email"
+        href="mailto:info@altap.biz">
+
+            <span>✉</span>
+            E-mail
+
+        </a>
 
     </div>
+
+</section>
+
 
 </main>
 
+
 <footer>
-    © 2026 ALTAP.BİZ
-    <br><br>
-    Xəbərləri mənbə saytından oxumaq üçün xəbərin üzərinə klik edin.
+
+<div class="footer-inner">
+
+    <div>
+
+        <div class="footer-logo">
+            ALTAP.BİZ
+        </div>
+
+        <p>
+            Azərbaycanın və dünyanın
+            ən son xəbərləri.
+        </p>
+
+    </div>
+
+
+    <div>
+
+        <div class="footer-title">
+            Bölmələr
+        </div>
+
+        <div class="footer-links">
+
+            <a href="#">
+                Azərbaycan
+            </a>
+
+            <a href="#">
+                Dünya
+            </a>
+
+            <a href="#">
+                İqtisadiyyat
+            </a>
+
+            <a href="#">
+                İdman
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div>
+
+        <div class="footer-title">
+            Əlaqə
+        </div>
+
+        <div class="footer-links">
+
+            <a href="#contact">
+                Bizimlə əlaqə
+            </a>
+
+            <a href="https://wa.me/994501234567">
+                WhatsApp
+            </a>
+
+            <a href="https://www.tiktok.com/">
+                TikTok
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="copyright">
+
+    © 2026 ALTAP.BİZ —
+    Bütün hüquqlar qorunur.
+
+</div>
+
 </footer>
+
+
+<button
+id="topButton"
+onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
+    ↑
+
+</button>
 
 
 <script>
 
-/*
-==================================================
-ALTAP.BİZ XƏBƏR SİSTEMİ
-==================================================
-*/
+/* ==============================
+   XƏBƏR SİSTEMİ
+================================ */
 
 const newsBox =
 document.getElementById("news");
 
-const updated =
-document.getElementById("updated");
+const heroBox =
+document.getElementById("hero");
 
 const breakingText =
 document.getElementById("breakingText");
 
-const pageTitle =
-document.getElementById("pageTitle");
+const updated =
+document.getElementById("updated");
+
+const popularBox =
+document.getElementById("popular");
+
+const sectionTitle =
+document.getElementById("sectionTitle");
 
 let currentCategory = "all";
 
-
-/*
-AZƏRTAC Azərbaycan dilində RSS sistemi
-*/
-
-const RSS = {
-
-    all:
-    "https://azertag.az/rss-all",
-
-    politics:
-    "https://azertag.az/rss-all",
-
-    economy:
-    "https://azertag.az/rss-all",
-
-    society:
-    "https://azertag.az/rss-all",
-
-    regions:
-    "https://azertag.az/rss-all",
-
-    world:
-    "https://azertag.az/rss-all",
-
-    sport:
-    "https://azertag.az/rss-all",
-
-    culture:
-    "https://azertag.az/rss-all",
-
-    science:
-    "https://azertag.az/rss-all",
-
-    weather:
-    "https://azertag.az/rss-all",
-
-    incident:
-    "https://azertag.az/rss-all",
-
-    azerbaijan:
-    "https://azertag.az/rss-all"
-
-};
+let allNews = [];
 
 
 /*
-Kateqoriyalara görə sözlər
+AZƏRTAC RSS
 */
 
-const keywords = {
+const RSS_URL =
+"https://azertag.az/rss-all";
+
+
+/*
+KATEQORİYA SÖZLƏRİ
+*/
+
+const filters = {
 
     politics:[
         "prezident",
-        "hökumət",
-        "nazir",
         "parlament",
+        "nazir",
+        "hökumət",
         "siyasət",
-        "millət vəkili",
-        "xarici işlər",
-        "diplomatik"
+        "deputat",
+        "milli məclis"
     ],
 
     economy:[
@@ -430,24 +1242,21 @@ const keywords = {
         "manat",
         "bank",
         "vergi",
-        "investisiya",
-        "ixrac",
-        "idxal",
         "neft",
         "qaz",
-        "sahibkar",
+        "investisiya",
         "maaş",
-        "pensiya"
+        "pensiya",
+        "biznes"
     ],
 
     society:[
         "cəmiyyət",
         "təhsil",
-        "səhiyyə",
         "məktəb",
         "universitet",
+        "səhiyyə",
         "həkim",
-        "vətəndaş",
         "sosial"
     ],
 
@@ -460,8 +1269,6 @@ const keywords = {
         "Qusar",
         "Lənkəran",
         "Şamaxı",
-        "Şəmkir",
-        "Ağcabədi",
         "Naxçıvan",
         "rayon"
     ],
@@ -477,7 +1284,6 @@ const keywords = {
         "BMT",
         "Fransa",
         "Almaniya",
-        "İngiltərə",
         "dünya"
     ],
 
@@ -489,44 +1295,62 @@ const keywords = {
         "Sabah",
         "UEFA",
         "çempionat",
-        "güləş",
         "basketbol",
-        "voleybol",
-        "tennis"
+        "tennis",
+        "güləş"
     ],
 
     culture:[
         "mədəniyyət",
         "musiqi",
-        "teatr",
         "kino",
+        "teatr",
         "aktyor",
         "müğənni",
-        "sərgi",
-        "muzey",
-        "festival"
+        "festival",
+        "muzey"
+    ],
+
+    technology:[
+        "texnologiya",
+        "süni intellekt",
+        "internet",
+        "telefon",
+        "Apple",
+        "Google",
+        "Microsoft",
+        "kompüter",
+        "rəqəmsal"
     ],
 
     science:[
         "elm",
-        "təhsil",
-        "universitet",
         "alim",
         "tədqiqat",
-        "texnologiya",
-        "süni intellekt",
-        "rəqəmsal"
+        "universitet",
+        "təhsil",
+        "kosmos",
+        "elm"
     ],
 
-    weather:[
-        "hava",
-        "temperatur",
-        "yağış",
-        "qar",
-        "külək",
-        "isti",
-        "soyuq",
-        "proqnoz"
+    auto:[
+        "avtomobil",
+        "maşın",
+        "avto",
+        "Mercedes",
+        "BMW",
+        "Toyota",
+        "Volkswagen",
+        "elektrik avtomobil"
+    ],
+
+    health:[
+        "sağlamlıq",
+        "həkim",
+        "xəstəlik",
+        "tibb",
+        "dərman",
+        "xəstəxana"
     ],
 
     incident:[
@@ -535,19 +1359,18 @@ const keywords = {
         "hadisə",
         "xəsarət",
         "həlak",
-        "saxlanılıb",
         "cinayət",
-        "narkotik"
+        "saxlanılıb"
     ]
 
 };
 
 
 /*
-Kateqoriya adları
+KATEQORİYA ADLARI
 */
 
-const names = {
+const categoryNames = {
 
     all:"Son xəbərlər",
     azerbaijan:"Azərbaycan",
@@ -558,127 +1381,165 @@ const names = {
     world:"Dünya",
     sport:"İdman",
     culture:"Mədəniyyət",
+    technology:"Texnologiya",
     science:"Elm və təhsil",
-    weather:"Hava",
+    auto:"Avto",
+    health:"Sağlamlıq",
     incident:"Hadisə"
 
 };
 
 
 /*
-Kateqoriyaya uyğun xəbər seçirik
+ŞƏKİL
 */
 
-function matchesCategory(item,category){
+function getImage(item){
 
-    if(category === "all" ||
-       category === "azerbaijan"){
+    if(
+        item.enclosure &&
+        item.enclosure.link
+    ){
+        return item.enclosure.link;
+    }
 
+    if(item.thumbnail){
+        return item.thumbnail;
+    }
+
+    return "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=85";
+}
+
+
+/*
+KATEQORİYA FİLTRİ
+*/
+
+function matchesCategory(
+    item,
+    category
+){
+
+    if(
+        category === "all" ||
+        category === "azerbaijan"
+    ){
         return true;
     }
 
     const text =
     (
-        (item.title || "") +
-        " " +
-        (item.description || "")
-    ).toLowerCase();
-
-    const list =
-    keywords[category] || [];
-
-    return list.some(word =>
-        text.includes(word.toLowerCase())
+        item.title || ""
+    )
+    + " " +
+    (
+        item.description || ""
     );
+
+    const words =
+    filters[category] || [];
+
+    return words.some(
+        word =>
+        text
+        .toLowerCase()
+        .includes(
+            word.toLowerCase()
+        )
+    );
+
 }
 
 
 /*
-Şəkil
+TƏHLÜKƏSİZ MƏTN
 */
 
-function getImage(item){
+function cleanText(text){
 
-    if(item.enclosure &&
-       item.enclosure.link){
+    return (text || "")
+    .replace(/<[^>]*>/g,"")
+    .replace(/&nbsp;/g," ")
+    .replace(/&amp;/g,"&")
+    .trim();
 
-        return item.enclosure.link;
-    }
-
-    if(item.thumbnail){
-
-        return item.thumbnail;
-    }
-
-    return
-    "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=80";
 }
 
 
 /*
-Xəbər yükləmə
+XƏBƏRLƏRİ GƏTİR
 */
 
-async function loadNews(category="all"){
+async function loadNews(
+    category="all"
+){
 
     currentCategory =
     category;
 
-    pageTitle.innerText =
-    names[category] || "Xəbərlər";
+    sectionTitle.innerText =
+    categoryNames[category];
 
 
     newsBox.innerHTML = `
         <div class="loading">
             <h3>Xəbərlər yüklənir...</h3>
-            <p style="margin-top:8px;color:#777">
+            <p style="margin-top:8px">
                 Ən son xəbərlər gətirilir
             </p>
         </div>
     `;
 
 
-    const rssURL =
-    RSS[category];
+    heroBox.innerHTML = `
+        <div class="loading">
+            Əsas xəbər yüklənir...
+        </div>
+    `;
 
 
-    const apiURL =
-    "https://api.rss2json.com/v1/api.json?rss_url=" +
-    encodeURIComponent(rssURL);
+    const api =
+    "https://api.rss2json.com/v1/api.json?rss_url="
+    +
+    encodeURIComponent(RSS_URL);
 
 
     try{
 
         const response =
-        await fetch(apiURL);
+        await fetch(api);
 
 
         const data =
         await response.json();
 
 
-        if(!data.items){
-
+        if(
+            !data.items ||
+            data.items.length === 0
+        ){
             throw new Error(
-                "Xəbərlər tapılmadı"
+                "Xəbər yoxdur"
             );
-
         }
+
+
+        allNews =
+        data.items;
 
 
         let items =
         data.items;
 
 
-        /*
-        Kateqoriya filtrindən keçiririk
-        */
-
-        if(category !== "all" &&
-           category !== "azerbaijan"){
+        if(
+            category !== "all" &&
+            category !== "azerbaijan"
+        ){
 
             items =
-            items.filter(item =>
+            items.filter(
+                item =>
                 matchesCategory(
                     item,
                     category
@@ -688,67 +1549,200 @@ async function loadNews(category="all"){
         }
 
 
-        /*
-        Ən yeni xəbərlər
-        */
-
         items =
         items.slice(0,30);
 
 
-        newsBox.innerHTML = "";
+        renderHero(items);
 
 
-        if(items.length === 0){
+        renderNews(items);
 
-            newsBox.innerHTML = `
-                <div class="error">
 
-                    <h3>
-                        Bu bölmədə hazırda xəbər yoxdur.
-                    </h3>
+        renderPopular(
+            data.items
+        );
 
-                    <p style="margin-top:8px;color:#777">
-                        Bir az sonra yenidən yoxlayın.
-                    </p>
 
-                </div>
-            `;
+        if(items.length){
 
-            return;
+            breakingText.innerText =
+            cleanText(
+                items[0].title
+            );
+
         }
 
 
-        /*
-        Son dəqiqə
-        */
+        updated.innerText =
+        "Son yenilənmə: " +
+        new Date()
+        .toLocaleTimeString(
+            "az-AZ"
+        );
 
-        breakingText.innerText =
-        items[0].title || "Yeni xəbər";
+    }
+    catch(error){
+
+        console.error(error);
+
+        heroBox.innerHTML = `
+            <div class="error">
+                <h3>
+                    Xəbərləri yükləmək mümkün olmadı
+                </h3>
+                <p style="margin-top:8px">
+                    Bir az sonra yenidən cəhd edin.
+                </p>
+            </div>
+        `;
+
+        newsBox.innerHTML = "";
+
+        updated.innerText =
+        "Yenilənmə xətası";
+
+    }
+
+}
 
 
-        /*
-        Kartlar
-        */
+/*
+ƏSAS XƏBƏR
+*/
 
-        items.forEach(item => {
+function renderHero(items){
+
+    if(!items.length){
+
+        heroBox.innerHTML = `
+            <div class="error">
+                Bu bölmədə xəbər tapılmadı.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    const main =
+    items[0];
+
+    const side1 =
+    items[1];
+
+    const side2 =
+    items[2];
+
+
+    heroBox.innerHTML = `
+
+        <div
+        class="hero-main"
+        onclick="openNews('${encodeURIComponent(main.link || '')}')">
+
+            <img
+            src="${getImage(main)}"
+            onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=85'">
+
+            <div class="hero-overlay">
+
+                <div class="hero-content">
+
+                    <div class="hero-label">
+                        ƏSAS XƏBƏR
+                    </div>
+
+                    <div class="hero-title">
+                        ${cleanText(main.title)}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-side">
+
+            ${sideCard(side1)}
+
+            ${sideCard(side2)}
+
+        </div>
+    `;
+
+}
+
+
+function sideCard(item){
+
+    if(!item){
+        return "";
+    }
+
+    return `
+
+        <div
+        class="side-news"
+        onclick="openNews('${encodeURIComponent(item.link || '')}')">
+
+            <img
+            src="${getImage(item)}"
+            onerror="this.style.display='none'">
+
+            <div class="side-content">
+
+                <div class="category">
+                    AZƏRTAC
+                </div>
+
+                <h3>
+                    ${cleanText(item.title)}
+                </h3>
+
+            </div>
+
+        </div>
+    `;
+
+}
+
+
+/*
+XƏBƏR KARTLARI
+*/
+
+function renderNews(items){
+
+    if(!items.length){
+
+        newsBox.innerHTML = `
+            <div class="error">
+                Bu bölmədə hazırda xəbər yoxdur.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    newsBox.innerHTML = "";
+
+
+    items.slice(3).forEach(
+        item => {
 
             const title =
-            item.title ||
-            "Başlıqsız xəbər";
+            cleanText(item.title);
 
 
             const description =
-            item.description
-            ? item.description
-                .replace(/<[^>]*>/g,"")
-                .trim()
-                .slice(0,170)
-            : "Ətraflı məlumat üçün xəbəri açın.";
-
-
-            const image =
-            getImage(item);
+            cleanText(
+                item.description
+            )
+            .slice(0,180);
 
 
             const date =
@@ -768,17 +1762,14 @@ async function loadNews(category="all"){
             card.innerHTML = `
 
                 <img
-                    src="${image}"
-                    alt="Xəbər"
-                    onerror="
-                    this.style.display='none'
-                    "
-                >
+                src="${getImage(item)}"
+                alt="Xəbər"
+                onerror="this.style.display='none'">
 
                 <div class="card-body">
 
                     <div class="category">
-                        AZƏRTAC
+                        ALTAP.BİZ
                     </div>
 
                     <h2>
@@ -790,65 +1781,107 @@ async function loadNews(category="all"){
                         ${description ? "..." : ""}
                     </p>
 
-                    <div class="date">
-                        ${date.toLocaleString("az-AZ")}
+                    <div class="card-date">
+                        ${date.toLocaleString(
+                            "az-AZ"
+                        )}
                     </div>
 
                 </div>
+
             `;
 
 
             card.onclick =
             function(){
 
-                if(item.link){
-
-                    window.open(
-                        item.link,
-                        "_blank"
-                    );
-
-                }
+                openNews(
+                    encodeURIComponent(
+                        item.link || ""
+                    )
+                );
 
             };
 
 
             newsBox.appendChild(card);
 
-        });
+        }
+    );
+
+}
 
 
-        updated.innerText =
-        "Son yenilənmə: " +
-        new Date()
-        .toLocaleTimeString("az-AZ");
+/*
+ƏN ÇOX OXUNANLAR
+*/
 
-    }
+function renderPopular(items){
 
-
-    catch(error){
-
-        console.error(error);
+    popularBox.innerHTML = "";
 
 
-        newsBox.innerHTML = `
+    items
+    .slice(0,8)
+    .forEach(
+        (item,index) => {
 
-            <div class="error">
+            const div =
+            document.createElement("div");
+
+
+            div.className =
+            "popular-card";
+
+
+            div.innerHTML = `
+
+                <div class="popular-number">
+                    ${String(index+1).padStart(2,"0")}
+                </div>
 
                 <h3>
-                    Xəbərləri yükləmək mümkün olmadı.
+                    ${cleanText(item.title)}
                 </h3>
 
-                <p style="margin-top:8px;color:#777">
-                    Xəbər xidmətinə qoşulmaq mümkün olmadı.
-                </p>
-
-            </div>
-        `;
+            `;
 
 
-        updated.innerText =
-        "Yenilənmə xətası";
+            div.onclick =
+            function(){
+
+                openNews(
+                    encodeURIComponent(
+                        item.link || ""
+                    )
+                );
+
+            };
+
+
+            popularBox.appendChild(div);
+
+        }
+    );
+
+}
+
+
+/*
+XƏBƏRİ AÇ
+*/
+
+function openNews(encoded){
+
+    const url =
+    decodeURIComponent(encoded);
+
+    if(url){
+
+        window.open(
+            url,
+            "_blank"
+        );
 
     }
 
@@ -856,19 +1889,27 @@ async function loadNews(category="all"){
 
 
 /*
-Kateqoriya dəyişməsi
+KATEQORİYA DƏYİŞ
 */
 
-function setCategory(category,button){
+function changeCategory(
+    category,
+    button
+){
 
     document
     .querySelectorAll(".nav button")
-    .forEach(btn =>
-        btn.classList.remove("active")
+    .forEach(
+        btn =>
+        btn.classList.remove(
+            "active"
+        )
     );
 
 
-    button.classList.add("active");
+    button.classList.add(
+        "active"
+    );
 
 
     loadNews(category);
@@ -877,14 +1918,184 @@ function setCategory(category,button){
 
 
 /*
-İlk açılış
+Axtarış
+*/
+
+function searchNews(){
+
+    const query =
+    document
+    .getElementById(
+        "searchInput"
+    )
+    .value
+    .toLowerCase()
+    .trim();
+
+
+    if(!query){
+
+        renderNews(
+            allNews.slice(0,30)
+        );
+
+        return;
+
+    }
+
+
+    const results =
+    allNews.filter(
+        item =>
+        cleanText(
+            item.title
+        )
+        .toLowerCase()
+        .includes(query)
+    );
+
+
+    renderNews(results);
+
+}
+
+
+/*
+SAAT
+*/
+
+function updateClock(){
+
+    const now =
+    new Date();
+
+
+    document
+    .getElementById(
+        "clock"
+    )
+    .innerText =
+    now.toLocaleTimeString(
+        "az-AZ"
+    );
+
+
+    document
+    .getElementById(
+        "today"
+    )
+    .innerText =
+    now.toLocaleDateString(
+        "az-AZ",
+        {
+            weekday:"long",
+            year:"numeric",
+            month:"long",
+            day:"numeric"
+        }
+    );
+
+}
+
+
+updateClock();
+
+setInterval(
+    updateClock,
+    1000
+);
+
+
+/*
+DARK / LIGHT TEMA
+*/
+
+function toggleTheme(){
+
+    document
+    .body
+    .classList
+    .toggle("dark");
+
+
+    const dark =
+    document
+    .body
+    .classList
+    .contains("dark");
+
+
+    document
+    .getElementById(
+        "themeButton"
+    )
+    .innerText =
+    dark ? "☀️" : "🌙";
+
+
+    localStorage.setItem(
+        "altap-theme",
+        dark ? "dark" : "light"
+    );
+
+}
+
+
+if(
+    localStorage.getItem(
+        "altap-theme"
+    ) === "dark"
+){
+
+    document
+    .body
+    .classList
+    .add("dark");
+
+
+    document
+    .getElementById(
+        "themeButton"
+    )
+    .innerText =
+    "☀️";
+
+}
+
+
+/*
+YUXARI QAYIT
+*/
+
+window.addEventListener(
+    "scroll",
+    function(){
+
+        const button =
+        document
+        .getElementById(
+            "topButton"
+        );
+
+
+        button.style.display =
+        window.scrollY > 400
+        ? "block"
+        : "none";
+
+    }
+);
+
+
+/*
+İLK YÜKLƏNMƏ
 */
 
 loadNews("all");
 
 
 /*
-Hər 5 dəqiqədən bir yenilə
+5 DƏQİQƏDƏN BİR YENİLƏ
 */
 
 setInterval(
