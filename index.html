@@ -150,6 +150,8 @@ header{
     text-decoration:underline;
 }
 
+/* MODAL */
+
 .modal{
     position:fixed;
     inset:0;
@@ -372,7 +374,7 @@ body.dark footer{
 </div>
 
 
-<section class="apps" id="apps">
+<section class="apps">
 
 
 <!-- INSTAGRAM -->
@@ -493,31 +495,6 @@ body.dark footer{
     <button
         class="download"
         onclick="openModal('WhatsApp Plus 2026')"
-    >
-        Yüklə
-    </button>
-
-</div>
-
-
-<!-- GETCONTACT -->
-
-<div class="card">
-
-    <img
-        class="icon"
-        src="https://cdn-icons-png.flaticon.com/512/906/906377.png"
-        alt="Getcontact"
-    >
-
-    <div class="info">
-        <h3>Getcontact Plus 2026</h3>
-        <div class="apk">APK Versiyası</div>
-    </div>
-
-    <button
-        class="download"
-        onclick="openModal('Getcontact Plus 2026')"
     >
         Yüklə
     </button>
@@ -757,16 +734,12 @@ body.dark footer{
 
 <script>
 
-/* TEMA */
-
 function toggleTheme(){
 
     document.body.classList.toggle("dark");
 
 }
 
-
-/* MODAL */
 
 function openModal(appName){
 
@@ -801,20 +774,14 @@ function closeModal(){
 }
 
 
-/* ÇÖLƏ BASANDA BAĞLANSIN */
-
 document.getElementById("modal").addEventListener("click",function(e){
 
     if(e.target === this){
-
         closeModal();
-
     }
 
 });
 
-
-/* AXTARIŞ */
 
 function searchApps(){
 
@@ -834,13 +801,9 @@ function searchApps(){
             card.innerText.toLowerCase();
 
         if(text.includes(value)){
-
             card.style.display = "flex";
-
         }else{
-
             card.style.display = "none";
-
         }
 
     });
