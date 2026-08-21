@@ -1,1445 +1,748 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ALTAP.BİZ — Xəbərlər</title>
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-:root{
-    --bg:#f4f6fa;
-    --card:#ffffff;
-    --text:#111827;
-    --muted:#6b7280;
-    --dark:#0b1220;
-    --border:#e5e7eb;
-    --red:#ef233c;
-}
-
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    transition:.3s;
-}
-
-body.dark{
-    --bg:#080d17;
-    --card:#111827;
-    --text:#f8fafc;
-    --muted:#9ca3af;
-    --dark:#050912;
-    --border:#263244;
-}
-
-/* HEADER */
-
-header{
-    background:var(--dark);
-    color:white;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    box-shadow:0 3px 20px rgba(0,0,0,.2);
-}
-
-.header{
-    max-width:1250px;
-    margin:auto;
-    padding:18px 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.logo{
-    font-size:30px;
-    font-weight:900;
-    letter-spacing:-1.5px;
-}
-
-.logo span{
-    color:#ef233c;
-}
-
-.live{
-    color:#ff3347;
-    font-size:13px;
-    font-weight:bold;
-}
-
-.live i{
-    font-size:9px;
-    margin-right:5px;
-}
-
-/* NAV */
-
-nav{
-    background:var(--card);
-    border-bottom:1px solid var(--border);
-    position:sticky;
-    top:70px;
-    z-index:900;
-    overflow-x:auto;
-}
-
-.nav{
-    max-width:1250px;
-    margin:auto;
-    display:flex;
-    gap:8px;
-    padding:11px 15px;
-    white-space:nowrap;
-}
-
-.nav button{
-    border:1px solid var(--border);
-    background:var(--card);
-    color:var(--text);
-    padding:10px 15px;
-    border-radius:22px;
-    font-size:14px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.nav button:hover{
-    transform:translateY(-1px);
-}
-
-.nav button.active{
-    background:#111827;
-    color:white;
-    border-color:#111827;
-}
-
-.nav i{
-    margin-right:7px;
-}
-
-/* MAIN */
-
-main{
-    max-width:1250px;
-    margin:25px auto;
-    padding:0 15px;
-}
-
-.top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-}
-
-.top h1{
-    font-size:30px;
-}
-
-.updated{
-    color:var(--muted);
-    font-size:13px;
-}
-
-/* FEATURE */
-
-.feature{
-    display:none;
-    position:relative;
-    height:430px;
-    overflow:hidden;
-    border-radius:20px;
-    margin-bottom:22px;
-    cursor:pointer;
-    background:#1d2939;
-}
-
-.feature img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.feature::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        to top,
-        rgba(0,0,0,.9),
-        rgba(0,0,0,.1) 70%
-    );
-}
-
-.featureText{
-    position:absolute;
-    left:28px;
-    right:28px;
-    bottom:25px;
-    color:white;
-    z-index:2;
-}
-
-.badge{
-    display:inline-block;
-    background:#ef233c;
-    padding:7px 11px;
-    border-radius:8px;
-    font-size:12px;
-    font-weight:bold;
-    margin-bottom:10px;
-}
-
-.featureText h2{
-    font-size:31px;
-    line-height:1.2;
-    max-width:900px;
-}
-
-/* NEWS GRID */
-
-.news{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:17px;
-    overflow:hidden;
-    cursor:pointer;
-    transition:.25s;
-    box-shadow:0 4px 15px rgba(0,0,0,.05);
-}
-
-.card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 10px 25px rgba(0,0,0,.12);
-}
-
-.cardImage{
-    width:100%;
-    height:210px;
-    position:relative;
-    background:#dbe1e8;
-    overflow:hidden;
-}
-
-.cardImage img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-}
-
-.category{
-    position:absolute;
-    left:12px;
-    top:12px;
-    background:#ef233c;
-    color:white;
-    padding:6px 9px;
-    border-radius:7px;
-    font-size:11px;
-    font-weight:bold;
-}
-
-.content{
-    padding:16px;
-}
-
-.source{
-    color:#ef233c;
-    font-size:11px;
-    font-weight:bold;
-    margin-bottom:7px;
-    text-transform:uppercase;
-}
-
-.content h2{
-    font-size:18px;
-    line-height:1.35;
-    margin-bottom:9px;
-}
-
-.content p{
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.5;
-    margin-bottom:12px;
-}
-
-.date{
-    color:var(--muted);
-    font-size:11px;
-    display:flex;
-    justify-content:space-between;
-}
-
-/* LOADING */
-
-.loading{
-    grid-column:1/-1;
-    background:var(--card);
-    border:1px solid var(--border);
-    padding:50px;
-    border-radius:18px;
-    text-align:center;
-    color:var(--muted);
-}
-
-.loading i{
-    font-size:30px;
-    margin-bottom:12px;
-}
-
-/* ARTICLE MODAL */
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.75);
-    z-index:2000;
-    padding:20px;
-    overflow:auto;
-}
-
-.modalBox{
-    max-width:900px;
-    margin:30px auto;
-    background:var(--card);
-    color:var(--text);
-    border-radius:20px;
-    overflow:hidden;
-}
-
-.modalImage{
-    width:100%;
-    max-height:450px;
-    object-fit:cover;
-}
-
-.modalContent{
-    padding:25px;
-}
-
-.modalContent h2{
-    font-size:27px;
-    line-height:1.3;
-    margin-bottom:15px;
-}
-
-.modalContent p{
-    color:var(--muted);
-    line-height:1.7;
-    font-size:16px;
-}
-
-.close{
-    float:right;
-    border:0;
-    background:#ef233c;
-    color:white;
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    font-size:20px;
-    cursor:pointer;
-}
-
-/* CONTACT */
-
-.contact{
-    margin-top:45px;
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:28px;
-}
-
-.contact h2{
-    margin-bottom:8px;
-}
-
-.contact p{
-    color:var(--muted);
-    margin-bottom:20px;
-}
-
-.contactButtons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-}
-
-.contactButtons a{
-    text-decoration:none;
-    color:white;
-    padding:13px 20px;
-    border-radius:12px;
-    font-weight:bold;
-    display:flex;
-    align-items:center;
-    gap:9px;
-}
-
-.whatsapp{
-    background:#25D366;
-}
-
-.tiktok{
-    background:#000;
-}
-
-.phone{
-    background:#e91e2f;
-}
-
-.email{
-    background:#64748b;
-}
-
-/* FOOTER */
-
-footer{
-    margin-top:45px;
-    background:#080c13;
-    color:#9ca3af;
-    padding:35px 20px;
-}
-
-.footerInner{
-    max-width:1250px;
-    margin:auto;
-}
-
-.footerLogo{
-    color:white;
-    font-size:25px;
-    font-weight:bold;
-    margin-bottom:8px;
-}
-
-.footerLogo span{
-    color:#ef233c;
-}
-
-footer p{
-    margin-bottom:20px;
-}
-
-.social{
-    display:flex;
-    gap:10px;
-}
-
-.social a{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    text-decoration:none;
-    font-size:19px;
-}
-
-.social .wa{
-    background:#25D366;
-}
-
-.social .tt{
-    background:#000;
-}
-
-.social .mail{
-    background:#64748b;
-}
-
-/* THEME BUTTON */
-
-.theme{
-    position:fixed;
-    right:18px;
-    bottom:18px;
-    width:52px;
-    height:52px;
-    border-radius:50%;
-    border:0;
-    background:#111827;
-    color:white;
-    font-size:20px;
-    cursor:pointer;
-    z-index:1500;
-    box-shadow:0 5px 20px rgba(0,0,0,.25);
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-    .news{
-        grid-template-columns:repeat(2,1fr);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>APK Plus 2026</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
-    .featureText h2{
-        font-size:25px;
-    }
-}
-
-@media(max-width:600px){
-
-    .header{
-        padding:15px;
+    body {
+      background: #f5f7fa;
+      color: #111;
+      transition: 0.3s;
     }
 
-    .logo{
-        font-size:24px;
+    /* HEADER */
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 18px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: 0.3s;
     }
 
-    .live{
-        font-size:10px;
+    .header-content {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
     }
 
-    nav{
-        top:61px;
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
     }
 
-    .nav{
-        padding:9px;
+    .theme-btn {
+      border: none;
+      background: #111;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
     }
 
-    .nav button{
-        padding:9px 12px;
-        font-size:12px;
+    /* HERO */
+    .hero {
+      max-width: 1100px;
+      margin: 45px auto 25px;
+      padding: 0 20px;
     }
 
-    .top{
-        display:block;
+    .hero h1 {
+      font-size: 34px;
+      margin-bottom: 10px;
     }
 
-    .updated{
-        margin-top:7px;
+    .hero p {
+      color: #666;
+      font-size: 16px;
     }
 
-    .feature{
-        height:350px;
+    /* SEARCH */
+    .search-box {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 0 20px;
     }
 
-    .featureText{
-        left:18px;
-        right:18px;
-        bottom:18px;
+    .search-box input {
+      width: 100%;
+      padding: 15px 18px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      outline: none;
+      font-size: 15px;
+      background: white;
+      color: #111;
     }
 
-    .featureText h2{
-        font-size:23px;
+    /* APPS */
+    .apps {
+      max-width: 1100px;
+      margin: 25px auto 60px;
+      padding: 0 20px;
+
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
     }
 
-    .news{
-        grid-template-columns:1fr;
+    .app-card {
+      background: white;
+      border: 1px solid #e8e8e8;
+      border-radius: 17px;
+      padding: 18px;
+
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+      transition: 0.25s;
     }
 
-    .cardImage{
-        height:230px;
+    .app-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     }
 
-    .contactButtons{
-        flex-direction:column;
+    .app-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      object-fit: cover;
+      background: #eee;
+      flex-shrink: 0;
     }
 
-    .contactButtons a{
-        justify-content:center;
+    .app-info {
+      flex: 1;
     }
-}
-</style>
+
+    .app-info h3 {
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+
+    .apk {
+      font-size: 13px;
+      color: #777;
+    }
+
+    .download-btn {
+      border: none;
+      background: transparent;
+      color: #087cff;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 15px;
+      padding: 8px;
+    }
+
+    .download-btn:hover {
+      text-decoration: underline;
+    }
+
+    /* MODAL */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+      z-index: 999;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      border-radius: 20px;
+      padding: 28px;
+      text-align: center;
+      animation: popup 0.2s ease;
+    }
+
+    @keyframes popup {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .modal-box h2 {
+      margin-bottom: 12px;
+      font-size: 23px;
+    }
+
+    .modal-box p {
+      color: #555;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: 800;
+      margin: 12px 0 20px;
+    }
+
+    .whatsapp-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      width: 100%;
+      padding: 14px;
+
+      background: #25D366;
+      color: white;
+      border-radius: 12px;
+
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .whatsapp-icon {
+      width: 23px;
+      height: 23px;
+    }
+
+    .close-btn {
+      margin-top: 12px;
+      border: none;
+      background: #eee;
+      color: #222;
+      width: 100%;
+      padding: 13px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 25px 20px;
+      border-top: 1px solid #ddd;
+      color: #777;
+      font-size: 14px;
+    }
+
+    /* DARK MODE */
+    body.dark {
+      background: #101114;
+      color: #fff;
+    }
+
+    body.dark header {
+      background: #17181c;
+      border-color: #292b30;
+    }
+
+    body.dark .hero p {
+      color: #aaa;
+    }
+
+    body.dark .search-box input {
+      background: #191a1f;
+      color: white;
+      border-color: #303238;
+    }
+
+    body.dark .app-card {
+      background: #191a1f;
+      border-color: #2b2d32;
+      box-shadow: none;
+    }
+
+    body.dark .apk {
+      color: #999;
+    }
+
+    body.dark .modal-box {
+      background: #191a1f;
+      color: white;
+    }
+
+    body.dark .modal-box p {
+      color: #aaa;
+    }
+
+    body.dark .close-btn {
+      background: #2b2d32;
+      color: white;
+    }
+
+    body.dark footer {
+      border-color: #292b30;
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+
+      .hero {
+        margin-top: 30px;
+      }
+
+      .hero h1 {
+        font-size: 27px;
+      }
+
+      .apps {
+        grid-template-columns: 1fr;
+      }
+
+      .app-card {
+        padding: 15px;
+      }
+
+      .app-icon {
+        width: 52px;
+        height: 52px;
+      }
+
+      .app-info h3 {
+        font-size: 15px;
+      }
+
+      .download-btn {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-    <div class="header">
+  <!-- HEADER -->
+  <header>
+    <div class="header-content">
 
-        <div class="logo">
-            ALTAP<span>.BİZ</span>
-        </div>
+      <div class="logo">
+        APK Plus 2026
+      </div>
 
-        <div class="live">
-            <i class="fa-solid fa-circle"></i>
-            CANLI XƏBƏRLƏR
-        </div>
+      <button class="theme-btn" onclick="toggleTheme()">
+        Tema dəyiş
+      </button>
 
     </div>
-</header>
+  </header>
 
-<nav>
-<div class="nav">
 
-<button class="active" onclick="loadNews('Azerbaijan',this)">
-<i class="fa-solid fa-location-dot"></i>
-Azərbaycan
-</button>
+  <!-- HERO -->
+  <section class="hero">
 
-<button onclick="loadNews('World',this)">
-<i class="fa-solid fa-earth-europe"></i>
-Dünya
-</button>
+    <h1>Plus APK Versiyaları</h1>
 
-<button onclick="loadNews('Economy Azerbaijan',this)">
-<i class="fa-solid fa-chart-line"></i>
-İqtisadiyyat
-</button>
+    <p>
+      2026-cı il üçün tətbiqlərin Plus APK versiyalarını burada tapa bilərsiniz.
+    </p>
 
-<button onclick="loadNews('Sports Azerbaijan',this)">
-<i class="fa-solid fa-futbol"></i>
-İdman
-</button>
+  </section>
 
-<button onclick="loadNews('Technology Azerbaijan',this)">
-<i class="fa-solid fa-microchip"></i>
-Texnologiya
-</button>
 
-<button onclick="loadNews('Culture Azerbaijan',this)">
-<i class="fa-solid fa-masks-theater"></i>
-Mədəniyyət
-</button>
+  <!-- SEARCH -->
+  <div class="search-box">
 
-<button onclick="loadNews('Health Azerbaijan',this)">
-<i class="fa-solid fa-heart-pulse"></i>
-Sağlamlıq
-</button>
+    <input
+      type="text"
+      id="search"
+      placeholder="Proqram axtar..."
+      onkeyup="searchApps()"
+    >
 
-<button onclick="loadNews('Automobile Azerbaijan',this)">
-<i class="fa-solid fa-car"></i>
-Avtomobil
-</button>
+  </div>
 
-</div>
-</nav>
 
-<main>
+  <!-- APPS -->
+  <section class="apps" id="apps">
 
-<div class="top">
-    <h1>Son xəbərlər</h1>
-    <div class="updated" id="updated">
-        Xəbərlər yenilənir...
+
+    <!-- INSTAGRAM -->
+    <div class="app-card">
+
+      <img
+        class="app-icon"
+        src="https://cdn.simpleicons.org/instagram"
+        alt="Instagram"
+      >
+
+      <div class="app-info">
+
+        <h3>Instagram Plus 2026</h3>
+
+        <div class="apk">
+          📦 APK Versiyası
+        </div>
+
+      </div>
+
+      <button
+        class="download-btn"
+        onclick="openModal('Instagram Plus 2026')"
+      >
+        Yüklə
+      </button>
+
     </div>
-</div>
 
-<div class="feature" id="feature"></div>
 
-<div class="news" id="news">
+    <!-- TIKTOK -->
+    <div class="app-card">
 
-<div class="loading">
-<i class="fa-solid fa-spinner fa-spin"></i>
-<br>
-Xəbərlər yüklənir...
-</div>
+      <img
+        class="app-icon"
+        src="https://cdn.simpleicons.org/tiktok"
+        alt="TikTok"
+      >
 
-</div>
+      <div class="app-info">
 
-<div class="contact">
+        <h3>TikTok Plus 2026</h3>
 
-<h2>Əlaqə</h2>
+        <div class="apk">
+          📦 APK Versiyası
+        </div>
 
-<p>
-ALTAP.BİZ ilə əlaqə saxlamaq üçün aşağıdakı kanallardan istifadə edə bilərsiniz.
-</p>
+      </div>
 
-<div class="contactButtons">
+      <button
+        class="download-btn"
+        onclick="openModal('TikTok Plus 2026')"
+      >
+        Yüklə
+      </button>
 
-<a class="whatsapp"
-href="https://wa.me/994556145657"
-target="_blank">
-<i class="fa-brands fa-whatsapp"></i>
-WhatsApp
-</a>
+    </div>
 
-<a class="tiktok"
-href="https://www.tiktok.com/@altap.biz"
-target="_blank">
-<i class="fa-brands fa-tiktok"></i>
-TikTok
-</a>
 
-<a class="phone"
-href="tel:+994556145657">
-<i class="fa-solid fa-phone"></i>
-055-614-56-57
-</a>
+    <!-- TELEGRAM -->
+    <div class="app-card">
 
-<a class="email"
-href="mailto:info@altap.biz">
-<i class="fa-solid fa-envelope"></i>
-E-mail
-</a>
+      <img
+        class="app-icon"
+        src="https://cdn.simpleicons.org/telegram"
+        alt="Telegram"
+      >
 
-</div>
-</div>
+      <div class="app-info">
 
-</main>
+        <h3>Telegram Plus 2026</h3>
 
-<footer>
+        <div class="apk">
+          📦 APK Versiyası
+        </div>
 
-<div class="footerInner">
+      </div>
 
-<div class="footerLogo">
-ALTAP<span>.BİZ</span>
-</div>
+      <button
+        class="download-btn"
+        onclick="openModal('Telegram Plus 2026')"
+      >
+        Yüklə
+      </button>
 
-<p>
-Azərbaycan və dünyanın ən son xəbərləri.
-</p>
+    </div>
 
-<div class="social">
 
-<a class="wa"
-href="https://wa.me/994556145657"
-target="_blank">
-<i class="fa-brands fa-whatsapp"></i>
-</a>
+    <!-- FACEBOOK -->
+    <div class="app-card">
 
-<a class="tt"
-href="https://www.tiktok.com/@altap.biz"
-target="_blank">
-<i class="fa-brands fa-tiktok"></i>
-</a>
+      <img
+        class="app-icon"
+        src="https://cdn.simpleicons.org/facebook"
+        alt="Facebook"
+      >
 
-<a class="mail"
-href="mailto:info@altap.biz">
-<i class="fa-solid fa-envelope"></i>
-</a>
+      <div class="app-info">
 
-</div>
+        <h3>Facebook Plus 2026</h3>
 
-</div>
+        <div class="apk">
+          📦 APK Versiyası
+        </div>
 
-</footer>
+      </div>
 
-<button class="theme" onclick="toggleTheme()">
-<i class="fa-solid fa-moon"></i>
-</button>
+      <button
+        class="download-btn"
+        onclick="openModal('Facebook Plus 2026')"
+      >
+        Yüklə
+      </button>
 
+    </div>
 
-<!-- XƏBƏRİ SAYTIN İÇİNDƏ AÇAN PƏNCƏR -->
 
-<div class="modal" id="modal">
+    <!-- WHATSAPP -->
+    <div class="app-card">
 
-<div class="modalBox">
+      <img
+        class="app-icon"
+        src="https://cdn.simpleicons.org/whatsapp"
+        alt="WhatsApp"
+      >
 
-<button class="close" onclick="closeModal()">×</button>
+      <div class="app-info">
 
-<img id="modalImage" class="modalImage">
+        <h3>WhatsApp Plus 2026</h3>
 
-<div class="modalContent">
+        <div class="apk">
+          📦 APK Versiyası
+        </div>
 
-<div class="source" id="modalSource"></div>
+      </div>
 
-<h2 id="modalTitle"></h2>
+      <button
+        class="download-btn"
+        onclick="openModal('WhatsApp Plus 2026')"
+      >
+        Yüklə
+      </button>
 
-<p id="modalText"></p>
+    </div>
 
-</div>
 
-</div>
+    <!-- GETCONTACT -->
+    <div class="app-card">
 
-</div>
+      <img
+        class="app-icon"
+        src="https://cdn.simpleicons.org/getcontact"
+        alt="Getcontact"
+      >
 
+      <div class="app-info">
 
-<script>
+        <h3>Getcontact Plus 2026</h3>
 
-/*
-====================================================
- ALTAP.BİZ XƏBƏR SİSTEMİ
-====================================================
-*/
+        <div class="apk">
+          📦 APK Versiyası
+        </div>
 
-const newsContainer =
-document.getElementById("news");
+      </div>
 
-const feature =
-document.getElementById("feature");
+      <button
+        class="download-btn"
+        onclick="openModal('Getcontact Plus 2026')"
+      >
+        Yüklə
+      </button>
 
-const updated =
-document.getElementById("updated");
+    </div>
 
-let currentCategory = "Azerbaijan";
 
+    <!-- YOUTUBE -->
+    <div class="app-card">
 
-/*
------------------------------------------------
- MÜXTƏLİF ŞƏKİL BAZASI
------------------------------------------------
+      <img
+        class="app-icon"
+        src="https://cdn.simpleicons.org/youtube"
+        alt="YouTube"
+      >
 
- RSS mənbə şəkil vermədikdə kateqoriyaya uyğun
- müxtəlif şəkillər istifadə olunur.
-*/
+      <div class="app-info">
 
-const fallbackImages = {
+        <h3>YouTube Plus 2026</h3>
 
-Azerbaijan:[
-"https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1200&q=85",
-"https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=85",
-"https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1200&q=85"
-],
+        <div class="apk">
+          📦 APK Versiyası
+        </div>
 
-World:[
-"https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=85",
-"https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1200&q=85",
-"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=85"
-],
+      </div>
 
-Economy:[
-"https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1200&q=85",
-"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=85",
-"https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?auto=format&fit=crop&w=1200&q=85"
-],
+      <button
+        class="download-btn"
+        onclick="openModal('YouTube Plus 2026')"
+      >
+        Yüklə
+      </button>
 
-Sports:[
-"https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=85",
-"https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1200&q=85",
-"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=85"
-],
+    </div>
 
-Technology:[
-"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85",
-"https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=85",
-"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=85"
-],
+  </section>
 
-Culture:[
-"https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=85",
-"https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=1200&q=85",
-"https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1200&q=85"
-],
 
-Health:[
-"https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=85",
-"https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=85",
-"https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=85"
-],
+  <!-- MODAL -->
+  <div class="modal" id="modal">
 
-Automobile:[
-"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=85",
-"https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=85",
-"https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1200&q=85"
-]
+    <div class="modal-box">
 
-};
+      <h2 id="modalTitle">
+        APK Yükləmə
+      </h2>
 
+      <p>
+        Yükləmək üçün ödəniş edib APK versiyasını əldə edə bilərsiniz!
+      </p>
 
-/*
------------------------------------------------
- KATEQORİYA ADI
------------------------------------------------
-*/
+      <div class="price">
+        5 AZN
+      </div>
 
-function getCategoryName(category){
+      <a
+        id="whatsappLink"
+        class="whatsapp-btn"
+        href="#"
+        target="_blank"
+      >
 
-if(category.includes("Economy"))
-return "İqtisadiyyat";
+        <img
+          class="whatsapp-icon"
+          src="https://cdn.simpleicons.org/whatsapp/ffffff"
+          alt="WhatsApp"
+        >
 
-if(category.includes("Sports"))
-return "İdman";
+        WhatsApp ilə sifariş et
 
-if(category.includes("Technology"))
-return "Texnologiya";
+      </a>
 
-if(category.includes("Culture"))
-return "Mədəniyyət";
+      <button
+        class="close-btn"
+        onclick="closeModal()"
+      >
+        Bağla
+      </button>
 
-if(category.includes("Health"))
-return "Sağlamlıq";
+    </div>
 
-if(category.includes("Automobile"))
-return "Avtomobil";
+  </div>
 
-if(category === "World")
-return "Dünya";
 
-return "Azərbaycan";
-}
+  <!-- FOOTER -->
+  <footer>
 
+    © 2026 APK Plus — Bütün hüquqlar qorunur.
 
-/*
------------------------------------------------
- ŞƏKİLİ MÜƏYYƏN ET
------------------------------------------------
-*/
+  </footer>
 
-function getImage(item,index,category){
 
-/* RSS şəkli */
+  <script>
 
-let image =
-item.thumbnail ||
-item.enclosure?.link ||
-item.enclosure?.url ||
-item.image ||
-item.enclosure?.href;
+    /* TEMA */
+    function toggleTheme() {
 
+      document.body.classList.toggle("dark");
 
-/* RSS şəkli varsa onu istifadə et */
+    }
 
-if(image && image.startsWith("http")){
-return image;
-}
 
+    /* MODAL AÇ */
+    function openModal(appName) {
 
-/* Əks halda kateqoriyaya aid şəkil */
+      document.getElementById("modalTitle").innerText =
+        appName;
 
-let type = "Azerbaijan";
+      const phone = "994556145657";
 
-if(category.includes("Economy"))
-type="Economy";
+      const message =
+        "Salam. " +
+        appName +
+        " APK versiyasını 5 AZN ödəyərək əldə etmək istəyirəm.";
 
-else if(category.includes("Sports"))
-type="Sports";
+      const whatsappURL =
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        encodeURIComponent(message);
 
-else if(category.includes("Technology"))
-type="Technology";
+      document.getElementById("whatsappLink").href =
+        whatsappURL;
 
-else if(category.includes("Culture"))
-type="Culture";
+      document
+        .getElementById("modal")
+        .classList.add("active");
 
-else if(category.includes("Health"))
-type="Health";
+    }
 
-else if(category.includes("Automobile"))
-type="Automobile";
 
-else if(category==="World")
-type="World";
+    /* MODAL BAĞLA */
+    function closeModal() {
 
+      document
+        .getElementById("modal")
+        .classList.remove("active");
 
-let list = fallbackImages[type];
+    }
 
-return list[index % list.length];
 
-}
+    /* BOŞ YERƏ BASANDA BAĞLA */
+    document
+      .getElementById("modal")
+      .addEventListener("click", function(e) {
 
+        if (e.target === this) {
 
-/*
------------------------------------------------
- XƏBƏRLƏRİ YÜKLƏ
------------------------------------------------
-*/
+          closeModal();
 
-async function loadNews(category="Azerbaijan",button=null){
+        }
 
-currentCategory=category;
+      });
 
 
-/* aktiv menyu */
+    /* AXTARIŞ */
+    function searchApps() {
 
-if(button){
+      const search =
+        document
+          .getElementById("search")
+          .value
+          .toLowerCase();
 
-document
-.querySelectorAll(".nav button")
-.forEach(btn=>btn.classList.remove("active"));
+      const cards =
+        document.querySelectorAll(".app-card");
 
-button.classList.add("active");
+      cards.forEach(function(card) {
 
-}
+        const text =
+          card.innerText.toLowerCase();
 
+        if (text.includes(search)) {
 
-newsContainer.innerHTML=`
+          card.style.display = "flex";
 
-<div class="loading">
+        } else {
 
-<i class="fa-solid fa-spinner fa-spin"></i>
+          card.style.display = "none";
 
-<br><br>
+        }
 
-Aktual Azərbaycan xəbərləri yüklənir...
+      });
 
-</div>
+    }
 
-`;
-
-feature.style.display="none";
-
-
-/*
- Azərbaycan dilində Google News RSS
-
- "when:1d" son 24 saatdakı xəbərlərə üstünlük verir.
-*/
-
-let query;
-
-if(category==="Azerbaijan"){
-
-query =
-'(Azərbaycan OR Bakı OR azərbaycanlı) when:1d';
-
-}
-
-else if(category==="World"){
-
-query =
-'(dünya OR beynəlxalq) when:1d';
-
-}
-
-else{
-
-query =
-`${category} when:1d`;
-
-}
-
-
-const rssURL =
-"https://news.google.com/rss/search?q="+
-encodeURIComponent(query)+
-"&hl=az&gl=AZ&ceid=AZ:az";
-
-
-/*
- RSS2JSON vasitəsilə RSS-i oxuyuruq.
-*/
-
-const apiURL =
-"https://api.rss2json.com/v1/api.json?rss_url="+
-encodeURIComponent(rssURL)+
-"&count=30";
-
-
-try{
-
-const response =
-await fetch(apiURL+"&_="+Date.now());
-
-if(!response.ok)
-throw new Error("API xətası");
-
-const data =
-await response.json();
-
-if(!data.items || !data.items.length)
-throw new Error("Xəbər tapılmadı");
-
-
-/*
- Yalnız real aktual xəbərlər.
-*/
-
-const items =
-data.items.slice(0,18);
-
-
-/*
- FEATURE XƏBƏR
-*/
-
-const first=items[0];
-
-const firstImage =
-getImage(first,0,category);
-
-feature.innerHTML=`
-
-<img
-src="${escapeAttr(firstImage)}"
-alt="Xəbər şəkli"
-onerror="this.src='${fallbackImages.Azerbaijan[0]}'"
->
-
-<div class="featureText">
-
-<div class="badge">
-ƏSAS XƏBƏR
-</div>
-
-<h2>
-${escapeHTML(cleanTitle(first.title))}
-</h2>
-
-</div>
-
-`;
-
-feature.style.display="block";
-
-
-feature.onclick=function(){
-
-openArticle(first,firstImage);
-
-};
-
-
-/*
- DIGƏR XƏBƏRLƏR
-*/
-
-newsContainer.innerHTML="";
-
-
-items.slice(1).forEach((item,index)=>{
-
-const image =
-getImage(item,index+1,category);
-
-const title =
-cleanTitle(item.title);
-
-const description =
-cleanDescription(item.description);
-
-const date =
-formatDate(item.pubDate);
-
-const card =
-document.createElement("div");
-
-card.className="card";
-
-card.innerHTML=`
-
-<div class="cardImage">
-
-<img
-src="${escapeAttr(image)}"
-alt="Xəbər şəkli"
-loading="lazy"
-onerror="this.src='${fallbackImages.Azerbaijan[(index+1)%3]}'"
->
-
-<div class="category">
-${getCategoryName(category)}
-</div>
-
-</div>
-
-<div class="content">
-
-<div class="source">
-${escapeHTML(item.author || item.source || "ALTAP.BİZ")}
-</div>
-
-<h2>
-${escapeHTML(title)}
-</h2>
-
-<p>
-${escapeHTML(description)}
-</p>
-
-<div class="date">
-
-<span>
-<i class="fa-regular fa-clock"></i>
-${date}
-</span>
-
-<span>
-<i class="fa-solid fa-arrow-right"></i>
-</span>
-
-</div>
-
-</div>
-
-`;
-
-
-card.onclick=function(){
-
-openArticle(item,image);
-
-};
-
-
-newsContainer.appendChild(card);
-
-});
-
-
-updated.innerHTML =
-`Son yenilənmə: ${new Date().toLocaleTimeString("az-AZ")}`;
-
-
-}
-
-catch(error){
-
-console.log(error);
-
-newsContainer.innerHTML=`
-
-<div class="loading">
-
-<i class="fa-solid fa-triangle-exclamation"></i>
-
-<h3>
-Xəbərləri yükləmək mümkün olmadı
-</h3>
-
-<p style="margin-top:8px">
-İnternet bağlantısını yoxlayın və səhifəni yeniləyin.
-</p>
-
-</div>
-
-`;
-
-updated.innerText="Yenilənmə xətası";
-
-}
-
-}
-
-
-/*
------------------------------------------------
- BAŞLIQ TƏMİZLƏ
------------------------------------------------
-*/
-
-function cleanTitle(title){
-
-if(!title)
-return "Başlıqsız xəbər";
-
-
-/*
- Google News bəzən:
- "Başlıq - Mənbə"
- formasında göndərir.
-*/
-
-let result =
-title.replace(/\s+-\s+[^-]+$/,"");
-
-return result.trim();
-
-}
-
-
-/*
------------------------------------------------
- AÇIQLAMANI TƏMİZLƏ
------------------------------------------------
-*/
-
-function cleanDescription(text){
-
-if(!text)
-return "Xəbər haqqında ətraflı məlumat üçün xəbəri açın.";
-
-let div=document.createElement("div");
-
-div.innerHTML=text;
-
-let result=
-div.textContent ||
-div.innerText ||
-"";
-
-result=result
-.replace(/\s+/g," ")
-.trim();
-
-return result.length>180
-?result.substring(0,180)+"..."
-:result;
-
-}
-
-
-/*
------------------------------------------------
- TARİX
------------------------------------------------
-*/
-
-function formatDate(date){
-
-if(!date)
-return "";
-
-let d=new Date(date);
-
-if(isNaN(d))
-return "";
-
-return d.toLocaleString("az-AZ",{
-day:"2-digit",
-month:"2-digit",
-year:"numeric",
-hour:"2-digit",
-minute:"2-digit"
-});
-
-}
-
-
-/*
------------------------------------------------
- XƏBƏRİ SAYTIN İÇİNDƏ AÇ
------------------------------------------------
-*/
-
-function openArticle(item,image){
-
-document.getElementById("modalImage").src=image;
-
-document.getElementById("modalTitle").innerText=
-cleanTitle(item.title);
-
-document.getElementById("modalText").innerText=
-cleanDescription(item.description);
-
-document.getElementById("modalSource").innerText=
-item.author ||
-item.source ||
-"ALTAP.BİZ";
-
-document.getElementById("modal").style.display="block";
-
-document.body.style.overflow="hidden";
-
-}
-
-
-function closeModal(){
-
-document.getElementById("modal").style.display="none";
-
-document.body.style.overflow="auto";
-
-}
-
-
-document.getElementById("modal").onclick=function(e){
-
-if(e.target===this)
-closeModal();
-
-};
-
-
-/*
------------------------------------------------
- HTML TƏHLÜKƏSİZLİYİ
------------------------------------------------
-*/
-
-function escapeHTML(text){
-
-return String(text)
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-function escapeAttr(text){
-
-return String(text)
-.replace(/"/g,"%22")
-.replace(/'/g,"%27");
-
-}
-
-
-/*
------------------------------------------------
- TEMA
------------------------------------------------
-*/
-
-function toggleTheme(){
-
-document.body.classList.toggle("dark");
-
-const icon=
-document.querySelector(".theme i");
-
-if(document.body.classList.contains("dark")){
-
-icon.className="fa-solid fa-sun";
-
-localStorage.setItem("altapTheme","dark");
-
-}else{
-
-icon.className="fa-solid fa-moon";
-
-localStorage.setItem("altapTheme","light");
-
-}
-
-}
-
-
-/* əvvəlki tema */
-
-if(localStorage.getItem("altapTheme")==="dark"){
-
-document.body.classList.add("dark");
-
-document.querySelector(".theme i").className=
-"fa-solid fa-sun";
-
-}
-
-
-/*
------------------------------------------------
- İLK YÜKLƏNMƏ
------------------------------------------------
-*/
-
-loadNews("Azerbaijan");
-
-
-/*
------------------------------------------------
- HƏR 5 DƏQİQƏDƏ AKTUAL XƏBƏRLƏRİ YENİLƏ
------------------------------------------------
-*/
-
-setInterval(function(){
-
-loadNews(currentCategory);
-
-},300000);
-
-
-/*
------------------------------------------------
- SƏHİFƏ AÇILANDA YENİLƏ
------------------------------------------------
-*/
-
-window.addEventListener("focus",function(){
-
-loadNews(currentCategory);
-
-});
-
-</script>
+  </script>
 
 </body>
 </html>
