@@ -15,13 +15,13 @@
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#f5f5f5;
+    background:#f4f5f7;
     color:#111;
 }
 
 header{
-    background:#111;
-    color:white;
+    background:#101010;
+    color:#fff;
     padding:18px 15px;
     position:sticky;
     top:0;
@@ -29,7 +29,7 @@ header{
 }
 
 .header{
-    max-width:1100px;
+    max-width:1150px;
     margin:auto;
     display:flex;
     justify-content:space-between;
@@ -37,24 +37,25 @@ header{
 }
 
 .logo{
-    font-size:25px;
-    font-weight:800;
+    font-size:26px;
+    font-weight:900;
+    letter-spacing:-1px;
 }
 
 .live{
-    color:#ff3333;
+    color:#ff3030;
     font-size:13px;
     font-weight:bold;
 }
 
 nav{
-    background:white;
+    background:#fff;
     border-bottom:1px solid #ddd;
     overflow-x:auto;
 }
 
 .nav{
-    max-width:1100px;
+    max-width:1150px;
     margin:auto;
     display:flex;
     gap:8px;
@@ -64,8 +65,9 @@ nav{
 .nav button{
     border:0;
     background:#eee;
-    padding:10px 17px;
-    border-radius:20px;
+    color:#111;
+    padding:10px 18px;
+    border-radius:22px;
     font-weight:bold;
     cursor:pointer;
     white-space:nowrap;
@@ -73,11 +75,11 @@ nav{
 
 .nav button.active{
     background:#111;
-    color:white;
+    color:#fff;
 }
 
 main{
-    max-width:1100px;
+    max-width:1150px;
     margin:25px auto;
     padding:0 15px;
 }
@@ -90,7 +92,7 @@ main{
 }
 
 .top h1{
-    font-size:26px;
+    font-size:28px;
 }
 
 .updated{
@@ -101,36 +103,45 @@ main{
 .news{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:18px;
+    gap:20px;
 }
 
 .card{
-    background:white;
-    border-radius:15px;
+    background:#fff;
+    border-radius:16px;
     overflow:hidden;
-    box-shadow:0 3px 15px rgba(0,0,0,.08);
+    box-shadow:0 4px 18px rgba(0,0,0,.07);
     cursor:pointer;
     transition:.2s;
 }
 
 .card:hover{
-    transform:translateY(-3px);
+    transform:translateY(-4px);
+    box-shadow:0 7px 22px rgba(0,0,0,.12);
 }
 
 .card img{
     width:100%;
-    height:190px;
+    height:200px;
     object-fit:cover;
     background:#ddd;
 }
 
 .content{
-    padding:15px;
+    padding:16px;
+}
+
+.source{
+    font-size:11px;
+    font-weight:bold;
+    color:#e00000;
+    margin-bottom:8px;
+    text-transform:uppercase;
 }
 
 .content h2{
     font-size:18px;
-    line-height:1.35;
+    line-height:1.4;
     margin-bottom:10px;
 }
 
@@ -138,7 +149,7 @@ main{
     color:#666;
     font-size:14px;
     line-height:1.5;
-    margin-bottom:12px;
+    margin-bottom:13px;
 }
 
 .date{
@@ -148,28 +159,41 @@ main{
 
 .loading{
     grid-column:1/-1;
-    background:white;
+    background:#fff;
+    padding:45px;
+    border-radius:16px;
+    text-align:center;
+}
+
+.error{
+    grid-column:1/-1;
+    background:#fff;
     padding:40px;
-    border-radius:15px;
+    border-radius:16px;
     text-align:center;
 }
 
 footer{
-    margin-top:40px;
-    background:#111;
-    color:#aaa;
+    margin-top:45px;
+    background:#101010;
+    color:#999;
     text-align:center;
     padding:25px;
     font-size:13px;
 }
 
-@media(max-width:800px){
+@media(max-width:850px){
     .news{
         grid-template-columns:repeat(2,1fr);
     }
 }
 
-@media(max-width:550px){
+@media(max-width:600px){
+
+    .logo{
+        font-size:22px;
+    }
+
     .news{
         grid-template-columns:1fr;
     }
@@ -184,7 +208,11 @@ footer{
 
     .updated{
         display:block;
-        margin-top:7px;
+        margin-top:8px;
+    }
+
+    .top h1{
+        font-size:24px;
     }
 }
 </style>
@@ -203,23 +231,23 @@ footer{
     <div class="nav">
 
         <button class="active"
-        onclick="loadNews('Azerbaijan',this)">
-        Azərbaycan
+        onclick="changeCategory('azerbaijan',this)">
+            Azərbaycan
         </button>
 
         <button
-        onclick="loadNews('World',this)">
-        Dünya
+        onclick="changeCategory('world',this)">
+            Dünya
         </button>
 
         <button
-        onclick="loadNews('Sports',this)">
-        İdman
+        onclick="changeCategory('sports',this)">
+            İdman
         </button>
 
         <button
-        onclick="loadNews('Technology',this)">
-        Texnologiya
+        onclick="changeCategory('technology',this)">
+            Texnologiya
         </button>
 
     </div>
@@ -228,10 +256,13 @@ footer{
 <main>
 
     <div class="top">
+
         <h1>Son xəbərlər</h1>
+
         <div class="updated" id="updated">
             Xəbərlər yüklənir...
         </div>
+
     </div>
 
     <div class="news" id="news">
@@ -248,77 +279,237 @@ footer{
     © 2026 ALTAP.BİZ — Bütün hüquqlar qorunur.
 </footer>
 
+
 <script>
 
 const newsContainer = document.getElementById("news");
 const updated = document.getElementById("updated");
 
-let currentCategory = "Azerbaijan";
+let currentCategory = "azerbaijan";
 
-async function loadNews(category = "Azerbaijan", button = null){
+
+/*
+   Azərbaycan xəbər mənbələri.
+   Google News bu mənbələrdəki xəbərləri
+   RSS formatında bizə qaytarır.
+*/
+
+const categories = {
+
+    azerbaijan:
+    '(site:apa.az OR site:report.az OR site:trend.az OR site:azertag.az OR site:oxu.az OR site:modern.az)',
+
+    world:
+    '(site:apa.az OR site:report.az OR site:trend.az OR site:azertag.az) dünya',
+
+    sports:
+    '(site:apa.az OR site:report.az OR site:trend.az OR site:azertag.az) idman',
+
+    technology:
+    '(site:apa.az OR site:report.az OR site:trend.az OR site:azertag.az) texnologiya'
+
+};
+
+
+/*
+   Rusca xəbərləri filtrdən keçiririk.
+*/
+
+function isAzerbaijani(title){
+
+    if(!title) return false;
+
+    const russianLetters =
+    (title.match(/[ёыэъьщшжцч]/gi) || []).length;
+
+    const cyrillicLetters =
+    (title.match(/[А-Яа-яЁё]/g) || []).length;
+
+    if(cyrillicLetters > 0){
+
+        const ratio =
+        russianLetters / Math.max(title.length,1);
+
+        if(ratio > 0.03){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+/*
+   Mənbə adını tapırıq.
+*/
+
+function getSource(title){
+
+    if(title.includes("APA")){
+        return "APA";
+    }
+
+    if(title.includes("Report")){
+        return "REPORT";
+    }
+
+    if(title.includes("Trend")){
+        return "TREND";
+    }
+
+    if(title.includes("AZƏRTAC")){
+        return "AZƏRTAC";
+    }
+
+    return "ALTAP.BİZ";
+}
+
+
+/*
+   Xəbər şəklini tapmağa çalışırıq.
+*/
+
+function getImage(item){
+
+    if(item.enclosure && item.enclosure.link){
+        return item.enclosure.link;
+    }
+
+    if(item.thumbnail){
+        return item.thumbnail;
+    }
+
+    if(item.description){
+
+        const match =
+        item.description.match(/<img[^>]+src=["']([^"']+)["']/i);
+
+        if(match){
+            return match[1];
+        }
+    }
+
+    return "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=80";
+}
+
+
+/*
+   Xəbərləri yükləyirik.
+*/
+
+async function loadNews(category=currentCategory){
 
     currentCategory = category;
 
-    if(button){
-
-        document
-        .querySelectorAll(".nav button")
-        .forEach(btn => btn.classList.remove("active"));
-
-        button.classList.add("active");
-    }
-
     newsContainer.innerHTML = `
         <div class="loading">
-            Xəbərlər yüklənir...
+            <h3>Xəbərlər yüklənir...</h3>
+            <p style="margin-top:8px;color:#777">
+                Ən son xəbərlər axtarılır
+            </p>
         </div>
     `;
 
+    const search =
+    categories[category];
+
     const rssURL =
-    `https://news.google.com/rss/search?q=${encodeURIComponent(category)}&hl=az&gl=AZ&ceid=AZ:az`;
+    "https://news.google.com/rss/search?q=" +
+    encodeURIComponent(search) +
+    "&hl=az&gl=AZ&ceid=AZ:az";
 
     const apiURL =
-    `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssURL)}`;
+    "https://api.rss2json.com/v1/api.json?rss_url=" +
+    encodeURIComponent(rssURL);
+
 
     try{
 
-        const response = await fetch(apiURL);
-        const data = await response.json();
+        const response =
+        await fetch(apiURL);
+
+        const data =
+        await response.json();
 
         if(!data.items || data.items.length === 0){
-            throw new Error("Xəbər yoxdur");
+
+            throw new Error("Xəbər tapılmadı");
+
         }
+
+
+        /*
+           Rusca xəbərləri çıxarırıq.
+        */
+
+        const filtered =
+        data.items.filter(item =>
+            isAzerbaijani(item.title)
+        );
+
 
         newsContainer.innerHTML = "";
 
-        data.items.slice(0,18).forEach(item => {
 
-            let image =
-            item.enclosure?.link ||
-            "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=900&q=80";
+        filtered.slice(0,18).forEach(item => {
 
-            let text =
+            const title =
+            item.title || "Başlıqsız xəbər";
+
+
+            const description =
             item.description
-            ? item.description.replace(/<[^>]*>/g,"").slice(0,160)
-            : "Ətraflı məlumat üçün xəbərə daxil olun.";
+            ? item.description
+                .replace(/<[^>]*>/g,"")
+                .trim()
+                .slice(0,180)
+            : "Ətraflı məlumat üçün xəbəri açın.";
 
-            let date = new Date(item.pubDate);
 
-            const card = document.createElement("div");
+            const date =
+            item.pubDate
+            ? new Date(item.pubDate)
+            : new Date();
+
+
+            const image =
+            getImage(item);
+
+
+            const source =
+            getSource(title);
+
+
+            const card =
+            document.createElement("article");
+
 
             card.className = "card";
 
+
             card.innerHTML = `
+
                 <img
                     src="${image}"
-                    onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=900&q=80'"
+                    alt="Xəbər şəkli"
+                    onerror="
+                    this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=80'
+                    "
                 >
 
                 <div class="content">
 
-                    <h2>${item.title}</h2>
+                    <div class="source">
+                        ${source}
+                    </div>
 
-                    <p>${text}...</p>
+                    <h2>
+                        ${title}
+                    </h2>
+
+                    <p>
+                        ${description}...
+                    </p>
 
                     <div class="date">
                         ${date.toLocaleString("az-AZ")}
@@ -327,46 +518,121 @@ async function loadNews(category = "Azerbaijan", button = null){
                 </div>
             `;
 
+
             card.onclick = function(){
-                window.open(item.link,"_blank");
+
+                if(item.link){
+
+                    window.open(
+                        item.link,
+                        "_blank"
+                    );
+
+                }
+
             };
+
 
             newsContainer.appendChild(card);
 
         });
 
+
+        if(newsContainer.children.length === 0){
+
+            newsContainer.innerHTML = `
+                <div class="error">
+                    <h3>
+                        Hazırda uyğun Azərbaycan dilində xəbər tapılmadı.
+                    </h3>
+
+                    <p style="margin-top:8px;color:#777">
+                        Bir neçə dəqiqədən sonra yenidən yoxlanılacaq.
+                    </p>
+                </div>
+            `;
+
+        }
+
+
         updated.innerText =
-        "Yeniləndi: " +
+        "Son yenilənmə: " +
         new Date().toLocaleTimeString("az-AZ");
 
     }
 
+
     catch(error){
 
+        console.error(error);
+
         newsContainer.innerHTML = `
-            <div class="loading">
-                <h3>Xəbərləri yükləmək mümkün olmadı.</h3>
+
+            <div class="error">
+
+                <h3>
+                    Xəbərləri yükləmək mümkün olmadı
+                </h3>
+
                 <p style="margin-top:8px;color:#777">
-                    Bir az sonra yenidən cəhd edin.
+                    İnternet bağlantısını və ya xəbər xidmətini yoxlayın.
                 </p>
+
             </div>
+
         `;
 
-        updated.innerText = "Xəta baş verdi";
+        updated.innerText =
+        "Yenilənmə zamanı xəta baş verdi";
+
     }
+
 }
 
 
-// Sayt açılan kimi xəbərləri gətir
-loadNews();
+/*
+   Kateqoriya dəyişdirilir.
+*/
+
+function changeCategory(category,button){
+
+    currentCategory =
+    category;
 
 
-// Hər 5 dəqiqədən bir yenilə
+    document
+    .querySelectorAll(".nav button")
+    .forEach(btn => {
+
+        btn.classList.remove("active");
+
+    });
+
+
+    button.classList.add("active");
+
+
+    loadNews(category);
+
+}
+
+
+/*
+   Sayt açılan kimi Azərbaycan xəbərləri.
+*/
+
+loadNews("azerbaijan");
+
+
+/*
+   Hər 5 dəqiqədən bir avtomatik yenilənir.
+*/
+
 setInterval(function(){
 
     loadNews(currentCategory);
 
-},300000);
+}, 300000);
 
 </script>
 
