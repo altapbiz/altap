@@ -89,7 +89,6 @@ header{
     max-width:1150px;
     margin:auto;
     padding:0 20px 60px;
-
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(310px,1fr));
     gap:18px;
@@ -100,11 +99,9 @@ header{
     border:1px solid #e7e7e7;
     border-radius:18px;
     padding:17px;
-
     display:flex;
     align-items:center;
     gap:15px;
-
     box-shadow:0 5px 20px rgba(0,0,0,.04);
     transition:.25s;
 }
@@ -152,8 +149,6 @@ header{
 .download:hover{
     text-decoration:underline;
 }
-
-/* MODAL */
 
 .modal{
     position:fixed;
@@ -213,14 +208,11 @@ header{
     align-items:center;
     justify-content:center;
     gap:10px;
-
     width:100%;
     padding:15px;
-
     border-radius:13px;
     background:#25D366;
     color:white;
-
     text-decoration:none;
     font-size:16px;
     font-weight:700;
@@ -250,7 +242,7 @@ footer{
     border-top:1px solid #ddd;
 }
 
-/* DARK */
+/* DARK MODE */
 
 body.dark{
     background:#101114;
@@ -344,28 +336,39 @@ body.dark footer{
 
 <header>
     <div class="header">
-        <div class="logo">APK Plus 2026</div>
+
+        <div class="logo">
+            APK Plus 2026
+        </div>
 
         <button class="theme-btn" onclick="toggleTheme()">
             Tema dəyiş
         </button>
+
     </div>
 </header>
 
 
 <section class="hero">
+
     <h1>Plus APK Versiyaları</h1>
-    <p>2026-cı il üçün Plus APK versiyalarını kəşf edin.</p>
+
+    <p>
+        2026-cı il üçün Plus APK versiyalarını kəşf edin.
+    </p>
+
 </section>
 
 
 <div class="search">
+
     <input
         type="text"
         id="searchInput"
         placeholder="Proqram axtar..."
         onkeyup="searchApps()"
     >
+
 </div>
 
 
@@ -375,323 +378,325 @@ body.dark footer{
 <!-- INSTAGRAM -->
 
 <div class="card">
-    <img class="icon"
-         src="https://cdn.simpleicons.org/instagram"
-         alt="Instagram">
+
+    <img
+        class="icon"
+        src="https://cdn.simpleicons.org/instagram"
+        alt="Instagram"
+    >
 
     <div class="info">
         <h3>Instagram Plus 2026</h3>
         <div class="apk">APK Versiyası</div>
     </div>
 
-    <button class="download"
-            onclick="openModal('Instagram Plus 2026')">
+    <button
+        class="download"
+        onclick="openModal('Instagram Plus 2026')"
+    >
         Yüklə
     </button>
+
 </div>
 
 
 <!-- TIKTOK -->
 
 <div class="card">
-    <img class="icon"
-         src="https://cdn.simpleicons.org/tiktok"
-         alt="TikTok">
+
+    <img
+        class="icon"
+        src="https://cdn.simpleicons.org/tiktok"
+        alt="TikTok"
+    >
 
     <div class="info">
         <h3>TikTok Plus 2026</h3>
         <div class="apk">APK Versiyası</div>
     </div>
 
-    <button class="download"
-            onclick="openModal('TikTok Plus 2026')">
+    <button
+        class="download"
+        onclick="openModal('TikTok Plus 2026')"
+    >
         Yüklə
     </button>
+
 </div>
 
 
 <!-- TELEGRAM -->
 
 <div class="card">
-    <img class="icon"
-         src="https://cdn.simpleicons.org/telegram"
-         alt="Telegram">
+
+    <img
+        class="icon"
+        src="https://cdn.simpleicons.org/telegram"
+        alt="Telegram"
+    >
 
     <div class="info">
         <h3>Telegram Plus 2026</h3>
         <div class="apk">APK Versiyası</div>
     </div>
 
-    <button class="download"
-            onclick="openModal('Telegram Plus 2026')">
+    <button
+        class="download"
+        onclick="openModal('Telegram Plus 2026')"
+    >
         Yüklə
     </button>
+
 </div>
 
 
 <!-- FACEBOOK -->
 
 <div class="card">
-    <img class="icon"
-         src="https://cdn.simpleicons.org/facebook"
-         alt="Facebook">
+
+    <img
+        class="icon"
+        src="https://cdn.simpleicons.org/facebook"
+        alt="Facebook"
+    >
 
     <div class="info">
         <h3>Facebook Plus 2026</h3>
         <div class="apk">APK Versiyası</div>
     </div>
 
-    <button class="download"
-            onclick="openModal('Facebook Plus 2026')">
+    <button
+        class="download"
+        onclick="openModal('Facebook Plus 2026')"
+    >
         Yüklə
     </button>
+
 </div>
 
 
 <!-- WHATSAPP -->
 
 <div class="card">
-    <img class="icon"
-         src="https://cdn.simpleicons.org/whatsapp"
-         alt="WhatsApp">
+
+    <img
+        class="icon"
+        src="https://cdn.simpleicons.org/whatsapp"
+        alt="WhatsApp"
+    >
 
     <div class="info">
         <h3>WhatsApp Plus 2026</h3>
         <div class="apk">APK Versiyası</div>
     </div>
 
-    <button class="download"
-            onclick="openModal('WhatsApp Plus 2026')">
+    <button
+        class="download"
+        onclick="openModal('WhatsApp Plus 2026')"
+    >
         Yüklə
     </button>
+
 </div>
 
 
 <!-- GETCONTACT -->
 
 <div class="card">
-    <img class="icon"
-         src="https://cdn-icons-png.flaticon.com/512/906/906377.png"
-         alt="Getcontact">
+
+    <img
+        class="icon"
+        src="https://cdn-icons-png.flaticon.com/512/906/906377.png"
+        alt="Getcontact"
+    >
 
     <div class="info">
         <h3>Getcontact Plus 2026</h3>
         <div class="apk">APK Versiyası</div>
     </div>
 
-    <button class="download"
-            onclick="openModal('Getcontact Plus 2026')">
+    <button
+        class="download"
+        onclick="openModal('Getcontact Plus 2026')"
+    >
         Yüklə
     </button>
+
 </div>
 
 
 <!-- YOUTUBE -->
 
 <div class="card">
-    <img class="icon"
-         src="https://cdn.simpleicons.org/youtube"
-         alt="YouTube">
+
+    <img
+        class="icon"
+        src="https://cdn.simpleicons.org/youtube"
+        alt="YouTube"
+    >
 
     <div class="info">
         <h3>YouTube Plus 2026</h3>
         <div class="apk">APK Versiyası</div>
     </div>
 
-    <button class="download"
-            onclick="openModal('YouTube Plus 2026')">
+    <button
+        class="download"
+        onclick="openModal('YouTube Plus 2026')"
+    >
         Yüklə
     </button>
-</div>
 
-
-<!-- REMINI -->
-
-<div class="card">
-    <img class="icon"
-         src="https://cdn.simpleicons.org/remini"
-         alt="Remini">
-
-    <div class="info">
-        <h3>Remini Plus 2026</h3>
-        <div class="apk">APK Versiyası</div>
-    </div>
-
-    <button class="download"
-            onclick="openModal('Remini Plus 2026')">
-        Yüklə
-    </button>
-</div>
-
-
-<!-- CHATGPT -->
-
-<div class="card">
-    <img class="icon"
-         src="https://cdn.simpleicons.org/openai"
-         alt="ChatGPT">
-
-    <div class="info">
-        <h3>ChatGPT Plus 2026</h3>
-        <div class="apk">APK Versiyası</div>
-    </div>
-
-    <button class="download"
-            onclick="openModal('ChatGPT Plus 2026')">
-        Yüklə
-    </button>
-</div>
-
-
-<!-- INSHOT -->
-
-<div class="card">
-    <img class="icon"
-         src="https://cdn.simpleicons.org/inshot"
-         alt="InShot">
-
-    <div class="info">
-        <h3>InShot Plus 2026</h3>
-        <div class="apk">APK Versiyası</div>
-    </div>
-
-    <button class="download"
-            onclick="openModal('InShot Plus 2026')">
-        Yüklə
-    </button>
 </div>
 
 
 <!-- YOUTUBE MUSIC -->
 
 <div class="card">
-    <img class="icon"
-         src="https://cdn.simpleicons.org/youtubemusic"
-         alt="YouTube Music">
+
+    <img
+        class="icon"
+        src="https://cdn.simpleicons.org/youtubemusic"
+        alt="YouTube Music"
+    >
 
     <div class="info">
         <h3>YouTube Music Plus 2026</h3>
         <div class="apk">APK Versiyası</div>
     </div>
 
-    <button class="download"
-            onclick="openModal('YouTube Music Plus 2026')">
+    <button
+        class="download"
+        onclick="openModal('YouTube Music Plus 2026')"
+    >
         Yüklə
     </button>
+
 </div>
 
 
 <!-- SNAPCHAT -->
 
 <div class="card">
-    <img class="icon"
-         src="https://cdn.simpleicons.org/snapchat"
-         alt="Snapchat">
+
+    <img
+        class="icon"
+        src="https://cdn.simpleicons.org/snapchat"
+        alt="Snapchat"
+    >
 
     <div class="info">
         <h3>Snapchat Plus 2026</h3>
         <div class="apk">APK Versiyası</div>
     </div>
 
-    <button class="download"
-            onclick="openModal('Snapchat Plus 2026')">
+    <button
+        class="download"
+        onclick="openModal('Snapchat Plus 2026')"
+    >
         Yüklə
     </button>
+
 </div>
 
 
 <!-- PINTEREST -->
 
 <div class="card">
-    <img class="icon"
-         src="https://cdn.simpleicons.org/pinterest"
-         alt="Pinterest">
+
+    <img
+        class="icon"
+        src="https://cdn.simpleicons.org/pinterest"
+        alt="Pinterest"
+    >
 
     <div class="info">
         <h3>Pinterest Plus 2026</h3>
         <div class="apk">APK Versiyası</div>
     </div>
 
-    <button class="download"
-            onclick="openModal('Pinterest Plus 2026')">
+    <button
+        class="download"
+        onclick="openModal('Pinterest Plus 2026')"
+    >
         Yüklə
     </button>
+
 </div>
 
 
 <!-- SPOTIFY -->
 
 <div class="card">
-    <img class="icon"
-         src="https://cdn.simpleicons.org/spotify"
-         alt="Spotify">
+
+    <img
+        class="icon"
+        src="https://cdn.simpleicons.org/spotify"
+        alt="Spotify"
+    >
 
     <div class="info">
         <h3>Spotify Plus 2026</h3>
         <div class="apk">APK Versiyası</div>
     </div>
 
-    <button class="download"
-            onclick="openModal('Spotify Plus 2026')">
+    <button
+        class="download"
+        onclick="openModal('Spotify Plus 2026')"
+    >
         Yüklə
     </button>
+
 </div>
 
 
 <!-- NETFLIX -->
 
 <div class="card">
-    <img class="icon"
-         src="https://cdn.simpleicons.org/netflix"
-         alt="Netflix">
+
+    <img
+        class="icon"
+        src="https://cdn.simpleicons.org/netflix"
+        alt="Netflix"
+    >
 
     <div class="info">
         <h3>Netflix Plus 2026</h3>
         <div class="apk">APK Versiyası</div>
     </div>
 
-    <button class="download"
-            onclick="openModal('Netflix Plus 2026')">
+    <button
+        class="download"
+        onclick="openModal('Netflix Plus 2026')"
+    >
         Yüklə
     </button>
+
 </div>
 
 
 <!-- PICSART -->
 
 <div class="card">
-    <img class="icon"
-         src="https://cdn.simpleicons.org/picsart"
-         alt="Picsart">
+
+    <img
+        class="icon"
+        src="https://cdn.simpleicons.org/picsart"
+        alt="Picsart"
+    >
 
     <div class="info">
         <h3>Picsart Plus 2026</h3>
         <div class="apk">APK Versiyası</div>
     </div>
 
-    <button class="download"
-            onclick="openModal('Picsart Plus 2026')">
+    <button
+        class="download"
+        onclick="openModal('Picsart Plus 2026')"
+    >
         Yüklə
     </button>
-</div>
 
-
-<!-- CAPCUT -->
-
-<div class="card">
-    <img class="icon"
-         src="https://cdn.simpleicons.org/capcut"
-         alt="CapCut">
-
-    <div class="info">
-        <h3>CapCut Plus 2026</h3>
-        <div class="apk">APK Versiyası</div>
-    </div>
-
-    <button class="download"
-            onclick="openModal('CapCut Plus 2026')">
-        Yüklə
-    </button>
 </div>
 
 
@@ -733,7 +738,10 @@ body.dark footer{
 
         </a>
 
-        <button class="close" onclick="closeModal()">
+        <button
+            class="close"
+            onclick="closeModal()"
+        >
             Bağla
         </button>
 
@@ -749,7 +757,7 @@ body.dark footer{
 
 <script>
 
-/* TEMA DƏYİŞDİR */
+/* TEMA */
 
 function toggleTheme(){
 
@@ -758,7 +766,7 @@ function toggleTheme(){
 }
 
 
-/* MODAL AÇ */
+/* MODAL */
 
 function openModal(appName){
 
@@ -786,8 +794,6 @@ function openModal(appName){
 }
 
 
-/* MODAL BAĞLA */
-
 function closeModal(){
 
     document.getElementById("modal").classList.remove("show");
@@ -795,7 +801,7 @@ function closeModal(){
 }
 
 
-/* MODALIN ÇÖLÜNƏ BASANDA BAĞLANSIN */
+/* ÇÖLƏ BASANDA BAĞLANSIN */
 
 document.getElementById("modal").addEventListener("click",function(e){
 
@@ -813,7 +819,8 @@ document.getElementById("modal").addEventListener("click",function(e){
 function searchApps(){
 
     const value =
-        document.getElementById("searchInput")
+        document
+        .getElementById("searchInput")
         .value
         .toLowerCase()
         .trim();
