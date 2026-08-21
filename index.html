@@ -4,12 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ALTAP.BİZ — Xəbərlər</title>
+<title>ALTAP.BİZ — Son Xəbərlər</title>
 
-<meta name="description" content="ALTAP.BİZ — Azərbaycanın və dünyanın ən son xəbərləri">
+<meta name="description"
+content="ALTAP.BİZ — Azərbaycanın və dünyanın ən son xəbərləri.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <link rel="stylesheet"
@@ -24,14 +26,16 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 }
 
 :root{
-    --bg:#f3f5f9;
+    --bg:#f4f6fa;
     --card:#ffffff;
     --text:#101828;
     --muted:#667085;
     --border:#e4e7ec;
     --dark:#080d18;
+    --dark2:#101827;
     --red:#ef233c;
-    --blue:#2563eb;
+    --green:#22c55e;
+    --shadow:0 8px 30px rgba(16,24,40,.07);
 }
 
 body.dark{
@@ -40,6 +44,7 @@ body.dark{
     --text:#f8fafc;
     --muted:#98a2b3;
     --border:#202b3d;
+    --shadow:0 8px 30px rgba(0,0,0,.25);
 }
 
 body{
@@ -49,7 +54,10 @@ body{
     transition:.3s;
 }
 
-/* HEADER */
+
+/* =========================
+   HEADER
+========================= */
 
 header{
     background:var(--dark);
@@ -57,16 +65,16 @@ header{
     position:sticky;
     top:0;
     z-index:1000;
-    box-shadow:0 5px 25px rgba(0,0,0,.15);
+    box-shadow:0 5px 25px rgba(0,0,0,.18);
 }
 
 .header{
     max-width:1200px;
     margin:auto;
-    padding:18px 20px;
+    padding:17px 20px;
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
 }
 
 .logo{
@@ -82,7 +90,7 @@ header{
 .header-right{
     display:flex;
     align-items:center;
-    gap:15px;
+    gap:14px;
 }
 
 .clock{
@@ -95,8 +103,8 @@ header{
 }
 
 .clock-date{
-    color:#98a2b3;
     font-size:11px;
+    color:#98a2b3;
     margin-top:3px;
 }
 
@@ -111,13 +119,14 @@ header{
     font-size:19px;
 }
 
-/* LIVE */
+
+/* =========================
+   LIVE BAR
+========================= */
 
 .live-bar{
-    background:#101827;
+    background:var(--dark2);
     border-top:1px solid #1c2636;
-    color:#cbd5e1;
-    font-size:12px;
 }
 
 .live-inner{
@@ -127,6 +136,8 @@ header{
     display:flex;
     align-items:center;
     gap:8px;
+    color:#d0d5dd;
+    font-size:12px;
 }
 
 .live-dot{
@@ -137,22 +148,25 @@ header{
     box-shadow:0 0 10px #ef233c;
 }
 
-/* NAV */
+
+/* =========================
+   NAV
+========================= */
 
 nav{
     background:var(--card);
     border-bottom:1px solid var(--border);
     position:sticky;
-    top:88px;
+    top:91px;
     z-index:900;
 }
 
 .nav{
     max-width:1200px;
     margin:auto;
+    padding:11px 20px;
     display:flex;
     gap:8px;
-    padding:12px 20px;
     overflow-x:auto;
 }
 
@@ -164,7 +178,7 @@ nav{
     border:0;
     background:var(--bg);
     color:var(--text);
-    padding:10px 17px;
+    padding:10px 16px;
     border-radius:30px;
     font-weight:700;
     cursor:pointer;
@@ -173,19 +187,18 @@ nav{
 }
 
 .nav button:hover{
-    background:#e5e7eb;
-}
-
-body.dark .nav button:hover{
-    background:#1d2939;
+    transform:translateY(-1px);
 }
 
 .nav button.active{
     background:#111827;
-    color:white;
+    color:#fff;
 }
 
-/* MAIN */
+
+/* =========================
+   MAIN
+========================= */
 
 main{
     max-width:1200px;
@@ -195,23 +208,26 @@ main{
 
 .top{
     display:flex;
-    justify-content:space-between;
     align-items:end;
+    justify-content:space-between;
     margin-bottom:22px;
 }
 
 .top h1{
     font-size:34px;
     font-weight:900;
-    letter-spacing:-1.2px;
+    letter-spacing:-1px;
 }
 
 .updated{
-    color:var(--muted);
     font-size:12px;
+    color:var(--muted);
 }
 
-/* NEWS */
+
+/* =========================
+   NEWS GRID
+========================= */
 
 .news{
     display:grid;
@@ -222,24 +238,23 @@ main{
 .card{
     background:var(--card);
     border:1px solid var(--border);
-    border-radius:18px;
+    border-radius:19px;
     overflow:hidden;
     cursor:pointer;
+    box-shadow:var(--shadow);
     transition:.25s;
-    box-shadow:0 5px 20px rgba(0,0,0,.05);
 }
 
 .card:hover{
     transform:translateY(-5px);
-    box-shadow:0 15px 35px rgba(0,0,0,.12);
 }
 
 .card img{
     width:100%;
-    height:200px;
+    height:205px;
     object-fit:cover;
     display:block;
-    background:#d9dee7;
+    background:#dfe4ec;
 }
 
 .content{
@@ -258,22 +273,22 @@ main{
 }
 
 body.dark .badge{
-    background:#3b1720;
-    color:#ff6475;
+    background:#3a1720;
+    color:#ff7180;
 }
 
 .content h2{
     font-size:17px;
-    line-height:1.4;
-    margin-bottom:10px;
+    line-height:1.42;
     font-weight:800;
+    margin-bottom:10px;
 }
 
 .content p{
     color:var(--muted);
     font-size:13px;
-    line-height:1.5;
-    margin-bottom:12px;
+    line-height:1.55;
+    margin-bottom:13px;
 }
 
 .meta{
@@ -283,26 +298,29 @@ body.dark .badge{
     font-size:11px;
 }
 
-/* LOADING */
+
+/* =========================
+   LOADING
+========================= */
 
 .loading{
     grid-column:1/-1;
     background:var(--card);
     border:1px solid var(--border);
-    padding:60px 20px;
     border-radius:18px;
+    padding:60px 20px;
     text-align:center;
     color:var(--muted);
 }
 
 .spinner{
-    width:40px;
-    height:40px;
-    border:4px solid #ddd;
+    width:42px;
+    height:42px;
+    border:4px solid #dfe3e8;
     border-top-color:#ef233c;
     border-radius:50%;
     animation:spin 1s linear infinite;
-    margin:0 auto 15px;
+    margin:0 auto 17px;
 }
 
 @keyframes spin{
@@ -311,7 +329,100 @@ body.dark .badge{
     }
 }
 
-/* CONTACT */
+
+/* =========================
+   ARTICLE VIEW
+========================= */
+
+.article-view{
+    display:none;
+    max-width:900px;
+    margin:25px auto 50px;
+}
+
+.article-box{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+}
+
+.back-btn{
+    margin-bottom:15px;
+    border:0;
+    background:var(--card);
+    color:var(--text);
+    border:1px solid var(--border);
+    padding:11px 17px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.article-image{
+    width:100%;
+    max-height:500px;
+    object-fit:cover;
+    display:block;
+}
+
+.article-content{
+    padding:30px;
+}
+
+.article-badge{
+    display:inline-block;
+    background:#ef233c;
+    color:white;
+    padding:7px 11px;
+    border-radius:8px;
+    font-size:11px;
+    font-weight:800;
+    margin-bottom:15px;
+}
+
+.article-title{
+    font-size:36px;
+    line-height:1.2;
+    font-weight:900;
+    letter-spacing:-1px;
+    margin-bottom:15px;
+}
+
+.article-meta{
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:25px;
+}
+
+.article-text{
+    color:var(--text);
+    font-size:17px;
+    line-height:1.8;
+}
+
+.article-text p{
+    margin-bottom:18px;
+}
+
+.source-button{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:25px;
+    padding:12px 17px;
+    background:#111827;
+    color:white;
+    text-decoration:none;
+    border-radius:11px;
+    font-weight:700;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
 
 .contact{
     margin-top:50px;
@@ -319,10 +430,11 @@ body.dark .badge{
     border:1px solid var(--border);
     border-radius:22px;
     padding:30px;
+    box-shadow:var(--shadow);
 }
 
 .contact h2{
-    font-size:27px;
+    font-size:28px;
     margin-bottom:8px;
 }
 
@@ -340,8 +452,8 @@ body.dark .badge{
 
 .contact-btn{
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     gap:10px;
     padding:15px;
     border-radius:13px;
@@ -353,7 +465,6 @@ body.dark .badge{
 
 .contact-btn:hover{
     transform:translateY(-3px);
-    opacity:.9;
 }
 
 .whatsapp{
@@ -361,7 +472,7 @@ body.dark .badge{
 }
 
 .tiktok{
-    background:#000000;
+    background:#000;
 }
 
 .phone{
@@ -376,13 +487,16 @@ body.dark .badge{
     font-size:21px;
 }
 
-/* FOOTER */
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
     margin-top:60px;
     background:#080d18;
     color:#98a2b3;
-    padding:40px 20px;
+    padding:42px 20px;
 }
 
 .footer{
@@ -409,15 +523,17 @@ footer{
     margin-bottom:15px;
 }
 
-.footer p,
 .footer a{
+    display:block;
     color:#98a2b3;
     text-decoration:none;
-    display:block;
     margin-bottom:9px;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:900px){
 
@@ -449,7 +565,7 @@ footer{
     }
 
     nav{
-        top:68px;
+        top:74px;
     }
 
     .nav{
@@ -457,8 +573,8 @@ footer{
     }
 
     main{
-        margin:22px auto;
         padding:0 15px;
+        margin-top:22px;
     }
 
     .top{
@@ -481,6 +597,18 @@ footer{
         height:220px;
     }
 
+    .article-content{
+        padding:22px 18px;
+    }
+
+    .article-title{
+        font-size:27px;
+    }
+
+    .article-text{
+        font-size:16px;
+    }
+
     .contact{
         padding:22px 18px;
     }
@@ -490,8 +618,8 @@ footer{
     }
 
     .contact-btn{
-        padding:13px 8px;
         font-size:13px;
+        padding:13px 7px;
     }
 
     .footer{
@@ -502,317 +630,421 @@ footer{
 </style>
 </head>
 
+
 <body>
 
-<!-- HEADER -->
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
-    <div class="header">
+<div class="header">
 
-        <div class="logo">
-            ALTAP<span>.BİZ</span>
-        </div>
+    <div class="logo">
+        ALTAP<span>.BİZ</span>
+    </div>
 
-        <div class="header-right">
+    <div class="header-right">
 
-            <div class="clock">
-                <div class="clock-time" id="clock">
-                    00:00:00
-                </div>
+        <div class="clock">
 
-                <div class="clock-date" id="date">
-                    00.00.0000
-                </div>
+            <div class="clock-time" id="clock">
+                00:00:00
             </div>
 
-            <button class="theme" onclick="toggleTheme()" id="themeBtn">
-                🌙
-            </button>
+            <div class="clock-date" id="date">
+                00.00.0000
+            </div>
 
         </div>
 
-    </div>
-
-    <div class="live-bar">
-
-        <div class="live-inner">
-            <span class="live-dot"></span>
-            <strong>CANLI XƏBƏRLƏR</strong>
-            <span>• Xəbərlər avtomatik yenilənir</span>
-        </div>
+        <button
+        class="theme"
+        id="themeBtn"
+        onclick="toggleTheme()">
+            🌙
+        </button>
 
     </div>
+
+</div>
+
+
+<div class="live-bar">
+
+    <div class="live-inner">
+
+        <span class="live-dot"></span>
+
+        <strong>CANLI XƏBƏRLƏR</strong>
+
+        <span>
+            • Avtomatik yenilənir
+        </span>
+
+    </div>
+
+</div>
 
 </header>
 
 
-<!-- NAVIGATION -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
 
-    <div class="nav">
+<div class="nav">
 
-        <button class="active"
-        onclick="loadNews('Azerbaijan',this)">
-            🇦🇿 Azərbaycan
-        </button>
+<button class="active"
+onclick="loadNews('Azerbaijan',this)">
+🇦🇿 Azərbaycan
+</button>
 
-        <button
-        onclick="loadNews('World',this)">
-            🌍 Dünya
-        </button>
+<button onclick="loadNews('World',this)">
+🌍 Dünya
+</button>
 
-        <button
-        onclick="loadNews('Politics',this)">
-            🏛 Siyasət
-        </button>
+<button onclick="loadNews('Politics',this)">
+🏛 Siyasət
+</button>
 
-        <button
-        onclick="loadNews('Economy',this)">
-            💰 İqtisadiyyat
-        </button>
+<button onclick="loadNews('Economy',this)">
+💰 İqtisadiyyat
+</button>
 
-        <button
-        onclick="loadNews('Sports',this)">
-            ⚽ İdman
-        </button>
+<button onclick="loadNews('Sports',this)">
+⚽ İdman
+</button>
 
-        <button
-        onclick="loadNews('Technology',this)">
-            💻 Texnologiya
-        </button>
+<button onclick="loadNews('Technology',this)">
+💻 Texnologiya
+</button>
 
-        <button
-        onclick="loadNews('Culture',this)">
-            🎭 Mədəniyyət
-        </button>
+<button onclick="loadNews('Culture',this)">
+🎭 Mədəniyyət
+</button>
 
-        <button
-        onclick="loadNews('Health',this)">
-            ❤️ Sağlamlıq
-        </button>
+<button onclick="loadNews('Health',this)">
+❤️ Sağlamlıq
+</button>
 
-        <button
-        onclick="loadNews('Cars',this)">
-            🚗 Avtomobil
-        </button>
+<button onclick="loadNews('Cars',this)">
+🚗 Avtomobil
+</button>
 
-        <button
-        onclick="loadNews('Crime',this)">
-            🚨 Hadisə
-        </button>
+<button onclick="loadNews('Crime',this)">
+🚨 Hadisə
+</button>
 
-    </div>
+</div>
 
 </nav>
 
 
-<!-- MAIN -->
+<!-- =========================
+     NEWS PAGE
+========================= -->
 
-<main>
+<main id="homePage">
 
-    <div class="top">
+<div class="top">
 
-        <h1>
-            Son xəbərlər
-        </h1>
+    <h1>
+        Son xəbərlər
+    </h1>
 
-        <div class="updated" id="updated">
-            Xəbərlər yüklənir...
-        </div>
-
+    <div
+    class="updated"
+    id="updated">
+        Xəbərlər yüklənir...
     </div>
 
-
-    <div class="news" id="news">
-
-        <div class="loading">
-
-            <div class="spinner"></div>
-
-            Xəbərlər yüklənir...
-
-        </div>
-
-    </div>
+</div>
 
 
-    <!-- CONTACT -->
+<div
+class="news"
+id="news">
 
-    <section class="contact">
+<div class="loading">
 
-        <h2>
-            Əlaqə
-        </h2>
+    <div class="spinner"></div>
 
-        <p>
-            ALTAP.BİZ ilə əlaqə saxlamaq üçün
-            aşağıdakı kanallardan istifadə edə bilərsiniz.
-        </p>
+    Azərbaycan dilində xəbərlər
+    yüklənir...
 
-        <div class="contact-buttons">
+</div>
 
-            <!-- WHATSAPP -->
-
-            <a
-            class="contact-btn whatsapp"
-            href="https://wa.me/994556145657"
-            target="_blank">
-
-                <i class="fa-brands fa-whatsapp"></i>
-
-                WhatsApp
-
-            </a>
+</div>
 
 
-            <!-- TIKTOK -->
+<!-- CONTACT -->
 
-            <a
-            class="contact-btn tiktok"
-            href="https://www.tiktok.com/@altap.biz"
-            target="_blank">
+<section class="contact">
 
-                <i class="fa-brands fa-tiktok"></i>
+<h2>
+    Əlaqə
+</h2>
 
-                TikTok
-
-            </a>
-
-
-            <!-- PHONE -->
-
-            <a
-            class="contact-btn phone"
-            href="tel:+994556145657">
-
-                <i class="fa-solid fa-phone"></i>
-
-                Zəng et
-
-            </a>
+<p>
+    ALTAP.BİZ ilə əlaqə saxlamaq üçün
+    aşağıdakı kanallardan istifadə edə bilərsiniz.
+</p>
 
 
-            <!-- EMAIL -->
+<div class="contact-buttons">
 
-            <a
-            class="contact-btn email"
-            href="mailto:info@altap.biz">
 
-                <i class="fa-solid fa-envelope"></i>
+<a
+class="contact-btn whatsapp"
+href="https://wa.me/994556145657"
+target="_blank">
 
-                E-mail
+<i class="fa-brands fa-whatsapp"></i>
 
-            </a>
+WhatsApp
 
-        </div>
+</a>
 
-    </section>
+
+<a
+class="contact-btn tiktok"
+href="https://www.tiktok.com/@altap.biz"
+target="_blank">
+
+<i class="fa-brands fa-tiktok"></i>
+
+TikTok
+
+</a>
+
+
+<a
+class="contact-btn phone"
+href="tel:+994556145657">
+
+<i class="fa-solid fa-phone"></i>
+
+Zəng et
+
+</a>
+
+
+<a
+class="contact-btn email"
+href="mailto:info@altap.biz">
+
+<i class="fa-solid fa-envelope"></i>
+
+E-mail
+
+</a>
+
+
+</div>
+
+</section>
 
 </main>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     ARTICLE PAGE
+========================= -->
+
+<section
+class="article-view"
+id="articleView">
+
+<button
+class="back-btn"
+onclick="closeArticle()">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+&nbsp; Xəbərlərə qayıt
+
+</button>
+
+
+<div class="article-box">
+
+<img
+id="articleImage"
+class="article-image"
+src=""
+alt="Xəbər">
+
+
+<div class="article-content">
+
+<div class="article-badge">
+    ALTAP.BİZ
+</div>
+
+
+<h1
+id="articleTitle"
+class="article-title">
+</h1>
+
+
+<div
+id="articleMeta"
+class="article-meta">
+</div>
+
+
+<div
+id="articleText"
+class="article-text">
+</div>
+
+
+<a
+id="sourceButton"
+class="source-button"
+href=""
+target="_blank">
+
+<i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+Mənbəyə bax
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-    <div class="footer">
-
-        <div>
-
-            <div class="footer-logo">
-                ALTAP<span>.BİZ</span>
-            </div>
-
-            <p>
-                Azərbaycanın və dünyanın
-                ən son xəbərləri.
-            </p>
-
-            <p>
-                © 2026 ALTAP.BİZ
-            </p>
-
-        </div>
+<div class="footer">
 
 
-        <div>
+<div>
 
-            <h3>Bölmələr</h3>
+<div class="footer-logo">
+ALTAP<span>.BİZ</span>
+</div>
 
-            <a href="#" onclick="loadNews('Azerbaijan');return false;">
-                Azərbaycan
-            </a>
+<p>
+Azərbaycanın və dünyanın
+ən son xəbərləri.
+</p>
 
-            <a href="#" onclick="loadNews('World');return false;">
-                Dünya
-            </a>
+<p>
+© 2026 ALTAP.BİZ
+</p>
 
-            <a href="#" onclick="loadNews('Economy');return false;">
-                İqtisadiyyat
-            </a>
-
-            <a href="#" onclick="loadNews('Sports');return false;">
-                İdman
-            </a>
-
-            <a href="#" onclick="loadNews('Technology');return false;">
-                Texnologiya
-            </a>
-
-        </div>
+</div>
 
 
-        <div>
+<div>
 
-            <h3>Əlaqə</h3>
+<h3>
+Bölmələr
+</h3>
 
-            <a href="https://wa.me/994556145657"
-            target="_blank">
-                WhatsApp
-            </a>
+<a href="#"
+onclick="loadNews('Azerbaijan');return false;">
+Azərbaycan
+</a>
 
-            <a href="https://www.tiktok.com/@altap.biz"
-            target="_blank">
-                TikTok
-            </a>
+<a href="#"
+onclick="loadNews('World');return false;">
+Dünya
+</a>
 
-            <a href="tel:+994556145657">
-                055-614-56-57
-            </a>
+<a href="#"
+onclick="loadNews('Economy');return false;">
+İqtisadiyyat
+</a>
 
-            <a href="mailto:info@altap.biz">
-                E-mail
-            </a>
+<a href="#"
+onclick="loadNews('Sports');return false;">
+İdman
+</a>
 
-        </div>
+<a href="#"
+onclick="loadNews('Technology');return false;">
+Texnologiya
+</a>
 
-    </div>
+</div>
+
+
+<div>
+
+<h3>
+Əlaqə
+</h3>
+
+<a
+href="https://wa.me/994556145657"
+target="_blank">
+WhatsApp
+</a>
+
+<a
+href="https://www.tiktok.com/@altap.biz"
+target="_blank">
+TikTok
+</a>
+
+<a href="tel:+994556145657">
+055-614-56-57
+</a>
+
+<a href="mailto:info@altap.biz">
+E-mail
+</a>
+
+</div>
+
+
+</div>
 
 </footer>
 
 
 <script>
 
+
 /* =========================
-   SAAT VƏ TARİX
+   SAAT
 ========================= */
 
 function updateClock(){
 
     const now = new Date();
 
-    document.getElementById("clock").innerText =
+    document.getElementById("clock")
+    .innerText =
         now.toLocaleTimeString("az-AZ");
 
-    document.getElementById("date").innerText =
-        now.toLocaleDateString("az-AZ",{
-            weekday:"long",
-            year:"numeric",
-            month:"long",
-            day:"numeric"
-        });
+    document.getElementById("date")
+    .innerText =
+        now.toLocaleDateString(
+            "az-AZ",
+            {
+                weekday:"long",
+                year:"numeric",
+                month:"long",
+                day:"numeric"
+            }
+        );
 }
 
 updateClock();
@@ -828,41 +1060,34 @@ function toggleTheme(){
 
     document.body.classList.toggle("dark");
 
-    const btn =
-        document.getElementById("themeBtn");
+    const dark =
+        document.body.classList.contains("dark");
 
-    if(document.body.classList.contains("dark")){
+    document.getElementById("themeBtn")
+    .innerText =
+        dark ? "☀️" : "🌙";
 
-        btn.innerText = "☀️";
-
-        localStorage.setItem(
-            "altap-theme",
-            "dark"
-        );
-
-    }else{
-
-        btn.innerText = "🌙";
-
-        localStorage.setItem(
-            "altap-theme",
-            "light"
-        );
-    }
+    localStorage.setItem(
+        "altap-theme",
+        dark ? "dark" : "light"
+    );
 }
 
 
-if(localStorage.getItem("altap-theme") === "dark"){
+if(
+    localStorage.getItem("altap-theme")
+    === "dark"
+){
 
     document.body.classList.add("dark");
 
-    document.getElementById("themeBtn").innerText =
-        "☀️";
+    document.getElementById("themeBtn")
+    .innerText="☀️";
 }
 
 
 /* =========================
-   XƏBƏR AYARLARI
+   ELEMENTLƏR
 ========================= */
 
 const newsContainer =
@@ -871,51 +1096,58 @@ const newsContainer =
 const updated =
     document.getElementById("updated");
 
-let currentCategory = "Azerbaijan";
+const homePage =
+    document.getElementById("homePage");
+
+const articleView =
+    document.getElementById("articleView");
 
 
-/*
-   BURADA HƏR BÖLMƏ ÜÇÜN
-   AZƏRBAYCANCA AXTARIŞ SÖZLƏRİ VAR
-*/
+let currentCategory =
+    "Azerbaijan";
+
+
+/* =========================
+   AXTARIŞLAR
+========================= */
 
 const queries = {
 
-    Azerbaijan:
-        "Azərbaycan xəbərləri Bakı Azərbaycan son xəbərlər",
+Azerbaijan:
+"Azərbaycan son xəbərlər Bakı Azərbaycan",
 
-    World:
-        "dünya xəbərləri beynəlxalq xəbərlər son xəbərlər",
+World:
+"dünya son xəbərlər beynəlxalq",
 
-    Politics:
-        "Azərbaycan siyasət xəbərləri hökumət parlament prezident",
+Politics:
+"Azərbaycan siyasət son xəbərlər prezident parlament hökumət",
 
-    Economy:
-        "Azərbaycan iqtisadiyyat manat biznes iqtisadi xəbərlər",
+Economy:
+"Azərbaycan iqtisadiyyat biznes manat iqtisadi xəbərlər",
 
-    Sports:
-        "Azərbaycan idman futbol basketbol yarış xəbərləri",
+Sports:
+"Azərbaycan idman futbol basketbol yarış",
 
-    Technology:
-        "Azərbaycan texnologiya süni intellekt internet texnologiya",
+Technology:
+"Azərbaycan texnologiya süni intellekt internet",
 
-    Culture:
-        "Azərbaycan mədəniyyət incəsənət musiqi kino",
+Culture:
+"Azərbaycan mədəniyyət incəsənət musiqi kino",
 
-    Health:
-        "Azərbaycan səhiyyə sağlamlıq tibb xəbərləri",
+Health:
+"Azərbaycan səhiyyə tibb sağlamlıq",
 
-    Cars:
-        "Azərbaycan avtomobil maşın yeni avtomobillər",
+Cars:
+"Azərbaycan avtomobil maşın yeni avtomobil",
 
-    Crime:
-        "Azərbaycan hadisə qəza polis təhlükəsizlik xəbərləri"
+Crime:
+"Azərbaycan hadisə qəza polis təhlükəsizlik"
 
 };
 
 
 /* =========================
-   RUSCA BAŞLIQLARI TUT
+   RUSCA FILTR
 ========================= */
 
 function isRussian(text){
@@ -924,20 +1156,15 @@ function isRussian(text){
         return true;
     }
 
-    /*
-       Rus dilində əsas kiril hərflərindən
-       biri varsa xəbəri göstərmirik.
-    */
+    const russian =
+    /[ыэъёюяцукенгшщзхфывапролджэячсмитьбю]/i;
 
-    const russianLetters =
-        /[ыэъёыэюяйцукенгшщзхъфывапролджэячсмитьбю]/i;
-
-    return russianLetters.test(text);
+    return russian.test(text);
 }
 
 
 /* =========================
-   HTML TƏMİZLƏ
+   TƏMİZ MƏTN
 ========================= */
 
 function cleanText(text){
@@ -949,7 +1176,7 @@ function cleanText(text){
     const div =
         document.createElement("div");
 
-    div.innerHTML = text;
+    div.innerHTML=text;
 
     return div.textContent
         .replace(/\s+/g," ")
@@ -958,7 +1185,102 @@ function cleanText(text){
 
 
 /* =========================
-   XƏBƏRLƏRİ YÜKLƏ
+   XƏBƏRİ AÇ
+========================= */
+
+function openArticle(item){
+
+    const title =
+        cleanText(item.title);
+
+    const description =
+        cleanText(item.description);
+
+
+    let image =
+        item.enclosure &&
+        item.enclosure.link
+        ? item.enclosure.link
+        :
+        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=85";
+
+
+    let date =
+        new Date(item.pubDate);
+
+
+    document.getElementById(
+        "articleImage"
+    ).src=image;
+
+
+    document.getElementById(
+        "articleTitle"
+    ).innerText=title;
+
+
+    document.getElementById(
+        "articleMeta"
+    ).innerText=
+        "ALTAP.BİZ • " +
+        date.toLocaleDateString("az-AZ") +
+        " • " +
+        date.toLocaleTimeString(
+            "az-AZ",
+            {
+                hour:"2-digit",
+                minute:"2-digit"
+            }
+        );
+
+
+    let cleanDescription =
+        description ||
+        "Bu xəbər haqqında ətraflı məlumat ALTAP.BİZ tərəfindən təqdim olunan xülasədə göstərilir.";
+
+
+    document.getElementById(
+        "articleText"
+    ).innerHTML=
+        "<p>"+cleanDescription+"</p>";
+
+
+    document.getElementById(
+        "sourceButton"
+    ).href=item.link || "#";
+
+
+    homePage.style.display="none";
+
+    articleView.style.display="block";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   XƏBƏRİ BAĞLA
+========================= */
+
+function closeArticle(){
+
+    articleView.style.display="none";
+
+    homePage.style.display="block";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* =========================
+   XƏBƏRLƏR
 ========================= */
 
 async function loadNews(
@@ -966,14 +1288,15 @@ async function loadNews(
     button=null
 ){
 
-    currentCategory = category;
+    currentCategory=category;
 
 
     if(button){
 
         document
         .querySelectorAll(".nav button")
-        .forEach(btn =>
+        .forEach(
+            btn =>
             btn.classList.remove("active")
         );
 
@@ -981,7 +1304,12 @@ async function loadNews(
     }
 
 
-    newsContainer.innerHTML = `
+    homePage.style.display="block";
+
+    articleView.style.display="none";
+
+
+    newsContainer.innerHTML=`
 
         <div class="loading">
 
@@ -995,23 +1323,22 @@ async function loadNews(
     `;
 
 
-    /*
-       Azərbaycan dilində axtarış
-    */
-
     const searchQuery =
         queries[category] ||
         queries.Azerbaijan;
 
 
     const rssURL =
-        "https://news.google.com/rss/search?q=" +
-        encodeURIComponent(searchQuery) +
+        "https://news.google.com/rss/search?q="
+        +
+        encodeURIComponent(searchQuery)
+        +
         "&hl=az&gl=AZ&ceid=AZ:az";
 
 
     const apiURL =
-        "https://api.rss2json.com/v1/api.json?rss_url=" +
+        "https://api.rss2json.com/v1/api.json?rss_url="
+        +
         encodeURIComponent(rssURL);
 
 
@@ -1020,8 +1347,13 @@ async function loadNews(
         const response =
             await fetch(apiURL);
 
+
         if(!response.ok){
-            throw new Error("API xətası");
+
+            throw new Error(
+                "Xəbər serverinə qoşulmaq olmadı"
+            );
+
         }
 
 
@@ -1029,44 +1361,51 @@ async function loadNews(
             await response.json();
 
 
-        if(!data.items ||
-           data.items.length === 0){
+        if(
+            !data.items ||
+            data.items.length===0
+        ){
 
-            throw new Error("Xəbər yoxdur");
+            throw new Error(
+                "Xəbər tapılmadı"
+            );
+
         }
 
 
         /*
-           Rusca başlıqları çıxarırıq
-           və yalnız uyğun xəbərləri götürürük.
+          Rusca xəbərləri çıxarırıq.
         */
 
         const filtered =
-            data.items.filter(item => {
+            data.items.filter(item=>{
 
                 const title =
-                    cleanText(item.title || "");
+                    cleanText(item.title);
 
-                return title.length > 10 &&
-                       !isRussian(title);
+                return(
+                    title.length>10 &&
+                    !isRussian(title)
+                );
 
             });
 
 
-        if(filtered.length === 0){
+        if(filtered.length===0){
 
             throw new Error(
                 "Azərbaycan dilində xəbər tapılmadı"
             );
+
         }
 
 
-        newsContainer.innerHTML = "";
+        newsContainer.innerHTML="";
 
 
         filtered
         .slice(0,18)
-        .forEach((item,index) => {
+        .forEach((item,index)=>{
 
 
             let image =
@@ -1081,14 +1420,15 @@ async function loadNews(
                 cleanText(item.title);
 
 
-            let text =
+            let description =
                 cleanText(item.description);
 
 
-            if(text.length > 180){
+            if(description.length>150){
 
-                text =
-                    text.substring(0,180) + "...";
+                description =
+                    description.substring(0,150)
+                    + "...";
             }
 
 
@@ -1100,17 +1440,17 @@ async function loadNews(
                 document.createElement("article");
 
 
-            card.className = "card";
+            card.className="card";
 
 
-            card.innerHTML = `
+            card.innerHTML=`
 
                 <img
-                    src="${image}"
-                    loading="lazy"
-                    onerror="
-                        this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=85'
-                    "
+                src="${image}"
+                loading="lazy"
+                onerror="
+                this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=85'
+                "
                 >
 
                 <div class="content">
@@ -1125,15 +1465,17 @@ async function loadNews(
 
                     <p>
                         ${
-                            text ||
-                            "Ətraflı məlumat üçün xəbərə daxil olun."
+                            description ||
+                            "Xəbəri oxumaq üçün klikləyin."
                         }
                     </p>
 
                     <div class="meta">
 
                         <span>
-                            ${date.toLocaleDateString("az-AZ")}
+                            ${date.toLocaleDateString(
+                                "az-AZ"
+                            )}
                         </span>
 
                         <span>
@@ -1153,16 +1495,14 @@ async function loadNews(
             `;
 
 
-            card.onclick = function(){
+            /*
+              ARTİQ BAŞQA SAYTA KEÇMİR.
+              ALTAP.BİZ DAXİLİNDƏ AÇILIR.
+            */
 
-                if(item.link){
+            card.onclick=function(){
 
-                    window.open(
-                        item.link,
-                        "_blank"
-                    );
-
-                }
+                openArticle(item);
 
             };
 
@@ -1180,13 +1520,12 @@ async function loadNews(
 
 
     }
-
     catch(error){
 
         console.error(error);
 
 
-        newsContainer.innerHTML = `
+        newsContainer.innerHTML=`
 
             <div class="loading">
 
@@ -1196,26 +1535,27 @@ async function loadNews(
 
                 <p style="
                     margin-top:10px;
-                    color:var(--muted);
+                    line-height:1.6;
                 ">
                     İnternet bağlantısını yoxlayın
-                    və bir az sonra yenidən cəhd edin.
+                    və yenidən cəhd edin.
                 </p>
 
                 <button
-                    onclick="loadNews(currentCategory)"
-                    style="
-                        margin-top:18px;
-                        padding:11px 20px;
-                        border:0;
-                        border-radius:10px;
-                        background:#ef233c;
-                        color:white;
-                        font-weight:700;
-                        cursor:pointer;
-                    "
-                >
+                onclick="loadNews(currentCategory)"
+                style="
+                    margin-top:18px;
+                    padding:12px 20px;
+                    border:0;
+                    border-radius:10px;
+                    background:#ef233c;
+                    color:white;
+                    font-weight:800;
+                    cursor:pointer;
+                ">
+
                     Yenidən yoxla
+
                 </button>
 
             </div>
@@ -1225,27 +1565,42 @@ async function loadNews(
 
         updated.innerText =
             "Yenilənmə zamanı xəta baş verdi";
+
     }
 
 }
 
 
 /* =========================
-   İLK YÜKLƏMƏ
+   İLK AÇILIŞ
 ========================= */
 
 loadNews();
 
 
 /* =========================
-   HƏR 5 DƏQİQƏDƏ YENİLƏ
+   5 DƏQİQƏDƏ BİR YENİLƏ
 ========================= */
 
-setInterval(function(){
+setInterval(
+    function(){
 
-    loadNews(currentCategory);
+        /*
+          Əgər istifadəçi xəbər oxuyursa,
+          səhifəni zorla dəyişmirik.
+        */
 
-},300000);
+        if(
+            articleView.style.display !== "block"
+        ){
+
+            loadNews(currentCategory);
+
+        }
+
+    },
+    300000
+);
 
 </script>
 
