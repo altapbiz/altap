@@ -39,15 +39,23 @@ header{
     z-index:100;
     background:var(--card);
     border-bottom:1px solid var(--border);
-    padding:18px 20px;
+    padding:15px 20px;
 }
 
 .header{
     max-width:1150px;
     margin:auto;
     display:flex;
-    justify-content:flex-end;
+    justify-content:space-between;
     align-items:center;
+    gap:15px;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:900;
+    color:var(--main);
+    cursor:pointer;
 }
 
 .controls{
@@ -56,9 +64,7 @@ header{
     gap:8px;
 }
 
-.theme-btn,
-.lang-btn,
-.contact-btn{
+.header-btn{
     border:0;
     background:var(--main);
     color:#fff;
@@ -69,17 +75,49 @@ header{
     font-weight:800;
 }
 
-.theme-btn:hover,
-.lang-btn:hover,
-.contact-btn:hover{
+.header-btn:hover{
     background:var(--main-dark);
+}
+
+/* ANNOUNCEMENT */
+
+.announcement{
+    max-width:1150px;
+    margin:18px auto 0;
+    padding:0 20px;
+}
+
+.announcement-box{
+    background:var(--soft);
+    color:var(--text);
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:14px 17px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:14px;
+    font-weight:800;
+}
+
+.announcement-icon{
+    width:38px;
+    height:38px;
+    min-width:38px;
+    border-radius:12px;
+    background:var(--main);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
 }
 
 /* LANGUAGE */
 
 .language-box{
     position:fixed;
-    top:88px;
+    top:78px;
     right:20px;
     width:220px;
     background:var(--card);
@@ -127,7 +165,6 @@ header{
     height:21px;
     object-fit:cover;
     border-radius:3px;
-    box-shadow:0 1px 5px rgba(0,0,0,.2);
 }
 
 /* HERO */
@@ -237,25 +274,11 @@ header{
     padding:13px;
 }
 
-.icon1{
-    background:#d9fbe5;
-}
-
-.icon2{
-    background:#dcecff;
-}
-
-.icon3{
-    background:#ffe0e0;
-}
-
-.icon4{
-    background:#fff0c9;
-}
-
-.icon5{
-    background:#eadcff;
-}
+.icon1{background:#d9fbe5;}
+.icon2{background:#dcecff;}
+.icon3{background:#ffe0e0;}
+.icon4{background:#fff0c9;}
+.icon5{background:#eadcff;}
 
 .info{
     flex:1;
@@ -291,7 +314,8 @@ header{
 
 /* CONTACT MODAL */
 
-.contact-modal{
+.contact-modal,
+.modal{
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.65);
@@ -299,16 +323,24 @@ header{
     align-items:center;
     justify-content:center;
     padding:20px;
+}
+
+.contact-modal{
     z-index:900;
 }
 
-.contact-modal.show{
+.modal{
+    z-index:999;
+}
+
+.contact-modal.show,
+.modal.show{
     display:flex;
 }
 
-.contact-box{
+.contact-box,
+.modal-box{
     width:100%;
-    max-width:500px;
     background:var(--card);
     color:var(--text);
     border-radius:24px;
@@ -317,15 +349,35 @@ header{
     text-align:center;
 }
 
-.contact-box h2{
-    font-size:29px;
+.contact-box{
+    max-width:500px;
+}
+
+.modal-box{
+    max-width:430px;
+}
+
+.contact-box h2,
+.modal-box h2{
     margin-bottom:14px;
 }
 
-.contact-description{
+.contact-box h2{
+    font-size:29px;
+}
+
+.modal-box h2{
+    font-size:25px;
+}
+
+.contact-description,
+.modal-box p{
     color:var(--muted);
     line-height:1.7;
     font-size:15px;
+}
+
+.contact-description{
     margin-bottom:22px;
 }
 
@@ -340,11 +392,9 @@ header{
     text-align:left;
     text-decoration:none;
     color:inherit;
-    transition:.2s;
 }
 
 .contact-item:hover{
-    transform:translateY(-2px);
     background:var(--soft);
 }
 
@@ -369,23 +419,18 @@ header{
 
 .mail-icon{
     background:#1264d8;
-}
-
-.mail-icon span{
-    color:white;
-    font-size:25px;
+    color:#fff;
+    font-size:24px;
 }
 
 .contact-item strong{
     display:block;
     margin-bottom:5px;
-    font-size:15px;
 }
 
 .contact-item span{
     color:var(--muted);
     font-size:14px;
-    word-break:break-word;
 }
 
 .contact-bottom{
@@ -395,7 +440,8 @@ header{
     margin-top:20px;
 }
 
-.contact-close{
+.contact-close,
+.close{
     width:100%;
     margin-top:18px;
     padding:14px;
@@ -408,42 +454,9 @@ header{
     cursor:pointer;
 }
 
-/* ORDER MODAL */
-
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.65);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    z-index:999;
-}
-
-.modal.show{
-    display:flex;
-}
-
-.modal-box{
-    width:100%;
-    max-width:430px;
-    background:var(--card);
-    color:var(--text);
-    border-radius:23px;
-    padding:30px;
-    text-align:center;
-    box-shadow:0 20px 60px rgba(0,0,0,.25);
-}
-
-.modal-box h2{
-    font-size:25px;
-    margin-bottom:12px;
-}
+/* ORDER */
 
 .modal-box p{
-    color:var(--muted);
-    line-height:1.6;
     margin-bottom:15px;
 }
 
@@ -474,19 +487,6 @@ header{
     height:24px;
 }
 
-.close{
-    width:100%;
-    margin-top:12px;
-    padding:14px;
-    border:0;
-    border-radius:13px;
-    background:#eee;
-    color:#222;
-    font-size:15px;
-    font-weight:700;
-    cursor:pointer;
-}
-
 /* THEMES */
 
 body.blue{
@@ -499,23 +499,6 @@ body.purple{
     --main:#7b2cff;
     --main-dark:#5b16cc;
     --soft:#eee5ff;
-}
-
-body.dark{
-    --main:#ff3030;
-    --main-dark:#d90000;
-    --soft:#3b1717;
-    --bg:#0e1014;
-    --card:#181b21;
-    --border:#2c3038;
-    --text:#fff;
-    --muted:#b8bcc5;
-}
-
-body.dark .close,
-body.dark .contact-close{
-    background:#2b3038;
-    color:#fff;
 }
 
 /* FOOTER */
@@ -532,13 +515,31 @@ footer{
 
 @media(max-width:700px){
 
+    header{
+        padding:13px 15px;
+    }
+
     .header{
-        justify-content:flex-end;
+        align-items:flex-start;
+        flex-direction:column;
     }
 
     .controls{
-        flex-wrap:wrap;
+        width:100%;
         justify-content:flex-end;
+        flex-wrap:wrap;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .announcement{
+        margin-top:14px;
+    }
+
+    .announcement-box{
+        font-size:13px;
     }
 
     .hero{
@@ -580,45 +581,54 @@ footer{
     }
 
     .language-box{
-        top:75px;
+        top:125px;
         right:15px;
     }
 
-    .contact-box{
+    .contact-box,
+    .modal-box{
         padding:24px 18px;
-    }
-
-    .contact-box h2{
-        font-size:25px;
     }
 }
 </style>
 </head>
 
-<body class="blue">
+<body class="blue" id="home">
 
 <header>
 
     <div class="header">
 
+        <div
+            class="logo"
+            onclick="goHome()">
+            WhatsApp Plus
+        </div>
+
         <div class="controls">
 
             <button
-                class="contact-btn"
+                class="header-btn"
+                onclick="goHome()">
+                🏠 Ana səhifə
+            </button>
+
+            <button
+                class="header-btn"
                 onclick="openContact()">
-                Əlaqə
+                📞 Əlaqə
             </button>
 
             <button
-                class="lang-btn"
+                class="header-btn"
                 onclick="toggleLanguages()">
-                Dil
+                🌐 Dil
             </button>
 
             <button
-                class="theme-btn"
+                class="header-btn"
                 onclick="nextTheme()">
-                Tema
+                🎨 Tema
             </button>
 
         </div>
@@ -626,6 +636,25 @@ footer{
     </div>
 
 </header>
+
+
+<!-- ELAN PANELİ -->
+
+<div class="announcement">
+
+    <div class="announcement-box">
+
+        <div class="announcement-icon">
+            🔔
+        </div>
+
+        <span id="announcementText">
+            Yeni WhatsApp Plus 2026 versiyaları əlavə edildi.
+        </span>
+
+    </div>
+
+</div>
 
 
 <!-- DİL MENYUSU -->
@@ -733,7 +762,7 @@ footer{
 </div>
 
 
-<!-- 5 WHATSAPP PLUS -->
+<!-- VERSİYALAR -->
 
 <section class="apps">
 
@@ -751,9 +780,7 @@ footer{
                 WhatsApp Plus 2026
             </h3>
 
-            <div
-                class="apk"
-                id="apk1">
+            <div class="apk" id="apk1">
                 APK Versiyası
             </div>
 
@@ -784,9 +811,7 @@ footer{
                 WhatsApp Plus 2026 Pro
             </h3>
 
-            <div
-                class="apk"
-                id="apk2">
+            <div class="apk" id="apk2">
                 APK Versiyası
             </div>
 
@@ -817,9 +842,7 @@ footer{
                 WhatsApp Plus 2026 Ultra
             </h3>
 
-            <div
-                class="apk"
-                id="apk3">
+            <div class="apk" id="apk3">
                 APK Versiyası
             </div>
 
@@ -850,9 +873,7 @@ footer{
                 WhatsApp Plus 2026 Premium
             </h3>
 
-            <div
-                class="apk"
-                id="apk4">
+            <div class="apk" id="apk4">
                 APK Versiyası
             </div>
 
@@ -883,9 +904,7 @@ footer{
                 WhatsApp Plus 2026 Gold
             </h3>
 
-            <div
-                class="apk"
-                id="apk5">
+            <div class="apk" id="apk5">
                 APK Versiyası
             </div>
 
@@ -922,8 +941,7 @@ footer{
 
             Saytımız haqqında hər hansı bir sualınız və ya
             texniki dəstəyə ehtiyacınız varsa, bizimlə əlaqə
-            saxlamaqdan çəkinməyin. Sizin məmnuniyyətiniz
-            bizim üçün önəmlidir.
+            saxlaya bilərsiniz.
 
         </p>
 
@@ -962,11 +980,7 @@ footer{
             class="contact-item">
 
             <div class="contact-icon mail-icon">
-
-                <span>
-                    ✉
-                </span>
-
+                ✉
             </div>
 
             <div>
@@ -985,10 +999,7 @@ footer{
 
 
         <p class="contact-bottom">
-
-            Hər hansı bir problem və ya təklif üçün bizə yazın,
-            sizə kömək etməkdən məmnun olarıq.
-
+            Hər hansı bir problem və ya təklif üçün bizə yazın.
         </p>
 
 
@@ -1005,7 +1016,7 @@ footer{
 </div>
 
 
-<!-- SİFARİŞ MODALI -->
+<!-- SİFARİŞ PƏNCƏRƏSİ -->
 
 <div
     class="modal"
@@ -1013,13 +1024,11 @@ footer{
 
     <div class="modal-box">
 
-        <h2
-            id="modalTitle">
+        <h2 id="modalTitle">
             WhatsApp Plus 2026
         </h2>
 
-        <p
-            id="modalText">
+        <p id="modalText">
 
             WhatsApp Plus 2026 versiyasını əldə etmək
             üçün sifariş verə bilərsiniz.
@@ -1041,11 +1050,8 @@ footer{
                 src="https://cdn.simpleicons.org/whatsapp/ffffff"
                 alt="WhatsApp">
 
-            <span
-                id="whatsappText">
-
+            <span id="whatsappText">
                 WhatsApp ilə sifariş et
-
             </span>
 
         </a>
@@ -1077,8 +1083,7 @@ footer{
 
 const themes = [
     "blue",
-    "purple",
-    "dark"
+    "purple"
 ];
 
 let themeIndex = 0;
@@ -1087,8 +1092,7 @@ function nextTheme(){
 
     document.body.classList.remove(
         "blue",
-        "purple",
-        "dark"
+        "purple"
     );
 
     themeIndex++;
@@ -1104,6 +1108,15 @@ function nextTheme(){
 }
 
 
+/* ANA SƏHİFƏ */
+
+function goHome(){
+
+    location.reload();
+
+}
+
+
 /* DİL MENYUSU */
 
 function toggleLanguages(){
@@ -1115,7 +1128,7 @@ function toggleLanguages(){
 }
 
 
-/* ƏLAQƏ PƏNCƏRƏSİ */
+/* ƏLAQƏ */
 
 function openContact(){
 
@@ -1125,7 +1138,6 @@ function openContact(){
 
 }
 
-
 function closeContact(){
 
     document
@@ -1133,7 +1145,6 @@ function closeContact(){
         .classList.remove("show");
 
 }
-
 
 document
     .getElementById("contactModal")
@@ -1159,6 +1170,7 @@ const translations = {
         search:"Proqram axtar...",
         apk:"APK Versiyası",
         download:"Yüklə",
+        announcement:"Yeni WhatsApp Plus 2026 versiyaları əlavə edildi.",
         modalText:"WhatsApp Plus 2026 versiyasını əldə etmək üçün sifariş verə bilərsiniz.",
         whatsapp:"WhatsApp ilə sifariş et",
         close:"Bağla",
@@ -1171,6 +1183,7 @@ const translations = {
         search:"Поиск программы...",
         apk:"Версия APK",
         download:"Скачать",
+        announcement:"Добавлены новые версии WhatsApp Plus 2026.",
         modalText:"Вы можете оформить заказ, чтобы получить версию WhatsApp Plus 2026.",
         whatsapp:"Заказать через WhatsApp",
         close:"Закрыть",
@@ -1183,6 +1196,7 @@ const translations = {
         search:"Search program...",
         apk:"APK Version",
         download:"Download",
+        announcement:"New WhatsApp Plus 2026 versions have been added.",
         modalText:"You can place an order to get the WhatsApp Plus 2026 version.",
         whatsapp:"Order via WhatsApp",
         close:"Close",
@@ -1195,6 +1209,7 @@ const translations = {
         search:"Program ara...",
         apk:"APK Sürümü",
         download:"İndir",
+        announcement:"Yeni WhatsApp Plus 2026 sürümleri eklendi.",
         modalText:"WhatsApp Plus 2026 sürümünü almak için sipariş verebilirsiniz.",
         whatsapp:"WhatsApp ile sipariş ver",
         close:"Kapat",
@@ -1216,6 +1231,9 @@ function changeLanguage(lang){
 
     document.getElementById("searchInput").placeholder =
         t.search;
+
+    document.getElementById("announcementText").innerText =
+        t.announcement;
 
     document.getElementById("modalText").innerText =
         t.modalText;
@@ -1246,7 +1264,7 @@ function changeLanguage(lang){
 }
 
 
-/* SİFARİŞ MODALI */
+/* SİFARİŞ */
 
 function openModal(appName){
 
@@ -1284,7 +1302,6 @@ function closeModal(){
         .classList.remove("show");
 
 }
-
 
 document
     .getElementById("modal")
