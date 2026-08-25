@@ -16,9 +16,9 @@
 }
 
 :root{
-    --main:#e00000;
-    --main-dark:#b80000;
-    --soft:#ffe4e4;
+    --main:#1264d8;
+    --main-dark:#0b4ca8;
+    --soft:#e3efff;
     --text:#111;
     --muted:#666;
     --bg:#f5f7fb;
@@ -32,29 +32,6 @@ body{
     transition:.3s;
 }
 
-/* TOP FLAG */
-
-.top-flag{
-    width:100%;
-    height:58px;
-    background:var(--main);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-bottom:3px solid rgba(255,255,255,.25);
-}
-
-.top-flag img{
-    width:52px;
-    height:35px;
-    object-fit:cover;
-    border-radius:4px;
-
-    box-shadow:0 3px 12px rgba(0,0,0,.25);
-}
-
 /* HEADER */
 
 header{
@@ -65,7 +42,7 @@ header{
     background:var(--card);
     border-bottom:1px solid var(--border);
 
-    padding:16px 20px;
+    padding:18px 20px;
 }
 
 .header{
@@ -84,16 +61,18 @@ header{
     align-items:center;
     gap:12px;
 
-    font-size:27px;
+    font-size:29px;
     font-weight:900;
 
     color:var(--main);
 }
 
 .logo-flag{
-    width:43px;
-    height:29px;
+    width:45px;
+    height:30px;
+
     object-fit:cover;
+
     border-radius:4px;
 
     box-shadow:0 2px 8px rgba(0,0,0,.18);
@@ -134,7 +113,7 @@ header{
 .language-box{
     position:fixed;
 
-    top:125px;
+    top:88px;
     right:20px;
 
     width:220px;
@@ -232,19 +211,19 @@ header{
 
     color:var(--main);
 
-    padding:12px 20px;
+    padding:13px 22px;
 
     border-radius:16px;
 
-    font-size:17px;
+    font-size:18px;
     font-weight:900;
 
     margin-bottom:20px;
 }
 
 .hero-title img{
-    width:34px;
-    height:23px;
+    width:35px;
+    height:24px;
 
     object-fit:cover;
 
@@ -252,7 +231,7 @@ header{
 }
 
 .hero h1{
-    font-size:46px;
+    font-size:48px;
 
     line-height:1.15;
 
@@ -554,30 +533,24 @@ footer{
     font-size:14px;
 }
 
-/* THEMES */
+/* THEME 1 — BLUE */
 
-/* RED */
-body.red{
-    --main:#e00000;
-    --main-dark:#b80000;
-    --soft:#ffe4e4;
-}
-
-/* BLUE */
 body.blue{
     --main:#1264d8;
     --main-dark:#0b4ca8;
     --soft:#e3efff;
 }
 
-/* PURPLE */
+/* THEME 2 — PURPLE */
+
 body.purple{
     --main:#7b2cff;
     --main-dark:#5b16cc;
     --soft:#eee5ff;
 }
 
-/* DARK */
+/* THEME 3 — DARK */
+
 body.dark{
     --main:#ff3030;
     --main-dark:#d90000;
@@ -605,12 +578,12 @@ body.dark .close{
     }
 
     .logo{
-        font-size:21px;
+        font-size:22px;
     }
 
     .logo-flag{
-        width:38px;
-        height:25px;
+        width:39px;
+        height:26px;
     }
 
     .controls{
@@ -623,7 +596,7 @@ body.dark .close{
     }
 
     .hero h1{
-        font-size:34px;
+        font-size:35px;
     }
 
     .hero p{
@@ -655,21 +628,13 @@ body.dark .close{
         top:145px;
         right:15px;
     }
+
 }
 
 </style>
 </head>
 
-<body class="red">
-
-<!-- REAL AZERBAIJAN FLAG -->
-
-<div class="top-flag">
-    <img
-        src="https://flagcdn.com/w80/az.png"
-        alt="Azərbaycan bayrağı"
-    >
-</div>
+<body class="blue">
 
 
 <!-- HEADER -->
@@ -699,14 +664,15 @@ body.dark .close{
                 class="lang-btn"
                 onclick="toggleLanguages()"
             >
-                🌐 Dil
+                Dil
             </button>
 
             <button
                 class="theme-btn"
                 onclick="nextTheme()"
+                id="themeButton"
             >
-                🎨 Tema
+                Tema
             </button>
 
         </div>
@@ -843,8 +809,6 @@ body.dark .close{
 <section class="apps">
 
 
-<!-- 1 -->
-
 <div class="card">
 
     <img
@@ -875,8 +839,6 @@ body.dark .close{
 
 </div>
 
-
-<!-- 2 -->
 
 <div class="card">
 
@@ -909,8 +871,6 @@ body.dark .close{
 </div>
 
 
-<!-- 3 -->
-
 <div class="card">
 
     <img
@@ -942,8 +902,6 @@ body.dark .close{
 </div>
 
 
-<!-- 4 -->
-
 <div class="card">
 
     <img
@@ -974,8 +932,6 @@ body.dark .close{
 
 </div>
 
-
-<!-- 5 -->
 
 <div class="card">
 
@@ -1080,7 +1036,6 @@ body.dark .close{
 /* THEMES */
 
 const themes = [
-    "red",
     "blue",
     "purple",
     "dark"
@@ -1091,7 +1046,6 @@ let themeIndex = 0;
 function nextTheme(){
 
     document.body.classList.remove(
-        "red",
         "blue",
         "purple",
         "dark"
