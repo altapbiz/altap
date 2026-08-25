@@ -7,7 +7,6 @@
 <title>WhatsApp Plus 2026</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -63,7 +62,6 @@ header{
     display:flex;
     align-items:center;
     gap:8px;
-    flex-wrap:wrap;
 }
 
 .header-btn{
@@ -81,11 +79,44 @@ header{
     background:var(--main-dark);
 }
 
+/* DATE */
+
+.date-panel{
+    max-width:1150px;
+    margin:15px auto 0;
+    padding:0 20px;
+}
+
+.date-box{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:12px 16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:var(--muted);
+    font-size:14px;
+    font-weight:700;
+}
+
+.date-icon{
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    background:var(--soft);
+    color:var(--main);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:17px;
+}
+
 /* ANNOUNCEMENT */
 
 .announcement{
     max-width:1150px;
-    margin:18px auto 0;
+    margin:15px auto 0;
     padding:0 20px;
 }
 
@@ -112,29 +143,6 @@ header{
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:18px;
-}
-
-/* DATE TIME */
-
-.datetime{
-    max-width:1150px;
-    margin:12px auto 0;
-    padding:0 20px;
-}
-
-.datetime-box{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    color:var(--muted);
-    font-size:14px;
-    font-weight:700;
-}
-
-.datetime-icon{
-    color:var(--main);
     font-size:18px;
 }
 
@@ -192,11 +200,72 @@ header{
     border-radius:3px;
 }
 
+/* WELCOME */
+
+.welcome-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:1200;
+}
+
+.welcome-box{
+    width:100%;
+    max-width:430px;
+    background:var(--card);
+    color:var(--text);
+    border-radius:24px;
+    padding:32px 25px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+.welcome-icon{
+    width:65px;
+    height:65px;
+    margin:0 auto 18px;
+    border-radius:18px;
+    background:var(--soft);
+    color:var(--main);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:29px;
+}
+
+.welcome-box h2{
+    font-size:27px;
+    margin-bottom:12px;
+}
+
+.welcome-box p{
+    color:var(--muted);
+    line-height:1.6;
+    font-size:15px;
+}
+
+.welcome-close{
+    width:100%;
+    margin-top:22px;
+    padding:14px;
+    border:0;
+    border-radius:13px;
+    background:var(--main);
+    color:#fff;
+    font-size:15px;
+    font-weight:800;
+    cursor:pointer;
+}
+
 /* HERO */
 
 .hero{
     max-width:950px;
-    margin:38px auto 30px;
+    margin:42px auto 30px;
     padding:0 20px;
     text-align:center;
 }
@@ -267,7 +336,7 @@ header{
 .apps{
     max-width:900px;
     margin:auto;
-    padding:0 20px 30px;
+    padding:0 20px 60px;
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:18px;
@@ -337,81 +406,10 @@ header{
     background:var(--main-dark);
 }
 
-/* WHATSAPP TRACKING SECTION */
-
-.tracking-section{
-    max-width:900px;
-    margin:0 auto;
-    padding:0 20px 45px;
-}
-
-.tracking-card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:22px;
-    padding:22px;
-    display:flex;
-    align-items:center;
-    gap:18px;
-    box-shadow:0 6px 22px rgba(0,0,0,.05);
-    transition:.25s;
-}
-
-.tracking-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 12px 30px rgba(0,0,0,.1);
-}
-
-.tracking-icon{
-    width:65px;
-    height:65px;
-    min-width:65px;
-    border-radius:18px;
-    background:#e3efff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--main);
-    font-size:28px;
-}
-
-.tracking-info{
-    flex:1;
-}
-
-.tracking-info h2{
-    font-size:20px;
-    margin-bottom:7px;
-}
-
-.tracking-info p{
-    color:var(--muted);
-    font-size:14px;
-    line-height:1.5;
-}
-
-.tracking-btn{
-    border:0;
-    background:var(--main);
-    color:#fff;
-    border-radius:11px;
-    padding:12px 16px;
-    font-size:14px;
-    font-weight:800;
-    cursor:pointer;
-    white-space:nowrap;
-}
-
-.tracking-btn:hover{
-    background:var(--main-dark);
-}
-
-/* MODALS */
+/* CONTACT MODAL */
 
 .contact-modal,
-.modal,
-.tracking-modal,
-.welcome-modal{
+.modal{
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.65);
@@ -429,27 +427,13 @@ header{
     z-index:999;
 }
 
-.tracking-modal{
-    z-index:1000;
-}
-
-.welcome-modal{
-    z-index:2000;
-}
-
 .contact-modal.show,
-.modal.show,
-.tracking-modal.show,
-.welcome-modal.show{
+.modal.show{
     display:flex;
 }
 
-/* CONTACT */
-
 .contact-box,
-.modal-box,
-.tracking-box,
-.welcome-box{
+.modal-box{
     width:100%;
     background:var(--card);
     color:var(--text);
@@ -467,18 +451,8 @@ header{
     max-width:430px;
 }
 
-.tracking-box{
-    max-width:500px;
-}
-
-.welcome-box{
-    max-width:430px;
-}
-
 .contact-box h2,
-.modal-box h2,
-.tracking-box h2,
-.welcome-box h2{
+.modal-box h2{
     margin-bottom:14px;
 }
 
@@ -486,19 +460,12 @@ header{
     font-size:29px;
 }
 
-.modal-box h2,
-.tracking-box h2{
+.modal-box h2{
     font-size:25px;
 }
 
-.welcome-box h2{
-    font-size:28px;
-    color:var(--main);
-}
-
 .contact-description,
-.modal-box p,
-.tracking-description{
+.modal-box p{
     color:var(--muted);
     line-height:1.7;
     font-size:15px;
@@ -547,7 +514,7 @@ header{
 .mail-icon{
     background:#1264d8;
     color:#fff;
-    font-size:23px;
+    font-size:24px;
 }
 
 .contact-item strong{
@@ -567,50 +534,18 @@ header{
     margin-top:20px;
 }
 
-/* TRACKING FORM */
-
-.tracking-description{
-    margin-bottom:20px;
-}
-
-.number-label{
-    display:block;
-    text-align:left;
-    font-size:14px;
-    font-weight:800;
-    margin-bottom:8px;
-}
-
-.number-input{
+.contact-close,
+.close{
     width:100%;
-    padding:15px;
-    border:2px solid var(--border);
-    border-radius:13px;
-    outline:none;
-    background:var(--card);
-    color:var(--text);
-    font-size:16px;
-}
-
-.number-input:focus{
-    border-color:var(--main);
-}
-
-.start-tracking{
-    width:100%;
-    margin-top:14px;
-    padding:15px;
+    margin-top:18px;
+    padding:14px;
     border:0;
     border-radius:13px;
-    background:var(--main);
-    color:#fff;
+    background:#eee;
+    color:#222;
     font-size:15px;
-    font-weight:800;
+    font-weight:700;
     cursor:pointer;
-}
-
-.start-tracking:hover{
-    background:var(--main-dark);
 }
 
 /* ORDER */
@@ -644,28 +579,6 @@ header{
 .whatsapp img{
     width:24px;
     height:24px;
-}
-
-/* CLOSE BUTTON */
-
-.contact-close,
-.close,
-.tracking-close,
-.welcome-close{
-    width:100%;
-    margin-top:18px;
-    padding:14px;
-    border:0;
-    border-radius:13px;
-    background:#eee;
-    color:#222;
-    font-size:15px;
-    font-weight:700;
-    cursor:pointer;
-}
-
-.tracking-close{
-    margin-top:10px;
 }
 
 /* THEMES */
@@ -708,14 +621,19 @@ footer{
     .controls{
         width:100%;
         justify-content:flex-end;
+        flex-wrap:wrap;
     }
 
     .logo{
         font-size:18px;
     }
 
+    .date-panel{
+        margin-top:12px;
+    }
+
     .announcement{
-        margin-top:14px;
+        margin-top:12px;
     }
 
     .announcement-box{
@@ -760,19 +678,6 @@ footer{
         padding:9px 11px;
     }
 
-    .tracking-card{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .tracking-info p{
-        font-size:13px;
-    }
-
-    .tracking-btn{
-        width:100%;
-    }
-
     .language-box{
         top:125px;
         right:15px;
@@ -780,46 +685,82 @@ footer{
 
     .contact-box,
     .modal-box,
-    .tracking-box,
     .welcome-box{
         padding:24px 18px;
     }
-
 }
-
 </style>
 </head>
 
-<body class="blue">
+<body class="blue" id="home">
+
+<!-- XOŞ GƏLDİN -->
+
+<div class="welcome-modal" id="welcomeModal">
+
+    <div class="welcome-box">
+
+        <div class="welcome-icon">
+            ✓
+        </div>
+
+        <h2 id="welcomeTitle">
+            Xoş gəlmisiniz
+        </h2>
+
+        <p id="welcomeText">
+            WhatsApp Plus 2026 saytına xoş gəlmisiniz.
+            Buradan mövcud versiyaları nəzərdən keçirə bilərsiniz.
+        </p>
+
+        <button
+            class="welcome-close"
+            onclick="closeWelcome()"
+            id="welcomeButton">
+
+            Davam et
+
+        </button>
+
+    </div>
+
+</div>
+
 
 <header>
 
     <div class="header">
 
-        <div class="logo" onclick="goHome()">
+        <div
+            class="logo"
+            onclick="goHome()">
             WhatsApp Plus
         </div>
 
         <div class="controls">
 
-            <button class="header-btn" onclick="goHome()">
-                <span>⌂</span> Ana səhifə
+            <button
+                class="header-btn"
+                onclick="goHome()">
+                Ana səhifə
             </button>
 
-            <button class="header-btn" onclick="openContact()">
-                <span>▣</span> Əlaqə
+            <button
+                class="header-btn"
+                onclick="openContact()">
+                Əlaqə
             </button>
 
-            <button class="header-btn" onclick="openTracking()">
-                <span>◉</span> WhatsApp İzləmə
+            <button
+                class="header-btn"
+                onclick="toggleLanguages()">
+                Dil
             </button>
 
-            <button class="header-btn" onclick="toggleLanguages()">
-                <span>文</span> Dil
-            </button>
-
-            <button class="header-btn" onclick="nextTheme()">
-                <span>◐</span> Tema
+            <button
+                class="header-btn"
+                onclick="nextTheme()">
+                Tema
             </button>
 
         </div>
@@ -827,6 +768,23 @@ footer{
     </div>
 
 </header>
+
+
+<!-- TARİX -->
+
+<div class="date-panel">
+
+    <div class="date-box">
+
+        <div class="date-icon">
+            ◷
+        </div>
+
+        <span id="dateText"></span>
+
+    </div>
+
+</div>
 
 
 <!-- ELAN PANELİ -->
@@ -848,34 +806,19 @@ footer{
 </div>
 
 
-<!-- TARİX VƏ SAAT -->
-
-<div class="datetime">
-
-    <div class="datetime-box">
-
-        <span class="datetime-icon">
-            ◷
-        </span>
-
-        <span id="dateTime">
-            Yüklənir...
-        </span>
-
-    </div>
-
-</div>
-
-
 <!-- DİL MENYUSU -->
 
-<div class="language-box" id="languageBox">
+<div
+    class="language-box"
+    id="languageBox">
 
     <div class="language-title">
         Dil seçin
     </div>
 
-    <button class="language" onclick="changeLanguage('az')">
+    <button
+        class="language"
+        onclick="changeLanguage('az')">
 
         <img
             src="https://flagcdn.com/w80/az.png"
@@ -885,7 +828,9 @@ footer{
 
     </button>
 
-    <button class="language" onclick="changeLanguage('ru')">
+    <button
+        class="language"
+        onclick="changeLanguage('ru')">
 
         <img
             src="https://flagcdn.com/w80/ru.png"
@@ -895,7 +840,9 @@ footer{
 
     </button>
 
-    <button class="language" onclick="changeLanguage('en')">
+    <button
+        class="language"
+        onclick="changeLanguage('en')">
 
         <img
             src="https://flagcdn.com/w80/gb.png"
@@ -905,7 +852,9 @@ footer{
 
     </button>
 
-    <button class="language" onclick="changeLanguage('tr')">
+    <button
+        class="language"
+        onclick="changeLanguage('tr')">
 
         <img
             src="https://flagcdn.com/w80/tr.png"
@@ -1123,45 +1072,11 @@ footer{
 </section>
 
 
-<!-- WHATSAPP İZLƏMƏ BÖLMƏSİ -->
-
-<section class="tracking-section">
-
-    <div class="tracking-card">
-
-        <div class="tracking-icon">
-            ◉
-        </div>
-
-        <div class="tracking-info">
-
-            <h2>
-                WhatsApp İzləmə 2026
-            </h2>
-
-            <p>
-                WhatsApp izləmə funksiyası haqqında məlumat
-                əldə etmək üçün bölməyə daxil olun.
-            </p>
-
-        </div>
-
-        <button
-            class="tracking-btn"
-            onclick="openTracking()">
-
-            İzləməyə bax
-
-        </button>
-
-    </div>
-
-</section>
-
-
 <!-- ƏLAQƏ PƏNCƏRƏSİ -->
 
-<div class="contact-modal" id="contactModal">
+<div
+    class="contact-modal"
+    id="contactModal">
 
     <div class="contact-box">
 
@@ -1212,7 +1127,7 @@ footer{
             class="contact-item">
 
             <div class="contact-icon mail-icon">
-                @
+                ✉
             </div>
 
             <div>
@@ -1250,7 +1165,9 @@ footer{
 
 <!-- SİFARİŞ PƏNCƏRƏSİ -->
 
-<div class="modal" id="modal">
+<div
+    class="modal"
+    id="modal">
 
     <div class="modal-box">
 
@@ -1300,101 +1217,6 @@ footer{
 </div>
 
 
-<!-- WHATSAPP İZLƏMƏ PƏNCƏRƏSİ -->
-
-<div class="tracking-modal" id="trackingModal">
-
-    <div class="tracking-box">
-
-        <h2>
-            WhatsApp İzləmə 2026
-        </h2>
-
-        <p class="tracking-description">
-
-            Qarşı tərəfin WhatsApp mesajlarını izləmək
-            istəyirsiniz?
-
-            <br><br>
-
-            İzləmək istədiyiniz WhatsApp nömrəsini
-            aşağıdakı xanaya daxil edin və
-            “İzləməyə başla” düyməsinə toxunun.
-
-        </p>
-
-
-        <label class="number-label">
-            WhatsApp nömrəsi
-        </label>
-
-        <input
-            type="tel"
-            id="trackingNumber"
-            class="number-input"
-            placeholder="+994 XX XXX XX XX">
-
-
-        <button
-            class="start-tracking"
-            onclick="startTracking()">
-
-            İzləməyə başla
-
-        </button>
-
-
-        <button
-            class="tracking-close"
-            onclick="closeTracking()">
-
-            Bağla
-
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- XƏBƏRDARLIQ PƏNCƏRƏSİ -->
-
-<div class="welcome-modal" id="welcomeModal">
-
-    <div class="welcome-box">
-
-        <div class="announcement-icon"
-             style="margin:0 auto 18px;">
-            !
-        </div>
-
-        <h2>
-            Xoş gəlmisiniz
-        </h2>
-
-        <p style="
-            color:var(--muted);
-            line-height:1.7;
-            font-size:15px;
-        ">
-            WhatsApp Plus 2026 səhifəsinə xoş gəlmisiniz.
-            Mövcud versiyaları buradan nəzərdən keçirə
-            bilərsiniz.
-        </p>
-
-        <button
-            class="welcome-close"
-            onclick="closeWelcome()">
-
-            Davam et
-
-        </button>
-
-    </div>
-
-</div>
-
-
 <footer id="footerText">
 
     © 2026 WhatsApp Plus — Bütün hüquqlar qorunur.
@@ -1403,6 +1225,72 @@ footer{
 
 
 <script>
+
+/* XOŞ GƏLDİN */
+
+function closeWelcome(){
+
+    document
+        .getElementById("welcomeModal")
+        .style.display = "none";
+
+}
+
+
+/* TARİX */
+
+function updateDate(){
+
+    const now = new Date();
+
+    const days = [
+        "Bazar",
+        "Bazar ertəsi",
+        "Çərşənbə axşamı",
+        "Çərşənbə",
+        "Cümə axşamı",
+        "Cümə",
+        "Şənbə"
+    ];
+
+    const months = [
+        "Yanvar",
+        "Fevral",
+        "Mart",
+        "Aprel",
+        "May",
+        "İyun",
+        "İyul",
+        "Avqust",
+        "Sentyabr",
+        "Oktyabr",
+        "Noyabr",
+        "Dekabr"
+    ];
+
+    const dayName = days[now.getDay()];
+    const day = now.getDate();
+    const month = months[now.getMonth()];
+    const year = now.getFullYear();
+
+    const hours = String(now.getHours()).padStart(2,"0");
+    const minutes = String(now.getMinutes()).padStart(2,"0");
+
+    document.getElementById("dateText").innerText =
+        dayName + ", " +
+        day + " " +
+        month + " " +
+        year +
+        " — " +
+        hours + ":" +
+        minutes;
+
+}
+
+updateDate();
+
+setInterval(updateDate,60000);
+
 
 /* TEMA */
 
@@ -1442,83 +1330,6 @@ function goHome(){
 }
 
 
-/* TARİX VƏ SAAT */
-
-function updateDateTime(){
-
-    const now = new Date();
-
-    const days = [
-        "Bazar",
-        "Bazar ertəsi",
-        "Çərşənbə axşamı",
-        "Çərşənbə",
-        "Cümə axşamı",
-        "Cümə",
-        "Şənbə"
-    ];
-
-    const months = [
-        "Yanvar",
-        "Fevral",
-        "Mart",
-        "Aprel",
-        "May",
-        "İyun",
-        "İyul",
-        "Avqust",
-        "Sentyabr",
-        "Oktyabr",
-        "Noyabr",
-        "Dekabr"
-    ];
-
-    const dayName =
-        days[now.getDay()];
-
-    const day =
-        String(now.getDate()).padStart(2,"0");
-
-    const month =
-        months[now.getMonth()];
-
-    const year =
-        now.getFullYear();
-
-    const hours =
-        String(now.getHours()).padStart(2,"0");
-
-    const minutes =
-        String(now.getMinutes()).padStart(2,"0");
-
-    const seconds =
-        String(now.getSeconds()).padStart(2,"0");
-
-    document.getElementById("dateTime").innerText =
-        dayName +
-        ", " +
-        day +
-        " " +
-        month +
-        " " +
-        year +
-        " — " +
-        hours +
-        ":" +
-        minutes +
-        ":" +
-        seconds;
-
-}
-
-updateDateTime();
-
-setInterval(
-    updateDateTime,
-    1000
-);
-
-
 /* DİL MENYUSU */
 
 function toggleLanguages(){
@@ -1548,59 +1359,140 @@ function closeContact(){
 
 }
 
+document
+    .getElementById("contactModal")
+    .addEventListener(
+        "click",
+        function(e){
 
-/* WHATSAPP İZLƏMƏ */
+            if(e.target === this){
+                closeContact();
+            }
 
-function openTracking(){
-
-    document
-        .getElementById("trackingModal")
-        .classList.add("show");
-
-}
-
-function closeTracking(){
-
-    document
-        .getElementById("trackingModal")
-        .classList.remove("show");
-
-}
+        }
+    );
 
 
-/* İZLƏMƏ DÜYMƏSİ */
+/* DİLLƏR */
 
-function startTracking(){
+const translations = {
 
-    const number =
-        document
-        .getElementById("trackingNumber")
-        .value
-        .trim();
+    az:{
+        heroTitle:"WhatsApp Plus 2026",
+        heroText:"WhatsApp Plus 2026 versiyalarını kəşf edin.",
+        search:"Proqram axtar...",
+        apk:"APK Versiyası",
+        download:"Yüklə",
+        announcement:"Yeni WhatsApp Plus 2026 versiyaları əlavə edildi.",
+        modalText:"WhatsApp Plus 2026 versiyasını əldə etmək üçün sifariş verə bilərsiniz.",
+        whatsapp:"WhatsApp ilə sifariş et",
+        close:"Bağla",
+        footer:"© 2026 WhatsApp Plus — Bütün hüquqlar qorunur.",
+        welcomeTitle:"Xoş gəlmisiniz",
+        welcomeText:"WhatsApp Plus 2026 saytına xoş gəlmisiniz. Buradan mövcud versiyaları nəzərdən keçirə bilərsiniz.",
+        welcomeButton:"Davam et"
+    },
 
-    if(number === ""){
+    ru:{
+        heroTitle:"WhatsApp Plus 2026",
+        heroText:"Откройте версии WhatsApp Plus 2026.",
+        search:"Поиск программы...",
+        apk:"Версия APK",
+        download:"Скачать",
+        announcement:"Добавлены новые версии WhatsApp Plus 2026.",
+        modalText:"Вы можете оформить заказ, чтобы получить версию WhatsApp Plus 2026.",
+        whatsapp:"Заказать через WhatsApp",
+        close:"Закрыть",
+        footer:"© 2026 WhatsApp Plus — Все права защищены.",
+        welcomeTitle:"Добро пожаловать",
+        welcomeText:"Добро пожаловать на сайт WhatsApp Plus 2026. Здесь вы можете ознакомиться с доступными версиями.",
+        welcomeButton:"Продолжить"
+    },
 
-        alert(
-            "Zəhmət olmasa WhatsApp nömrəsini daxil edin."
-        );
+    en:{
+        heroTitle:"WhatsApp Plus 2026",
+        heroText:"Discover WhatsApp Plus 2026 versions.",
+        search:"Search program...",
+        apk:"APK Version",
+        download:"Download",
+        announcement:"New WhatsApp Plus 2026 versions have been added.",
+        modalText:"You can place an order to get the WhatsApp Plus 2026 version.",
+        whatsapp:"Order via WhatsApp",
+        close:"Close",
+        footer:"© 2026 WhatsApp Plus — All rights reserved.",
+        welcomeTitle:"Welcome",
+        welcomeText:"Welcome to WhatsApp Plus 2026. You can browse the available versions here.",
+        welcomeButton:"Continue"
+    },
 
-        return;
+    tr:{
+        heroTitle:"WhatsApp Plus 2026",
+        heroText:"WhatsApp Plus 2026 sürümlerini keşfedin.",
+        search:"Program ara...",
+        apk:"APK Sürümü",
+        download:"İndir",
+        announcement:"Yeni WhatsApp Plus 2026 sürümleri eklendi.",
+        modalText:"WhatsApp Plus 2026 sürümünü almak için sipariş verebilirsiniz.",
+        whatsapp:"WhatsApp ile sipariş ver",
+        close:"Kapat",
+        footer:"© 2026 WhatsApp Plus — Tüm hakları saklıdır.",
+        welcomeTitle:"Hoş geldiniz",
+        welcomeText:"WhatsApp Plus 2026 sitesine hoş geldiniz. Buradan mevcut sürümleri inceleyebilirsiniz.",
+        welcomeButton:"Devam et"
+    }
+
+};
+
+
+function changeLanguage(lang){
+
+    const t = translations[lang];
+
+    document.getElementById("heroTitle").innerText =
+        t.heroTitle;
+
+    document.getElementById("heroText").innerText =
+        t.heroText;
+
+    document.getElementById("searchInput").placeholder =
+        t.search;
+
+    document.getElementById("announcementText").innerText =
+        t.announcement;
+
+    document.getElementById("modalText").innerText =
+        t.modalText;
+
+    document.getElementById("whatsappText").innerText =
+        t.whatsapp;
+
+    document.getElementById("closeText").innerText =
+        t.close;
+
+    document.getElementById("footerText").innerText =
+        t.footer;
+
+    document.getElementById("welcomeTitle").innerText =
+        t.welcomeTitle;
+
+    document.getElementById("welcomeText").innerText =
+        t.welcomeText;
+
+    document.getElementById("welcomeButton").innerText =
+        t.welcomeButton;
+
+    for(let i=1;i<=5;i++){
+
+        document.getElementById("apk"+i).innerText =
+            t.apk;
+
+        document.getElementById("download"+i).innerText =
+            t.download;
 
     }
 
-    alert(
-        "Bu funksiya hazırda aktiv deyil. Tezliklə istifadəyə veriləcək."
-    );
-
-}
-
-
-/* XOŞ GƏLDİN */
-
-function closeWelcome(){
-
     document
-        .getElementById("welcomeModal")
+        .getElementById("languageBox")
         .classList.remove("show");
 
 }
@@ -1645,23 +1537,6 @@ function closeModal(){
 
 }
 
-
-/* MODAL ÇIXIŞLARI */
-
-document
-    .getElementById("contactModal")
-    .addEventListener(
-        "click",
-        function(e){
-
-            if(e.target === this){
-                closeContact();
-            }
-
-        }
-    );
-
-
 document
     .getElementById("modal")
     .addEventListener(
@@ -1674,139 +1549,6 @@ document
 
         }
     );
-
-
-document
-    .getElementById("trackingModal")
-    .addEventListener(
-        "click",
-        function(e){
-
-            if(e.target === this){
-                closeTracking();
-            }
-
-        }
-    );
-
-
-document
-    .getElementById("welcomeModal")
-    .addEventListener(
-        "click",
-        function(e){
-
-            if(e.target === this){
-                closeWelcome();
-            }
-
-        }
-    );
-
-
-/* DİLLƏR */
-
-const translations = {
-
-    az:{
-        heroTitle:"WhatsApp Plus 2026",
-        heroText:"WhatsApp Plus 2026 versiyalarını kəşf edin.",
-        search:"Proqram axtar...",
-        apk:"APK Versiyası",
-        download:"Yüklə",
-        announcement:"Yeni WhatsApp Plus 2026 versiyaları əlavə edildi.",
-        modalText:"WhatsApp Plus 2026 versiyasını əldə etmək üçün sifariş verə bilərsiniz.",
-        whatsapp:"WhatsApp ilə sifariş et",
-        close:"Bağla",
-        footer:"© 2026 WhatsApp Plus — Bütün hüquqlar qorunur."
-    },
-
-    ru:{
-        heroTitle:"WhatsApp Plus 2026",
-        heroText:"Откройте версии WhatsApp Plus 2026.",
-        search:"Поиск программы...",
-        apk:"Версия APK",
-        download:"Скачать",
-        announcement:"Добавлены новые версии WhatsApp Plus 2026.",
-        modalText:"Вы можете оформить заказ, чтобы получить версию WhatsApp Plus 2026.",
-        whatsapp:"Заказать через WhatsApp",
-        close:"Закрыть",
-        footer:"© 2026 WhatsApp Plus — Все права защищены."
-    },
-
-    en:{
-        heroTitle:"WhatsApp Plus 2026",
-        heroText:"Discover WhatsApp Plus 2026 versions.",
-        search:"Search program...",
-        apk:"APK Version",
-        download:"Download",
-        announcement:"New WhatsApp Plus 2026 versions have been added.",
-        modalText:"You can place an order to get the WhatsApp Plus 2026 version.",
-        whatsapp:"Order via WhatsApp",
-        close:"Close",
-        footer:"© 2026 WhatsApp Plus — All rights reserved."
-    },
-
-    tr:{
-        heroTitle:"WhatsApp Plus 2026",
-        heroText:"WhatsApp Plus 2026 sürümlerini keşfedin.",
-        search:"Program ara...",
-        apk:"APK Sürümü",
-        download:"İndir",
-        announcement:"Yeni WhatsApp Plus 2026 sürümləri əlavə edildi.",
-        modalText:"WhatsApp Plus 2026 sürümünü almak için sipariş verebilirsiniz.",
-        whatsapp:"WhatsApp ile sipariş ver",
-        close:"Kapat",
-        footer:"© 2026 WhatsApp Plus — Tüm hakları saklıdır."
-    }
-
-};
-
-
-function changeLanguage(lang){
-
-    const t =
-        translations[lang];
-
-    document.getElementById("heroTitle").innerText =
-        t.heroTitle;
-
-    document.getElementById("heroText").innerText =
-        t.heroText;
-
-    document.getElementById("searchInput").placeholder =
-        t.search;
-
-    document.getElementById("announcementText").innerText =
-        t.announcement;
-
-    document.getElementById("modalText").innerText =
-        t.modalText;
-
-    document.getElementById("whatsappText").innerText =
-        t.whatsapp;
-
-    document.getElementById("closeText").innerText =
-        t.close;
-
-    document.getElementById("footerText").innerText =
-        t.footer;
-
-    for(let i=1;i<=5;i++){
-
-        document.getElementById("apk"+i).innerText =
-            t.apk;
-
-        document.getElementById("download"+i).innerText =
-            t.download;
-
-    }
-
-    document
-        .getElementById("languageBox")
-        .classList.remove("show");
-
-}
 
 
 /* AXTARIŞ */
@@ -1841,27 +1583,6 @@ function searchApps(){
     });
 
 }
-
-
-/* SAYT AÇILANDA XOŞ GƏLDİN */
-
-window.addEventListener(
-    "load",
-    function(){
-
-        setTimeout(
-            function(){
-
-                document
-                    .getElementById("welcomeModal")
-                    .classList.add("show");
-
-            },
-            400
-        );
-
-    }
-);
 
 </script>
 
