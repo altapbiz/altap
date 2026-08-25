@@ -16,14 +16,14 @@
 }
 
 :root{
-    --main:#e60000;
+    --main:#e00000;
     --main-dark:#b80000;
-    --soft:#ffe5e5;
+    --soft:#ffe4e4;
     --text:#111;
     --muted:#666;
     --bg:#f5f7fb;
     --card:#fff;
-    --border:#e5e7eb;
+    --border:#e3e6eb;
 }
 
 body{
@@ -36,12 +36,23 @@ body{
 
 .top-flag{
     width:100%;
+    height:58px;
     background:var(--main);
-    color:#fff;
-    text-align:center;
-    padding:9px 10px;
-    font-size:25px;
-    line-height:1;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-bottom:3px solid rgba(255,255,255,.25);
+}
+
+.top-flag img{
+    width:52px;
+    height:35px;
+    object-fit:cover;
+    border-radius:4px;
+
+    box-shadow:0 3px 12px rgba(0,0,0,.25);
 }
 
 /* HEADER */
@@ -50,10 +61,11 @@ header{
     position:sticky;
     top:0;
     z-index:100;
+
     background:var(--card);
     border-bottom:1px solid var(--border);
+
     padding:16px 20px;
-    transition:.3s;
 }
 
 .header{
@@ -63,21 +75,28 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
+
     gap:15px;
 }
 
 .logo{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:12px;
 
-    font-size:26px;
+    font-size:27px;
     font-weight:900;
+
     color:var(--main);
 }
 
 .logo-flag{
-    font-size:30px;
+    width:43px;
+    height:29px;
+    object-fit:cover;
+    border-radius:4px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.18);
 }
 
 /* CONTROLS */
@@ -91,11 +110,16 @@ header{
 .theme-btn,
 .lang-btn{
     border:0;
+
     background:var(--main);
     color:#fff;
-    padding:11px 14px;
+
+    padding:11px 15px;
+
     border-radius:11px;
+
     cursor:pointer;
+
     font-size:14px;
     font-weight:800;
 }
@@ -105,22 +129,28 @@ header{
     background:var(--main-dark);
 }
 
-/* LANGUAGE */
+/* LANGUAGE MENU */
 
 .language-box{
     position:fixed;
-    top:90px;
+
+    top:125px;
     right:20px;
 
-    width:210px;
+    width:220px;
+
     background:var(--card);
+
     border:1px solid var(--border);
+
     border-radius:16px;
+
     padding:10px;
 
-    box-shadow:0 12px 35px rgba(0,0,0,.15);
+    box-shadow:0 15px 40px rgba(0,0,0,.18);
 
     display:none;
+
     z-index:500;
 }
 
@@ -129,60 +159,105 @@ header{
 }
 
 .language-title{
+    padding:9px 10px;
+
     font-size:13px;
     font-weight:800;
+
     color:var(--muted);
-    padding:8px 10px;
 }
 
 .language{
     width:100%;
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
     border:0;
+
     background:transparent;
+
     padding:12px 10px;
+
     border-radius:10px;
+
     cursor:pointer;
+
     text-align:left;
+
+    color:var(--text);
+
     font-size:15px;
     font-weight:700;
-    color:var(--text);
 }
 
 .language:hover{
     background:var(--soft);
 }
 
+.language img{
+    width:31px;
+    height:21px;
+
+    object-fit:cover;
+
+    border-radius:3px;
+
+    box-shadow:0 1px 5px rgba(0,0,0,.2);
+}
+
 /* HERO */
 
 .hero{
     max-width:950px;
-    margin:45px auto 30px;
+
+    margin:48px auto 30px;
+
     padding:0 20px;
+
     text-align:center;
 }
 
 .hero-title{
     display:inline-flex;
+
     align-items:center;
     justify-content:center;
-    gap:12px;
+
+    gap:10px;
 
     background:var(--soft);
+
     color:var(--main);
 
-    padding:13px 22px;
-    border-radius:18px;
+    padding:12px 20px;
 
-    font-size:16px;
+    border-radius:16px;
+
+    font-size:17px;
     font-weight:900;
 
     margin-bottom:20px;
 }
 
+.hero-title img{
+    width:34px;
+    height:23px;
+
+    object-fit:cover;
+
+    border-radius:3px;
+}
+
 .hero h1{
     font-size:46px;
+
     line-height:1.15;
+
     margin-bottom:15px;
+
     font-weight:900;
 }
 
@@ -192,7 +267,9 @@ header{
 
 .hero p{
     color:var(--muted);
+
     font-size:18px;
+
     line-height:1.6;
 }
 
@@ -200,15 +277,19 @@ header{
 
 .search{
     max-width:900px;
+
     margin:25px auto 30px;
+
     padding:0 20px;
 }
 
 .search input{
     width:100%;
+
     padding:17px 20px;
 
     border:2px solid var(--border);
+
     border-radius:15px;
 
     outline:none;
@@ -216,9 +297,8 @@ header{
     font-size:17px;
 
     background:var(--card);
-    color:var(--text);
 
-    transition:.2s;
+    color:var(--text);
 }
 
 .search input:focus{
@@ -229,23 +309,31 @@ header{
 
 .apps{
     max-width:900px;
+
     margin:auto;
+
     padding:0 20px 60px;
 
     display:grid;
+
     grid-template-columns:repeat(2,1fr);
+
     gap:18px;
 }
 
 .card{
     background:var(--card);
+
     border:1px solid var(--border);
 
     border-radius:20px;
+
     padding:18px;
 
     display:flex;
+
     align-items:center;
+
     gap:15px;
 
     box-shadow:0 6px 22px rgba(0,0,0,.05);
@@ -255,6 +343,7 @@ header{
 
 .card:hover{
     transform:translateY(-4px);
+
     box-shadow:0 12px 30px rgba(0,0,0,.11);
 }
 
@@ -270,8 +359,6 @@ header{
 
     padding:13px;
 }
-
-/* DIFFERENT ICON BACKGROUNDS */
 
 .icon1{
     background:#d9fbe5;
@@ -300,28 +387,35 @@ header{
 
 .info h3{
     font-size:17px;
+
     line-height:1.35;
+
     margin-bottom:7px;
 }
 
 .apk{
     color:var(--muted);
+
     font-size:13px;
 }
 
 .download{
     background:var(--main);
+
     color:#fff;
 
     border:0;
+
     border-radius:10px;
 
     padding:10px 13px;
 
     font-size:14px;
+
     font-weight:800;
 
     cursor:pointer;
+
     white-space:nowrap;
 }
 
@@ -333,6 +427,7 @@ header{
 
 .modal{
     position:fixed;
+
     inset:0;
 
     background:rgba(0,0,0,.65);
@@ -353,6 +448,7 @@ header{
 
 .modal-box{
     width:100%;
+
     max-width:430px;
 
     background:var(--card);
@@ -366,46 +462,38 @@ header{
     text-align:center;
 
     box-shadow:0 20px 60px rgba(0,0,0,.25);
-
-    animation:popup .2s ease;
-}
-
-@keyframes popup{
-
-    from{
-        transform:scale(.9);
-        opacity:0;
-    }
-
-    to{
-        transform:scale(1);
-        opacity:1;
-    }
-
 }
 
 .modal-box h2{
     font-size:25px;
+
     margin-bottom:12px;
 }
 
 .modal-box p{
     color:var(--muted);
+
     line-height:1.6;
+
     margin-bottom:15px;
 }
 
 .price{
     color:var(--main);
+
     font-size:34px;
+
     font-weight:900;
+
     margin:18px 0 22px;
 }
 
 .whatsapp{
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     gap:10px;
 
     width:100%;
@@ -415,11 +503,13 @@ header{
     border-radius:13px;
 
     background:#25D366;
+
     color:#fff;
 
     text-decoration:none;
 
     font-size:16px;
+
     font-weight:800;
 }
 
@@ -436,6 +526,7 @@ header{
     padding:14px;
 
     border:0;
+
     border-radius:13px;
 
     background:#eee;
@@ -443,6 +534,7 @@ header{
     color:#222;
 
     font-size:15px;
+
     font-weight:700;
 
     cursor:pointer;
@@ -452,6 +544,7 @@ header{
 
 footer{
     text-align:center;
+
     padding:28px 20px;
 
     color:var(--muted);
@@ -461,13 +554,13 @@ footer{
     font-size:14px;
 }
 
-/* THEME COLORS */
+/* THEMES */
 
 /* RED */
 body.red{
-    --main:#e60000;
+    --main:#e00000;
     --main-dark:#b80000;
-    --soft:#ffe5e5;
+    --soft:#ffe4e4;
 }
 
 /* BLUE */
@@ -486,20 +579,16 @@ body.purple{
 
 /* DARK */
 body.dark{
-    --main:#ff3333;
+    --main:#ff3030;
     --main-dark:#d90000;
     --soft:#3b1717;
 
     --bg:#0e1014;
     --card:#181b21;
     --border:#2c3038;
+
     --text:#fff;
     --muted:#b8bcc5;
-}
-
-body.dark .theme-btn,
-body.dark .lang-btn{
-    color:#fff;
 }
 
 body.dark .close{
@@ -520,7 +609,8 @@ body.dark .close{
     }
 
     .logo-flag{
-        font-size:25px;
+        width:38px;
+        height:25px;
     }
 
     .controls{
@@ -529,7 +619,7 @@ body.dark .close{
     }
 
     .hero{
-        margin-top:30px;
+        margin-top:32px;
     }
 
     .hero h1{
@@ -562,10 +652,9 @@ body.dark .close{
     }
 
     .language-box{
-        top:130px;
+        top:145px;
         right:15px;
     }
-
 }
 
 </style>
@@ -573,10 +662,13 @@ body.dark .close{
 
 <body class="red">
 
-<!-- AZERBAIJAN FLAG -->
+<!-- REAL AZERBAIJAN FLAG -->
 
 <div class="top-flag">
-    🇦🇿
+    <img
+        src="https://flagcdn.com/w80/az.png"
+        alt="Azərbaycan bayrağı"
+    >
 </div>
 
 
@@ -588,7 +680,11 @@ body.dark .close{
 
         <div class="logo">
 
-            <span class="logo-flag">🇦🇿</span>
+            <img
+                class="logo-flag"
+                src="https://flagcdn.com/w80/az.png"
+                alt="Azərbaycan bayrağı"
+            >
 
             <span>
                 WhatsApp Plus 2026
@@ -609,7 +705,6 @@ body.dark .close{
             <button
                 class="theme-btn"
                 onclick="nextTheme()"
-                id="themeButton"
             >
                 🎨 Tema
             </button>
@@ -632,32 +727,64 @@ body.dark .close{
         Dil seçin
     </div>
 
+
     <button
         class="language"
         onclick="changeLanguage('az')"
     >
-        🇦🇿 Azərbaycan
+
+        <img
+            src="https://flagcdn.com/w80/az.png"
+            alt="Azərbaycan"
+        >
+
+        Azərbaycan
+
     </button>
+
 
     <button
         class="language"
         onclick="changeLanguage('ru')"
     >
-        🇷🇺 Русский
+
+        <img
+            src="https://flagcdn.com/w80/ru.png"
+            alt="Русский"
+        >
+
+        Русский
+
     </button>
+
 
     <button
         class="language"
         onclick="changeLanguage('en')"
     >
-        🇬🇧 English
+
+        <img
+            src="https://flagcdn.com/w80/gb.png"
+            alt="English"
+        >
+
+        English
+
     </button>
+
 
     <button
         class="language"
         onclick="changeLanguage('tr')"
     >
-        🇹🇷 Türkçe
+
+        <img
+            src="https://flagcdn.com/w80/tr.png"
+            alt="Türkçe"
+        >
+
+        Türkçe
+
     </button>
 
 </div>
@@ -668,14 +795,27 @@ body.dark .close{
 <section class="hero">
 
     <div class="hero-title">
-        🇦🇿 WhatsApp Plus 2026
+
+        <img
+            src="https://flagcdn.com/w80/az.png"
+            alt="Azərbaycan"
+        >
+
+        <span>
+            WhatsApp Plus 2026
+        </span>
+
     </div>
 
+
     <h1>
+
         <span id="heroTitle">
             WhatsApp Plus 2026
         </span>
+
     </h1>
+
 
     <p id="heroText">
         WhatsApp Plus 2026 versiyalarını kəşf edin.
@@ -710,7 +850,7 @@ body.dark .close{
     <img
         class="icon icon1"
         src="https://cdn.simpleicons.org/whatsapp/25D366"
-        alt="WhatsApp"
+        alt="WhatsApp Plus"
     >
 
     <div class="info">
@@ -743,7 +883,7 @@ body.dark .close{
     <img
         class="icon icon2"
         src="https://cdn.simpleicons.org/whatsapp/2196F3"
-        alt="WhatsApp"
+        alt="WhatsApp Plus Pro"
     >
 
     <div class="info">
@@ -776,7 +916,7 @@ body.dark .close{
     <img
         class="icon icon3"
         src="https://cdn.simpleicons.org/whatsapp/F44336"
-        alt="WhatsApp"
+        alt="WhatsApp Plus Ultra"
     >
 
     <div class="info">
@@ -809,7 +949,7 @@ body.dark .close{
     <img
         class="icon icon4"
         src="https://cdn.simpleicons.org/whatsapp/FF9800"
-        alt="WhatsApp"
+        alt="WhatsApp Plus Premium"
     >
 
     <div class="info">
@@ -842,7 +982,7 @@ body.dark .close{
     <img
         class="icon icon5"
         src="https://cdn.simpleicons.org/whatsapp/9C27B0"
-        alt="WhatsApp"
+        alt="WhatsApp Plus Gold"
     >
 
     <div class="info">
@@ -911,6 +1051,7 @@ body.dark .close{
             </span>
 
         </a>
+
 
         <button
             class="close"
@@ -1035,12 +1176,7 @@ const translations = {
 };
 
 
-let currentLanguage = "az";
-
-
 function changeLanguage(lang){
-
-    currentLanguage = lang;
 
     const t = translations[lang];
 
@@ -1068,13 +1204,11 @@ function changeLanguage(lang){
 
     for(let i=1;i<=5;i++){
 
-        document.getElementById(
-            "apk"+i
-        ).innerText = t.apk;
+        document.getElementById("apk"+i).innerText =
+            t.apk;
 
-        document.getElementById(
-            "download"+i
-        ).innerText = t.download;
+        document.getElementById("download"+i).innerText =
+            t.download;
 
     }
 
