@@ -15,10 +15,33 @@
     font-family:Arial,Helvetica,sans-serif;
 }
 
+:root{
+    --main:#e60000;
+    --main-dark:#b80000;
+    --soft:#ffe5e5;
+    --text:#111;
+    --muted:#666;
+    --bg:#f5f7fb;
+    --card:#fff;
+    --border:#e5e7eb;
+}
+
 body{
-    background:#f5f7fb;
-    color:#111;
+    background:var(--bg);
+    color:var(--text);
     transition:.3s;
+}
+
+/* TOP FLAG */
+
+.top-flag{
+    width:100%;
+    background:var(--main);
+    color:#fff;
+    text-align:center;
+    padding:9px 10px;
+    font-size:25px;
+    line-height:1;
 }
 
 /* HEADER */
@@ -27,113 +50,225 @@ header{
     position:sticky;
     top:0;
     z-index:100;
-    background:#fff;
-    border-bottom:1px solid #e5e7eb;
-    padding:18px 20px;
+    background:var(--card);
+    border-bottom:1px solid var(--border);
+    padding:16px 20px;
+    transition:.3s;
 }
 
 .header{
     max-width:1150px;
     margin:auto;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
+    gap:15px;
 }
 
 .logo{
-    font-size:24px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-size:26px;
+    font-weight:900;
+    color:var(--main);
+}
+
+.logo-flag{
+    font-size:30px;
+}
+
+/* CONTROLS */
+
+.controls{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.theme-btn,
+.lang-btn{
+    border:0;
+    background:var(--main);
+    color:#fff;
+    padding:11px 14px;
+    border-radius:11px;
+    cursor:pointer;
+    font-size:14px;
     font-weight:800;
 }
 
-.theme-btn{
+.theme-btn:hover,
+.lang-btn:hover{
+    background:var(--main-dark);
+}
+
+/* LANGUAGE */
+
+.language-box{
+    position:fixed;
+    top:90px;
+    right:20px;
+
+    width:210px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:10px;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.15);
+
+    display:none;
+    z-index:500;
+}
+
+.language-box.show{
+    display:block;
+}
+
+.language-title{
+    font-size:13px;
+    font-weight:800;
+    color:var(--muted);
+    padding:8px 10px;
+}
+
+.language{
+    width:100%;
     border:0;
-    background:#111;
-    color:#fff;
-    padding:10px 15px;
+    background:transparent;
+    padding:12px 10px;
     border-radius:10px;
     cursor:pointer;
-    font-weight:600;
+    text-align:left;
+    font-size:15px;
+    font-weight:700;
+    color:var(--text);
+}
+
+.language:hover{
+    background:var(--soft);
 }
 
 /* HERO */
 
 .hero{
-    max-width:1150px;
-    margin:45px auto 25px;
+    max-width:950px;
+    margin:45px auto 30px;
     padding:0 20px;
+    text-align:center;
+}
+
+.hero-title{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+
+    background:var(--soft);
+    color:var(--main);
+
+    padding:13px 22px;
+    border-radius:18px;
+
+    font-size:16px;
+    font-weight:900;
+
+    margin-bottom:20px;
 }
 
 .hero h1{
-    font-size:36px;
-    margin-bottom:10px;
+    font-size:46px;
+    line-height:1.15;
+    margin-bottom:15px;
+    font-weight:900;
+}
+
+.hero h1 span{
+    color:var(--main);
 }
 
 .hero p{
-    color:#666;
-    font-size:16px;
+    color:var(--muted);
+    font-size:18px;
+    line-height:1.6;
 }
 
 /* SEARCH */
 
 .search{
-    max-width:1150px;
-    margin:20px auto 25px;
+    max-width:900px;
+    margin:25px auto 30px;
     padding:0 20px;
 }
 
 .search input{
     width:100%;
-    padding:16px 18px;
-    border:1px solid #ddd;
-    border-radius:13px;
+    padding:17px 20px;
+
+    border:2px solid var(--border);
+    border-radius:15px;
+
     outline:none;
-    font-size:16px;
-    background:#fff;
-    color:#111;
+
+    font-size:17px;
+
+    background:var(--card);
+    color:var(--text);
+
+    transition:.2s;
+}
+
+.search input:focus{
+    border-color:var(--main);
 }
 
 /* APPS */
 
 .apps{
-    max-width:1150px;
+    max-width:900px;
     margin:auto;
     padding:0 20px 60px;
 
     display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(310px,1fr));
-
+    grid-template-columns:repeat(2,1fr);
     gap:18px;
 }
 
 .card{
-    background:#fff;
-    border:1px solid #e7e7e7;
-    border-radius:18px;
-    padding:17px;
+    background:var(--card);
+    border:1px solid var(--border);
+
+    border-radius:20px;
+    padding:18px;
 
     display:flex;
     align-items:center;
     gap:15px;
 
-    box-shadow:0 5px 20px rgba(0,0,0,.04);
+    box-shadow:0 6px 22px rgba(0,0,0,.05);
+
     transition:.25s;
 }
 
 .card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 10px 28px rgba(0,0,0,.09);
+    transform:translateY(-4px);
+    box-shadow:0 12px 30px rgba(0,0,0,.11);
 }
 
-/* ICON */
-
 .icon{
-    width:60px;
-    height:60px;
-    border-radius:15px;
+    width:64px;
+    height:64px;
+
+    border-radius:17px;
+
     flex-shrink:0;
+
     object-fit:cover;
-    padding:12px;
+
+    padding:13px;
 }
 
 /* DIFFERENT ICON BACKGROUNDS */
@@ -147,7 +282,7 @@ header{
 }
 
 .icon3{
-    background:#ffe1e1;
+    background:#ffe0e0;
 }
 
 .icon4{
@@ -165,27 +300,33 @@ header{
 
 .info h3{
     font-size:17px;
-    line-height:1.3;
-    margin-bottom:6px;
+    line-height:1.35;
+    margin-bottom:7px;
 }
 
 .apk{
-    color:#777;
+    color:var(--muted);
     font-size:13px;
 }
 
 .download{
-    background:none;
+    background:var(--main);
+    color:#fff;
+
     border:0;
-    color:#087cff;
-    font-size:15px;
-    font-weight:700;
+    border-radius:10px;
+
+    padding:10px 13px;
+
+    font-size:14px;
+    font-weight:800;
+
     cursor:pointer;
-    padding:8px;
+    white-space:nowrap;
 }
 
 .download:hover{
-    text-decoration:underline;
+    background:var(--main-dark);
 }
 
 /* MODAL */
@@ -194,13 +335,15 @@ header{
     position:fixed;
     inset:0;
 
-    background:rgba(0,0,0,.6);
+    background:rgba(0,0,0,.65);
 
     display:none;
+
     align-items:center;
     justify-content:center;
 
     padding:20px;
+
     z-index:999;
 }
 
@@ -212,10 +355,17 @@ header{
     width:100%;
     max-width:430px;
 
-    background:#fff;
-    border-radius:22px;
+    background:var(--card);
+
+    color:var(--text);
+
+    border-radius:23px;
+
     padding:30px;
+
     text-align:center;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
 
     animation:popup .2s ease;
 }
@@ -235,43 +385,42 @@ header{
 }
 
 .modal-box h2{
-    font-size:23px;
+    font-size:25px;
     margin-bottom:12px;
 }
 
 .modal-box p{
-    color:#555;
-    line-height:1.5;
+    color:var(--muted);
+    line-height:1.6;
     margin-bottom:15px;
 }
 
 .price{
-    font-size:30px;
-    font-weight:800;
-    margin:15px 0 22px;
+    color:var(--main);
+    font-size:34px;
+    font-weight:900;
+    margin:18px 0 22px;
 }
-
-/* WHATSAPP BUTTON */
 
 .whatsapp{
     display:flex;
     align-items:center;
     justify-content:center;
-
     gap:10px;
 
     width:100%;
-    padding:15px;
+
+    padding:16px;
 
     border-radius:13px;
 
     background:#25D366;
-    color:white;
+    color:#fff;
 
     text-decoration:none;
 
     font-size:16px;
-    font-weight:700;
+    font-weight:800;
 }
 
 .whatsapp img{
@@ -283,15 +432,19 @@ header{
     width:100%;
 
     margin-top:12px;
+
     padding:14px;
 
     border:0;
     border-radius:13px;
 
     background:#eee;
+
     color:#222;
 
-    font-weight:600;
+    font-size:15px;
+    font-weight:700;
+
     cursor:pointer;
 }
 
@@ -299,69 +452,80 @@ header{
 
 footer{
     text-align:center;
-    padding:25px 20px;
+    padding:28px 20px;
 
-    color:#777;
+    color:var(--muted);
 
-    border-top:1px solid #ddd;
+    border-top:1px solid var(--border);
+
+    font-size:14px;
 }
 
-/* DARK MODE */
+/* THEME COLORS */
 
+/* RED */
+body.red{
+    --main:#e60000;
+    --main-dark:#b80000;
+    --soft:#ffe5e5;
+}
+
+/* BLUE */
+body.blue{
+    --main:#1264d8;
+    --main-dark:#0b4ca8;
+    --soft:#e3efff;
+}
+
+/* PURPLE */
+body.purple{
+    --main:#7b2cff;
+    --main-dark:#5b16cc;
+    --soft:#eee5ff;
+}
+
+/* DARK */
 body.dark{
-    background:#101114;
+    --main:#ff3333;
+    --main-dark:#d90000;
+    --soft:#3b1717;
+
+    --bg:#0e1014;
+    --card:#181b21;
+    --border:#2c3038;
+    --text:#fff;
+    --muted:#b8bcc5;
+}
+
+body.dark .theme-btn,
+body.dark .lang-btn{
     color:#fff;
-}
-
-body.dark header{
-    background:#17181c;
-    border-color:#292c31;
-}
-
-body.dark .hero p{
-    color:#aaa;
-}
-
-body.dark .search input{
-    background:#191a1f;
-    color:#fff;
-    border-color:#303238;
-}
-
-body.dark .card{
-    background:#191a1f;
-    border-color:#2b2d32;
-    box-shadow:none;
-}
-
-body.dark .apk{
-    color:#999;
-}
-
-body.dark .modal-box{
-    background:#191a1f;
-    color:#fff;
-}
-
-body.dark .modal-box p{
-    color:#aaa;
 }
 
 body.dark .close{
-    background:#2b2d32;
+    background:#2b3038;
     color:#fff;
-}
-
-body.dark footer{
-    border-color:#292c31;
 }
 
 /* MOBILE */
 
-@media(max-width:600px){
+@media(max-width:700px){
+
+    .header{
+        flex-wrap:wrap;
+    }
 
     .logo{
-        font-size:20px;
+        font-size:21px;
+    }
+
+    .logo-flag{
+        font-size:25px;
+    }
+
+    .controls{
+        width:100%;
+        justify-content:flex-end;
     }
 
     .hero{
@@ -369,7 +533,11 @@ body.dark footer{
     }
 
     .hero h1{
-        font-size:28px;
+        font-size:34px;
+    }
+
+    .hero p{
+        font-size:16px;
     }
 
     .apps{
@@ -381,8 +549,8 @@ body.dark footer{
     }
 
     .icon{
-        width:55px;
-        height:55px;
+        width:58px;
+        height:58px;
     }
 
     .info h3{
@@ -390,7 +558,12 @@ body.dark footer{
     }
 
     .download{
-        font-size:14px;
+        padding:9px 11px;
+    }
+
+    .language-box{
+        top:130px;
+        right:15px;
     }
 
 }
@@ -398,40 +571,120 @@ body.dark footer{
 </style>
 </head>
 
-<body>
+<body class="red">
+
+<!-- AZERBAIJAN FLAG -->
+
+<div class="top-flag">
+    🇦🇿
+</div>
+
+
+<!-- HEADER -->
 
 <header>
 
     <div class="header">
 
         <div class="logo">
-            WhatsApp Plus 2026
+
+            <span class="logo-flag">🇦🇿</span>
+
+            <span>
+                WhatsApp Plus 2026
+            </span>
+
         </div>
 
-        <button
-            class="theme-btn"
-            onclick="toggleTheme()"
-        >
-            Tema dəyiş
-        </button>
+
+        <div class="controls">
+
+            <button
+                class="lang-btn"
+                onclick="toggleLanguages()"
+            >
+                🌐 Dil
+            </button>
+
+            <button
+                class="theme-btn"
+                onclick="nextTheme()"
+                id="themeButton"
+            >
+                🎨 Tema
+            </button>
+
+        </div>
 
     </div>
 
 </header>
 
 
+<!-- LANGUAGE MENU -->
+
+<div
+    class="language-box"
+    id="languageBox"
+>
+
+    <div class="language-title">
+        Dil seçin
+    </div>
+
+    <button
+        class="language"
+        onclick="changeLanguage('az')"
+    >
+        🇦🇿 Azərbaycan
+    </button>
+
+    <button
+        class="language"
+        onclick="changeLanguage('ru')"
+    >
+        🇷🇺 Русский
+    </button>
+
+    <button
+        class="language"
+        onclick="changeLanguage('en')"
+    >
+        🇬🇧 English
+    </button>
+
+    <button
+        class="language"
+        onclick="changeLanguage('tr')"
+    >
+        🇹🇷 Türkçe
+    </button>
+
+</div>
+
+
+<!-- HERO -->
+
 <section class="hero">
 
+    <div class="hero-title">
+        🇦🇿 WhatsApp Plus 2026
+    </div>
+
     <h1>
-        WhatsApp Plus 2026
+        <span id="heroTitle">
+            WhatsApp Plus 2026
+        </span>
     </h1>
 
-    <p>
+    <p id="heroText">
         WhatsApp Plus 2026 versiyalarını kəşf edin.
     </p>
 
 </section>
 
+
+<!-- SEARCH -->
 
 <div class="search">
 
@@ -445,6 +698,8 @@ body.dark footer{
 </div>
 
 
+<!-- APPS -->
+
 <section class="apps">
 
 
@@ -455,7 +710,7 @@ body.dark footer{
     <img
         class="icon icon1"
         src="https://cdn.simpleicons.org/whatsapp/25D366"
-        alt="WhatsApp Plus 2026"
+        alt="WhatsApp"
     >
 
     <div class="info">
@@ -464,7 +719,7 @@ body.dark footer{
             WhatsApp Plus 2026
         </h3>
 
-        <div class="apk">
+        <div class="apk" id="apk1">
             APK Versiyası
         </div>
 
@@ -473,6 +728,7 @@ body.dark footer{
     <button
         class="download"
         onclick="openModal('WhatsApp Plus 2026')"
+        id="download1"
     >
         Yüklə
     </button>
@@ -487,7 +743,7 @@ body.dark footer{
     <img
         class="icon icon2"
         src="https://cdn.simpleicons.org/whatsapp/2196F3"
-        alt="WhatsApp Plus 2026 Pro"
+        alt="WhatsApp"
     >
 
     <div class="info">
@@ -496,7 +752,7 @@ body.dark footer{
             WhatsApp Plus 2026 Pro
         </h3>
 
-        <div class="apk">
+        <div class="apk" id="apk2">
             APK Versiyası
         </div>
 
@@ -505,6 +761,7 @@ body.dark footer{
     <button
         class="download"
         onclick="openModal('WhatsApp Plus 2026 Pro')"
+        id="download2"
     >
         Yüklə
     </button>
@@ -519,7 +776,7 @@ body.dark footer{
     <img
         class="icon icon3"
         src="https://cdn.simpleicons.org/whatsapp/F44336"
-        alt="WhatsApp Plus 2026 Ultra"
+        alt="WhatsApp"
     >
 
     <div class="info">
@@ -528,7 +785,7 @@ body.dark footer{
             WhatsApp Plus 2026 Ultra
         </h3>
 
-        <div class="apk">
+        <div class="apk" id="apk3">
             APK Versiyası
         </div>
 
@@ -537,6 +794,7 @@ body.dark footer{
     <button
         class="download"
         onclick="openModal('WhatsApp Plus 2026 Ultra')"
+        id="download3"
     >
         Yüklə
     </button>
@@ -551,7 +809,7 @@ body.dark footer{
     <img
         class="icon icon4"
         src="https://cdn.simpleicons.org/whatsapp/FF9800"
-        alt="WhatsApp Plus 2026 Premium"
+        alt="WhatsApp"
     >
 
     <div class="info">
@@ -560,7 +818,7 @@ body.dark footer{
             WhatsApp Plus 2026 Premium
         </h3>
 
-        <div class="apk">
+        <div class="apk" id="apk4">
             APK Versiyası
         </div>
 
@@ -569,6 +827,7 @@ body.dark footer{
     <button
         class="download"
         onclick="openModal('WhatsApp Plus 2026 Premium')"
+        id="download4"
     >
         Yüklə
     </button>
@@ -583,7 +842,7 @@ body.dark footer{
     <img
         class="icon icon5"
         src="https://cdn.simpleicons.org/whatsapp/9C27B0"
-        alt="WhatsApp Plus 2026 Gold"
+        alt="WhatsApp"
     >
 
     <div class="info">
@@ -592,7 +851,7 @@ body.dark footer{
             WhatsApp Plus 2026 Gold
         </h3>
 
-        <div class="apk">
+        <div class="apk" id="apk5">
             APK Versiyası
         </div>
 
@@ -601,6 +860,7 @@ body.dark footer{
     <button
         class="download"
         onclick="openModal('WhatsApp Plus 2026 Gold')"
+        id="download5"
     >
         Yüklə
     </button>
@@ -624,7 +884,7 @@ body.dark footer{
             WhatsApp Plus 2026
         </h2>
 
-        <p>
+        <p id="modalText">
             WhatsApp Plus 2026 versiyasını əldə etmək
             üçün sifariş verə bilərsiniz.
         </p>
@@ -646,13 +906,16 @@ body.dark footer{
                 alt="WhatsApp"
             >
 
-            WhatsApp ilə sifariş et
+            <span id="whatsappText">
+                WhatsApp ilə sifariş et
+            </span>
 
         </a>
 
         <button
             class="close"
             onclick="closeModal()"
+            id="closeText"
         >
             Bağla
         </button>
@@ -662,7 +925,9 @@ body.dark footer{
 </div>
 
 
-<footer>
+<!-- FOOTER -->
+
+<footer id="footerText">
 
     © 2026 WhatsApp Plus — Bütün hüquqlar qorunur.
 
@@ -671,12 +936,157 @@ body.dark footer{
 
 <script>
 
-function toggleTheme(){
+/* THEMES */
 
-    document.body.classList.toggle("dark");
+const themes = [
+    "red",
+    "blue",
+    "purple",
+    "dark"
+];
+
+let themeIndex = 0;
+
+function nextTheme(){
+
+    document.body.classList.remove(
+        "red",
+        "blue",
+        "purple",
+        "dark"
+    );
+
+    themeIndex++;
+
+    if(themeIndex >= themes.length){
+        themeIndex = 0;
+    }
+
+    document.body.classList.add(
+        themes[themeIndex]
+    );
 
 }
 
+
+/* LANGUAGE MENU */
+
+function toggleLanguages(){
+
+    document
+        .getElementById("languageBox")
+        .classList.toggle("show");
+
+}
+
+
+/* LANGUAGES */
+
+const translations = {
+
+    az:{
+        heroTitle:"WhatsApp Plus 2026",
+        heroText:"WhatsApp Plus 2026 versiyalarını kəşf edin.",
+        search:"Proqram axtar...",
+        apk:"APK Versiyası",
+        download:"Yüklə",
+        modalText:"WhatsApp Plus 2026 versiyasını əldə etmək üçün sifariş verə bilərsiniz.",
+        whatsapp:"WhatsApp ilə sifariş et",
+        close:"Bağla",
+        footer:"© 2026 WhatsApp Plus — Bütün hüquqlar qorunur."
+    },
+
+    ru:{
+        heroTitle:"WhatsApp Plus 2026",
+        heroText:"Откройте версии WhatsApp Plus 2026.",
+        search:"Поиск программы...",
+        apk:"Версия APK",
+        download:"Скачать",
+        modalText:"Вы можете оформить заказ, чтобы получить версию WhatsApp Plus 2026.",
+        whatsapp:"Заказать через WhatsApp",
+        close:"Закрыть",
+        footer:"© 2026 WhatsApp Plus — Все права защищены."
+    },
+
+    en:{
+        heroTitle:"WhatsApp Plus 2026",
+        heroText:"Discover WhatsApp Plus 2026 versions.",
+        search:"Search program...",
+        apk:"APK Version",
+        download:"Download",
+        modalText:"You can place an order to get the WhatsApp Plus 2026 version.",
+        whatsapp:"Order via WhatsApp",
+        close:"Close",
+        footer:"© 2026 WhatsApp Plus — All rights reserved."
+    },
+
+    tr:{
+        heroTitle:"WhatsApp Plus 2026",
+        heroText:"WhatsApp Plus 2026 sürümlerini keşfedin.",
+        search:"Program ara...",
+        apk:"APK Sürümü",
+        download:"İndir",
+        modalText:"WhatsApp Plus 2026 sürümünü almak için sipariş verebilirsiniz.",
+        whatsapp:"WhatsApp ile sipariş ver",
+        close:"Kapat",
+        footer:"© 2026 WhatsApp Plus — Tüm hakları saklıdır."
+    }
+
+};
+
+
+let currentLanguage = "az";
+
+
+function changeLanguage(lang){
+
+    currentLanguage = lang;
+
+    const t = translations[lang];
+
+    document.getElementById("heroTitle").innerText =
+        t.heroTitle;
+
+    document.getElementById("heroText").innerText =
+        t.heroText;
+
+    document.getElementById("searchInput").placeholder =
+        t.search;
+
+    document.getElementById("modalText").innerText =
+        t.modalText;
+
+    document.getElementById("whatsappText").innerText =
+        t.whatsapp;
+
+    document.getElementById("closeText").innerText =
+        t.close;
+
+    document.getElementById("footerText").innerText =
+        t.footer;
+
+
+    for(let i=1;i<=5;i++){
+
+        document.getElementById(
+            "apk"+i
+        ).innerText = t.apk;
+
+        document.getElementById(
+            "download"+i
+        ).innerText = t.download;
+
+    }
+
+
+    document
+        .getElementById("languageBox")
+        .classList.remove("show");
+
+}
+
+
+/* MODAL */
 
 function openModal(appName){
 
@@ -688,7 +1098,7 @@ function openModal(appName){
     const message =
         "Salam. " +
         appName +
-        " versiyası haqqında məlumat almaq istəyirəm.";
+        " haqqında məlumat almaq istəyirəm.";
 
     const whatsappURL =
         "https://wa.me/" +
@@ -728,6 +1138,8 @@ document
         }
     );
 
+
+/* SEARCH */
 
 function searchApps(){
 
