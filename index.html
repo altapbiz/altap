@@ -7,6 +7,7 @@
 <title>WhatsApp Plus 2026</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -62,6 +63,7 @@ header{
     display:flex;
     align-items:center;
     gap:8px;
+    flex-wrap:wrap;
 }
 
 .header-btn{
@@ -110,7 +112,30 @@ header{
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:20px;
+    font-size:18px;
+}
+
+/* DATE TIME */
+
+.datetime{
+    max-width:1150px;
+    margin:12px auto 0;
+    padding:0 20px;
+}
+
+.datetime-box{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    color:var(--muted);
+    font-size:14px;
+    font-weight:700;
+}
+
+.datetime-icon{
+    color:var(--main);
+    font-size:18px;
 }
 
 /* LANGUAGE */
@@ -171,7 +196,7 @@ header{
 
 .hero{
     max-width:950px;
-    margin:48px auto 30px;
+    margin:38px auto 30px;
     padding:0 20px;
     text-align:center;
 }
@@ -237,148 +262,12 @@ header{
     border-color:var(--main);
 }
 
-/* WHATSAPP İZLƏMƏ */
-
-.tracker{
-    max-width:900px;
-    margin:0 auto 30px;
-    padding:0 20px;
-}
-
-.tracker-box{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:22px;
-    padding:25px;
-    box-shadow:0 6px 22px rgba(0,0,0,.05);
-}
-
-.tracker-title{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-bottom:12px;
-}
-
-.tracker-icon{
-    width:52px;
-    height:52px;
-    border-radius:15px;
-    background:#25D366;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:27px;
-}
-
-.tracker-title h2{
-    font-size:24px;
-    color:var(--text);
-}
-
-.tracker-text{
-    color:var(--muted);
-    font-size:15px;
-    line-height:1.7;
-    margin-bottom:20px;
-}
-
-.tracker-label{
-    display:block;
-    font-size:14px;
-    font-weight:800;
-    margin-bottom:8px;
-}
-
-.tracker-input{
-    width:100%;
-    padding:15px;
-    border:2px solid var(--border);
-    border-radius:13px;
-    outline:none;
-    font-size:16px;
-    background:var(--card);
-    color:var(--text);
-}
-
-.tracker-input:focus{
-    border-color:var(--main);
-}
-
-.tracker-btn{
-    width:100%;
-    margin-top:12px;
-    padding:15px;
-    border:0;
-    border-radius:13px;
-    background:var(--main);
-    color:white;
-    font-size:16px;
-    font-weight:800;
-    cursor:pointer;
-}
-
-.tracker-btn:hover{
-    background:var(--main-dark);
-}
-
-/* TOAST */
-
-.toast{
-    position:fixed;
-    left:50%;
-    bottom:25px;
-    transform:translate(-50%,120px);
-    width:calc(100% - 40px);
-    max-width:450px;
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:17px;
-    padding:17px 20px;
-    box-shadow:0 15px 45px rgba(0,0,0,.22);
-    display:flex;
-    align-items:center;
-    gap:12px;
-    z-index:2000;
-    opacity:0;
-    transition:.35s;
-}
-
-.toast.show{
-    transform:translate(-50%,0);
-    opacity:1;
-}
-
-.toast-icon{
-    width:42px;
-    height:42px;
-    min-width:42px;
-    border-radius:12px;
-    background:var(--main);
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:20px;
-}
-
-.toast strong{
-    display:block;
-    margin-bottom:4px;
-}
-
-.toast span{
-    color:var(--muted);
-    font-size:14px;
-}
-
 /* APPS */
 
 .apps{
     max-width:900px;
     margin:auto;
-    padding:0 20px 60px;
+    padding:0 20px 30px;
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:18px;
@@ -448,10 +337,81 @@ header{
     background:var(--main-dark);
 }
 
+/* WHATSAPP TRACKING SECTION */
+
+.tracking-section{
+    max-width:900px;
+    margin:0 auto;
+    padding:0 20px 45px;
+}
+
+.tracking-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:22px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    box-shadow:0 6px 22px rgba(0,0,0,.05);
+    transition:.25s;
+}
+
+.tracking-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(0,0,0,.1);
+}
+
+.tracking-icon{
+    width:65px;
+    height:65px;
+    min-width:65px;
+    border-radius:18px;
+    background:#e3efff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--main);
+    font-size:28px;
+}
+
+.tracking-info{
+    flex:1;
+}
+
+.tracking-info h2{
+    font-size:20px;
+    margin-bottom:7px;
+}
+
+.tracking-info p{
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.5;
+}
+
+.tracking-btn{
+    border:0;
+    background:var(--main);
+    color:#fff;
+    border-radius:11px;
+    padding:12px 16px;
+    font-size:14px;
+    font-weight:800;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+.tracking-btn:hover{
+    background:var(--main-dark);
+}
+
 /* MODALS */
 
 .contact-modal,
-.modal{
+.modal,
+.tracking-modal,
+.welcome-modal{
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.65);
@@ -469,13 +429,27 @@ header{
     z-index:999;
 }
 
+.tracking-modal{
+    z-index:1000;
+}
+
+.welcome-modal{
+    z-index:2000;
+}
+
 .contact-modal.show,
-.modal.show{
+.modal.show,
+.tracking-modal.show,
+.welcome-modal.show{
     display:flex;
 }
 
+/* CONTACT */
+
 .contact-box,
-.modal-box{
+.modal-box,
+.tracking-box,
+.welcome-box{
     width:100%;
     background:var(--card);
     color:var(--text);
@@ -493,8 +467,18 @@ header{
     max-width:430px;
 }
 
+.tracking-box{
+    max-width:500px;
+}
+
+.welcome-box{
+    max-width:430px;
+}
+
 .contact-box h2,
-.modal-box h2{
+.modal-box h2,
+.tracking-box h2,
+.welcome-box h2{
     margin-bottom:14px;
 }
 
@@ -502,12 +486,19 @@ header{
     font-size:29px;
 }
 
-.modal-box h2{
+.modal-box h2,
+.tracking-box h2{
     font-size:25px;
 }
 
+.welcome-box h2{
+    font-size:28px;
+    color:var(--main);
+}
+
 .contact-description,
-.modal-box p{
+.modal-box p,
+.tracking-description{
     color:var(--muted);
     line-height:1.7;
     font-size:15px;
@@ -556,7 +547,7 @@ header{
 .mail-icon{
     background:#1264d8;
     color:#fff;
-    font-size:24px;
+    font-size:23px;
 }
 
 .contact-item strong{
@@ -576,19 +567,53 @@ header{
     margin-top:20px;
 }
 
-.contact-close,
-.close{
+/* TRACKING FORM */
+
+.tracking-description{
+    margin-bottom:20px;
+}
+
+.number-label{
+    display:block;
+    text-align:left;
+    font-size:14px;
+    font-weight:800;
+    margin-bottom:8px;
+}
+
+.number-input{
     width:100%;
-    margin-top:18px;
-    padding:14px;
+    padding:15px;
+    border:2px solid var(--border);
+    border-radius:13px;
+    outline:none;
+    background:var(--card);
+    color:var(--text);
+    font-size:16px;
+}
+
+.number-input:focus{
+    border-color:var(--main);
+}
+
+.start-tracking{
+    width:100%;
+    margin-top:14px;
+    padding:15px;
     border:0;
     border-radius:13px;
-    background:#eee;
-    color:#222;
+    background:var(--main);
+    color:#fff;
     font-size:15px;
-    font-weight:700;
+    font-weight:800;
     cursor:pointer;
 }
+
+.start-tracking:hover{
+    background:var(--main-dark);
+}
+
+/* ORDER */
 
 .modal-box p{
     margin-bottom:15px;
@@ -619,6 +644,28 @@ header{
 .whatsapp img{
     width:24px;
     height:24px;
+}
+
+/* CLOSE BUTTON */
+
+.contact-close,
+.close,
+.tracking-close,
+.welcome-close{
+    width:100%;
+    margin-top:18px;
+    padding:14px;
+    border:0;
+    border-radius:13px;
+    background:#eee;
+    color:#222;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.tracking-close{
+    margin-top:10px;
 }
 
 /* THEMES */
@@ -661,7 +708,6 @@ footer{
     .controls{
         width:100%;
         justify-content:flex-end;
-        flex-wrap:wrap;
     }
 
     .logo{
@@ -693,14 +739,6 @@ footer{
         font-size:16px;
     }
 
-    .tracker-box{
-        padding:20px 17px;
-    }
-
-    .tracker-title h2{
-        font-size:20px;
-    }
-
     .apps{
         grid-template-columns:1fr;
     }
@@ -722,22 +760,40 @@ footer{
         padding:9px 11px;
     }
 
+    .tracking-card{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .tracking-info p{
+        font-size:13px;
+    }
+
+    .tracking-btn{
+        width:100%;
+    }
+
     .language-box{
         top:125px;
         right:15px;
     }
 
     .contact-box,
-    .modal-box{
+    .modal-box,
+    .tracking-box,
+    .welcome-box{
         padding:24px 18px;
     }
+
 }
+
 </style>
 </head>
 
-<body class="blue" id="home">
+<body class="blue">
 
 <header>
+
     <div class="header">
 
         <div class="logo" onclick="goHome()">
@@ -747,24 +803,29 @@ footer{
         <div class="controls">
 
             <button class="header-btn" onclick="goHome()">
-                🏠 Ana səhifə
+                <span>⌂</span> Ana səhifə
             </button>
 
             <button class="header-btn" onclick="openContact()">
-                📞 Əlaqə
+                <span>▣</span> Əlaqə
+            </button>
+
+            <button class="header-btn" onclick="openTracking()">
+                <span>◉</span> WhatsApp İzləmə
             </button>
 
             <button class="header-btn" onclick="toggleLanguages()">
-                🌐 Dil
+                <span>文</span> Dil
             </button>
 
             <button class="header-btn" onclick="nextTheme()">
-                🎨 Tema
+                <span>◐</span> Tema
             </button>
 
         </div>
 
     </div>
+
 </header>
 
 
@@ -775,11 +836,30 @@ footer{
     <div class="announcement-box">
 
         <div class="announcement-icon">
-            🔔
+            !
         </div>
 
         <span id="announcementText">
             Yeni WhatsApp Plus 2026 versiyaları əlavə edildi.
+        </span>
+
+    </div>
+
+</div>
+
+
+<!-- TARİX VƏ SAAT -->
+
+<div class="datetime">
+
+    <div class="datetime-box">
+
+        <span class="datetime-icon">
+            ◷
+        </span>
+
+        <span id="dateTime">
+            Yüklənir...
         </span>
 
     </div>
@@ -796,23 +876,43 @@ footer{
     </div>
 
     <button class="language" onclick="changeLanguage('az')">
-        <img src="https://flagcdn.com/w80/az.png" alt="Azərbaycan">
+
+        <img
+            src="https://flagcdn.com/w80/az.png"
+            alt="Azərbaycan">
+
         Azərbaycan
+
     </button>
 
     <button class="language" onclick="changeLanguage('ru')">
-        <img src="https://flagcdn.com/w80/ru.png" alt="Русский">
+
+        <img
+            src="https://flagcdn.com/w80/ru.png"
+            alt="Русский">
+
         Русский
+
     </button>
 
     <button class="language" onclick="changeLanguage('en')">
-        <img src="https://flagcdn.com/w80/gb.png" alt="English">
+
+        <img
+            src="https://flagcdn.com/w80/gb.png"
+            alt="English">
+
         English
+
     </button>
 
     <button class="language" onclick="changeLanguage('tr')">
-        <img src="https://flagcdn.com/w80/tr.png" alt="Türkçe">
+
+        <img
+            src="https://flagcdn.com/w80/tr.png"
+            alt="Türkçe">
+
         Türkçe
+
     </button>
 
 </div>
@@ -824,7 +924,9 @@ footer{
 
     <div class="hero-title">
 
-        <img src="https://flagcdn.com/w80/az.png" alt="Azərbaycan">
+        <img
+            src="https://flagcdn.com/w80/az.png"
+            alt="Azərbaycan">
 
         <span>
             WhatsApp Plus 2026
@@ -833,9 +935,11 @@ footer{
     </div>
 
     <h1>
+
         <span id="heroTitle">
             WhatsApp Plus 2026
         </span>
+
     </h1>
 
     <p id="heroText">
@@ -854,77 +958,6 @@ footer{
         id="searchInput"
         placeholder="Proqram axtar..."
         onkeyup="searchApps()">
-
-</div>
-
-
-<!-- WHATSAPP İZLƏMƏ -->
-
-<section class="tracker">
-
-    <div class="tracker-box">
-
-        <div class="tracker-title">
-
-            <div class="tracker-icon">
-                📱
-            </div>
-
-            <h2>
-                WhatsApp İzləmə 2026
-            </h2>
-
-        </div>
-
-        <p class="tracker-text">
-            📱 Qarşı tərəfin WhatsApp mesajlarını izləmək istəyirsiniz?
-            <br><br>
-            İzləmək istədiyiniz WhatsApp nömrəsini aşağıdakı xanaya
-            daxil edin və “İzləməyə başla” düyməsinə toxunun.
-        </p>
-
-        <label class="tracker-label">
-            📞 WhatsApp nömrəsi
-        </label>
-
-        <input
-            type="tel"
-            id="trackerNumber"
-            class="tracker-input"
-            placeholder="+994 XX XXX XX XX">
-
-        <button
-            class="tracker-btn"
-            onclick="startTracking()">
-
-            🔍 İzləməyə başla
-
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- BİLDİRİŞ -->
-
-<div class="toast" id="toast">
-
-    <div class="toast-icon">
-        🔔
-    </div>
-
-    <div>
-
-        <strong>
-            Funksiya aktiv deyil
-        </strong>
-
-        <span>
-            Bu funksiya tezliklə istifadəyə veriləcək.
-        </span>
-
-    </div>
 
 </div>
 
@@ -1090,6 +1123,42 @@ footer{
 </section>
 
 
+<!-- WHATSAPP İZLƏMƏ BÖLMƏSİ -->
+
+<section class="tracking-section">
+
+    <div class="tracking-card">
+
+        <div class="tracking-icon">
+            ◉
+        </div>
+
+        <div class="tracking-info">
+
+            <h2>
+                WhatsApp İzləmə 2026
+            </h2>
+
+            <p>
+                WhatsApp izləmə funksiyası haqqında məlumat
+                əldə etmək üçün bölməyə daxil olun.
+            </p>
+
+        </div>
+
+        <button
+            class="tracking-btn"
+            onclick="openTracking()">
+
+            İzləməyə bax
+
+        </button>
+
+    </div>
+
+</section>
+
+
 <!-- ƏLAQƏ PƏNCƏRƏSİ -->
 
 <div class="contact-modal" id="contactModal">
@@ -1101,10 +1170,13 @@ footer{
         </h2>
 
         <p class="contact-description">
+
             Saytımız haqqında hər hansı bir sualınız və ya
             texniki dəstəyə ehtiyacınız varsa, bizimlə əlaqə
             saxlaya bilərsiniz.
+
         </p>
+
 
         <a
             href="https://wa.me/994556145657"
@@ -1113,36 +1185,55 @@ footer{
             class="contact-item">
 
             <div class="contact-icon wa-icon">
+
                 <img
                     src="https://cdn.simpleicons.org/whatsapp/ffffff"
                     alt="WhatsApp">
+
             </div>
 
             <div>
-                <strong>WhatsApp</strong>
-                <span>+994 55 614 56 57</span>
+
+                <strong>
+                    WhatsApp
+                </strong>
+
+                <span>
+                    +994 55 614 56 57
+                </span>
+
             </div>
 
         </a>
+
 
         <a
             href="mailto:Mikiugur370@gmail.com"
             class="contact-item">
 
             <div class="contact-icon mail-icon">
-                ✉
+                @
             </div>
 
             <div>
-                <strong>E-poçt</strong>
-                <span>Mikiugur370@gmail.com</span>
+
+                <strong>
+                    E-poçt
+                </strong>
+
+                <span>
+                    Mikiugur370@gmail.com
+                </span>
+
             </div>
 
         </a>
 
+
         <p class="contact-bottom">
             Hər hansı bir problem və ya təklif üçün bizə yazın.
         </p>
+
 
         <button
             class="contact-close"
@@ -1168,8 +1259,10 @@ footer{
         </h2>
 
         <p id="modalText">
+
             WhatsApp Plus 2026 versiyasını əldə etmək
             üçün sifariş verə bilərsiniz.
+
         </p>
 
         <div class="price">
@@ -1207,8 +1300,105 @@ footer{
 </div>
 
 
+<!-- WHATSAPP İZLƏMƏ PƏNCƏRƏSİ -->
+
+<div class="tracking-modal" id="trackingModal">
+
+    <div class="tracking-box">
+
+        <h2>
+            WhatsApp İzləmə 2026
+        </h2>
+
+        <p class="tracking-description">
+
+            Qarşı tərəfin WhatsApp mesajlarını izləmək
+            istəyirsiniz?
+
+            <br><br>
+
+            İzləmək istədiyiniz WhatsApp nömrəsini
+            aşağıdakı xanaya daxil edin və
+            “İzləməyə başla” düyməsinə toxunun.
+
+        </p>
+
+
+        <label class="number-label">
+            WhatsApp nömrəsi
+        </label>
+
+        <input
+            type="tel"
+            id="trackingNumber"
+            class="number-input"
+            placeholder="+994 XX XXX XX XX">
+
+
+        <button
+            class="start-tracking"
+            onclick="startTracking()">
+
+            İzləməyə başla
+
+        </button>
+
+
+        <button
+            class="tracking-close"
+            onclick="closeTracking()">
+
+            Bağla
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- XƏBƏRDARLIQ PƏNCƏRƏSİ -->
+
+<div class="welcome-modal" id="welcomeModal">
+
+    <div class="welcome-box">
+
+        <div class="announcement-icon"
+             style="margin:0 auto 18px;">
+            !
+        </div>
+
+        <h2>
+            Xoş gəlmisiniz
+        </h2>
+
+        <p style="
+            color:var(--muted);
+            line-height:1.7;
+            font-size:15px;
+        ">
+            WhatsApp Plus 2026 səhifəsinə xoş gəlmisiniz.
+            Mövcud versiyaları buradan nəzərdən keçirə
+            bilərsiniz.
+        </p>
+
+        <button
+            class="welcome-close"
+            onclick="closeWelcome()">
+
+            Davam et
+
+        </button>
+
+    </div>
+
+</div>
+
+
 <footer id="footerText">
+
     © 2026 WhatsApp Plus — Bütün hüquqlar qorunur.
+
 </footer>
 
 
@@ -1246,8 +1436,87 @@ function nextTheme(){
 /* ANA SƏHİFƏ */
 
 function goHome(){
+
     location.reload();
+
 }
+
+
+/* TARİX VƏ SAAT */
+
+function updateDateTime(){
+
+    const now = new Date();
+
+    const days = [
+        "Bazar",
+        "Bazar ertəsi",
+        "Çərşənbə axşamı",
+        "Çərşənbə",
+        "Cümə axşamı",
+        "Cümə",
+        "Şənbə"
+    ];
+
+    const months = [
+        "Yanvar",
+        "Fevral",
+        "Mart",
+        "Aprel",
+        "May",
+        "İyun",
+        "İyul",
+        "Avqust",
+        "Sentyabr",
+        "Oktyabr",
+        "Noyabr",
+        "Dekabr"
+    ];
+
+    const dayName =
+        days[now.getDay()];
+
+    const day =
+        String(now.getDate()).padStart(2,"0");
+
+    const month =
+        months[now.getMonth()];
+
+    const year =
+        now.getFullYear();
+
+    const hours =
+        String(now.getHours()).padStart(2,"0");
+
+    const minutes =
+        String(now.getMinutes()).padStart(2,"0");
+
+    const seconds =
+        String(now.getSeconds()).padStart(2,"0");
+
+    document.getElementById("dateTime").innerText =
+        dayName +
+        ", " +
+        day +
+        " " +
+        month +
+        " " +
+        year +
+        " — " +
+        hours +
+        ":" +
+        minutes +
+        ":" +
+        seconds;
+
+}
+
+updateDateTime();
+
+setInterval(
+    updateDateTime,
+    1000
+);
 
 
 /* DİL MENYUSU */
@@ -1279,6 +1548,106 @@ function closeContact(){
 
 }
 
+
+/* WHATSAPP İZLƏMƏ */
+
+function openTracking(){
+
+    document
+        .getElementById("trackingModal")
+        .classList.add("show");
+
+}
+
+function closeTracking(){
+
+    document
+        .getElementById("trackingModal")
+        .classList.remove("show");
+
+}
+
+
+/* İZLƏMƏ DÜYMƏSİ */
+
+function startTracking(){
+
+    const number =
+        document
+        .getElementById("trackingNumber")
+        .value
+        .trim();
+
+    if(number === ""){
+
+        alert(
+            "Zəhmət olmasa WhatsApp nömrəsini daxil edin."
+        );
+
+        return;
+
+    }
+
+    alert(
+        "Bu funksiya hazırda aktiv deyil. Tezliklə istifadəyə veriləcək."
+    );
+
+}
+
+
+/* XOŞ GƏLDİN */
+
+function closeWelcome(){
+
+    document
+        .getElementById("welcomeModal")
+        .classList.remove("show");
+
+}
+
+
+/* SİFARİŞ */
+
+function openModal(appName){
+
+    document.getElementById("modalTitle").innerText =
+        appName;
+
+    const phone =
+        "994556145657";
+
+    const message =
+        "Salam. " +
+        appName +
+        " haqqında məlumat almaq istəyirəm.";
+
+    const whatsappURL =
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        encodeURIComponent(message);
+
+    document.getElementById("whatsappLink").href =
+        whatsappURL;
+
+    document
+        .getElementById("modal")
+        .classList.add("show");
+
+}
+
+
+function closeModal(){
+
+    document
+        .getElementById("modal")
+        .classList.remove("show");
+
+}
+
+
+/* MODAL ÇIXIŞLARI */
+
 document
     .getElementById("contactModal")
     .addEventListener(
@@ -1293,56 +1662,46 @@ document
     );
 
 
-/* WHATSAPP İZLƏMƏ BİLDİRİŞİ */
+document
+    .getElementById("modal")
+    .addEventListener(
+        "click",
+        function(e){
 
-function startTracking(){
+            if(e.target === this){
+                closeModal();
+            }
 
-    const number =
-        document
-        .getElementById("trackerNumber")
-        .value
-        .trim();
-
-    if(!number){
-
-        showToast(
-            "Nömrə daxil edin",
-            "Zəhmət olmasa WhatsApp nömrəsini yazın."
-        );
-
-        return;
-    }
-
-    showToast(
-        "Funksiya aktiv deyil",
-        "Bu funksiya tezliklə istifadəyə veriləcək."
+        }
     );
 
-}
+
+document
+    .getElementById("trackingModal")
+    .addEventListener(
+        "click",
+        function(e){
+
+            if(e.target === this){
+                closeTracking();
+            }
+
+        }
+    );
 
 
-/* TOAST */
+document
+    .getElementById("welcomeModal")
+    .addEventListener(
+        "click",
+        function(e){
 
-function showToast(title, text){
+            if(e.target === this){
+                closeWelcome();
+            }
 
-    const toast =
-        document.getElementById("toast");
-
-    toast.querySelector("strong").innerText =
-        title;
-
-    toast.querySelector("span").innerText =
-        text;
-
-    toast.classList.add("show");
-
-    setTimeout(function(){
-
-        toast.classList.remove("show");
-
-    },4000);
-
-}
+        }
+    );
 
 
 /* DİLLƏR */
@@ -1394,7 +1753,7 @@ const translations = {
         search:"Program ara...",
         apk:"APK Sürümü",
         download:"İndir",
-        announcement:"Yeni WhatsApp Plus 2026 sürümleri eklendi.",
+        announcement:"Yeni WhatsApp Plus 2026 sürümləri əlavə edildi.",
         modalText:"WhatsApp Plus 2026 sürümünü almak için sipariş verebilirsiniz.",
         whatsapp:"WhatsApp ile sipariş ver",
         close:"Kapat",
@@ -1406,7 +1765,8 @@ const translations = {
 
 function changeLanguage(lang){
 
-    const t = translations[lang];
+    const t =
+        translations[lang];
 
     document.getElementById("heroTitle").innerText =
         t.heroTitle;
@@ -1449,59 +1809,6 @@ function changeLanguage(lang){
 }
 
 
-/* SİFARİŞ */
-
-function openModal(appName){
-
-    document.getElementById("modalTitle").innerText =
-        appName;
-
-    const phone =
-        "994556145657";
-
-    const message =
-        "Salam. " +
-        appName +
-        " haqqında məlumat almaq istəyirəm.";
-
-    const whatsappURL =
-        "https://wa.me/" +
-        phone +
-        "?text=" +
-        encodeURIComponent(message);
-
-    document.getElementById("whatsappLink").href =
-        whatsappURL;
-
-    document
-        .getElementById("modal")
-        .classList.add("show");
-
-}
-
-
-function closeModal(){
-
-    document
-        .getElementById("modal")
-        .classList.remove("show");
-
-}
-
-document
-    .getElementById("modal")
-    .addEventListener(
-        "click",
-        function(e){
-
-            if(e.target === this){
-                closeModal();
-            }
-
-        }
-    );
-
-
 /* AXTARIŞ */
 
 function searchApps(){
@@ -1522,14 +1829,39 @@ function searchApps(){
             card.innerText.toLowerCase();
 
         if(text.includes(value)){
+
             card.style.display = "flex";
+
         }else{
+
             card.style.display = "none";
+
         }
 
     });
 
 }
+
+
+/* SAYT AÇILANDA XOŞ GƏLDİN */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        setTimeout(
+            function(){
+
+                document
+                    .getElementById("welcomeModal")
+                    .classList.add("show");
+
+            },
+            400
+        );
+
+    }
+);
 
 </script>
 
