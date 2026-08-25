@@ -205,7 +205,7 @@ header{
 .apps{
     max-width:900px;
     margin:auto;
-    padding:0 20px 50px;
+    padding:0 20px 60px;
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:18px;
@@ -237,11 +237,25 @@ header{
     padding:13px;
 }
 
-.icon1{background:#d9fbe5;}
-.icon2{background:#dcecff;}
-.icon3{background:#ffe0e0;}
-.icon4{background:#fff0c9;}
-.icon5{background:#eadcff;}
+.icon1{
+    background:#d9fbe5;
+}
+
+.icon2{
+    background:#dcecff;
+}
+
+.icon3{
+    background:#ffe0e0;
+}
+
+.icon4{
+    background:#fff0c9;
+}
+
+.icon5{
+    background:#eadcff;
+}
 
 .info{
     flex:1;
@@ -275,202 +289,40 @@ header{
     background:var(--main-dark);
 }
 
-/* GUIDE */
+/* CONTACT MODAL */
 
-.guide{
-    max-width:1000px;
-    margin:15px auto 60px;
-    padding:0 20px;
-}
-
-.guide-head{
-    text-align:center;
-    margin-bottom:30px;
-}
-
-.guide-head h2{
-    font-size:32px;
-    margin-bottom:12px;
-}
-
-.guide-head h2 span{
-    color:var(--main);
-}
-
-.guide-head p{
-    color:var(--muted);
-    font-size:16px;
-    line-height:1.6;
-}
-
-.steps{
-    display:grid;
-    gap:20px;
-}
-
-.step{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:22px;
-    padding:22px;
-    display:grid;
-    grid-template-columns:1fr 240px;
-    gap:25px;
-    align-items:center;
-    box-shadow:0 6px 22px rgba(0,0,0,.05);
-}
-
-.step-number{
-    display:inline-flex;
+.contact-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    display:none;
     align-items:center;
     justify-content:center;
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    background:var(--main);
-    color:white;
-    font-weight:900;
-    margin-bottom:12px;
+    padding:20px;
+    z-index:900;
 }
 
-.step h3{
-    font-size:21px;
-    margin-bottom:10px;
-}
-
-.step p{
-    color:var(--muted);
-    line-height:1.65;
-    font-size:15px;
-}
-
-.tip{
-    margin-top:14px;
-    background:var(--soft);
-    color:var(--text);
-    padding:12px 14px;
-    border-radius:12px;
-    font-size:13px;
-    line-height:1.5;
-}
-
-/* PHONE MOCKUP */
-
-.phone{
-    width:210px;
-    height:365px;
-    background:#111;
-    border-radius:30px;
-    padding:8px;
-    margin:auto;
-    box-shadow:0 12px 30px rgba(0,0,0,.22);
-}
-
-.phone-screen{
-    width:100%;
-    height:100%;
-    border-radius:23px;
-    background:#f7f7f7;
-    overflow:hidden;
-    color:#111;
-}
-
-.phone-top{
-    background:var(--main);
-    color:#fff;
-    padding:17px 12px;
-    font-size:12px;
-    font-weight:800;
-}
-
-.phone-content{
-    padding:20px 13px;
-}
-
-.mock-title{
-    font-size:15px;
-    font-weight:900;
-    margin-bottom:18px;
-}
-
-.mock-box{
-    background:#fff;
-    border:1px solid #ddd;
-    border-radius:12px;
-    padding:13px;
-    margin-bottom:12px;
-    font-size:12px;
-}
-
-.mock-button{
-    display:block;
-    background:var(--main);
-    color:#fff;
-    padding:12px;
-    border-radius:10px;
-    text-align:center;
-    font-size:12px;
-    font-weight:800;
-    margin-top:12px;
-}
-
-.mock-check{
-    padding:10px;
-    background:#e9e9e9;
-    border-radius:9px;
-    margin-bottom:9px;
-    font-size:11px;
-}
-
-.mock-whatsapp{
-    text-align:center;
-    padding-top:25px;
-}
-
-.mock-wa-icon{
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    background:#25D366;
-    color:#fff;
+.contact-modal.show{
     display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto 15px;
-    font-size:25px;
-    font-weight:900;
 }
 
-.mock-success{
-    color:#159447;
-    font-weight:900;
-    text-align:center;
-    margin-top:20px;
-}
-
-/* CONTACT */
-
-.contact-section{
-    max-width:850px;
-    margin:0 auto 60px;
-    padding:0 20px;
-}
-
-.contact-card{
+.contact-box{
+    width:100%;
+    max-width:500px;
     background:var(--card);
-    border:1px solid var(--border);
-    border-radius:22px;
+    color:var(--text);
+    border-radius:24px;
     padding:30px;
+    box-shadow:0 20px 60px rgba(0,0,0,.28);
     text-align:center;
-    box-shadow:0 7px 25px rgba(0,0,0,.06);
 }
 
-.contact-card h2{
-    font-size:30px;
-    margin-bottom:12px;
+.contact-box h2{
+    font-size:29px;
+    margin-bottom:14px;
 }
 
-.contact-card > p{
+.contact-description{
     color:var(--muted);
     line-height:1.7;
     font-size:15px;
@@ -486,18 +338,29 @@ header{
     border-radius:15px;
     margin-top:12px;
     text-align:left;
+    text-decoration:none;
+    color:inherit;
+    transition:.2s;
+}
+
+.contact-item:hover{
+    transform:translateY(-2px);
+    background:var(--soft);
 }
 
 .contact-icon{
-    width:45px;
-    height:45px;
-    border-radius:12px;
+    width:46px;
+    height:46px;
+    border-radius:13px;
     display:flex;
     align-items:center;
     justify-content:center;
-    color:white;
-    font-size:22px;
     flex-shrink:0;
+}
+
+.contact-icon img{
+    width:25px;
+    height:25px;
 }
 
 .wa-icon{
@@ -508,9 +371,15 @@ header{
     background:#1264d8;
 }
 
+.mail-icon span{
+    color:white;
+    font-size:25px;
+}
+
 .contact-item strong{
     display:block;
-    margin-bottom:4px;
+    margin-bottom:5px;
+    font-size:15px;
 }
 
 .contact-item span{
@@ -519,7 +388,27 @@ header{
     word-break:break-word;
 }
 
-/* MODAL */
+.contact-bottom{
+    color:var(--muted);
+    line-height:1.6;
+    font-size:14px;
+    margin-top:20px;
+}
+
+.contact-close{
+    width:100%;
+    margin-top:18px;
+    padding:14px;
+    border:0;
+    border-radius:13px;
+    background:#eee;
+    color:#222;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+/* ORDER MODAL */
 
 .modal{
     position:fixed;
@@ -600,28 +489,33 @@ header{
 
 /* THEMES */
 
-/* MAVİ */
 body.blue{
     --main:#1264d8;
     --main-dark:#0b4ca8;
     --soft:#e3efff;
-    --text:#111;
-    --muted:#666;
-    --bg:#f5f7fb;
-    --card:#fff;
-    --border:#e3e6eb;
 }
 
-/* BƏNÖVŞƏYİ */
 body.purple{
     --main:#7b2cff;
     --main-dark:#5b16cc;
     --soft:#eee5ff;
-    --text:#111;
-    --muted:#666;
-    --bg:#f8f6ff;
-    --card:#fff;
-    --border:#e6def5;
+}
+
+body.dark{
+    --main:#ff3030;
+    --main-dark:#d90000;
+    --soft:#3b1717;
+    --bg:#0e1014;
+    --card:#181b21;
+    --border:#2c3038;
+    --text:#fff;
+    --muted:#b8bcc5;
+}
+
+body.dark .close,
+body.dark .contact-close{
+    background:#2b3038;
+    color:#fff;
 }
 
 /* FOOTER */
@@ -690,25 +584,12 @@ footer{
         right:15px;
     }
 
-    .step{
-        grid-template-columns:1fr;
+    .contact-box{
+        padding:24px 18px;
     }
 
-    .step h3{
-        font-size:19px;
-    }
-
-    .phone{
-        width:190px;
-        height:330px;
-    }
-
-    .guide-head h2{
-        font-size:26px;
-    }
-
-    .contact-card{
-        padding:22px 17px;
+    .contact-box h2{
+        font-size:25px;
     }
 }
 </style>
@@ -722,18 +603,21 @@ footer{
 
         <div class="controls">
 
-            <button class="contact-btn"
-                    onclick="scrollToContact()">
+            <button
+                class="contact-btn"
+                onclick="openContact()">
                 Əlaqə
             </button>
 
-            <button class="lang-btn"
-                    onclick="toggleLanguages()">
+            <button
+                class="lang-btn"
+                onclick="toggleLanguages()">
                 Dil
             </button>
 
-            <button class="theme-btn"
-                    onclick="nextTheme()">
+            <button
+                class="theme-btn"
+                onclick="nextTheme()">
                 Tema
             </button>
 
@@ -746,30 +630,60 @@ footer{
 
 <!-- DİL MENYUSU -->
 
-<div class="language-box" id="languageBox">
+<div
+    class="language-box"
+    id="languageBox">
 
     <div class="language-title">
         Dil seçin
     </div>
 
-    <button class="language" onclick="changeLanguage('az')">
-        <img src="https://flagcdn.com/w80/az.png" alt="Azərbaycan">
+    <button
+        class="language"
+        onclick="changeLanguage('az')">
+
+        <img
+            src="https://flagcdn.com/w80/az.png"
+            alt="Azərbaycan">
+
         Azərbaycan
+
     </button>
 
-    <button class="language" onclick="changeLanguage('ru')">
-        <img src="https://flagcdn.com/w80/ru.png" alt="Русский">
+    <button
+        class="language"
+        onclick="changeLanguage('ru')">
+
+        <img
+            src="https://flagcdn.com/w80/ru.png"
+            alt="Русский">
+
         Русский
+
     </button>
 
-    <button class="language" onclick="changeLanguage('en')">
-        <img src="https://flagcdn.com/w80/gb.png" alt="English">
+    <button
+        class="language"
+        onclick="changeLanguage('en')">
+
+        <img
+            src="https://flagcdn.com/w80/gb.png"
+            alt="English">
+
         English
+
     </button>
 
-    <button class="language" onclick="changeLanguage('tr')">
-        <img src="https://flagcdn.com/w80/tr.png" alt="Türkçe">
+    <button
+        class="language"
+        onclick="changeLanguage('tr')">
+
+        <img
+            src="https://flagcdn.com/w80/tr.png"
+            alt="Türkçe">
+
         Türkçe
+
     </button>
 
 </div>
@@ -781,8 +695,9 @@ footer{
 
     <div class="hero-title">
 
-        <img src="https://flagcdn.com/w80/az.png"
-             alt="Azərbaycan">
+        <img
+            src="https://flagcdn.com/w80/az.png"
+            alt="Azərbaycan">
 
         <span>
             WhatsApp Plus 2026
@@ -791,9 +706,11 @@ footer{
     </div>
 
     <h1>
+
         <span id="heroTitle">
             WhatsApp Plus 2026
         </span>
+
     </h1>
 
     <p id="heroText">
@@ -816,15 +733,17 @@ footer{
 </div>
 
 
-<!-- 5 VERSİYA -->
+<!-- 5 WHATSAPP PLUS -->
 
 <section class="apps">
 
+
     <div class="card">
 
-        <img class="icon icon1"
-             src="https://cdn.simpleicons.org/whatsapp/25D366"
-             alt="WhatsApp Plus">
+        <img
+            class="icon icon1"
+            src="https://cdn.simpleicons.org/whatsapp/25D366"
+            alt="WhatsApp Plus">
 
         <div class="info">
 
@@ -832,16 +751,21 @@ footer{
                 WhatsApp Plus 2026
             </h3>
 
-            <div class="apk" id="apk1">
+            <div
+                class="apk"
+                id="apk1">
                 APK Versiyası
             </div>
 
         </div>
 
-        <button class="download"
-                id="download1"
-                onclick="openModal('WhatsApp Plus 2026')">
+        <button
+            class="download"
+            id="download1"
+            onclick="openModal('WhatsApp Plus 2026')">
+
             Yüklə
+
         </button>
 
     </div>
@@ -849,9 +773,10 @@ footer{
 
     <div class="card">
 
-        <img class="icon icon2"
-             src="https://cdn.simpleicons.org/whatsapp/2196F3"
-             alt="WhatsApp Plus Pro">
+        <img
+            class="icon icon2"
+            src="https://cdn.simpleicons.org/whatsapp/2196F3"
+            alt="WhatsApp Plus Pro">
 
         <div class="info">
 
@@ -859,16 +784,21 @@ footer{
                 WhatsApp Plus 2026 Pro
             </h3>
 
-            <div class="apk" id="apk2">
+            <div
+                class="apk"
+                id="apk2">
                 APK Versiyası
             </div>
 
         </div>
 
-        <button class="download"
-                id="download2"
-                onclick="openModal('WhatsApp Plus 2026 Pro')">
+        <button
+            class="download"
+            id="download2"
+            onclick="openModal('WhatsApp Plus 2026 Pro')">
+
             Yüklə
+
         </button>
 
     </div>
@@ -876,9 +806,10 @@ footer{
 
     <div class="card">
 
-        <img class="icon icon3"
-             src="https://cdn.simpleicons.org/whatsapp/F44336"
-             alt="WhatsApp Plus Ultra">
+        <img
+            class="icon icon3"
+            src="https://cdn.simpleicons.org/whatsapp/F44336"
+            alt="WhatsApp Plus Ultra">
 
         <div class="info">
 
@@ -886,16 +817,21 @@ footer{
                 WhatsApp Plus 2026 Ultra
             </h3>
 
-            <div class="apk" id="apk3">
+            <div
+                class="apk"
+                id="apk3">
                 APK Versiyası
             </div>
 
         </div>
 
-        <button class="download"
-                id="download3"
-                onclick="openModal('WhatsApp Plus 2026 Ultra')">
+        <button
+            class="download"
+            id="download3"
+            onclick="openModal('WhatsApp Plus 2026 Ultra')">
+
             Yüklə
+
         </button>
 
     </div>
@@ -903,9 +839,10 @@ footer{
 
     <div class="card">
 
-        <img class="icon icon4"
-             src="https://cdn.simpleicons.org/whatsapp/FF9800"
-             alt="WhatsApp Plus Premium">
+        <img
+            class="icon icon4"
+            src="https://cdn.simpleicons.org/whatsapp/FF9800"
+            alt="WhatsApp Plus Premium">
 
         <div class="info">
 
@@ -913,16 +850,21 @@ footer{
                 WhatsApp Plus 2026 Premium
             </h3>
 
-            <div class="apk" id="apk4">
+            <div
+                class="apk"
+                id="apk4">
                 APK Versiyası
             </div>
 
         </div>
 
-        <button class="download"
-                id="download4"
-                onclick="openModal('WhatsApp Plus 2026 Premium')">
+        <button
+            class="download"
+            id="download4"
+            onclick="openModal('WhatsApp Plus 2026 Premium')">
+
             Yüklə
+
         </button>
 
     </div>
@@ -930,9 +872,10 @@ footer{
 
     <div class="card">
 
-        <img class="icon icon5"
-             src="https://cdn.simpleicons.org/whatsapp/9C27B0"
-             alt="WhatsApp Plus Gold">
+        <img
+            class="icon icon5"
+            src="https://cdn.simpleicons.org/whatsapp/9C27B0"
+            alt="WhatsApp Plus Gold">
 
         <div class="info">
 
@@ -940,448 +883,70 @@ footer{
                 WhatsApp Plus 2026 Gold
             </h3>
 
-            <div class="apk" id="apk5">
+            <div
+                class="apk"
+                id="apk5">
                 APK Versiyası
             </div>
 
         </div>
 
-        <button class="download"
-                id="download5"
-                onclick="openModal('WhatsApp Plus 2026 Gold')">
+        <button
+            class="download"
+            id="download5"
+            onclick="openModal('WhatsApp Plus 2026 Gold')">
+
             Yüklə
+
         </button>
 
     </div>
 
-</section>
-
-
-<!-- QURAŞDIRMA BƏLƏDÇİSİ -->
-
-<section class="guide">
-
-    <div class="guide-head">
-
-        <h2>
-            WhatsApp Plus
-            <span>Yükləmə və Quraşdırma Bələdçisi</span>
-        </h2>
-
-        <p>
-            WhatsApp Plus versiyasını Android cihazda quraşdırmaq
-            üçün aşağıdakı nümunə addımlardan istifadə edə bilərsiniz.
-        </p>
-
-    </div>
-
-
-    <div class="steps">
-
-
-        <!-- ADDIM 1 -->
-
-        <div class="step">
-
-            <div>
-
-                <div class="step-number">1</div>
-
-                <h3>
-                    APK versiyasını seçin
-                </h3>
-
-                <p>
-                    Yuxarıdakı siyahıdan istifadə etmək istədiyiniz
-                    WhatsApp Plus versiyasını seçin və
-                    <strong>“Yüklə”</strong> düyməsinə toxunun.
-                </p>
-
-                <div class="tip">
-                    Nümunə: WhatsApp Plus 2026, Pro, Ultra,
-                    Premium və ya Gold versiyalarından birini seçə bilərsiniz.
-                </div>
-
-            </div>
-
-
-            <div class="phone">
-
-                <div class="phone-screen">
-
-                    <div class="phone-top">
-                        WhatsApp Plus 2026
-                    </div>
-
-                    <div class="phone-content">
-
-                        <div class="mock-title">
-                            Versiya seçin
-                        </div>
-
-                        <div class="mock-box">
-                            WhatsApp Plus 2026
-                        </div>
-
-                        <div class="mock-box">
-                            WhatsApp Plus Pro
-                        </div>
-
-                        <div class="mock-button">
-                            YÜKLƏ
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- ADDIM 2 -->
-
-        <div class="step">
-
-            <div>
-
-                <div class="step-number">2</div>
-
-                <h3>
-                    APK faylını yükləyin
-                </h3>
-
-                <p>
-                    Sifariş və məlumatlandırma mərhələsindən sonra
-                    sizə təqdim olunan APK faylını cihazınıza yükləyin.
-                </p>
-
-                <div class="tip">
-                    APK faylını yalnız etibar etdiyiniz mənbədən
-                    əldə edin və quraşdırmadan əvvəl faylın mənbəyini yoxlayın.
-                </div>
-
-            </div>
-
-
-            <div class="phone">
-
-                <div class="phone-screen">
-
-                    <div class="phone-top">
-                        Fayl yüklənir
-                    </div>
-
-                    <div class="phone-content">
-
-                        <div class="mock-title">
-                            Yükləmə
-                        </div>
-
-                        <div class="mock-box">
-                            WhatsApp_Plus_2026.apk
-                        </div>
-
-                        <div class="mock-box">
-                            Yükləmə tamamlandı
-                        </div>
-
-                        <div class="mock-button">
-                            FAYLI AÇ
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- ADDIM 3 -->
-
-        <div class="step">
-
-            <div>
-
-                <div class="step-number">3</div>
-
-                <h3>
-                    Quraşdırmaya başlayın
-                </h3>
-
-                <p>
-                    Yüklənmiş APK faylını açın. Android cihazınızda
-                    quraşdırma pəncərəsi görünəcək.
-                    Ekrandakı göstərişləri izləyin.
-                </p>
-
-                <div class="tip">
-                    Android cihazınız faylın quraşdırılmasına icazə
-                    vermirsə, təhlükəsizlik parametrlərini yoxlayın.
-                </div>
-
-            </div>
-
-
-            <div class="phone">
-
-                <div class="phone-screen">
-
-                    <div class="phone-top">
-                        Quraşdırma
-                    </div>
-
-                    <div class="phone-content">
-
-                        <div class="mock-title">
-                            WhatsApp Plus
-                        </div>
-
-                        <div class="mock-box">
-                            Tətbiqi quraşdırmaq istəyirsiniz?
-                        </div>
-
-                        <div class="mock-button">
-                            QURAŞDIR
-                        </div>
-
-                        <div class="mock-box">
-                            Ləğv et
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- ADDIM 4 -->
-
-        <div class="step">
-
-            <div>
-
-                <div class="step-number">4</div>
-
-                <h3>
-                    Naməlum mənbə icazəsi
-                </h3>
-
-                <p>
-                    Bəzi Android cihazlarında brauzerdən və ya fayl
-                    menecerindən APK quraşdırarkən əlavə icazə tələb oluna bilər.
-                </p>
-
-                <div class="tip">
-                    Android parametrlərində istifadə etdiyiniz
-                    brauzer və ya fayl menecerinə APK quraşdırmaq
-                    icazəsinin verilib-verilmədiyini yoxlayın.
-                </div>
-
-            </div>
-
-
-            <div class="phone">
-
-                <div class="phone-screen">
-
-                    <div class="phone-top">
-                        Təhlükəsizlik
-                    </div>
-
-                    <div class="phone-content">
-
-                        <div class="mock-title">
-                            İcazə tələb olunur
-                        </div>
-
-                        <div class="mock-check">
-                            ✓ Bu mənbədən icazə ver
-                        </div>
-
-                        <div class="mock-check">
-                            Brauzer
-                        </div>
-
-                        <div class="mock-button">
-                            PARAMETRLƏR
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- ADDIM 5 -->
-
-        <div class="step">
-
-            <div>
-
-                <div class="step-number">5</div>
-
-                <h3>
-                    Quraşdırmanı tamamlayın
-                </h3>
-
-                <p>
-                    Quraşdırma başa çatdıqdan sonra tətbiqi açın.
-                    Tətbiqin tələb etdiyi icazələri diqqətlə nəzərdən keçirin.
-                </p>
-
-                <div class="tip">
-                    Təhlükəsizlik üçün yalnız başa düşdüyünüz və
-                    etibar etdiyiniz icazələri təsdiqləyin.
-                </div>
-
-            </div>
-
-
-            <div class="phone">
-
-                <div class="phone-screen">
-
-                    <div class="phone-top">
-                        Quraşdırma tamamlandı
-                    </div>
-
-                    <div class="phone-content">
-
-                        <div class="mock-whatsapp">
-
-                            <div class="mock-wa-icon">
-                                W
-                            </div>
-
-                            <div class="mock-title">
-                                WhatsApp Plus
-                            </div>
-
-                            <div class="mock-success">
-                                ✓ Hazırdır
-                            </div>
-
-                            <div class="mock-button">
-                                AÇ
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- ADDIM 6 -->
-
-        <div class="step">
-
-            <div>
-
-                <div class="step-number">6</div>
-
-                <h3>
-                    Problem yaranarsa
-                </h3>
-
-                <p>
-                    Quraşdırma zamanı xəta, uyğunluq və ya digər
-                    texniki problem yaranarsa, bizimlə əlaqə saxlayın.
-                    Problemi mümkün qədər ətraflı izah edin.
-                </p>
-
-                <div class="tip">
-                    Problem zamanı cihazın Android versiyasını və
-                    aldığınız xətanın mətnini qeyd etmək dəstək prosesini asanlaşdırır.
-                </div>
-
-            </div>
-
-
-            <div class="phone">
-
-                <div class="phone-screen">
-
-                    <div class="phone-top">
-                        Texniki dəstək
-                    </div>
-
-                    <div class="phone-content">
-
-                        <div class="mock-title">
-                            Problem var?
-                        </div>
-
-                        <div class="mock-box">
-                            Quraşdırma tamamlanmadı
-                        </div>
-
-                        <div class="mock-button">
-                            DƏSTƏKLƏ ƏLAQƏ
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
 
 </section>
 
 
-<!-- ƏLAQƏ -->
+<!-- ƏLAQƏ PƏNCƏRƏSİ -->
 
-<section class="contact-section" id="contact">
+<div
+    class="contact-modal"
+    id="contactModal">
 
-    <div class="contact-card">
+    <div class="contact-box">
 
         <h2>
             Bizimlə əlaqə
         </h2>
 
-        <p>
-            Saytımız haqqında hər hansı bir sualınız və ya texniki
-            dəstəyə ehtiyacınız varsa, bizimlə əlaqə saxlamaqdan
-            çəkinməyin. Sizin məmnuniyyətiniz bizim üçün önəmlidir.
+        <p class="contact-description">
+
+            Saytımız haqqında hər hansı bir sualınız və ya
+            texniki dəstəyə ehtiyacınız varsa, bizimlə əlaqə
+            saxlamaqdan çəkinməyin. Sizin məmnuniyyətiniz
+            bizim üçün önəmlidir.
+
         </p>
 
 
         <a
             href="https://wa.me/994556145657"
             target="_blank"
-            class="contact-item"
-            style="text-decoration:none;color:inherit;">
+            rel="noopener"
+            class="contact-item">
 
             <div class="contact-icon wa-icon">
 
                 <img
                     src="https://cdn.simpleicons.org/whatsapp/ffffff"
-                    width="25"
                     alt="WhatsApp">
 
             </div>
 
             <div>
 
-                <strong>WhatsApp</strong>
+                <strong>
+                    WhatsApp
+                </strong>
 
                 <span>
                     +994 55 614 56 57
@@ -1394,16 +959,21 @@ footer{
 
         <a
             href="mailto:Mikiugur370@gmail.com"
-            class="contact-item"
-            style="text-decoration:none;color:inherit;">
+            class="contact-item">
 
             <div class="contact-icon mail-icon">
-                ✉
+
+                <span>
+                    ✉
+                </span>
+
             </div>
 
             <div>
 
-                <strong>E-poçt</strong>
+                <strong>
+                    E-poçt
+                </strong>
 
                 <span>
                     Mikiugur370@gmail.com
@@ -1414,31 +984,46 @@ footer{
         </a>
 
 
-        <p style="margin-top:20px;margin-bottom:0;">
+        <p class="contact-bottom">
 
             Hər hansı bir problem və ya təklif üçün bizə yazın,
             sizə kömək etməkdən məmnun olarıq.
 
         </p>
 
+
+        <button
+            class="contact-close"
+            onclick="closeContact()">
+
+            Bağla
+
+        </button>
+
     </div>
 
-</section>
+</div>
 
 
-<!-- MODAL -->
+<!-- SİFARİŞ MODALI -->
 
-<div class="modal" id="modal">
+<div
+    class="modal"
+    id="modal">
 
     <div class="modal-box">
 
-        <h2 id="modalTitle">
+        <h2
+            id="modalTitle">
             WhatsApp Plus 2026
         </h2>
 
-        <p id="modalText">
+        <p
+            id="modalText">
+
             WhatsApp Plus 2026 versiyasını əldə etmək
             üçün sifariş verə bilərsiniz.
+
         </p>
 
         <div class="price">
@@ -1456,8 +1041,11 @@ footer{
                 src="https://cdn.simpleicons.org/whatsapp/ffffff"
                 alt="WhatsApp">
 
-            <span id="whatsappText">
+            <span
+                id="whatsappText">
+
                 WhatsApp ilə sifariş et
+
             </span>
 
         </a>
@@ -1489,7 +1077,8 @@ footer{
 
 const themes = [
     "blue",
-    "purple"
+    "purple",
+    "dark"
 ];
 
 let themeIndex = 0;
@@ -1498,7 +1087,8 @@ function nextTheme(){
 
     document.body.classList.remove(
         "blue",
-        "purple"
+        "purple",
+        "dark"
     );
 
     themeIndex++;
@@ -1510,6 +1100,7 @@ function nextTheme(){
     document.body.classList.add(
         themes[themeIndex]
     );
+
 }
 
 
@@ -1524,17 +1115,38 @@ function toggleLanguages(){
 }
 
 
-/* ƏLAQƏ BÖLMƏSİNƏ GET */
+/* ƏLAQƏ PƏNCƏRƏSİ */
 
-function scrollToContact(){
+function openContact(){
 
     document
-        .getElementById("contact")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
+        .getElementById("contactModal")
+        .classList.add("show");
 
 }
+
+
+function closeContact(){
+
+    document
+        .getElementById("contactModal")
+        .classList.remove("show");
+
+}
+
+
+document
+    .getElementById("contactModal")
+    .addEventListener(
+        "click",
+        function(e){
+
+            if(e.target === this){
+                closeContact();
+            }
+
+        }
+    );
 
 
 /* DİLLƏR */
@@ -1634,14 +1246,15 @@ function changeLanguage(lang){
 }
 
 
-/* MODAL */
+/* SİFARİŞ MODALI */
 
 function openModal(appName){
 
     document.getElementById("modalTitle").innerText =
         appName;
 
-    const phone = "994556145657";
+    const phone =
+        "994556145657";
 
     const message =
         "Salam. " +
