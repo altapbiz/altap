@@ -1,1037 +1,384 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080b14">
-  <title>Altap.Biz — SMM Panel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok Takipçi</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:#050505;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:300px;
+    height:300px;
+    background:#00f2ea;
+    filter:blur(130px);
+    opacity:.18;
+    top:-100px;
+    left:-100px;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:300px;
+    height:300px;
+    background:#ff0050;
+    filter:blur(130px);
+    opacity:.18;
+    bottom:-100px;
+    right:-100px;
+}
+
+.container{
+    width:100%;
+    max-width:520px;
+    position:relative;
+    z-index:2;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.tiktok{
+    font-size:54px;
+    font-weight:900;
+    text-shadow:
+        -3px 0 #00f2ea,
+        3px 0 #ff0050;
+    margin-bottom:8px;
+}
+
+.header h1{
+    font-size:28px;
+    font-weight:800;
+}
+
+.header p{
+    margin-top:7px;
+    color:#aaa;
+    font-size:14px;
+}
+
+.packages{
+    display:grid;
+    gap:14px;
+}
+
+.package{
+    position:relative;
+    background:linear-gradient(145deg,#151515,#0b0b0b);
+    border:1px solid #292929;
+    border-radius:18px;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    cursor:pointer;
+    transition:.25s ease;
+    overflow:hidden;
+}
+
+.package::before{
+    content:"";
+    position:absolute;
+    width:80px;
+    height:80px;
+    background:#00f2ea;
+    filter:blur(55px);
+    opacity:0;
+    transition:.25s;
+}
+
+.package:hover{
+    transform:translateY(-3px);
+    border-color:#00f2ea;
+    box-shadow:0 0 25px rgba(0,242,234,.12);
+}
+
+.package.selected{
+    border-color:#ff0050;
+    box-shadow:
+        0 0 18px rgba(255,0,80,.18),
+        0 0 25px rgba(0,242,234,.08);
+    transform:scale(1.025);
+}
+
+.package.selected::before{
+    opacity:.35;
+}
+
+.info{
+    position:relative;
+    z-index:2;
+}
+
+.followers{
+    font-size:21px;
+    font-weight:800;
+}
+
+.label{
+    color:#999;
+    font-size:13px;
+    margin-top:4px;
+}
+
+.price{
+    position:relative;
+    z-index:2;
+    font-size:21px;
+    font-weight:900;
+    color:#fff;
+}
+
+.order{
+    width:100%;
+    margin-top:20px;
+    border:0;
+    border-radius:17px;
+    padding:18px;
+    font-size:18px;
+    font-weight:900;
+    color:white;
+    cursor:pointer;
+    background:linear-gradient(90deg,#00f2ea,#ff0050);
+    box-shadow:0 8px 30px rgba(255,0,80,.18);
+    transition:.2s;
+}
+
+.order:hover{
+    transform:translateY(-2px);
+}
+
+.order:active{
+    transform:scale(.98);
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(8px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:10;
+}
+
+.modal{
+    width:100%;
+    max-width:390px;
+    background:#111;
+    border:1px solid #333;
+    border-radius:22px;
+    padding:28px;
+    text-align:center;
+    box-shadow:0 0 50px rgba(0,0,0,.6);
+    animation:popup .25s ease;
+}
+
+@keyframes popup{
+    from{
+        opacity:0;
+        transform:scale(.9);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.modal h2{
+    font-size:23px;
+    margin-bottom:10px;
+}
+
+.modal p{
+    color:#aaa;
+    font-size:14px;
+    line-height:1.5;
+    margin-bottom:22px;
+}
+
+.modal-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.modal button{
+    flex:1;
+    padding:15px;
+    border:0;
+    border-radius:13px;
+    font-weight:800;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.cancel{
+    background:#242424;
+    color:white;
+}
+
+.continue{
+    background:#25D366;
+    color:white;
+}
+
+@media(max-width:420px){
+    .package{
+        padding:17px;
     }
 
-    :root {
-      --bg: #080b14;
-      --sidebar: #0d1220;
-      --card: #111827;
-      --card2: #101725;
-      --border: #252e40;
-      --text: #ffffff;
-      --muted: #7f899c;
-      --purple: #8b5cf6;
-      --purple-dark: #6d28d9;
+    .followers,
+    .price{
+        font-size:18px;
     }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
+    .tiktok{
+        font-size:46px;
     }
-
-    /* SIDEBAR */
-
-    .sidebar {
-      width: 250px;
-      height: 100vh;
-      position: fixed;
-      left: 0;
-      top: 0;
-      background: var(--sidebar);
-      border-right: 1px solid #202638;
-      padding: 25px 15px;
-      z-index: 100;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: 800;
-      padding: 10px;
-      margin-bottom: 30px;
-      letter-spacing: -0.5px;
-    }
-
-    .logo span {
-      color: var(--purple);
-    }
-
-    .menu {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-
-    .menu a {
-      text-decoration: none;
-      color: #9ba5b7;
-      padding: 13px 14px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 14px;
-      transition: .2s;
-    }
-
-    .menu a svg {
-      width: 19px;
-      height: 19px;
-      flex-shrink: 0;
-    }
-
-    .menu a:hover,
-    .menu a.active {
-      background: linear-gradient(
-        90deg,
-        rgba(109, 40, 217, .9),
-        rgba(139, 92, 246, .8)
-      );
-      color: white;
-    }
-
-    /* MAIN */
-
-    .main {
-      margin-left: 250px;
-      min-height: 100vh;
-    }
-
-    /* TOPBAR */
-
-    .topbar {
-      height: 75px;
-      border-bottom: 1px solid #202638;
-      background: #0a0f1b;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding: 0 30px;
-    }
-
-    .balance {
-      background: #111827;
-      border: 1px solid #242c3d;
-      border-radius: 10px;
-      padding: 11px 16px;
-      font-size: 14px;
-    }
-
-    .balance strong {
-      color: #a78bfa;
-    }
-
-    /* CONTENT */
-
-    .content {
-      padding: 30px;
-      max-width: 1400px;
-    }
-
-    .title {
-      margin-bottom: 25px;
-    }
-
-    .title h1 {
-      font-size: 28px;
-      margin-bottom: 7px;
-    }
-
-    .title p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* SERVICES */
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-    }
-
-    .service {
-      background: linear-gradient(145deg, #121a2a, #0d1421);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 22px;
-      min-height: 180px;
-      cursor: pointer;
-      transition: .2s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service::after {
-      content: "";
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      right: -45px;
-      bottom: -45px;
-      background: rgba(139, 92, 246, .08);
-      border-radius: 50%;
-    }
-
-    .service:hover {
-      transform: translateY(-3px);
-      border-color: var(--purple);
-      box-shadow: 0 12px 30px rgba(0,0,0,.2);
-    }
-
-    .icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 13px;
-      background: #192235;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 15px;
-    }
-
-    .icon svg {
-      width: 25px;
-      height: 25px;
-    }
-
-    .purple {
-      color: #a855f7;
-    }
-
-    .pink {
-      color: #ff477e;
-    }
-
-    .blue {
-      color: #3d8cff;
-    }
-
-    .green {
-      color: #20c997;
-    }
-
-    .orange {
-      color: #ffad33;
-    }
-
-    .service h3 {
-      font-size: 16px;
-      margin-bottom: 7px;
-    }
-
-    .service p {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    /* ORDER */
-
-    .order {
-      margin-top: 20px;
-      background: var(--card2);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 22px;
-    }
-
-    .order h2 {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-
-    .form {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-
-    .field.full {
-      grid-column: 1 / -1;
-    }
-
-    label {
-      font-size: 12px;
-      color: #d8ddea;
-    }
-
-    input,
-    select {
-      width: 100%;
-      height: 47px;
-      border-radius: 10px;
-      border: 1px solid #293246;
-      background: #0a101c;
-      color: white;
-      padding: 0 14px;
-      outline: none;
-      font-size: 13px;
-    }
-
-    select {
-      cursor: pointer;
-    }
-
-    input:focus,
-    select:focus {
-      border-color: var(--purple);
-      box-shadow: 0 0 0 2px rgba(139,92,246,.08);
-    }
-
-    button {
-      width: 100%;
-      height: 47px;
-      border: none;
-      border-radius: 10px;
-      background: linear-gradient(
-        90deg,
-        var(--purple-dark),
-        var(--purple)
-      );
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: .2s;
-    }
-
-    button:hover {
-      transform: translateY(-1px);
-      opacity: .95;
-    }
-
-    .note {
-      background: #151d2d;
-      border: 1px solid #273148;
-      border-radius: 10px;
-      padding: 13px;
-      color: #8d98ab;
-      font-size: 11px;
-      line-height: 1.5;
-    }
-
-    /* MOBILE HEADER */
-
-    .mobile-header {
-      display: none;
-    }
-
-    /* RESPONSIVE */
-
-    @media(max-width: 1000px) {
-
-      .sidebar {
-        width: 215px;
-      }
-
-      .main {
-        margin-left: 215px;
-      }
-
-      .services {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media(max-width: 700px) {
-
-      .sidebar {
-        display: none;
-      }
-
-      .main {
-        margin-left: 0;
-      }
-
-      .mobile-header {
-        display: flex;
-        height: 65px;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 18px;
-        background: #0d1220;
-        border-bottom: 1px solid #202638;
-      }
-
-      .mobile-logo {
-        font-size: 20px;
-        font-weight: 800;
-      }
-
-      .mobile-logo span {
-        color: var(--purple);
-      }
-
-      .content {
-        padding: 18px;
-      }
-
-      .topbar {
-        height: 65px;
-        padding: 0 18px;
-      }
-
-      .services {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-
-      .service {
-        padding: 16px;
-        min-height: 155px;
-      }
-
-      .service h3 {
-        font-size: 14px;
-      }
-
-      .service p {
-        font-size: 11px;
-      }
-
-      .form {
-        grid-template-columns: 1fr;
-      }
-
-      .field.full {
-        grid-column: auto;
-      }
-    }
-
-    @media(max-width: 420px) {
-
-      .services {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .service {
-        min-height: 145px;
-        padding: 14px;
-      }
-
-      .icon {
-        width: 44px;
-        height: 44px;
-      }
-
-      .icon svg {
-        width: 22px;
-        height: 22px;
-      }
-
-      .title h1 {
-        font-size: 24px;
-      }
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <!-- DESKTOP SIDEBAR -->
+<div class="container">
 
-  <aside class="sidebar">
-
-    <div class="logo">
-      ALTAP.<span>BİZ</span>
+    <div class="header">
+        <div class="tiktok">TikTok</div>
+        <h1>Takipçi Paketləri</h1>
+        <p>Paketi seçin və sifariş edin</p>
     </div>
 
-    <nav class="menu">
+    <div class="packages">
 
-      <a href="#" class="active">
+        <div class="package" onclick="selectPackage(this,'1000 takipçi','7,87₼')">
+            <div class="info">
+                <div class="followers">1.000 takipçi</div>
+                <div class="label">TikTok paket</div>
+            </div>
+            <div class="price">7,87₼</div>
+        </div>
 
-        <svg viewBox="0 0 24 24"
-             fill="none"
-             stroke="currentColor"
-             stroke-width="2">
-          <path d="M3 4h18v4H3z"></path>
-          <path d="M5 8v12h14V8"></path>
-          <path d="M9 12h6"></path>
-        </svg>
+        <div class="package" onclick="selectPackage(this,'2000 takipçi','15,63₼')">
+            <div class="info">
+                <div class="followers">2.000 takipçi</div>
+                <div class="label">TikTok paket</div>
+            </div>
+            <div class="price">15,63₼</div>
+        </div>
 
-        Yeni Sifariş
+        <div class="package" onclick="selectPackage(this,'5000 takipçi','27,87₼')">
+            <div class="info">
+                <div class="followers">5.000 takipçi</div>
+                <div class="label">TikTok paket</div>
+            </div>
+            <div class="price">27,87₼</div>
+        </div>
 
-      </a>
+        <div class="package" onclick="selectPackage(this,'10.000 takipçi','48,55₼')">
+            <div class="info">
+                <div class="followers">10.000 takipçi</div>
+                <div class="label">TikTok paket</div>
+            </div>
+            <div class="price">48,55₼</div>
+        </div>
 
-      <a href="#">
-
-        <svg viewBox="0 0 24 24"
-             fill="none"
-             stroke="currentColor"
-             stroke-width="2">
-          <path d="M6 3h12v18H6z"></path>
-          <path d="M9 7h6"></path>
-          <path d="M9 11h6"></path>
-          <path d="M9 15h4"></path>
-        </svg>
-
-        Sifarişlərim
-
-      </a>
-
-      <a href="#">
-
-        <svg viewBox="0 0 24 24"
-             fill="none"
-             stroke="currentColor"
-             stroke-width="2">
-          <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-          <path d="M3 10h18"></path>
-          <path d="M7 15h4"></path>
-        </svg>
-
-        Balans Artır
-
-      </a>
-
-      <a href="#">
-
-        <svg viewBox="0 0 24 24"
-             fill="none"
-             stroke="currentColor"
-             stroke-width="2">
-          <circle cx="12" cy="12" r="9"></circle>
-          <path d="M12 7v5l3 2"></path>
-        </svg>
-
-        Tarixçə
-
-      </a>
-
-      <a href="#">
-
-        <svg viewBox="0 0 24 24"
-             fill="none"
-             stroke="currentColor"
-             stroke-width="2">
-          <path d="M20 11.5a7.5 7.5 0 01-11.4 6.4L4 19l1.2-3.8A7.5 7.5 0 1120 11.5z"></path>
-        </svg>
-
-        Dəstək
-
-      </a>
-
-      <a href="#">
-
-        <svg viewBox="0 0 24 24"
-             fill="none"
-             stroke="currentColor"
-             stroke-width="2">
-          <circle cx="12" cy="12" r="3"></circle>
-          <path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1-1.8 1.8-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V20h-2.6v-.1a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.9.3l-.1.1-1.8-1.8.1-.1A1.7 1.7 0 008 15a1.7 1.7 0 00-1.5-1H6v-2.6h.5A1.7 1.7 0 008 10a1.7 1.7 0 00-.3-1.9l-.1-.1 1.8-1.8.1.1a1.7 1.7 0 001.9.3 1.7 1.7 0 001-1.5V5H15v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1 1.8 1.8-.1.1a1.7 1.7 0 00-.3 1.9 1.7 1.7 0 001.5 1h.1V14h-.1a1.7 1.7 0 00-1.5 1z"></path>
-        </svg>
-
-        Ayarlar
-
-      </a>
-
-    </nav>
-
-  </aside>
-
-
-  <!-- MOBILE HEADER -->
-
-  <div class="mobile-header">
-
-    <div class="mobile-logo">
-      ALTAP.<span>BİZ</span>
     </div>
 
-    <div class="balance">
-      <strong>0.00 AZN</strong>
+    <button class="order" onclick="openConfirm()">Sifariş et</button>
+
+</div>
+
+<div class="overlay" id="overlay">
+    <div class="modal">
+        <h2>Razısız?</h2>
+        <p id="selectedText"></p>
+
+        <div class="modal-buttons">
+            <button class="cancel" onclick="closeConfirm()">Xeyr</button>
+            <button class="continue" onclick="goWhatsApp()">Davam et</button>
+        </div>
     </div>
+</div>
 
-  </div>
+<script>
+let selectedPackage = null;
+let selectedPrice = null;
 
+function selectPackage(element, pack, price){
 
-  <!-- MAIN -->
+    document.querySelectorAll('.package').forEach(item=>{
+        item.classList.remove('selected');
+    });
 
-  <main class="main">
+    element.classList.add('selected');
 
-    <header class="topbar">
+    selectedPackage = pack;
+    selectedPrice = price;
+}
 
-      <div class="balance">
-        Balans:
-        <strong>0.00 AZN</strong>
-      </div>
+function openConfirm(){
 
-    </header>
-
-
-    <section class="content">
-
-      <div class="title">
-
-        <h1>Yeni Sifariş</h1>
-
-        <p>
-          İstədiyiniz TikTok xidmətini seçin və sifariş yaradın.
-        </p>
-
-      </div>
-
-
-      <!-- SERVICES -->
-
-      <div class="services">
-
-
-        <!-- TAKIPCI -->
-
-        <div class="service"
-             onclick="selectService('Takipçi')">
-
-          <div class="icon purple">
-
-            <svg viewBox="0 0 24 24"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="2">
-
-              <circle cx="12" cy="8" r="3"></circle>
-
-              <path d="M5 20c1-4 3-6 7-6s6 2 7 6"></path>
-
-            </svg>
-
-          </div>
-
-          <h3>Takipçi</h3>
-
-          <p>TikTok profil izləyiciləri</p>
-
-        </div>
-
-
-        <!-- BEYENME -->
-
-        <div class="service"
-             onclick="selectService('Bəyənmə')">
-
-          <div class="icon pink">
-
-            <svg viewBox="0 0 24 24"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="2">
-
-              <path d="M20 8.5c0 5-8 10-8 10s-8-5-8-10A4.5 4.5 0 0112 6a4.5 4.5 0 018 2.5z"></path>
-
-            </svg>
-
-          </div>
-
-          <h3>Bəyənmə</h3>
-
-          <p>TikTok video bəyənmələri</p>
-
-        </div>
-
-
-        <!-- IZLENME -->
-
-        <div class="service"
-             onclick="selectService('Video izlənmə')">
-
-          <div class="icon blue">
-
-            <svg viewBox="0 0 24 24"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="2">
-
-              <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"></path>
-
-              <circle cx="12" cy="12" r="2.5"></circle>
-
-            </svg>
-
-          </div>
-
-          <h3>Video izlənmə</h3>
-
-          <p>TikTok video baxışları</p>
-
-        </div>
-
-
-        <!-- COMMENT -->
-
-        <div class="service"
-             onclick="selectService('Comment')">
-
-          <div class="icon green">
-
-            <svg viewBox="0 0 24 24"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="2">
-
-              <path d="M20 11.5a7.5 7.5 0 01-11.4 6.4L4 19l1.2-3.8A7.5 7.5 0 1120 11.5z"></path>
-
-              <path d="M8 11.5h.01M12 11.5h.01M16 11.5h.01"></path>
-
-            </svg>
-
-          </div>
-
-          <h3>Comment</h3>
-
-          <p>TikTok şərh xidmətləri</p>
-
-        </div>
-
-
-        <!-- KAYDETME -->
-
-        <div class="service"
-             onclick="selectService('Kaydetmə')">
-
-          <div class="icon orange">
-
-            <svg viewBox="0 0 24 24"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="2">
-
-              <path d="M6 4h12v17l-6-4-6 4V4z"></path>
-
-            </svg>
-
-          </div>
-
-          <h3>Kaydetmə</h3>
-
-          <p>TikTok video kaydetmələri</p>
-
-        </div>
-
-
-        <!-- PAYLASMA -->
-
-        <div class="service"
-             onclick="selectService('Paylaşma')">
-
-          <div class="icon purple">
-
-            <svg viewBox="0 0 24 24"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="2">
-
-              <path d="M15 5l5 5-5 5"></path>
-
-              <path d="M20 10H9a5 5 0 00-5 5v2"></path>
-
-            </svg>
-
-          </div>
-
-          <h3>Paylaşma</h3>
-
-          <p>TikTok video paylaşmaları</p>
-
-        </div>
-
-      </div>
-
-
-      <!-- ORDER FORM -->
-
-      <div class="order">
-
-        <h2>Sifariş yarat</h2>
-
-        <form id="orderForm">
-
-          <div class="form">
-
-
-            <div class="field">
-
-              <label>Xidmət</label>
-
-              <select id="service">
-
-                <option value="">
-                  Xidmət seçin
-                </option>
-
-                <option value="Takipçi">
-                  Takipçi
-                </option>
-
-                <option value="Bəyənmə">
-                  Bəyənmə
-                </option>
-
-                <option value="Video izlənmə">
-                  Video izlənmə
-                </option>
-
-                <option value="Comment">
-                  Comment
-                </option>
-
-                <option value="Kaydetmə">
-                  Kaydetmə
-                </option>
-
-                <option value="Paylaşma">
-                  Paylaşma
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <div class="field">
-
-              <label>Miqdar</label>
-
-              <select id="quantity">
-
-                <option value="1000">
-                  1 000
-                </option>
-
-                <option value="2500">
-                  2 500
-                </option>
-
-                <option value="5000">
-                  5 000
-                </option>
-
-                <option value="10000">
-                  10 000
-                </option>
-
-                <option value="25000">
-                  25 000
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <div class="field full">
-
-              <label>TikTok linki</label>
-
-              <input
-                id="link"
-                type="url"
-                placeholder="TikTok video və ya profil linkini yazın"
-                required
-              >
-
-            </div>
-
-
-            <div class="field full">
-
-              <div class="note">
-
-                Sifariş verməzdən əvvəl xidmət,
-                link və miqdarı yoxlayın.
-
-              </div>
-
-            </div>
-
-
-            <div class="field">
-
-              <label>Ümumi məbləğ</label>
-
-              <input
-                id="total"
-                type="text"
-                value="0.00 AZN"
-                readonly
-              >
-
-            </div>
-
-
-            <div class="field">
-
-              <label>&nbsp;</label>
-
-              <button type="submit">
-                Sifarişi göndər
-              </button>
-
-            </div>
-
-          </div>
-
-        </form>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <script>
-
-    /* XİDMƏT SEÇ */
-
-    function selectService(serviceName) {
-
-      const service =
-        document.getElementById("service");
-
-      service.value = serviceName;
-
-      document
-        .querySelector(".order")
-        .scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-
-      calculatePrice();
-    }
-
-
-    /* DEMO QİYMƏT HESABLAMA */
-
-    function calculatePrice() {
-
-      const service =
-        document.getElementById("service").value;
-
-      const quantity =
-        Number(document.getElementById("quantity").value);
-
-      const total =
-        document.getElementById("total");
-
-
-      if (!service) {
-
-        total.value = "0.00 AZN";
-
+    if(!selectedPackage){
         return;
-
-      }
-
-
-      /*
-        Bu hazırda yalnız DEMO qiymətidir.
-        Real qiymətləri daha sonra paneldə
-        xidmət/API sisteminə bağlayacağıq.
-      */
-
-      const prices = {
-
-        "Takipçi": 1.50,
-
-        "Bəyənmə": 1.00,
-
-        "Video izlənmə": 0.50,
-
-        "Comment": 2.00,
-
-        "Kaydetmə": 1.20,
-
-        "Paylaşma": 1.30
-
-      };
-
-
-      const basePrice =
-        prices[service] || 0;
-
-
-      const calculated =
-        (quantity / 1000) * basePrice;
-
-
-      total.value =
-        calculated.toFixed(2) + " AZN";
-
     }
 
+    document.getElementById("selectedText").innerHTML =
+        selectedPackage + " — " + selectedPrice;
 
-    /* SELECT DƏYİŞƏNDƏ */
+    document.getElementById("overlay").style.display = "flex";
+}
 
-    document
-      .getElementById("service")
-      .addEventListener(
-        "change",
-        calculatePrice
-      );
+function closeConfirm(){
+    document.getElementById("overlay").style.display = "none";
+}
 
+function goWhatsApp(){
 
-    document
-      .getElementById("quantity")
-      .addEventListener(
-        "change",
-        calculatePrice
-      );
+    const message =
+        "Salam, " +
+        selectedPackage +
+        " sifariş etmək istəyirəm. Qiymət: " +
+        selectedPrice;
 
+    const url =
+        "https://wa.me/994552334814?text=" +
+        encodeURIComponent(message);
 
-    /* SİFARİŞ */
+    window.location.href = url;
+}
 
-    document
-      .getElementById("orderForm")
-      .addEventListener(
-        "submit",
-        function(event) {
-
-          event.preventDefault();
-
-
-          const service =
-            document.getElementById("service").value;
-
-          const link =
-            document.getElementById("link").value;
-
-
-          if (!service) {
-
-            alert("Zəhmət olmasa xidmət seçin.");
-
-            return;
-
-          }
-
-
-          if (!link) {
-
-            alert("TikTok linkini daxil edin.");
-
-            return;
-
-          }
-
-
-          alert(
-            "Sifariş forması hazırdır.\n\n" +
-            "Xidmət: " + service +
-            "\n\nReal sifariş sistemi üçün backend/API bağlantısı lazımdır."
-          );
-
-        }
-      );
-
-  </script>
+document.getElementById("overlay").addEventListener("click",function(e){
+    if(e.target === this){
+        closeConfirm();
+    }
+});
+</script>
 
 </body>
 </html>
