@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b14">
   <title>Altap.Biz — SMM Panel</title>
 
   <style>
@@ -12,12 +13,26 @@
       padding: 0;
     }
 
+    :root {
+      --bg: #080b14;
+      --sidebar: #0d1220;
+      --card: #111827;
+      --card2: #101725;
+      --border: #252e40;
+      --text: #ffffff;
+      --muted: #7f899c;
+      --purple: #8b5cf6;
+      --purple-dark: #6d28d9;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #080b14;
-      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
     }
+
+    /* SIDEBAR */
 
     .sidebar {
       width: 250px;
@@ -25,9 +40,10 @@
       position: fixed;
       left: 0;
       top: 0;
-      background: #0d1220;
+      background: var(--sidebar);
       border-right: 1px solid #202638;
       padding: 25px 15px;
+      z-index: 100;
     }
 
     .logo {
@@ -35,38 +51,55 @@
       font-weight: 800;
       padding: 10px;
       margin-bottom: 30px;
+      letter-spacing: -0.5px;
     }
 
     .logo span {
-      color: #8b5cf6;
+      color: var(--purple);
     }
 
     .menu {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 7px;
     }
 
     .menu a {
       text-decoration: none;
       color: #9ba5b7;
-      padding: 14px;
+      padding: 13px 14px;
       border-radius: 10px;
       display: flex;
       align-items: center;
       gap: 12px;
       font-size: 14px;
+      transition: .2s;
+    }
+
+    .menu a svg {
+      width: 19px;
+      height: 19px;
+      flex-shrink: 0;
     }
 
     .menu a:hover,
     .menu a.active {
-      background: #7138d8;
+      background: linear-gradient(
+        90deg,
+        rgba(109, 40, 217, .9),
+        rgba(139, 92, 246, .8)
+      );
       color: white;
     }
 
+    /* MAIN */
+
     .main {
       margin-left: 250px;
+      min-height: 100vh;
     }
+
+    /* TOPBAR */
 
     .topbar {
       height: 75px;
@@ -86,6 +119,12 @@
       font-size: 14px;
     }
 
+    .balance strong {
+      color: #a78bfa;
+    }
+
+    /* CONTENT */
+
     .content {
       padding: 30px;
       max-width: 1400px;
@@ -101,9 +140,11 @@
     }
 
     .title p {
-      color: #7f899c;
+      color: var(--muted);
       font-size: 13px;
     }
+
+    /* SERVICES */
 
     .services {
       display: grid;
@@ -113,17 +154,31 @@
 
     .service {
       background: linear-gradient(145deg, #121a2a, #0d1421);
-      border: 1px solid #252e40;
+      border: 1px solid var(--border);
       border-radius: 15px;
       padding: 22px;
       min-height: 180px;
       cursor: pointer;
       transition: .2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      right: -45px;
+      bottom: -45px;
+      background: rgba(139, 92, 246, .08);
+      border-radius: 50%;
     }
 
     .service:hover {
       transform: translateY(-3px);
-      border-color: #8b5cf6;
+      border-color: var(--purple);
+      box-shadow: 0 12px 30px rgba(0,0,0,.2);
     }
 
     .icon {
@@ -138,8 +193,8 @@
     }
 
     .icon svg {
-      width: 26px;
-      height: 26px;
+      width: 25px;
+      height: 25px;
     }
 
     .purple {
@@ -168,14 +223,16 @@
     }
 
     .service p {
-      color: #7f899c;
+      color: var(--muted);
       font-size: 12px;
     }
 
+    /* ORDER */
+
     .order {
       margin-top: 20px;
-      background: #101725;
-      border: 1px solid #252e40;
+      background: var(--card2);
+      border: 1px solid var(--border);
       border-radius: 15px;
       padding: 22px;
     }
@@ -208,6 +265,7 @@
 
     input,
     select {
+      width: 100%;
       height: 47px;
       border-radius: 10px;
       border: 1px solid #293246;
@@ -215,21 +273,38 @@
       color: white;
       padding: 0 14px;
       outline: none;
+      font-size: 13px;
+    }
+
+    select {
+      cursor: pointer;
     }
 
     input:focus,
     select:focus {
-      border-color: #8b5cf6;
+      border-color: var(--purple);
+      box-shadow: 0 0 0 2px rgba(139,92,246,.08);
     }
 
     button {
+      width: 100%;
       height: 47px;
       border: none;
       border-radius: 10px;
-      background: linear-gradient(90deg, #6d28d9, #8b5cf6);
+      background: linear-gradient(
+        90deg,
+        var(--purple-dark),
+        var(--purple)
+      );
       color: white;
       font-weight: bold;
       cursor: pointer;
+      transition: .2s;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      opacity: .95;
     }
 
     .note {
@@ -242,13 +317,22 @@
       line-height: 1.5;
     }
 
-    @media(max-width: 900px) {
+    /* MOBILE HEADER */
+
+    .mobile-header {
+      display: none;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width: 1000px) {
+
       .sidebar {
-        width: 210px;
+        width: 215px;
       }
 
       .main {
-        margin-left: 210px;
+        margin-left: 215px;
       }
 
       .services {
@@ -256,7 +340,8 @@
       }
     }
 
-    @media(max-width: 650px) {
+    @media(max-width: 700px) {
+
       .sidebar {
         display: none;
       }
@@ -265,8 +350,32 @@
         margin-left: 0;
       }
 
+      .mobile-header {
+        display: flex;
+        height: 65px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 18px;
+        background: #0d1220;
+        border-bottom: 1px solid #202638;
+      }
+
+      .mobile-logo {
+        font-size: 20px;
+        font-weight: 800;
+      }
+
+      .mobile-logo span {
+        color: var(--purple);
+      }
+
       .content {
         padding: 18px;
+      }
+
+      .topbar {
+        height: 65px;
+        padding: 0 18px;
       }
 
       .services {
@@ -275,8 +384,16 @@
       }
 
       .service {
-        padding: 15px;
-        min-height: 150px;
+        padding: 16px;
+        min-height: 155px;
+      }
+
+      .service h3 {
+        font-size: 14px;
+      }
+
+      .service p {
+        font-size: 11px;
       }
 
       .form {
@@ -286,15 +403,39 @@
       .field.full {
         grid-column: auto;
       }
+    }
 
-      .topbar {
-        padding: 0 15px;
+    @media(max-width: 420px) {
+
+      .services {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .service {
+        min-height: 145px;
+        padding: 14px;
+      }
+
+      .icon {
+        width: 44px;
+        height: 44px;
+      }
+
+      .icon svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .title h1 {
+        font-size: 24px;
       }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- DESKTOP SIDEBAR -->
 
   <aside class="sidebar">
 
@@ -305,33 +446,90 @@
     <nav class="menu">
 
       <a href="#" class="active">
-        🛒
+
+        <svg viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2">
+          <path d="M3 4h18v4H3z"></path>
+          <path d="M5 8v12h14V8"></path>
+          <path d="M9 12h6"></path>
+        </svg>
+
         Yeni Sifariş
+
       </a>
 
       <a href="#">
-        📋
+
+        <svg viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2">
+          <path d="M6 3h12v18H6z"></path>
+          <path d="M9 7h6"></path>
+          <path d="M9 11h6"></path>
+          <path d="M9 15h4"></path>
+        </svg>
+
         Sifarişlərim
+
       </a>
 
       <a href="#">
-        💳
+
+        <svg viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2">
+          <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+          <path d="M3 10h18"></path>
+          <path d="M7 15h4"></path>
+        </svg>
+
         Balans Artır
+
       </a>
 
       <a href="#">
-        🕘
+
+        <svg viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M12 7v5l3 2"></path>
+        </svg>
+
         Tarixçə
+
       </a>
 
       <a href="#">
-        🎧
+
+        <svg viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2">
+          <path d="M20 11.5a7.5 7.5 0 01-11.4 6.4L4 19l1.2-3.8A7.5 7.5 0 1120 11.5z"></path>
+        </svg>
+
         Dəstək
+
       </a>
 
       <a href="#">
-        ⚙️
+
+        <svg viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1-1.8 1.8-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V20h-2.6v-.1a1.7 1.7 0 00-1-1.5 1.7 1.7 0 00-1.9.3l-.1.1-1.8-1.8.1-.1A1.7 1.7 0 008 15a1.7 1.7 0 00-1.5-1H6v-2.6h.5A1.7 1.7 0 008 10a1.7 1.7 0 00-.3-1.9l-.1-.1 1.8-1.8.1.1a1.7 1.7 0 001.9.3 1.7 1.7 0 001-1.5V5H15v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1 1.8 1.8-.1.1a1.7 1.7 0 00-.3 1.9 1.7 1.7 0 001.5 1h.1V14h-.1a1.7 1.7 0 00-1.5 1z"></path>
+        </svg>
+
         Ayarlar
+
       </a>
 
     </nav>
@@ -339,12 +537,30 @@
   </aside>
 
 
+  <!-- MOBILE HEADER -->
+
+  <div class="mobile-header">
+
+    <div class="mobile-logo">
+      ALTAP.<span>BİZ</span>
+    </div>
+
+    <div class="balance">
+      <strong>0.00 AZN</strong>
+    </div>
+
+  </div>
+
+
+  <!-- MAIN -->
+
   <main class="main">
 
     <header class="topbar">
 
       <div class="balance">
-        Balans: <strong>0.00 AZN</strong>
+        Balans:
+        <strong>0.00 AZN</strong>
       </div>
 
     </header>
@@ -353,16 +569,25 @@
     <section class="content">
 
       <div class="title">
+
         <h1>Yeni Sifariş</h1>
-        <p>İstədiyiniz TikTok xidmətini seçin və sifariş yaradın.</p>
+
+        <p>
+          İstədiyiniz TikTok xidmətini seçin və sifariş yaradın.
+        </p>
+
       </div>
 
 
+      <!-- SERVICES -->
+
       <div class="services">
+
 
         <!-- TAKIPCI -->
 
-        <div class="service" onclick="selectService('Takipçi')">
+        <div class="service"
+             onclick="selectService('Takipçi')">
 
           <div class="icon purple">
 
@@ -381,14 +606,15 @@
 
           <h3>Takipçi</h3>
 
-          <p>TikTok profil takipçiləri</p>
+          <p>TikTok profil izləyiciləri</p>
 
         </div>
 
 
         <!-- BEYENME -->
 
-        <div class="service" onclick="selectService('Bəyənmə')">
+        <div class="service"
+             onclick="selectService('Bəyənmə')">
 
           <div class="icon pink">
 
@@ -412,7 +638,8 @@
 
         <!-- IZLENME -->
 
-        <div class="service" onclick="selectService('Video izlənmə')">
+        <div class="service"
+             onclick="selectService('Video izlənmə')">
 
           <div class="icon blue">
 
@@ -438,7 +665,8 @@
 
         <!-- COMMENT -->
 
-        <div class="service" onclick="selectService('Comment')">
+        <div class="service"
+             onclick="selectService('Comment')">
 
           <div class="icon green">
 
@@ -464,7 +692,8 @@
 
         <!-- KAYDETME -->
 
-        <div class="service" onclick="selectService('Kaydetmə')">
+        <div class="service"
+             onclick="selectService('Kaydetmə')">
 
           <div class="icon orange">
 
@@ -488,7 +717,8 @@
 
         <!-- PAYLASMA -->
 
-        <div class="service" onclick="selectService('Paylaşma')">
+        <div class="service"
+             onclick="selectService('Paylaşma')">
 
           <div class="icon purple">
 
@@ -524,20 +754,40 @@
 
           <div class="form">
 
+
             <div class="field">
 
               <label>Xidmət</label>
 
               <select id="service">
 
-                <option value="">Xidmət seçin</option>
+                <option value="">
+                  Xidmət seçin
+                </option>
 
-                <option>Takipçi</option>
-                <option>Bəyənmə</option>
-                <option>Video izlənmə</option>
-                <option>Comment</option>
-                <option>Kaydetmə</option>
-                <option>Paylaşma</option>
+                <option value="Takipçi">
+                  Takipçi
+                </option>
+
+                <option value="Bəyənmə">
+                  Bəyənmə
+                </option>
+
+                <option value="Video izlənmə">
+                  Video izlənmə
+                </option>
+
+                <option value="Comment">
+                  Comment
+                </option>
+
+                <option value="Kaydetmə">
+                  Kaydetmə
+                </option>
+
+                <option value="Paylaşma">
+                  Paylaşma
+                </option>
 
               </select>
 
@@ -548,13 +798,27 @@
 
               <label>Miqdar</label>
 
-              <select>
+              <select id="quantity">
 
-                <option>1 000</option>
-                <option>2 500</option>
-                <option>5 000</option>
-                <option>10 000</option>
-                <option>25 000</option>
+                <option value="1000">
+                  1 000
+                </option>
+
+                <option value="2500">
+                  2 500
+                </option>
+
+                <option value="5000">
+                  5 000
+                </option>
+
+                <option value="10000">
+                  10 000
+                </option>
+
+                <option value="25000">
+                  25 000
+                </option>
 
               </select>
 
@@ -566,6 +830,7 @@
               <label>TikTok linki</label>
 
               <input
+                id="link"
                 type="url"
                 placeholder="TikTok video və ya profil linkini yazın"
                 required
@@ -591,6 +856,7 @@
               <label>Ümumi məbləğ</label>
 
               <input
+                id="total"
                 type="text"
                 value="0.00 AZN"
                 readonly
@@ -622,30 +888,148 @@
 
   <script>
 
+    /* XİDMƏT SEÇ */
+
     function selectService(serviceName) {
 
-      document.getElementById("service").value = serviceName;
+      const service =
+        document.getElementById("service");
+
+      service.value = serviceName;
 
       document
         .querySelector(".order")
         .scrollIntoView({
-          behavior: "smooth"
+          behavior: "smooth",
+          block: "start"
         });
+
+      calculatePrice();
+    }
+
+
+    /* DEMO QİYMƏT HESABLAMA */
+
+    function calculatePrice() {
+
+      const service =
+        document.getElementById("service").value;
+
+      const quantity =
+        Number(document.getElementById("quantity").value);
+
+      const total =
+        document.getElementById("total");
+
+
+      if (!service) {
+
+        total.value = "0.00 AZN";
+
+        return;
+
+      }
+
+
+      /*
+        Bu hazırda yalnız DEMO qiymətidir.
+        Real qiymətləri daha sonra paneldə
+        xidmət/API sisteminə bağlayacağıq.
+      */
+
+      const prices = {
+
+        "Takipçi": 1.50,
+
+        "Bəyənmə": 1.00,
+
+        "Video izlənmə": 0.50,
+
+        "Comment": 2.00,
+
+        "Kaydetmə": 1.20,
+
+        "Paylaşma": 1.30
+
+      };
+
+
+      const basePrice =
+        prices[service] || 0;
+
+
+      const calculated =
+        (quantity / 1000) * basePrice;
+
+
+      total.value =
+        calculated.toFixed(2) + " AZN";
 
     }
 
 
+    /* SELECT DƏYİŞƏNDƏ */
+
+    document
+      .getElementById("service")
+      .addEventListener(
+        "change",
+        calculatePrice
+      );
+
+
+    document
+      .getElementById("quantity")
+      .addEventListener(
+        "change",
+        calculatePrice
+      );
+
+
+    /* SİFARİŞ */
+
     document
       .getElementById("orderForm")
-      .addEventListener("submit", function(event) {
+      .addEventListener(
+        "submit",
+        function(event) {
 
-        event.preventDefault();
+          event.preventDefault();
 
-        alert(
-          "Panel dizaynı hazırdır. Real sifariş sistemi üçün backend/API bağlantısı lazımdır."
-        );
 
-      });
+          const service =
+            document.getElementById("service").value;
+
+          const link =
+            document.getElementById("link").value;
+
+
+          if (!service) {
+
+            alert("Zəhmət olmasa xidmət seçin.");
+
+            return;
+
+          }
+
+
+          if (!link) {
+
+            alert("TikTok linkini daxil edin.");
+
+            return;
+
+          }
+
+
+          alert(
+            "Sifariş forması hazırdır.\n\n" +
+            "Xidmət: " + service +
+            "\n\nReal sifariş sistemi üçün backend/API bağlantısı lazımdır."
+          );
+
+        }
+      );
 
   </script>
 
