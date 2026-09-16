@@ -3,1751 +3,341 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#05000d">
-
-<title>iPhoneCert — Premium Store</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<title>Altap.Biz</title>
 
 <style>
-
-/* =========================
-   GLOBAL
-========================= */
-
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-:root{
-    --bg:#040006;
-    --bg2:#09000f;
-    --card:#0c0713;
-    --card2:#11091b;
-
-    --white:#ffffff;
-    --text:#f7f2ff;
-    --muted:#9f94aa;
-
-    --purple:#a855f7;
-    --pink:#ec4899;
-    --cyan:#00f5ff;
-    --green:#25f58a;
-
-    --border:rgba(255,255,255,.10);
+    font-family:Arial,sans-serif;
 }
 
 body{
-    font-family:'Inter',sans-serif;
-    color:var(--text);
-    background:
-        radial-gradient(circle at 15% 10%,rgba(168,85,247,.20),transparent 25%),
-        radial-gradient(circle at 85% 15%,rgba(0,245,255,.12),transparent 25%),
-        radial-gradient(circle at 50% 90%,rgba(236,72,153,.10),transparent 30%),
-        var(--bg);
-    min-height:100vh;
-    overflow-x:hidden;
+    background:#080808;
+    color:white;
 }
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    background-image:
-        linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
-    background-size:45px 45px;
-    mask-image:linear-gradient(to bottom,black,transparent);
-    z-index:-1;
-}
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-.container{
-    width:min(1150px,92%);
-    margin:auto;
-}
-
-/* =========================
-   HEADER
-========================= */
 
 header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-
-    background:rgba(4,0,6,.72);
-    backdrop-filter:blur(22px);
-
-    border-bottom:1px solid rgba(168,85,247,.16);
-}
-
-.nav{
-    min-height:76px;
-
+    padding:18px;
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #222;
 }
 
 .logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    font-size:20px;
-    font-weight:900;
-    letter-spacing:-.7px;
+    font-size:28px;
+    font-weight:bold;
 }
 
-.logo-icon{
-    width:44px;
-    height:44px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:14px;
-
-    background:linear-gradient(
-        135deg,
-        var(--purple),
-        var(--pink),
-        var(--cyan)
-    );
-
-    color:#fff;
-
-    box-shadow:
-        0 0 12px rgba(168,85,247,.8),
-        0 0 35px rgba(236,72,153,.25);
+.add{
+    background:#00ff88;
+    color:#000;
+    border:0;
+    padding:11px 16px;
+    border-radius:12px;
+    font-weight:bold;
 }
 
-.logo-icon i{
-    font-size:21px;
+.container{
+    padding:20px;
+    max-width:700px;
+    margin:auto;
 }
-
-.logo-text{
-    color:#fff;
-}
-
-.logo-text span{
-    color:var(--cyan);
-    text-shadow:
-        0 0 8px rgba(0,245,255,.8),
-        0 0 25px rgba(0,245,255,.35);
-}
-
-.header-whatsapp{
-    display:flex;
-    align-items:center;
-    gap:9px;
-
-    padding:11px 17px;
-
-    border:1px solid rgba(37,245,138,.35);
-    border-radius:13px;
-
-    background:rgba(37,245,138,.06);
-
-    color:#8affbd;
-
-    font-size:13px;
-    font-weight:800;
-
-    transition:.25s;
-}
-
-.header-whatsapp:hover{
-    transform:translateY(-2px);
-
-    box-shadow:
-        0 0 15px rgba(37,245,138,.35),
-        inset 0 0 15px rgba(37,245,138,.04);
-}
-
-/* =========================
-   HERO
-========================= */
 
 .hero{
-    padding:95px 0 70px;
     text-align:center;
-}
-
-.neon-badge{
-    display:inline-flex;
-    align-items:center;
-    gap:9px;
-
-    padding:9px 15px;
-
-    border:1px solid rgba(0,245,255,.35);
-    border-radius:100px;
-
-    background:rgba(0,245,255,.045);
-
-    color:#78fbff;
-
-    font-size:12px;
-    font-weight:800;
-
-    box-shadow:
-        0 0 12px rgba(0,245,255,.10),
-        inset 0 0 12px rgba(0,245,255,.03);
-
-    margin-bottom:25px;
-}
-
-.neon-dot{
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:var(--green);
-
-    box-shadow:
-        0 0 7px var(--green),
-        0 0 17px var(--green);
+    padding:35px 10px;
 }
 
 .hero h1{
-    max-width:850px;
-    margin:auto;
-
-    font-size:clamp(40px,7vw,76px);
-
-    line-height:1.02;
-
-    letter-spacing:-4px;
-}
-
-.neon-text{
-    background:
-        linear-gradient(
-            90deg,
-            #fff,
-            var(--cyan),
-            #fff,
-            var(--pink),
-            var(--purple)
-        );
-
-    background-size:250% auto;
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    color:transparent;
-
-    animation:neonGradient 5s linear infinite;
-}
-
-@keyframes neonGradient{
-    0%{
-        background-position:0% center;
-    }
-    100%{
-        background-position:250% center;
-    }
+    font-size:35px;
+    margin-bottom:10px;
 }
 
 .hero p{
-    max-width:680px;
-
-    margin:24px auto 32px;
-
-    color:var(--muted);
-
-    line-height:1.75;
-
-    font-size:14px;
+    color:#aaa;
 }
 
-.hero-buttons{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:12px;
-    flex-wrap:wrap;
-}
-
-.btn-primary,
-.btn-secondary{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-
-    min-height:49px;
-
-    padding:0 22px;
-
+.search{
+    width:100%;
+    padding:16px;
+    margin:20px 0;
+    background:#151515;
+    border:1px solid #292929;
     border-radius:14px;
-
-    font-size:13px;
-    font-weight:800;
-
-    transition:.25s;
-}
-
-.btn-primary{
-    color:#fff;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--purple),
-            var(--pink)
-        );
-
-    border:1px solid rgba(255,255,255,.12);
-
-    box-shadow:
-        0 0 14px rgba(168,85,247,.45),
-        0 0 35px rgba(236,72,153,.18);
-}
-
-.btn-secondary{
-    border:1px solid rgba(0,245,255,.28);
-    background:rgba(0,245,255,.035);
-    color:#9dfcff;
-
-    box-shadow:
-        inset 0 0 15px rgba(0,245,255,.025);
-}
-
-.btn-primary:hover,
-.btn-secondary:hover{
-    transform:translateY(-3px);
-}
-
-/* =========================
-   FEATURES
-========================= */
-
-.features{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-
-    margin-bottom:80px;
-}
-
-.feature{
-    position:relative;
-    overflow:hidden;
-
-    padding:24px;
-
-    border-radius:21px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.045),
-            rgba(255,255,255,.015)
-        );
-
-    border:1px solid var(--border);
-
-    transition:.3s;
-}
-
-.feature::after{
-    content:"";
-    position:absolute;
-
-    width:100px;
-    height:100px;
-
-    right:-50px;
-    top:-50px;
-
-    border-radius:50%;
-
-    background:var(--purple);
-
-    filter:blur(50px);
-
-    opacity:.15;
-}
-
-.feature:hover{
-    transform:translateY(-4px);
-
-    border-color:rgba(168,85,247,.35);
-
-    box-shadow:
-        0 0 25px rgba(168,85,247,.08);
-}
-
-.feature-icon{
-    width:45px;
-    height:45px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:14px;
-
-    color:var(--cyan);
-
-    background:rgba(0,245,255,.055);
-
-    border:1px solid rgba(0,245,255,.18);
-
-    box-shadow:
-        0 0 13px rgba(0,245,255,.10);
-
-    margin-bottom:16px;
-}
-
-.feature h3{
-    font-size:15px;
-    margin-bottom:8px;
-}
-
-.feature p{
-    color:var(--muted);
-    font-size:12px;
-    line-height:1.7;
-}
-
-/* =========================
-   SECTION
-========================= */
-
-.section-title{
-    text-align:center;
-    margin-bottom:35px;
-}
-
-.section-title h2{
-    font-size:30px;
-    font-weight:900;
-    letter-spacing:-1.5px;
-}
-
-.section-title p{
-    margin-top:9px;
-    color:var(--muted);
-    font-size:13px;
-}
-
-/* =========================
-   PRODUCTS
-========================= */
-
-.products{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:16px;
-}
-
-.product{
-    position:relative;
-    overflow:hidden;
-
-    min-height:285px;
-
-    padding:23px;
-
-    border-radius:23px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(19,10,28,.95),
-            rgba(8,5,12,.98)
-        );
-
-    border:1px solid rgba(255,255,255,.08);
-
-    transition:.35s;
-}
-
-.product::before{
-    content:"";
-
-    position:absolute;
-
-    width:150px;
-    height:150px;
-
-    left:-90px;
-    bottom:-90px;
-
-    border-radius:50%;
-
-    background:var(--purple);
-
-    filter:blur(60px);
-
-    opacity:.18;
-
-    transition:.35s;
-}
-
-.product:hover{
-    transform:translateY(-7px);
-
-    border-color:rgba(168,85,247,.45);
-
-    box-shadow:
-        0 0 15px rgba(168,85,247,.12),
-        0 18px 55px rgba(0,0,0,.35);
-}
-
-.product:hover::before{
-    opacity:.35;
-}
-
-.product-icon{
-    position:relative;
-
-    width:57px;
-    height:57px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:17px;
-
-    font-size:25px;
-
-    color:#fff;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(168,85,247,.22),
-            rgba(0,245,255,.08)
-        );
-
-    border:1px solid rgba(168,85,247,.25);
-
-    box-shadow:
-        0 0 18px rgba(168,85,247,.14);
-
-    margin-bottom:25px;
-}
-
-.product h3{
-    position:relative;
-
+    color:white;
     font-size:16px;
+}
 
+.categories{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    margin-bottom:20px;
+}
+
+.categories button{
+    white-space:nowrap;
+    padding:11px 15px;
+    border-radius:12px;
+    border:1px solid #333;
+    background:#151515;
+    color:white;
+}
+
+.categories button.active{
+    background:#00ff88;
+    color:#000;
+}
+
+.card{
+    background:#111;
+    border:1px solid #252525;
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:12px;
+}
+
+.card h3{
     margin-bottom:8px;
 }
 
-.product-description{
-    position:relative;
-
-    color:var(--muted);
-
-    font-size:12px;
-
-    line-height:1.65;
-
-    min-height:40px;
-
-    margin-bottom:19px;
-}
-
-.product-bottom{
-    position:relative;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+.card p{
+    color:#aaa;
+    margin-bottom:10px;
 }
 
 .price{
-    display:flex;
-    flex-direction:column;
-    gap:2px;
+    color:#00ff88;
+    font-size:19px;
+    font-weight:bold;
 }
 
-.price small{
-    color:#82768d;
-    font-size:10px;
+.card button{
+    margin-top:12px;
+    width:100%;
+    padding:12px;
+    border:0;
+    border-radius:10px;
+    background:#222;
+    color:white;
 }
 
-.price strong{
-    color:#fff;
-    font-size:18px;
-
-    text-shadow:
-        0 0 8px rgba(255,255,255,.18);
-}
-
-.buy-btn{
-    width:40px;
-    height:40px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:13px;
-
-    color:#fff;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--purple),
-            var(--pink)
-        );
-
-    box-shadow:
-        0 0 12px rgba(168,85,247,.35);
-
-    transition:.25s;
-}
-
-.buy-btn:hover{
-    transform:scale(1.08);
-
-    box-shadow:
-        0 0 15px rgba(168,85,247,.7),
-        0 0 35px rgba(236,72,153,.25);
-}
-
-/* =========================
-   INFO
-========================= */
-
-.info{
-    margin:85px auto;
-
-    padding:38px;
-
-    border-radius:27px;
-
-    background:
-        radial-gradient(
-            circle at 85% 15%,
-            rgba(0,245,255,.08),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 10% 90%,
-            rgba(168,85,247,.10),
-            transparent 30%
-        ),
-        rgba(255,255,255,.025);
-
-    border:1px solid var(--border);
-
-    box-shadow:
-        inset 0 0 30px rgba(168,85,247,.02);
-}
-
-.info-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:45px;
-}
-
-.info h2{
-    font-size:27px;
-    margin-bottom:15px;
-}
-
-.info h2 i{
-    color:var(--cyan);
-
-    text-shadow:
-        0 0 12px var(--cyan);
-}
-
-.info-text{
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.8;
-}
-
-.steps{
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-}
-
-.step{
-    display:flex;
-    align-items:center;
-    gap:13px;
-}
-
-.step-number{
-    width:40px;
-    height:40px;
-
-    flex-shrink:0;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:13px;
-
-    color:#a8fcff;
-
-    background:rgba(0,245,255,.045);
-
-    border:1px solid rgba(0,245,255,.18);
-
-    box-shadow:
-        0 0 12px rgba(0,245,255,.07);
-
-    font-size:12px;
-    font-weight:900;
-}
-
-.step span{
-    font-size:13px;
-    font-weight:600;
-}
-
-/* =========================
-   FAQ
-========================= */
-
-.faq{
-    max-width:760px;
-
-    margin:0 auto 85px;
-}
-
-details{
-    background:rgba(255,255,255,.025);
-
-    border:1px solid var(--border);
-
-    border-radius:16px;
-
-    padding:18px;
-
-    margin-bottom:10px;
-
-    transition:.25s;
-}
-
-details:hover{
-    border-color:rgba(168,85,247,.25);
-}
-
-summary{
-    display:flex;
-    align-items:center;
-    gap:11px;
-
-    cursor:pointer;
-
-    list-style:none;
-
-    font-size:13px;
-    font-weight:700;
-}
-
-summary::-webkit-details-marker{
-    display:none;
-}
-
-summary i{
-    color:var(--cyan);
-
-    text-shadow:
-        0 0 8px rgba(0,245,255,.45);
-}
-
-details p{
-    padding:14px 0 2px 27px;
-
-    color:var(--muted);
-
-    font-size:12px;
-    line-height:1.75;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    padding:35px 0;
-
-    border-top:1px solid rgba(255,255,255,.07);
-
-    color:var(--muted);
-
-    font-size:11px;
-}
-
-.footer-content{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-}
-
-.footer-brand{
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
-
-.footer-brand i{
-    color:var(--cyan);
-
-    text-shadow:
-        0 0 8px var(--cyan);
-}
-
-.social{
-    display:flex;
-    gap:9px;
-}
-
-.social a{
-    width:38px;
-    height:38px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:12px;
-
-    border:1px solid var(--border);
-
-    background:rgba(255,255,255,.035);
-
-    transition:.25s;
-}
-
-.social a:hover{
-    color:var(--cyan);
-
-    border-color:rgba(0,245,255,.35);
-
-    box-shadow:
-        0 0 15px rgba(0,245,255,.12);
-}
-
-/* =========================
-   FLOATING WHATSAPP
-========================= */
-
-.whatsapp{
+nav{
     position:fixed;
-
-    right:20px;
-    bottom:20px;
-
-    z-index:2000;
-
-    width:60px;
-    height:60px;
-
+    bottom:0;
+    left:0;
+    right:0;
+    background:#101010;
+    border-top:1px solid #252525;
     display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:20px;
-
-    color:#fff;
-
-    background:#20dc70;
-
-    font-size:27px;
-
-    border:2px solid rgba(255,255,255,.12);
-
-    box-shadow:
-        0 0 12px rgba(37,245,138,.7),
-        0 0 35px rgba(37,245,138,.3);
-
-    animation:pulse 2s infinite;
+    justify-content:space-around;
+    padding:13px 5px;
 }
 
-@keyframes pulse{
-    0%,100%{
-        box-shadow:
-            0 0 12px rgba(37,245,138,.7),
-            0 0 35px rgba(37,245,138,.25);
-    }
-
-    50%{
-        box-shadow:
-            0 0 18px rgba(37,245,138,.9),
-            0 0 50px rgba(37,245,138,.4);
-    }
+nav button{
+    background:none;
+    border:0;
+    color:#aaa;
 }
 
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:950px){
-
-    .products{
-        grid-template-columns:repeat(2,1fr);
-    }
-
+nav button:first-child{
+    color:#00ff88;
 }
 
-@media(max-width:700px){
-
-    .hero{
-        padding:65px 0 50px;
-    }
-
-    .hero h1{
-        letter-spacing:-2.5px;
-    }
-
-    .features{
-        grid-template-columns:1fr;
-    }
-
-    .products{
-        grid-template-columns:1fr;
-    }
-
-    .info{
-        padding:25px;
-    }
-
-    .info-grid{
-        grid-template-columns:1fr;
-        gap:30px;
-    }
-
-    .footer-content{
-        flex-direction:column;
-        text-align:center;
-    }
-
+.space{
+    height:75px;
 }
-
-@media(max-width:450px){
-
-    .nav{
-        min-height:68px;
-    }
-
-    .logo{
-        font-size:17px;
-    }
-
-    .logo-icon{
-        width:40px;
-        height:40px;
-    }
-
-    .header-whatsapp{
-        padding:10px 12px;
-    }
-
-    .header-whatsapp span{
-        display:none;
-    }
-
-    .hero h1{
-        font-size:42px;
-    }
-
-    .hero p{
-        font-size:13px;
-    }
-
-    .btn-primary,
-    .btn-secondary{
-        width:100%;
-    }
-
-    .whatsapp{
-        width:56px;
-        height:56px;
-
-        right:16px;
-        bottom:16px;
-    }
-
-}
-
 </style>
 </head>
 
-
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
-
-<div class="container nav">
-
-    <a href="#" class="logo">
-
-        <div class="logo-icon">
-            <i class="fa-brands fa-apple"></i>
-        </div>
-
-        <div class="logo-text">
-            iPhone<span>Cert</span>
-        </div>
-
-    </a>
-
-
-    <a
-        class="header-whatsapp"
-        href="https://wa.me/994556145657"
-        target="_blank"
-    >
-
-        <i class="fa-brands fa-whatsapp"></i>
-
-        <span>WhatsApp</span>
-
-    </a>
-
-</div>
-
+    <div class="logo">Altap</div>
+    <button class="add" onclick="addListing()">+ Elan ver</button>
 </header>
-
-
-<!-- =========================
-     HERO
-========================= -->
-
-<main>
-
-<section class="hero">
 
 <div class="container">
 
-    <div class="neon-badge">
-
-        <span class="neon-dot"></span>
-
-        PREMIUM IPHONE SERVICES
-
-    </div>
-
-
-    <h1>
-
-        iPhone üçün
-
-        <span class="neon-text">
-            Premium
-        </span>
-
-        xidmətlər
-
-    </h1>
-
-
-    <p>
-
-        iPhone istifadəçiləri üçün premium rəqəmsal xidmətlər.
-        Xidmətinizi seçin və sifariş üçün WhatsApp üzərindən bizimlə əlaqə saxlayın.
-
-    </p>
-
-
-    <div class="hero-buttons">
-
-        <a
-            href="#products"
-            class="btn-primary"
-        >
-
-            <i class="fa-solid fa-bolt"></i>
-
-            Xidmətlərə bax
-
-        </a>
-
-
-        <a
-            href="https://wa.me/994556145657"
-            target="_blank"
-            class="btn-secondary"
-        >
-
-            <i class="fa-brands fa-whatsapp"></i>
-
-            Sifariş et
-
-        </a>
-
-    </div>
-
-</div>
-
+<section class="hero">
+    <h1>ALTAP</h1>
+    <p>Ağstafa • Qazax • Tovuz</p>
+    <p style="margin-top:8px;">Yerli elanlar bir yerdə.</p>
 </section>
 
-
-<!-- =========================
-     FEATURES
-========================= -->
-
-<section class="container features">
-
-
-<div class="feature">
-
-    <div class="feature-icon">
-        <i class="fa-solid fa-bolt"></i>
-    </div>
-
-    <h3>
-        Sürətli xidmət
-    </h3>
-
-    <p>
-        Sifarişlərin rahat və operativ şəkildə qəbul edilməsi üçün sadə sistem.
-    </p>
-
-</div>
-
-
-<div class="feature">
-
-    <div class="feature-icon">
-        <i class="fa-solid fa-shield-halved"></i>
-    </div>
-
-    <h3>
-        Təhlükəsiz proses
-    </h3>
-
-    <p>
-        Sifariş prosesi mümkün qədər sadə və təhlükəsiz şəkildə təşkil olunub.
-    </p>
-
-</div>
-
-
-<div class="feature">
-
-    <div class="feature-icon">
-        <i class="fa-solid fa-headset"></i>
-    </div>
-
-    <h3>
-        WhatsApp dəstəyi
-    </h3>
-
-    <p>
-        Suallarınız üçün birbaşa WhatsApp üzərindən bizimlə əlaqə saxlaya bilərsiniz.
-    </p>
-
-</div>
-
-
-</section>
-
-
-<!-- =========================
-     PRODUCTS
-========================= -->
-
-<section
-    id="products"
-    class="container"
+<input
+    class="search"
+    id="search"
+    type="text"
+    placeholder="🔍 Nə axtarırsınız?"
+    oninput="searchListings()"
 >
 
-<div class="section-title">
+<div class="categories">
+    <button class="active" onclick="filter('Hamısı',this)">Hamısı</button>
+    <button onclick="filter('Satış',this)">Satış</button>
+    <button onclick="filter('Xidmət',this)">Xidmət</button>
+    <button onclick="filter('İş',this)">İş</button>
+    <button onclick="filter('Xəbər',this)">Xəbər</button>
+</div>
 
-    <h2>
-        Premium xidmətlər
-    </h2>
+<div id="listings"></div>
 
-    <p>
-        Xidmətinizi seçin və sifariş üçün WhatsApp-a keçin.
-    </p>
+<div class="space"></div>
 
 </div>
 
+<nav>
+    <button onclick="location.reload()">⌂<br>Ana səhifə</button>
+    <button onclick="filter('Hamısı',null)">▣<br>Elanlar</button>
+    <button onclick="addListing()">＋<br>Elan ver</button>
+    <button>♡<br>Seçilmiş</button>
+    <button>♙<br>Profil</button>
+</nav>
 
-<div class="products">
+<script>
 
+const listings = [
 
-<!-- WHATSAPP -->
+{
+title:"iPhone 15 Pro",
+category:"Satış",
+price:"1 450 ₼",
+text:"Təmiz vəziyyətdə iPhone 15 Pro."
+},
 
-<div class="product">
+{
+title:"Avtomobil satılır",
+category:"Satış",
+price:"12 500 ₼",
+text:"Ətraflı məlumat üçün əlaqə saxlayın."
+},
 
-    <div class="product-icon">
-        <i class="fa-brands fa-whatsapp"></i>
-    </div>
+{
+title:"Telefon təmiri",
+category:"Xidmət",
+price:"Razılaşma ilə",
+text:"iPhone və Android telefonların təmiri."
+},
 
-    <h3>
-        WhatsApp Plus
-    </h3>
+{
+title:"İş elanı",
+category:"İş",
+price:"Ətraflı məlumat",
+text:"Ağstafada işçi tələb olunur."
+},
 
-    <p class="product-description">
-        WhatsApp üçün premium xidmət.
-    </p>
+{
+title:"Bölgə xəbərləri",
+category:"Xəbər",
+price:"Xəbərə bax",
+text:"Ağstafa, Qazax və Tovuzdan son xəbərlər."
+},
 
-    <div class="product-bottom">
+{
+title:"Çatdırılma xidməti",
+category:"Xidmət",
+price:"Razılaşma ilə",
+text:"Bölgə daxilində çatdırılma xidməti."
+}
 
-        <div class="price">
-            <small>Qiymət</small>
-            <strong>10.99₼</strong>
-        </div>
+];
 
-        <a
-            class="buy-btn"
-            href="https://wa.me/994556145657?text=Salam%2C%20WhatsApp%20Plus%20sifari%C5%9Fi%20verm%C9%99k%20ist%C9%99yir%C9%99m."
-            target="_blank"
-        >
-            <i class="fa-solid fa-arrow-right"></i>
-        </a>
+function showListings(data=listings){
 
-    </div>
+const box=document.getElementById("listings");
 
-</div>
+box.innerHTML="";
 
+data.forEach(item=>{
 
-<!-- INSTAGRAM -->
+box.innerHTML+=`
 
-<div class="product">
+<div class="card">
 
-    <div class="product-icon">
-        <i class="fa-brands fa-instagram"></i>
-    </div>
+<h3>${item.title}</h3>
 
-    <h3>
-        Instagram Plus
-    </h3>
+<p>${item.text}</p>
 
-    <p class="product-description">
-        Instagram üçün premium xidmət.
-    </p>
+<div class="price">${item.price}</div>
 
-    <div class="product-bottom">
-
-        <div class="price">
-            <small>Qiymət</small>
-            <strong>4.72₼</strong>
-        </div>
-
-        <a
-            class="buy-btn"
-            href="https://wa.me/994556145657?text=Salam%2C%20Instagram%20Plus%20sifari%C5%9Fi%20verm%C9%99k%20ist%C9%99yir%C9%99m."
-            target="_blank"
-        >
-            <i class="fa-solid fa-arrow-right"></i>
-        </a>
-
-    </div>
-
-</div>
-
-
-<!-- TIKTOK -->
-
-<div class="product">
-
-    <div class="product-icon">
-        <i class="fa-brands fa-tiktok"></i>
-    </div>
-
-    <h3>
-        TikTok Plus
-    </h3>
-
-    <p class="product-description">
-        TikTok üçün premium xidmət.
-    </p>
-
-    <div class="product-bottom">
-
-        <div class="price">
-            <small>Qiymət</small>
-            <strong>2.99₼</strong>
-        </div>
-
-        <a
-            class="buy-btn"
-            href="https://wa.me/994556145657?text=Salam%2C%20TikTok%20Plus%20sifari%C5%9Fi%20verm%C9%99k%20ist%C9%99yir%C9%99m."
-            target="_blank"
-        >
-            <i class="fa-solid fa-arrow-right"></i>
-        </a>
-
-    </div>
+<button onclick="contact('${item.title}')">
+Əlaqə saxla
+</button>
 
 </div>
 
+`;
 
-<!-- FACEBOOK -->
+});
 
-<div class="product">
+}
 
-    <div class="product-icon">
-        <i class="fa-brands fa-facebook"></i>
-    </div>
+function filter(category,button){
 
-    <h3>
-        Facebook Plus
-    </h3>
+if(button){
 
-    <p class="product-description">
-        Facebook üçün premium xidmət.
-    </p>
+document.querySelectorAll(".categories button")
+.forEach(b=>b.classList.remove("active"));
 
-    <div class="product-bottom">
+button.classList.add("active");
 
-        <div class="price">
-            <small>Qiymət</small>
-            <strong>8.12₼</strong>
-        </div>
+}
 
-        <a
-            class="buy-btn"
-            href="https://wa.me/994556145657?text=Salam%2C%20Facebook%20Plus%20sifari%C5%9Fi%20verm%C9%99k%20ist%C9%99yir%C9%99m."
-            target="_blank"
-        >
-            <i class="fa-solid fa-arrow-right"></i>
-        </a>
+if(category==="Hamısı"){
 
-    </div>
+showListings();
 
-</div>
+}else{
 
+showListings(
+listings.filter(x=>x.category===category)
+);
 
-<!-- YOUTUBE -->
+}
 
-<div class="product">
+}
 
-    <div class="product-icon">
-        <i class="fa-brands fa-youtube"></i>
-    </div>
+function searchListings(){
 
-    <h3>
-        YouTube Plus
-    </h3>
+const text=document
+.getElementById("search")
+.value
+.toLowerCase();
 
-    <p class="product-description">
-        YouTube üçün premium xidmət.
-    </p>
+showListings(
+listings.filter(x=>
+x.title.toLowerCase().includes(text) ||
+x.text.toLowerCase().includes(text)
+)
+);
 
-    <div class="product-bottom">
+}
 
-        <div class="price">
-            <small>Qiymət</small>
-            <strong>4.77₼</strong>
-        </div>
+function addListing(){
 
-        <a
-            class="buy-btn"
-            href="https://wa.me/994556145657?text=Salam%2C%20YouTube%20Plus%20sifari%C5%9Fi%20verm%C9%99k%20ist%C9%99yir%C9%99m."
-            target="_blank"
-        >
-            <i class="fa-solid fa-arrow-right"></i>
-        </a>
+window.open(
+"https://wa.me/994556145657?text=Salam%20Altap.Biz-də%20elan%20yerləşdirmək%20istəyirəm.",
+"_blank"
+);
 
-    </div>
+}
 
-</div>
+function contact(title){
 
+window.open(
+"https://wa.me/994556145657?text=Salam,%20"+encodeURIComponent(title)+"%20elani%20ilə%20maraqlanıram.",
+"_blank"
+);
 
-<!-- NETFLIX -->
+}
 
-<div class="product">
+showListings();
 
-    <div class="product-icon">
-        <i class="fa-solid fa-film"></i>
-    </div>
-
-    <h3>
-        Netflix Plus
-    </h3>
-
-    <p class="product-description">
-        Netflix üçün premium rəqəmsal xidmət.
-    </p>
-
-    <div class="product-bottom">
-
-        <div class="price">
-            <small>Qiymət</small>
-            <strong>11.19₼</strong>
-        </div>
-
-        <a
-            class="buy-btn"
-            href="https://wa.me/994556145657?text=Salam%2C%20Netflix%20Plus%20sifari%C5%9Fi%20verm%C9%99k%20ist%C9%99yir%C9%99m."
-            target="_blank"
-        >
-            <i class="fa-solid fa-arrow-right"></i>
-        </a>
-
-    </div>
-
-</div>
-
-
-<!-- TELEGRAM -->
-
-<div class="product">
-
-    <div class="product-icon">
-        <i class="fa-brands fa-telegram"></i>
-    </div>
-
-    <h3>
-        Telegram Plus
-    </h3>
-
-    <p class="product-description">
-        Telegram üçün premium xidmət.
-    </p>
-
-    <div class="product-bottom">
-
-        <div class="price">
-            <small>Qiymət</small>
-            <strong>1.92₼</strong>
-        </div>
-
-        <a
-            class="buy-btn"
-            href="https://wa.me/994556145657?text=Salam%2C%20Telegram%20Plus%20sifari%C5%9Fi%20verm%C9%99k%20ist%C9%99yir%C9%99m."
-            target="_blank"
-        >
-            <i class="fa-solid fa-arrow-right"></i>
-        </a>
-
-    </div>
-
-</div>
-
-
-<!-- CERTIFICATE -->
-
-<div class="product">
-
-    <div class="product-icon">
-        <i class="fa-solid fa-certificate"></i>
-    </div>
-
-    <h3>
-        iPhone Sertifikat
-    </h3>
-
-    <p class="product-description">
-        iPhone üçün sertifikat xidməti.
-    </p>
-
-    <div class="product-bottom">
-
-        <div class="price">
-            <small>Ətraflı məlumat</small>
-            <strong>WhatsApp</strong>
-        </div>
-
-        <a
-            class="buy-btn"
-            href="https://wa.me/994556145657?text=Salam%2C%20iPhone%20sertifikat%C4%B1%20haqq%C4%B1nda%20m%C9%99lumat%20ist%C9%99yir%C9%99m."
-            target="_blank"
-        >
-            <i class="fa-solid fa-arrow-right"></i>
-        </a>
-
-    </div>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     HOW IT WORKS
-========================= -->
-
-<section class="container info">
-
-<div class="info-grid">
-
-
-<div>
-
-    <h2>
-
-        <i class="fa-solid fa-mobile-screen-button"></i>
-
-        Necə sifariş etmək olar?
-
-    </h2>
-
-    <p class="info-text">
-
-        İstədiyiniz xidməti seçin, qiyməti yoxlayın və
-        ox düyməsinə toxunaraq WhatsApp üzərindən sifariş göndərin.
-        Ətraflı məlumat və xidmət şərtləri dəstək vasitəsilə təqdim olunur.
-
-    </p>
-
-</div>
-
-
-<div class="steps">
-
-
-<div class="step">
-
-    <div class="step-number">
-        01
-    </div>
-
-    <span>
-        Xidməti seç
-    </span>
-
-</div>
-
-
-<div class="step">
-
-    <div class="step-number">
-        02
-    </div>
-
-    <span>
-        Sifariş düyməsinə toxun
-    </span>
-
-</div>
-
-
-<div class="step">
-
-    <div class="step-number">
-        03
-    </div>
-
-    <span>
-        WhatsApp-dan məlumatları göndər
-    </span>
-
-</div>
-
-
-<div class="step">
-
-    <div class="step-number">
-        04
-    </div>
-
-    <span>
-        Dəstəkdən ətraflı məlumat al
-    </span>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     FAQ
-========================= -->
-
-<section class="container faq">
-
-<div class="section-title">
-
-    <h2>
-        Tez-tez verilən suallar
-    </h2>
-
-    <p>
-        Ən çox verilən suallar.
-    </p>
-
-</div>
-
-
-<details>
-
-    <summary>
-
-        <i class="fa-solid fa-circle-question"></i>
-
-        Sifarişi necə verə bilərəm?
-
-    </summary>
-
-    <p>
-        İstədiyiniz xidmətin yanındakı düyməyə toxunun.
-        WhatsApp avtomatik olaraq açılacaq və hazır sifariş mesajı yaradılacaq.
-    </p>
-
-</details>
-
-
-<details>
-
-    <summary>
-
-        <i class="fa-solid fa-tag"></i>
-
-        Qiymətlər saytda göstərilirmi?
-
-    </summary>
-
-    <p>
-        Bəli. Mövcud xidmətlərin qiymətləri məhsul kartlarında göstərilir.
-    </p>
-
-</details>
-
-
-<details>
-
-    <summary>
-
-        <i class="fa-solid fa-clock"></i>
-
-        Xidmət nə qədər müddətə hazırlanır?
-
-    </summary>
-
-    <p>
-        Müddət seçilən xidmətdən asılı ola bilər.
-        Dəqiq məlumat üçün WhatsApp üzərindən əlaqə saxlayın.
-    </p>
-
-</details>
-
-
-<details>
-
-    <summary>
-
-        <i class="fa-solid fa-headset"></i>
-
-        Dəstək mövcuddur?
-
-    </summary>
-
-    <p>
-        Bəli. Sualınız olduqda WhatsApp üzərindən bizimlə əlaqə saxlaya bilərsiniz.
-    </p>
-
-</details>
-
-
-</section>
-
-</main>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-<div class="container footer-content">
-
-
-<div class="footer-brand">
-
-    <i class="fa-brands fa-apple"></i>
-
-    <span>
-        © 2026 iPhoneCert
-    </span>
-
-</div>
-
-
-<div class="social">
-
-    <a
-        href="https://wa.me/994556145657"
-        target="_blank"
-        aria-label="WhatsApp"
-    >
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <a
-        href="#products"
-        aria-label="Services"
-    >
-        <i class="fa-solid fa-layer-group"></i>
-    </a>
-
-    <a
-        href="#"
-        aria-label="Home"
-    >
-        <i class="fa-solid fa-house"></i>
-    </a>
-
-</div>
-
-
-</div>
-
-</footer>
-
-
-<!-- =========================
-     FLOATING WHATSAPP
-========================= -->
-
-<a
-    class="whatsapp"
-    href="https://wa.me/994556145657"
-    target="_blank"
-    aria-label="WhatsApp"
->
-
-    <i class="fa-brands fa-whatsapp"></i>
-
-</a>
-
+</script>
 
 </body>
 </html>
