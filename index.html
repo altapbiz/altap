@@ -3,250 +3,531 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Premium Proqramlar</title>
 
 <style>
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
-    font-family:Arial,sans-serif;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
 
 body{
-    background:#050505;
-    color:white;
+    background:
+        radial-gradient(circle at 50% 0%, #123b32 0%, #050505 35%),
+        #050505;
+    color:#fff;
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Arial,sans-serif;
     min-height:100vh;
 }
 
-header{
-    padding:28px 15px;
+.header{
+    padding:45px 20px 32px;
     text-align:center;
-    background:linear-gradient(135deg,#111,#050505);
-    border-bottom:1px solid #222;
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-header h1{
-    font-size:28px;
+.header h1{
+    font-size:34px;
     font-weight:900;
-    letter-spacing:1px;
+    letter-spacing:-1px;
+}
+
+.header p{
+    margin-top:9px;
+    color:#8d8d8d;
+    font-size:14px;
 }
 
 .container{
-    max-width:600px;
+    width:100%;
+    max-width:650px;
     margin:auto;
-    padding:20px 14px 40px;
+    padding:22px 15px 45px;
 }
 
 .card{
     position:relative;
-    background:linear-gradient(145deg,#151515,#090909);
-    border:1px solid #292929;
-    border-radius:22px;
-    padding:20px;
-    margin-bottom:16px;
-    box-shadow:0 8px 30px rgba(0,0,0,.45);
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:18px;
+    margin-bottom:15px;
+
+    background:linear-gradient(
+        145deg,
+        rgba(30,30,30,.96),
+        rgba(9,9,9,.98)
+    );
+
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:24px;
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.05);
+
     overflow:hidden;
 }
 
-.card::before{
+.card:before{
     content:"";
     position:absolute;
     left:0;
-    top:0;
+    top:12px;
+    bottom:12px;
     width:4px;
-    height:100%;
-    background:linear-gradient(#00ff88,#00aaff);
+    border-radius:0 5px 5px 0;
+    background:linear-gradient(#00ff91,#00b7ff);
+    box-shadow:0 0 15px #00ff91;
 }
 
-.info{
-    margin-bottom:17px;
+.icon{
+    width:70px;
+    height:70px;
+    min-width:70px;
+    border-radius:19px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:38px;
+    font-weight:900;
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.5),
+        inset 0 1px rgba(255,255,255,.25);
+}
+
+.whatsapp{
+    background:linear-gradient(145deg,#25D366,#078c42);
+}
+
+.instagram{
+    background:linear-gradient(
+        145deg,
+        #ffdc80,
+        #fcaf45,
+        #f77737,
+        #e1306c,
+        #833ab4
+    );
+}
+
+.telegram{
+    background:linear-gradient(145deg,#29b6f6,#087eb5);
+}
+
+.youtube{
+    background:linear-gradient(145deg,#ff3030,#b40000);
+}
+
+.netflix{
+    background:linear-gradient(145deg,#e50914,#7b0007);
+}
+
+.icon svg{
+    width:39px;
+    height:39px;
+    fill:white;
+}
+
+.details{
+    flex:1;
+    min-width:0;
 }
 
 .name{
-    font-size:19px;
+    font-size:17px;
     font-weight:800;
-    margin-bottom:7px;
+    line-height:1.25;
+    margin-bottom:8px;
 }
 
 .price{
-    font-size:22px;
+    font-size:21px;
     font-weight:900;
+}
+
+.year{
+    color:#8e8e8e;
+    font-size:12px;
+    font-weight:600;
 }
 
 .download{
+    margin-top:11px;
     width:100%;
-    border:0;
-    border-radius:14px;
-    padding:15px;
-    background:linear-gradient(90deg,#00e676,#00bfa5);
-    color:#000;
-    font-size:17px;
+    border:none;
+    padding:12px 15px;
+
+    border-radius:13px;
+
+    background:linear-gradient(
+        90deg,
+        #00f27d,
+        #00d5b4
+    );
+
+    color:#00150d;
+    font-size:15px;
     font-weight:900;
+
     cursor:pointer;
-    transition:.2s;
+
+    box-shadow:
+        0 5px 18px rgba(0,255,140,.18);
 }
 
 .download:active{
-    transform:scale(.97);
+    transform:scale(.96);
 }
+
+/* MODAL */
 
 .modal{
     display:none;
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.82);
+    z-index:999;
+
     align-items:center;
     justify-content:center;
+
     padding:20px;
-    z-index:100;
+
+    background:rgba(0,0,0,.82);
+    backdrop-filter:blur(10px);
 }
 
 .modal-box{
     width:100%;
     max-width:390px;
-    background:#111;
-    border:1px solid #333;
-    border-radius:22px;
-    padding:25px;
+
+    padding:27px 22px;
+
     text-align:center;
-    box-shadow:0 15px 50px rgba(0,0,0,.7);
+
+    border-radius:26px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #191919,
+            #080808
+        );
+
+    border:1px solid rgba(255,255,255,.13);
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.8),
+        0 0 35px rgba(0,255,140,.08);
 }
 
-.modal-box h2{
-    font-size:22px;
-    margin-bottom:14px;
-}
+.modal-icon{
+    width:65px;
+    height:65px;
+    margin:0 auto 15px;
 
-.modal-box p{
-    color:#ddd;
-    line-height:1.5;
-    margin-bottom:20px;
-}
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-.price-modal{
-    color:#00ff88;
-    font-size:20px;
+    border-radius:18px;
+
+    background:linear-gradient(
+        145deg,
+        #00f28b,
+        #00aebc
+    );
+
+    color:#00150d;
+    font-size:31px;
     font-weight:900;
 }
 
-.buttons{
-    display:flex;
-    gap:10px;
+.modal-box h2{
+    font-size:23px;
+    margin-bottom:13px;
 }
 
-.whatsapp,
-.close{
+.modal-box p{
+    color:#d0d0d0;
+    line-height:1.55;
+    font-size:15px;
+}
+
+.modal-program{
+    color:#fff;
+    font-weight:900;
+}
+
+.modal-price{
+    display:block;
+    margin:10px 0;
+    color:#00ff91;
+    font-size:24px;
+    font-weight:900;
+}
+
+.modal-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+.whatsapp-btn,
+.close-btn{
     flex:1;
-    padding:14px;
-    border:0;
-    border-radius:13px;
+    border:none;
+    padding:14px 10px;
+    border-radius:14px;
+    font-size:15px;
     font-weight:900;
     cursor:pointer;
 }
 
-.whatsapp{
+.whatsapp-btn{
     background:#25D366;
-    color:#000;
+    color:#001b0b;
 }
 
-.close{
+.close-btn{
     background:#292929;
     color:#fff;
+}
+
+@media(max-width:420px){
+
+    .header h1{
+        font-size:30px;
+    }
+
+    .card{
+        padding:15px;
+        gap:12px;
+    }
+
+    .icon{
+        width:61px;
+        height:61px;
+        min-width:61px;
+        border-radius:17px;
+    }
+
+    .icon svg{
+        width:34px;
+        height:34px;
+    }
+
+    .name{
+        font-size:15px;
+    }
+
+    .price{
+        font-size:19px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<header>
+<div class="header">
     <h1>Premium Proqramlar</h1>
-</header>
+    <p>iPhone və Android</p>
+</div>
 
 <div class="container">
 
+    <!-- WHATSAPP -->
+
     <div class="card">
-        <div class="info">
+
+        <div class="icon whatsapp">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.18-1.36A10 10 0 1 0 12 2zm5.3 14.17c-.22.62-1.27 1.18-1.75 1.25-.45.07-1.02.1-1.65-.1-.38-.12-.86-.28-1.48-.55-2.6-1.12-4.3-3.74-4.43-3.91-.13-.17-1.06-1.41-1.06-2.69s.67-1.91.91-2.17c.23-.26.51-.32.68-.32h.5c.16 0 .38-.06.59.45.22.53.76 1.86.83 2 .07.14.12.3.02.48-.09.18-.14.29-.28.45-.14.17-.29.36-.41.48-.14.14-.29.29-.13.57.16.28.7 1.15 1.51 1.86 1.04.93 1.91 1.22 2.19 1.36.28.14.44.12.6-.07.16-.18.69-.8.87-1.08.18-.28.36-.23.61-.14.25.09 1.59.75 1.86.89.28.14.46.21.53.32.07.12.07.65-.15 1.27z"/>
+            </svg>
+        </div>
+
+        <div class="details">
             <div class="name">WhatsApp Plus İphone 2026</div>
             <div class="price">15 ₼</div>
+            <button class="download"
+                onclick="openModal('WhatsApp Plus İphone 2026','15 ₼','whatsapp')">
+                Yüklə
+            </button>
         </div>
-        <button class="download" onclick="showModal('WhatsApp Plus İphone 2026','15 ₼')">Yüklə</button>
+
     </div>
 
+
+    <!-- INSTAGRAM -->
+
     <div class="card">
-        <div class="info">
+
+        <div class="icon instagram">
+            <svg viewBox="0 0 24 24">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 12 16.5 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 12 14.5 2.5 2.5 0 0 0 12 9.5zM17.5 6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/>
+            </svg>
+        </div>
+
+        <div class="details">
             <div class="name">Instagram Plus İphone 2026</div>
             <div class="price">10 ₼</div>
+            <button class="download"
+                onclick="openModal('Instagram Plus İphone 2026','10 ₼','instagram')">
+                Yüklə
+            </button>
         </div>
-        <button class="download" onclick="showModal('Instagram Plus İphone 2026','10 ₼')">Yüklə</button>
+
     </div>
 
+
+    <!-- TELEGRAM -->
+
     <div class="card">
-        <div class="info">
+
+        <div class="icon telegram">
+            <svg viewBox="0 0 24 24">
+                <path d="M21.9 3.4 18.6 20c-.25 1.18-.9 1.47-1.82.92l-5.02-3.7-2.42 2.33c-.27.27-.5.5-1.02.5l.36-5.1 9.28-8.38c.4-.36-.09-.56-.62-.2L5.88 13.3.93 11.75c-1.08-.34-1.1-1.08.23-1.6L20.5 2.92c.87-.32 1.63.2 1.4.48z"/>
+            </svg>
+        </div>
+
+        <div class="details">
             <div class="name">Telegram Plus İphone 2026</div>
             <div class="price">8.99 ₼</div>
+            <button class="download"
+                onclick="openModal('Telegram Plus İphone 2026','8.99 ₼','telegram')">
+                Yüklə
+            </button>
         </div>
-        <button class="download" onclick="showModal('Telegram Plus İphone 2026','8.99 ₼')">Yüklə</button>
+
     </div>
 
+
+    <!-- YOUTUBE -->
+
     <div class="card">
-        <div class="info">
+
+        <div class="icon youtube">
+            <svg viewBox="0 0 24 24">
+                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.12C19.55 3.5 12 3.5 12 3.5s-7.55 0-9.4.58A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.12c1.85.58 9.4.58 9.4.58s7.55 0 9.4-.58a3 3 0 0 0 2.1-2.12A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.9V8.1l6.5 3.9-6.5 3.9z"/>
+            </svg>
+        </div>
+
+        <div class="details">
             <div class="name">Youtube Premium 2026</div>
             <div class="price">33.77 ₼</div>
+            <button class="download"
+                onclick="openModal('Youtube Premium 2026','33.77 ₼','youtube')">
+                Yüklə
+            </button>
         </div>
-        <button class="download" onclick="showModal('Youtube Premium 2026','33.77 ₼')">Yüklə</button>
+
     </div>
 
+
+    <!-- NETFLIX -->
+
     <div class="card">
-        <div class="info">
+
+        <div class="icon netflix">
+            <svg viewBox="0 0 24 24">
+                <path d="M5 2h4.2l5.6 12.2V2H19v20h-4.2L9.2 9.8V22H5V2z"/>
+            </svg>
+        </div>
+
+        <div class="details">
             <div class="name">Netflix Premium 2026</div>
             <div class="price">29.39 ₼</div>
+            <button class="download"
+                onclick="openModal('Netflix Premium 2026','29.39 ₼','netflix')">
+                Yüklə
+            </button>
         </div>
-        <button class="download" onclick="showModal('Netflix Premium 2026','29.39 ₼')">Yüklə</button>
+
     </div>
 
 </div>
 
+
+<!-- BİLDİRİŞ -->
+
 <div class="modal" id="modal">
+
     <div class="modal-box">
+
+        <div class="modal-icon">!</div>
+
         <h2>Diqqət</h2>
 
         <p>
-            <span id="program"></span>
-            <br>
-            <span class="price-modal" id="selectedPrice"></span>
-            <br><br>
+            <span class="modal-program" id="modalProgram"></span>
+            <span class="modal-price" id="modalPrice"></span>
             proqram 1 illik üçün bu qiymətədir
         </p>
 
-        <div class="buttons">
-            <button class="whatsapp" onclick="goWhatsapp()">WhatsApp</button>
-            <button class="close" onclick="closeModal()">Bağla</button>
+        <div class="modal-buttons">
+
+            <button class="whatsapp-btn" onclick="goWhatsApp()">
+                WhatsApp
+            </button>
+
+            <button class="close-btn" onclick="closeModal()">
+                Bağla
+            </button>
+
         </div>
+
     </div>
+
 </div>
 
+
 <script>
+
 let selectedProgram = "";
 
-function showModal(program, price){
+function openModal(program,price,icon){
+
     selectedProgram = program;
 
-    document.getElementById("program").textContent = program;
-    document.getElementById("selectedPrice").textContent = price;
+    document.getElementById("modalProgram").innerText = program;
+    document.getElementById("modalPrice").innerText = price;
 
     document.getElementById("modal").style.display = "flex";
 }
 
 function closeModal(){
+
     document.getElementById("modal").style.display = "none";
+
 }
 
-function goWhatsapp(){
+function goWhatsApp(){
+
+    let message =
+        "Salam, " + selectedProgram +
+        " almaq istəyirəm.";
+
     window.location.href =
-    "https://wa.me/994556145657?text=" +
-    encodeURIComponent(selectedProgram);
+        "https://wa.me/994556145657?text=" +
+        encodeURIComponent(message);
+
 }
+
+document.getElementById("modal").addEventListener("click",function(e){
+
+    if(e.target === this){
+        closeModal();
+    }
+
+});
+
 </script>
 
 </body>
