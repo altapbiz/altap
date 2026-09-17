@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Altap.Biz — Ağstafa Qazax Tovuz</title>
+<title>Altap.Biz — Ağstafa Qazax Tovuz Elan Saytı</title>
 
 <style>
 
@@ -35,7 +35,7 @@ header{
 }
 
 .logo{
-    font-size:25px;
+    font-size:26px;
     font-weight:800;
 }
 
@@ -47,7 +47,7 @@ header{
     background:#25d366;
     color:white;
     border:none;
-    padding:11px 17px;
+    padding:12px 17px;
     border-radius:12px;
     font-weight:bold;
     cursor:pointer;
@@ -80,7 +80,7 @@ header{
 
 .search{
     width:100%;
-    max-width:700px;
+    max-width:750px;
     margin:auto;
     display:flex;
     gap:10px;
@@ -92,13 +92,14 @@ header{
     border:1px solid #ddd;
     border-radius:12px;
     outline:none;
+    font-size:15px;
 }
 
 .search button{
     border:none;
     background:#111827;
     color:white;
-    padding:0 20px;
+    padding:0 22px;
     border-radius:12px;
     cursor:pointer;
 }
@@ -111,13 +112,18 @@ header{
     overflow-x:auto;
     padding:15px 5%;
     background:white;
+    scrollbar-width:none;
+}
+
+.categories::-webkit-scrollbar{
+    display:none;
 }
 
 .categories button{
     white-space:nowrap;
     border:1px solid #ddd;
     background:white;
-    padding:9px 14px;
+    padding:9px 15px;
     border-radius:20px;
     cursor:pointer;
 }
@@ -128,12 +134,12 @@ header{
     color:white;
 }
 
-/* ADS */
+/* MAIN */
 
 .container{
     width:90%;
-    max-width:1200px;
-    margin:25px auto;
+    max-width:1250px;
+    margin:27px auto;
 }
 
 .top-row{
@@ -144,8 +150,10 @@ header{
 }
 
 .top-row h2{
-    font-size:22px;
+    font-size:23px;
 }
+
+/* ADS */
 
 .ads{
     display:grid;
@@ -164,22 +172,24 @@ header{
 
 .card:hover{
     transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
 }
 
 .card-img{
     width:100%;
-    height:150px;
+    height:155px;
     object-fit:cover;
     display:block;
+    background:#e5e7eb;
 }
 
 .card-body{
-    padding:14px;
+    padding:13px;
 }
 
 .category{
-    font-size:12px;
-    color:#25a85a;
+    font-size:11px;
+    color:#16a34a;
     font-weight:bold;
     margin-bottom:6px;
 }
@@ -187,12 +197,13 @@ header{
 .card h3{
     font-size:16px;
     margin-bottom:8px;
+    line-height:1.25;
 }
 
 .price{
     font-size:18px;
     font-weight:800;
-    margin-bottom:9px;
+    margin-bottom:8px;
 }
 
 .location{
@@ -209,7 +220,7 @@ header{
 .empty{
     display:none;
     text-align:center;
-    padding:40px;
+    padding:50px;
     color:#777;
 }
 
@@ -223,7 +234,7 @@ footer{
     color:#9ca3af;
 }
 
-/* GENERAL MODAL */
+/* OVERLAY */
 
 .overlay{
     display:none;
@@ -235,6 +246,8 @@ footer{
     justify-content:center;
     padding:20px;
 }
+
+/* MODAL */
 
 .modal{
     background:white;
@@ -248,10 +261,9 @@ footer{
 
 @keyframes show{
     from{
-        transform:scale(.9);
+        transform:scale(.92);
         opacity:0;
     }
-
     to{
         transform:scale(1);
         opacity:1;
@@ -261,26 +273,26 @@ footer{
 .close{
     position:absolute;
     right:18px;
-    top:15px;
-    font-size:27px;
+    top:13px;
+    font-size:28px;
     cursor:pointer;
     color:#555;
 }
 
-/* AD MODAL */
-
 .modal-img{
     width:100%;
-    height:220px;
+    height:230px;
     object-fit:cover;
     border-radius:14px;
     margin-bottom:15px;
 }
 
 .info{
-    line-height:1.7;
+    line-height:1.8;
     color:#555;
 }
+
+/* WHATSAPP */
 
 .whatsapp{
     width:100%;
@@ -316,7 +328,7 @@ footer{
     margin-top:15px;
 }
 
-/* GİRİŞ XƏBƏRDARLIĞI */
+/* WELCOME */
 
 #welcomeModal{
     display:flex;
@@ -338,7 +350,6 @@ footer{
         transform:translateY(25px) scale(.94);
         opacity:0;
     }
-
     to{
         transform:translateY(0) scale(1);
         opacity:1;
@@ -349,17 +360,12 @@ footer{
     font-size:25px;
     font-weight:800;
     margin-bottom:16px;
-    color:#111827;
 }
 
 .welcome-text{
     color:#4b5563;
     line-height:1.7;
     font-size:15px;
-}
-
-.welcome-text strong{
-    color:#111827;
 }
 
 .welcome-fee{
@@ -391,7 +397,7 @@ footer{
 
 /* MOBILE */
 
-@media(max-width:900px){
+@media(max-width:1000px){
 
     .ads{
         grid-template-columns:repeat(3,1fr);
@@ -399,7 +405,7 @@ footer{
 
 }
 
-@media(max-width:650px){
+@media(max-width:700px){
 
     .hero h1{
         font-size:27px;
@@ -411,7 +417,7 @@ footer{
     }
 
     .card-img{
-        height:120px;
+        height:125px;
     }
 
     .card-body{
@@ -426,20 +432,16 @@ footer{
         font-size:16px;
     }
 
-    .search button{
-        padding:0 13px;
-    }
-
-    .welcome-modal{
-        padding:23px;
-    }
-
 }
 
 @media(max-width:400px){
 
     .card-img{
-        height:105px;
+        height:110px;
+    }
+
+    .card h3{
+        font-size:13px;
     }
 
 }
@@ -450,7 +452,7 @@ footer{
 <body>
 
 
-<!-- SAYTA GİRİŞ XƏBƏRDARLIĞI -->
+<!-- GİRİŞ XƏBƏRDARLIĞI -->
 
 <div class="overlay" id="welcomeModal">
 
@@ -464,7 +466,7 @@ footer{
 
         <div class="welcome-text">
 
-            <strong>Altap.Biz-ə xoş gəlmisiniz!</strong>
+            <b>Altap.Biz-ə xoş gəlmisiniz!</b>
 
             <br><br>
 
@@ -475,12 +477,12 @@ footer{
 
         <div class="welcome-fee">
 
-            <strong>Elan yerləşdirmək istəyirsinizsə:</strong>
+            <b>Elan yerləşdirmək istəyirsinizsə:</b>
 
             <br>
 
             Elan yerləşdirmə haqqı
-            <strong>3 AZN</strong>-dir.
+            <b>3 AZN</b>-dir.
 
             Ödənişdən sonra WhatsApp vasitəsilə
             bizə yazın.
@@ -557,9 +559,7 @@ footer{
 
 <div class="categories">
 
-    <button
-        class="active"
-        onclick="filterAds('all',this)">
+    <button class="active" onclick="filterAds('all',this)">
         Hamısı
     </button>
 
@@ -575,12 +575,16 @@ footer{
         Əmlak
     </button>
 
+    <button onclick="filterAds('Elektronika',this)">
+        Elektronika
+    </button>
+
     <button onclick="filterAds('Mebel',this)">
         Mebel
     </button>
 
-    <button onclick="filterAds('Elektronika',this)">
-        Elektronika
+    <button onclick="filterAds('Məişət',this)">
+        Məişət
     </button>
 
     <button onclick="filterAds('Xidmət',this)">
@@ -589,6 +593,14 @@ footer{
 
     <button onclick="filterAds('İş',this)">
         İş
+    </button>
+
+    <button onclick="filterAds('Geyim',this)">
+        Geyim
+    </button>
+
+    <button onclick="filterAds('Kənd təsərrüfatı',this)">
+        Kənd təsərrüfatı
     </button>
 
 </div>
@@ -614,29 +626,21 @@ footer{
 
         <div class="card"
              data-category="Telefon"
-             data-title="iPhone 15 Pro"
+             data-title="iPhone 15 Pro Max"
              onclick="openAd(this)">
 
             <img class="card-img"
-                 src="https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&w=700&q=80">
+                 src="https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&w=800&q=85">
 
             <div class="card-body">
 
-                <div class="category">
-                    Telefon
-                </div>
+                <div class="category">Telefon</div>
 
-                <h3>
-                    iPhone 15 Pro
-                </h3>
+                <h3>iPhone 15 Pro Max</h3>
 
-                <div class="price">
-                    1 650 AZN
-                </div>
+                <div class="price">1 850 AZN</div>
 
-                <div class="location">
-                    Ağstafa
-                </div>
+                <div class="location">Ağstafa</div>
 
                 <div class="date">
                     17 sentyabr 2026 • 14:20
@@ -650,33 +654,25 @@ footer{
         <!-- 2 -->
 
         <div class="card"
-             data-category="Avtomobil"
-             data-title="Mercedes-Benz C-Class"
+             data-category="Telefon"
+             data-title="Samsung Galaxy S25 Ultra"
              onclick="openAd(this)">
 
             <img class="card-img"
-                 src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=700&q=80">
+                 src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=800&q=85">
 
             <div class="card-body">
 
-                <div class="category">
-                    Avtomobil
-                </div>
+                <div class="category">Telefon</div>
 
-                <h3>
-                    Mercedes-Benz C-Class
-                </h3>
+                <h3>Samsung Galaxy S25 Ultra</h3>
 
-                <div class="price">
-                    32 500 AZN
-                </div>
+                <div class="price">2 150 AZN</div>
 
-                <div class="location">
-                    Qazax
-                </div>
+                <div class="location">Qazax</div>
 
                 <div class="date">
-                    17 sentyabr 2026 • 13:55
+                    17 sentyabr 2026 • 14:05
                 </div>
 
             </div>
@@ -687,33 +683,25 @@ footer{
         <!-- 3 -->
 
         <div class="card"
-             data-category="Əmlak"
-             data-title="3 otaqlı mənzil"
+             data-category="Telefon"
+             data-title="Xiaomi 14 Pro"
              onclick="openAd(this)">
 
             <img class="card-img"
-                 src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=700&q=80">
+                 src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=800&q=85">
 
             <div class="card-body">
 
-                <div class="category">
-                    Əmlak
-                </div>
+                <div class="category">Telefon</div>
 
-                <h3>
-                    3 otaqlı mənzil
-                </h3>
+                <h3>Xiaomi 14 Pro</h3>
 
-                <div class="price">
-                    85 000 AZN
-                </div>
+                <div class="price">1 250 AZN</div>
 
-                <div class="location">
-                    Tovuz
-                </div>
+                <div class="location">Tovuz</div>
 
                 <div class="date">
-                    17 sentyabr 2026 • 13:30
+                    17 sentyabr 2026 • 13:50
                 </div>
 
             </div>
@@ -724,33 +712,25 @@ footer{
         <!-- 4 -->
 
         <div class="card"
-             data-category="Mebel"
-             data-title="Modern divan dəsti"
+             data-category="Telefon"
+             data-title="Google Pixel 9 Pro"
              onclick="openAd(this)">
 
             <img class="card-img"
-                 src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=700&q=80">
+                 src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=801&q=85">
 
             <div class="card-body">
 
-                <div class="category">
-                    Mebel
-                </div>
+                <div class="category">Telefon</div>
 
-                <h3>
-                    Modern divan dəsti
-                </h3>
+                <h3>Google Pixel 9 Pro</h3>
 
-                <div class="price">
-                    750 AZN
-                </div>
+                <div class="price">1 600 AZN</div>
 
-                <div class="location">
-                    Ağstafa
-                </div>
+                <div class="location">Ağstafa</div>
 
                 <div class="date">
-                    17 sentyabr 2026 • 12:48
+                    17 sentyabr 2026 • 13:30
                 </div>
 
             </div>
@@ -761,33 +741,25 @@ footer{
         <!-- 5 -->
 
         <div class="card"
-             data-category="Elektronika"
-             data-title="PlayStation 5"
+             data-category="Avtomobil"
+             data-title="Mercedes-Benz C-Class"
              onclick="openAd(this)">
 
             <img class="card-img"
-                 src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=700&q=80">
+                 src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=85">
 
             <div class="card-body">
 
-                <div class="category">
-                    Elektronika
-                </div>
+                <div class="category">Avtomobil</div>
 
-                <h3>
-                    PlayStation 5
-                </h3>
+                <h3>Mercedes-Benz C-Class</h3>
 
-                <div class="price">
-                    950 AZN
-                </div>
+                <div class="price">32 500 AZN</div>
 
-                <div class="location">
-                    Qazax
-                </div>
+                <div class="location">Qazax</div>
 
                 <div class="date">
-                    17 sentyabr 2026 • 12:10
+                    17 sentyabr 2026 • 13:10
                 </div>
 
             </div>
@@ -798,33 +770,25 @@ footer{
         <!-- 6 -->
 
         <div class="card"
-             data-category="Xidmət"
-             data-title="Telefon təmiri"
+             data-category="Avtomobil"
+             data-title="BMW 5 Series"
              onclick="openAd(this)">
 
             <img class="card-img"
-                 src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=700&q=80">
+                 src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=85">
 
             <div class="card-body">
 
-                <div class="category">
-                    Xidmət
-                </div>
+                <div class="category">Avtomobil</div>
 
-                <h3>
-                    Telefon təmiri
-                </h3>
+                <h3>BMW 5 Series</h3>
 
-                <div class="price">
-                    Razılaşma yolu ilə
-                </div>
+                <div class="price">41 000 AZN</div>
 
-                <div class="location">
-                    Tovuz
-                </div>
+                <div class="location">Tovuz</div>
 
                 <div class="date">
-                    17 sentyabr 2026 • 11:45
+                    17 sentyabr 2026 • 12:55
                 </div>
 
             </div>
@@ -835,33 +799,25 @@ footer{
         <!-- 7 -->
 
         <div class="card"
-             data-category="İş"
-             data-title="Satış məsləhətçisi tələb olunur"
+             data-category="Avtomobil"
+             data-title="Toyota Camry"
              onclick="openAd(this)">
 
             <img class="card-img"
-                 src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=700&q=80">
+                 src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=800&q=85">
 
             <div class="card-body">
 
-                <div class="category">
-                    İş
-                </div>
+                <div class="category">Avtomobil</div>
 
-                <h3>
-                    Satış məsləhətçisi tələb olunur
-                </h3>
+                <h3>Toyota Camry</h3>
 
-                <div class="price">
-                    Maaş razılaşma ilə
-                </div>
+                <div class="price">28 900 AZN</div>
 
-                <div class="location">
-                    Ağstafa
-                </div>
+                <div class="location">Ağstafa</div>
 
                 <div class="date">
-                    17 sentyabr 2026 • 10:35
+                    17 sentyabr 2026 • 12:35
                 </div>
 
             </div>
@@ -872,33 +828,25 @@ footer{
         <!-- 8 -->
 
         <div class="card"
-             data-category="Telefon"
-             data-title="Samsung Galaxy S24"
+             data-category="Avtomobil"
+             data-title="Ford Mustang"
              onclick="openAd(this)">
 
             <img class="card-img"
-                 src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=700&q=80">
+                 src="https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?auto=format&fit=crop&w=800&q=85">
 
             <div class="card-body">
 
-                <div class="category">
-                    Telefon
-                </div>
+                <div class="category">Avtomobil</div>
 
-                <h3>
-                    Samsung Galaxy S24
-                </h3>
+                <h3>Ford Mustang</h3>
 
-                <div class="price">
-                    1 250 AZN
-                </div>
+                <div class="price">45 000 AZN</div>
 
-                <div class="location">
-                    Qazax
-                </div>
+                <div class="location">Qazax</div>
 
                 <div class="date">
-                    17 sentyabr 2026 • 09:55
+                    17 sentyabr 2026 • 12:20
                 </div>
 
             </div>
@@ -909,33 +857,25 @@ footer{
         <!-- 9 -->
 
         <div class="card"
-             data-category="Avtomobil"
-             data-title="BMW 5 Series"
+             data-category="Əmlak"
+             data-title="3 otaqlı mənzil"
              onclick="openAd(this)">
 
             <img class="card-img"
-                 src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=700&q=80">
+                 src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=85">
 
             <div class="card-body">
 
-                <div class="category">
-                    Avtomobil
-                </div>
+                <div class="category">Əmlak</div>
 
-                <h3>
-                    BMW 5 Series
-                </h3>
+                <h3>3 otaqlı mənzil</h3>
 
-                <div class="price">
-                    29 900 AZN
-                </div>
+                <div class="price">85 000 AZN</div>
 
-                <div class="location">
-                    Tovuz
-                </div>
+                <div class="location">Tovuz</div>
 
                 <div class="date">
-                    17 sentyabr 2026 • 09:20
+                    17 sentyabr 2026 • 12:00
                 </div>
 
             </div>
@@ -951,28 +891,20 @@ footer{
              onclick="openAd(this)">
 
             <img class="card-img"
-                 src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=700&q=80">
+                 src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=85">
 
             <div class="card-body">
 
-                <div class="category">
-                    Əmlak
-                </div>
+                <div class="category">Əmlak</div>
 
-                <h3>
-                    Həyət evi satılır
-                </h3>
+                <h3>Həyət evi satılır</h3>
 
-                <div class="price">
-                    120 000 AZN
-                </div>
+                <div class="price">120 000 AZN</div>
 
-                <div class="location">
-                    Ağstafa
-                </div>
+                <div class="location">Ağstafa</div>
 
                 <div class="date">
-                    17 sentyabr 2026 • 08:50
+                    17 sentyabr 2026 • 11:40
                 </div>
 
             </div>
@@ -983,33 +915,25 @@ footer{
         <!-- 11 -->
 
         <div class="card"
-             data-category="Elektronika"
-             data-title="MacBook Air"
+             data-category="Əmlak"
+             data-title="Torpaq sahəsi"
              onclick="openAd(this)">
 
             <img class="card-img"
-                 src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=700&q=80">
+                 src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=85">
 
             <div class="card-body">
 
-                <div class="category">
-                    Elektronika
-                </div>
+                <div class="category">Əmlak</div>
 
-                <h3>
-                    MacBook Air
-                </h3>
+                <h3>Torpaq sahəsi</h3>
 
-                <div class="price">
-                    2 100 AZN
-                </div>
+                <div class="price">25 000 AZN</div>
 
-                <div class="location">
-                    Qazax
-                </div>
+                <div class="location">Qazax</div>
 
                 <div class="date">
-                    17 sentyabr 2026 • 08:25
+                    17 sentyabr 2026 • 11:20
                 </div>
 
             </div>
@@ -1020,38 +944,381 @@ footer{
         <!-- 12 -->
 
         <div class="card"
-             data-category="Mebel"
-             data-title="Yataq dəsti"
+             data-category="Əmlak"
+             data-title="Yeni tikili ev"
              onclick="openAd(this)">
 
             <img class="card-img"
-                 src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80">
+                 src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=85">
 
             <div class="card-body">
 
-                <div class="category">
-                    Mebel
-                </div>
+                <div class="category">Əmlak</div>
 
-                <h3>
-                    Yataq dəsti
-                </h3>
+                <h3>Yeni tikili ev</h3>
 
-                <div class="price">
-                    1 100 AZN
-                </div>
+                <div class="price">98 000 AZN</div>
 
-                <div class="location">
-                    Tovuz
-                </div>
+                <div class="location">Tovuz</div>
 
                 <div class="date">
-                    17 sentyabr 2026 • 08:00
+                    17 sentyabr 2026 • 11:00
                 </div>
 
             </div>
 
         </div>
+
+
+        <!-- 13 -->
+
+        <div class="card"
+             data-category="Elektronika"
+             data-title="MacBook Pro"
+             onclick="openAd(this)">
+
+            <img class="card-img"
+                 src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=800&q=85">
+
+            <div class="card-body">
+
+                <div class="category">Elektronika</div>
+
+                <h3>MacBook Pro</h3>
+
+                <div class="price">2 450 AZN</div>
+
+                <div class="location">Ağstafa</div>
+
+                <div class="date">
+                    17 sentyabr 2026 • 10:45
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 14 -->
+
+        <div class="card"
+             data-category="Elektronika"
+             data-title="PlayStation 5"
+             onclick="openAd(this)">
+
+            <img class="card-img"
+                 src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=800&q=85">
+
+            <div class="card-body">
+
+                <div class="category">Elektronika</div>
+
+                <h3>PlayStation 5</h3>
+
+                <div class="price">1 050 AZN</div>
+
+                <div class="location">Qazax</div>
+
+                <div class="date">
+                    17 sentyabr 2026 • 10:25
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 15 -->
+
+        <div class="card"
+             data-category="Elektronika"
+             data-title="Canon fotoaparat"
+             onclick="openAd(this)">
+
+            <img class="card-img"
+                 src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=85">
+
+            <div class="card-body">
+
+                <div class="category">Elektronika</div>
+
+                <h3>Canon fotoaparat</h3>
+
+                <div class="price">1 400 AZN</div>
+
+                <div class="location">Tovuz</div>
+
+                <div class="date">
+                    17 sentyabr 2026 • 10:05
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 16 -->
+
+        <div class="card"
+             data-category="Mebel"
+             data-title="Müasir divan dəsti"
+             onclick="openAd(this)">
+
+            <img class="card-img"
+                 src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=85">
+
+            <div class="card-body">
+
+                <div class="category">Mebel</div>
+
+                <h3>Müasir divan dəsti</h3>
+
+                <div class="price">1 200 AZN</div>
+
+                <div class="location">Qazax</div>
+
+                <div class="date">
+                    17 sentyabr 2026 • 09:50
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 17 -->
+
+        <div class="card"
+             data-category="Mebel"
+             data-title="Yataq otağı dəsti"
+             onclick="openAd(this)">
+
+            <img class="card-img"
+                 src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=85">
+
+            <div class="card-body">
+
+                <div class="category">Mebel</div>
+
+                <h3>Yataq otağı dəsti</h3>
+
+                <div class="price">1 900 AZN</div>
+
+                <div class="location">Ağstafa</div>
+
+                <div class="date">
+                    17 sentyabr 2026 • 09:30
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 18 -->
+
+        <div class="card"
+             data-category="Məişət"
+             data-title="Müasir soyuducu"
+             onclick="openAd(this)">
+
+            <img class="card-img"
+                 src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?auto=format&fit=crop&w=800&q=85">
+
+            <div class="card-body">
+
+                <div class="category">Məişət</div>
+
+                <h3>Müasir soyuducu</h3>
+
+                <div class="price">1 100 AZN</div>
+
+                <div class="location">Tovuz</div>
+
+                <div class="date">
+                    17 sentyabr 2026 • 09:10
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 19 -->
+
+        <div class="card"
+             data-category="Xidmət"
+             data-title="Telefon təmiri"
+             onclick="openAd(this)">
+
+            <img class="card-img"
+                 src="https://images.unsplash.com/photo-1598965402089-897ce52e8355?auto=format&fit=crop&w=800&q=85">
+
+            <div class="card-body">
+
+                <div class="category">Xidmət</div>
+
+                <h3>Telefon təmiri</h3>
+
+                <div class="price">Razılaşma yolu ilə</div>
+
+                <div class="location">Ağstafa</div>
+
+                <div class="date">
+                    17 sentyabr 2026 • 08:55
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 20 -->
+
+        <div class="card"
+             data-category="Xidmət"
+             data-title="Kondisioner ustası"
+             onclick="openAd(this)">
+
+            <img class="card-img"
+                 src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=800&q=85">
+
+            <div class="card-body">
+
+                <div class="category">Xidmət</div>
+
+                <h3>Kondisioner ustası</h3>
+
+                <div class="price">Razılaşma yolu ilə</div>
+
+                <div class="location">Qazax</div>
+
+                <div class="date">
+                    17 sentyabr 2026 • 08:40
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 21 -->
+
+        <div class="card"
+             data-category="İş"
+             data-title="Satış məsləhətçisi tələb olunur"
+             onclick="openAd(this)">
+
+            <img class="card-img"
+                 src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=800&q=85">
+
+            <div class="card-body">
+
+                <div class="category">İş</div>
+
+                <h3>Satış məsləhətçisi tələb olunur</h3>
+
+                <div class="price">Maaş razılaşma ilə</div>
+
+                <div class="location">Qazax</div>
+
+                <div class="date">
+                    17 sentyabr 2026 • 08:25
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 22 -->
+
+        <div class="card"
+             data-category="Geyim"
+             data-title="Qadın geyimləri"
+             onclick="openAd(this)">
+
+            <img class="card-img"
+                 src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=85">
+
+            <div class="card-body">
+
+                <div class="category">Geyim</div>
+
+                <h3>Qadın geyimləri</h3>
+
+                <div class="price">25 AZN-dən</div>
+
+                <div class="location">Tovuz</div>
+
+                <div class="date">
+                    17 sentyabr 2026 • 08:10
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 23 -->
+
+        <div class="card"
+             data-category="Kənd təsərrüfatı"
+             data-title="Təzə kənd təsərrüfatı məhsulları"
+             onclick="openAd(this)">
+
+            <img class="card-img"
+                 src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=800&q=85">
+
+            <div class="card-body">
+
+                <div class="category">
+                    Kənd təsərrüfatı
+                </div>
+
+                <h3>Təzə kənd təsərrüfatı məhsulları</h3>
+
+                <div class="price">Müxtəlif qiymətlər</div>
+
+                <div class="location">Ağstafa</div>
+
+                <div class="date">
+                    17 sentyabr 2026 • 07:55
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 24 -->
+
+        <div class="card"
+             data-category="Məişət"
+             data-title="Qəhvə aparatı"
+             onclick="openAd(this)">
+
+            <img class="card-img"
+                 src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=85">
+
+            <div class="card-body">
+
+                <div class="category">Məişət</div>
+
+                <h3>Qəhvə aparatı</h3>
+
+                <div class="price">480 AZN</div>
+
+                <div class="location">Qazax</div>
+
+                <div class="date">
+                    17 sentyabr 2026 • 07:40
+                </div>
+
+            </div>
+
+        </div>
+
 
     </div>
 
@@ -1068,15 +1335,13 @@ footer{
 </footer>
 
 
-<!-- ELAN DETALLARI -->
+<!-- ELAN DETAL MODALI -->
 
 <div class="overlay" id="adModal">
 
     <div class="modal">
 
-        <div class="close" onclick="closeAd()">
-            ×
-        </div>
+        <div class="close" onclick="closeAd()">×</div>
 
         <img id="modalImg" class="modal-img">
 
@@ -1103,7 +1368,7 @@ footer{
                 <path d="M16 3C8.82 3 3 8.82 3 16c0 2.29.6 4.44 1.66 6.3L3 29l6.9-1.61A12.94 12.94 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zm0 23.8c-2.01 0-3.88-.59-5.45-1.6l-.39-.24-4.1.96.98-4A10.76 10.76 0 1 1 16 26.8z"/>
             </svg>
 
-            WhatsApp
+            WhatsApp ilə əlaqə
 
         </button>
 
@@ -1118,9 +1383,7 @@ footer{
 
     <div class="modal">
 
-        <div class="close" onclick="closePayment()">
-            ×
-        </div>
+        <div class="close" onclick="closePayment()">×</div>
 
         <h2>
             Elan yerləşdir
@@ -1128,19 +1391,17 @@ footer{
 
         <div class="warning">
 
-            <strong>
-                Elan yerləşdirmə haqqı: 3 AZN
-            </strong>
+            <b>Elan yerləşdirmə haqqı: 3 AZN</b>
 
             <br><br>
 
-            Ödənişi etdikdən sonra WhatsApp
-            vasitəsilə bizə yazın.
+            Ödənişi etdikdən sonra WhatsApp vasitəsilə
+            bizə yazın.
 
             <br><br>
 
-            Ödəniş təsdiqləndikdən sonra
-            elanınız Altap.Biz-də yerləşdiriləcək.
+            Ödəniş təsdiqləndikdən sonra elanınız
+            Altap.Biz-də yerləşdiriləcək.
 
         </div>
 
@@ -1162,36 +1423,36 @@ footer{
 
 <script>
 
-/* =========================
+/* ==========================
    GİRİŞ XƏBƏRDARLIĞI
-========================= */
+========================== */
 
-window.addEventListener("load", function(){
+window.addEventListener("load",function(){
 
-    document.getElementById("welcomeModal").style.display = "flex";
+    document.getElementById("welcomeModal").style.display="flex";
 
 });
 
 
 function closeWelcome(){
 
-    document.getElementById("welcomeModal").style.display = "none";
+    document.getElementById("welcomeModal").style.display="none";
 
 }
 
 
-/* =========================
-   ELAN DETALLARI
-========================= */
+/* ==========================
+   ELAN
+========================== */
 
-let currentCategory = "all";
+let currentCategory="all";
 
-let selectedAd = null;
+let selectedAd=null;
 
 
 function openAd(card){
 
-    selectedAd = card;
+    selectedAd=card;
 
     document.getElementById("modalImg").src =
         card.querySelector("img").src;
@@ -1208,29 +1469,29 @@ function openAd(card){
     document.getElementById("modalDate").innerText =
         card.querySelector(".date").innerText;
 
-    document.getElementById("adModal").style.display = "flex";
+    document.getElementById("adModal").style.display="flex";
 
 }
 
 
 function closeAd(){
 
-    document.getElementById("adModal").style.display = "none";
+    document.getElementById("adModal").style.display="none";
 
 }
 
 
-/* =========================
-   WHATSAPP ELAN
-========================= */
+/* ==========================
+   WHATSAPP
+========================== */
 
 function contactWhatsApp(){
 
-    let title = selectedAd
+    let title=selectedAd
         ? selectedAd.dataset.title
         : "Elan";
 
-    let text =
+    let text=
         "Salam, Altap.Biz-də bu elanla maraqlanıram: "
         + title;
 
@@ -1243,29 +1504,27 @@ function contactWhatsApp(){
 }
 
 
-/* =========================
+/* ==========================
    ÖDƏNİŞ
-========================= */
+========================== */
 
 function showPayment(){
 
-    document.getElementById("paymentModal").style.display =
-        "flex";
+    document.getElementById("paymentModal").style.display="flex";
 
 }
 
 
 function closePayment(){
 
-    document.getElementById("paymentModal").style.display =
-        "none";
+    document.getElementById("paymentModal").style.display="none";
 
 }
 
 
 function goWhatsApp(){
 
-    let text =
+    let text=
         "Salam, Altap.Biz-də elan yerləşdirmək istəyirəm. Elan yerləşdirmə haqqı 3 AZN-dir.";
 
     window.open(
@@ -1277,21 +1536,21 @@ function goWhatsApp(){
 }
 
 
-/* =========================
+/* ==========================
    KATEQORİYA
-========================= */
+========================== */
 
 function filterAds(category,button){
 
-    currentCategory = category;
+    currentCategory=category;
 
     document
-        .querySelectorAll(".categories button")
-        .forEach(function(btn){
+    .querySelectorAll(".categories button")
+    .forEach(function(btn){
 
-            btn.classList.remove("active");
+        btn.classList.remove("active");
 
-        });
+    });
 
     button.classList.add("active");
 
@@ -1300,71 +1559,71 @@ function filterAds(category,button){
 }
 
 
-/* =========================
+/* ==========================
    AXTARIŞ
-========================= */
+========================== */
 
 function searchAds(){
 
-    let search =
+    let search=
         document.getElementById("searchInput")
         .value
         .toLowerCase()
         .trim();
 
-    let cards =
+    let cards=
         document.querySelectorAll(".card");
 
-    let visible = 0;
+    let visible=0;
 
     cards.forEach(function(card){
 
-        let title =
+        let title=
             card.dataset.title.toLowerCase();
 
-        let category =
+        let category=
             card.dataset.category;
 
-        let categoryMatch =
-            currentCategory === "all" ||
-            category === currentCategory;
+        let categoryMatch=
+            currentCategory==="all" ||
+            category===currentCategory;
 
-        let searchMatch =
+        let searchMatch=
             title.includes(search);
 
         if(categoryMatch && searchMatch){
 
-            card.style.display = "block";
+            card.style.display="block";
 
             visible++;
 
         }else{
 
-            card.style.display = "none";
+            card.style.display="none";
 
         }
 
     });
 
-
-    document.getElementById("empty").style.display =
-        visible === 0 ? "block" : "none";
+    document.getElementById("empty").style.display=
+        visible===0 ? "block" : "none";
 
 }
 
 
-/* =========================
-   MODAL ÇÖLƏ BASANDA BAĞLANSIN
-========================= */
+/* ==========================
+   MODAL ÇÖLƏ BASILANDA
+========================== */
 
-document.querySelectorAll(".overlay")
+document
+.querySelectorAll(".overlay")
 .forEach(function(overlay){
 
     overlay.addEventListener("click",function(e){
 
-        if(e.target === overlay){
+        if(e.target===overlay){
 
-            overlay.style.display = "none";
+            overlay.style.display="none";
 
         }
 
@@ -1373,17 +1632,17 @@ document.querySelectorAll(".overlay")
 });
 
 
-/* ESC DÜYMƏSİ */
+/* ESC */
 
 document.addEventListener("keydown",function(e){
 
-    if(e.key === "Escape"){
+    if(e.key==="Escape"){
 
-        document.getElementById("welcomeModal").style.display = "none";
+        document.getElementById("welcomeModal").style.display="none";
 
-        document.getElementById("adModal").style.display = "none";
+        document.getElementById("adModal").style.display="none";
 
-        document.getElementById("paymentModal").style.display = "none";
+        document.getElementById("paymentModal").style.display="none";
 
     }
 
