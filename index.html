@@ -167,12 +167,27 @@ header{
     overflow:hidden;
     box-shadow:0 5px 20px rgba(0,0,0,.07);
     cursor:pointer;
-    transition:.2s;
+    transition:.25s;
 }
 
 .card:hover{
     transform:translateY(-3px);
     box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.card.new{
+    animation:newAd .5s ease;
+}
+
+@keyframes newAd{
+    from{
+        transform:scale(.96);
+        opacity:.4;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
 }
 
 .card-img{
@@ -213,8 +228,9 @@ header{
 }
 
 .date{
-    color:#8b95a5;
+    color:#7b8494;
     font-size:12px;
+    font-weight:500;
 }
 
 .empty{
@@ -264,6 +280,7 @@ footer{
         transform:scale(.92);
         opacity:0;
     }
+
     to{
         transform:scale(1);
         opacity:1;
@@ -350,6 +367,7 @@ footer{
         transform:translateY(25px) scale(.94);
         opacity:0;
     }
+
     to{
         transform:translateY(0) scale(1);
         opacity:1;
@@ -395,6 +413,38 @@ footer{
     background:#25d366;
 }
 
+/* UPDATE INFO */
+
+.live-update{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:12px;
+    color:#6b7280;
+}
+
+.live-dot{
+    width:8px;
+    height:8px;
+    background:#22c55e;
+    border-radius:50%;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%{
+        opacity:1;
+    }
+
+    50%{
+        opacity:.35;
+    }
+
+    100%{
+        opacity:1;
+    }
+}
+
 /* MOBILE */
 
 @media(max-width:1000px){
@@ -430,6 +480,14 @@ footer{
 
     .price{
         font-size:16px;
+    }
+
+    .top-row{
+        display:block;
+    }
+
+    .live-update{
+        margin-top:7px;
     }
 
 }
@@ -616,6 +674,14 @@ footer{
             Son elanlar
         </h2>
 
+        <div class="live-update">
+
+            <span class="live-dot"></span>
+
+            Elanlar avtomatik yenilənir
+
+        </div>
+
     </div>
 
 
@@ -627,6 +693,7 @@ footer{
         <div class="card"
              data-category="Telefon"
              data-title="iPhone 15 Pro Max"
+             data-created="0"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -642,9 +709,7 @@ footer{
 
                 <div class="location">Ağstafa</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 14:20
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -656,6 +721,7 @@ footer{
         <div class="card"
              data-category="Telefon"
              data-title="Samsung Galaxy S25 Ultra"
+             data-created="1"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -671,9 +737,7 @@ footer{
 
                 <div class="location">Qazax</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 14:05
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -685,6 +749,7 @@ footer{
         <div class="card"
              data-category="Telefon"
              data-title="Xiaomi 14 Pro"
+             data-created="2"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -700,9 +765,7 @@ footer{
 
                 <div class="location">Tovuz</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 13:50
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -714,6 +777,7 @@ footer{
         <div class="card"
              data-category="Telefon"
              data-title="Google Pixel 9 Pro"
+             data-created="3"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -729,9 +793,7 @@ footer{
 
                 <div class="location">Ağstafa</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 13:30
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -743,6 +805,7 @@ footer{
         <div class="card"
              data-category="Avtomobil"
              data-title="Mercedes-Benz C-Class"
+             data-created="4"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -758,9 +821,7 @@ footer{
 
                 <div class="location">Qazax</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 13:10
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -772,6 +833,7 @@ footer{
         <div class="card"
              data-category="Avtomobil"
              data-title="BMW 5 Series"
+             data-created="5"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -787,9 +849,7 @@ footer{
 
                 <div class="location">Tovuz</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 12:55
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -801,6 +861,7 @@ footer{
         <div class="card"
              data-category="Avtomobil"
              data-title="Toyota Camry"
+             data-created="6"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -816,9 +877,7 @@ footer{
 
                 <div class="location">Ağstafa</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 12:35
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -830,6 +889,7 @@ footer{
         <div class="card"
              data-category="Avtomobil"
              data-title="Ford Mustang"
+             data-created="7"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -845,9 +905,7 @@ footer{
 
                 <div class="location">Qazax</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 12:20
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -859,6 +917,7 @@ footer{
         <div class="card"
              data-category="Əmlak"
              data-title="3 otaqlı mənzil"
+             data-created="8"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -874,9 +933,7 @@ footer{
 
                 <div class="location">Tovuz</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 12:00
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -888,6 +945,7 @@ footer{
         <div class="card"
              data-category="Əmlak"
              data-title="Həyət evi satılır"
+             data-created="9"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -903,9 +961,7 @@ footer{
 
                 <div class="location">Ağstafa</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 11:40
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -917,6 +973,7 @@ footer{
         <div class="card"
              data-category="Əmlak"
              data-title="Torpaq sahəsi"
+             data-created="10"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -932,9 +989,7 @@ footer{
 
                 <div class="location">Qazax</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 11:20
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -946,6 +1001,7 @@ footer{
         <div class="card"
              data-category="Əmlak"
              data-title="Yeni tikili ev"
+             data-created="11"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -961,9 +1017,7 @@ footer{
 
                 <div class="location">Tovuz</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 11:00
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -975,6 +1029,7 @@ footer{
         <div class="card"
              data-category="Elektronika"
              data-title="MacBook Pro"
+             data-created="12"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -990,9 +1045,7 @@ footer{
 
                 <div class="location">Ağstafa</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 10:45
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -1004,6 +1057,7 @@ footer{
         <div class="card"
              data-category="Elektronika"
              data-title="PlayStation 5"
+             data-created="13"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -1019,9 +1073,7 @@ footer{
 
                 <div class="location">Qazax</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 10:25
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -1033,6 +1085,7 @@ footer{
         <div class="card"
              data-category="Elektronika"
              data-title="Canon fotoaparat"
+             data-created="14"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -1048,9 +1101,7 @@ footer{
 
                 <div class="location">Tovuz</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 10:05
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -1062,6 +1113,7 @@ footer{
         <div class="card"
              data-category="Mebel"
              data-title="Müasir divan dəsti"
+             data-created="15"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -1077,9 +1129,7 @@ footer{
 
                 <div class="location">Qazax</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 09:50
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -1091,6 +1141,7 @@ footer{
         <div class="card"
              data-category="Mebel"
              data-title="Yataq otağı dəsti"
+             data-created="16"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -1106,9 +1157,7 @@ footer{
 
                 <div class="location">Ağstafa</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 09:30
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -1120,6 +1169,7 @@ footer{
         <div class="card"
              data-category="Məişət"
              data-title="Müasir soyuducu"
+             data-created="17"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -1135,9 +1185,7 @@ footer{
 
                 <div class="location">Tovuz</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 09:10
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -1149,6 +1197,7 @@ footer{
         <div class="card"
              data-category="Xidmət"
              data-title="Telefon təmiri"
+             data-created="18"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -1164,9 +1213,7 @@ footer{
 
                 <div class="location">Ağstafa</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 08:55
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -1178,6 +1225,7 @@ footer{
         <div class="card"
              data-category="Xidmət"
              data-title="Kondisioner ustası"
+             data-created="19"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -1193,9 +1241,7 @@ footer{
 
                 <div class="location">Qazax</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 08:40
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -1207,6 +1253,7 @@ footer{
         <div class="card"
              data-category="İş"
              data-title="Satış məsləhətçisi tələb olunur"
+             data-created="20"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -1222,9 +1269,7 @@ footer{
 
                 <div class="location">Qazax</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 08:25
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -1236,6 +1281,7 @@ footer{
         <div class="card"
              data-category="Geyim"
              data-title="Qadın geyimləri"
+             data-created="21"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -1251,9 +1297,7 @@ footer{
 
                 <div class="location">Tovuz</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 08:10
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -1265,6 +1309,7 @@ footer{
         <div class="card"
              data-category="Kənd təsərrüfatı"
              data-title="Təzə kənd təsərrüfatı məhsulları"
+             data-created="22"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -1282,9 +1327,7 @@ footer{
 
                 <div class="location">Ağstafa</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 07:55
-                </div>
+                <div class="date"></div>
 
             </div>
 
@@ -1296,6 +1339,7 @@ footer{
         <div class="card"
              data-category="Məişət"
              data-title="Qəhvə aparatı"
+             data-created="23"
              onclick="openAd(this)">
 
             <img class="card-img"
@@ -1311,14 +1355,11 @@ footer{
 
                 <div class="location">Qazax</div>
 
-                <div class="date">
-                    17 sentyabr 2026 • 07:40
-                </div>
+                <div class="date"></div>
 
             </div>
 
         </div>
-
 
     </div>
 
@@ -1335,7 +1376,7 @@ footer{
 </footer>
 
 
-<!-- ELAN DETAL MODALI -->
+<!-- ELAN DETALLARI -->
 
 <div class="overlay" id="adModal">
 
@@ -1364,8 +1405,11 @@ footer{
         <button class="whatsapp" onclick="contactWhatsApp()">
 
             <svg viewBox="0 0 32 32">
+
                 <path d="M19.11 17.23c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.12-.41-2.14-1.31-.79-.7-1.32-1.56-1.48-1.82-.16-.27-.02-.41.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27s.98 2.63 1.11 2.81c.14.18 1.92 2.94 4.65 4.12.65.28 1.15.45 1.54.58.65.21 1.24.18 1.71.11.52-.08 1.6-.66 1.83-1.29.23-.63.23-1.17.16-1.29-.07-.11-.25-.18-.52-.32z"/>
+
                 <path d="M16 3C8.82 3 3 8.82 3 16c0 2.29.6 4.44 1.66 6.3L3 29l6.9-1.61A12.94 12.94 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zm0 23.8c-2.01 0-3.88-.59-5.45-1.6l-.39-.24-4.1.96.98-4A10.76 10.76 0 1 1 16 26.8z"/>
+
             </svg>
 
             WhatsApp ilə əlaqə
@@ -1377,7 +1421,7 @@ footer{
 </div>
 
 
-<!-- ÖDƏNİŞ MODALI -->
+<!-- ÖDƏNİŞ -->
 
 <div class="overlay" id="paymentModal">
 
@@ -1408,8 +1452,11 @@ footer{
         <button class="whatsapp" onclick="goWhatsApp()">
 
             <svg viewBox="0 0 32 32">
+
                 <path d="M19.11 17.23c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.12-.41-2.14-1.31-.79-.7-1.32-1.56-1.48-1.82-.16-.27-.02-.41.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27s.98 2.63 1.11 2.81c.14.18 1.92 2.94 4.65 4.12.65.28 1.15.45 1.54.58.65.21 1.24.18 1.71.11.52-.08 1.6-.66 1.83-1.29.23-.63.23-1.17.16-1.29-.07-.11-.25-.18-.52-.32z"/>
+
                 <path d="M16 3C8.82 3 3 8.82 3 16c0 2.29.6 4.44 1.66 6.3L3 29l6.9-1.61A12.94 12.94 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zm0 23.8c-2.01 0-3.88-.59-5.45-1.6l-.39-.24-4.1.96.98-4A10.76 10.76 0 1 1 16 26.8z"/>
+
             </svg>
 
             WhatsApp ilə yaz
@@ -1423,27 +1470,132 @@ footer{
 
 <script>
 
-/* ==========================
+/* =========================
+   DƏQİQ TARİX VƏ SAAT
+========================= */
+
+const aylar = [
+    "yanvar",
+    "fevral",
+    "mart",
+    "aprel",
+    "may",
+    "iyun",
+    "iyul",
+    "avqust",
+    "sentyabr",
+    "oktyabr",
+    "noyabr",
+    "dekabr"
+];
+
+
+function tarixSaat(date){
+
+    const gun =
+        String(date.getDate()).padStart(2,"0");
+
+    const ay =
+        aylar[date.getMonth()];
+
+    const il =
+        date.getFullYear();
+
+    const saat =
+        String(date.getHours()).padStart(2,"0");
+
+    const deqiqe =
+        String(date.getMinutes()).padStart(2,"0");
+
+    return gun + " " +
+           ay + " " +
+           il + " • " +
+           saat + ":" +
+           deqiqe;
+}
+
+
+/* =========================
+   ELANLARIN TARİXİNİ YENİLƏ
+========================= */
+
+function updateAdDates(){
+
+    const indi = new Date();
+
+    const elanlar =
+        document.querySelectorAll(".card");
+
+    elanlar.forEach(function(elan){
+
+        const geriye =
+            Number(elan.dataset.created || 0);
+
+        /*
+          Hər nümunə elan üçün
+          fərqli vaxt yaradılır.
+        */
+
+        const elanVaxti =
+            new Date(
+                indi.getTime() -
+                (geriye * 7 * 60000)
+            );
+
+        const tarix =
+            elan.querySelector(".date");
+
+        if(tarix){
+
+            tarix.textContent =
+                tarixSaat(elanVaxti);
+
+        }
+
+    });
+
+}
+
+
+/* SAYT AÇILAN KİMİ DƏRHAL GÖSTƏR */
+
+updateAdDates();
+
+
+/*
+  HƏR 30 SANİYƏDƏ BİR YENİLƏ
+*/
+
+setInterval(function(){
+
+    updateAdDates();
+
+},30000);
+
+
+/* =========================
    GİRİŞ XƏBƏRDARLIĞI
-========================== */
+========================= */
 
 window.addEventListener("load",function(){
 
-    document.getElementById("welcomeModal").style.display="flex";
+    document.getElementById("welcomeModal")
+        .style.display="flex";
 
 });
 
 
 function closeWelcome(){
 
-    document.getElementById("welcomeModal").style.display="none";
+    document.getElementById("welcomeModal")
+        .style.display="none";
 
 }
 
 
-/* ==========================
-   ELAN
-========================== */
+/* =========================
+   ELAN DETALI
+========================= */
 
 let currentCategory="all";
 
@@ -1469,29 +1621,32 @@ function openAd(card){
     document.getElementById("modalDate").innerText =
         card.querySelector(".date").innerText;
 
-    document.getElementById("adModal").style.display="flex";
+    document.getElementById("adModal")
+        .style.display="flex";
 
 }
 
 
 function closeAd(){
 
-    document.getElementById("adModal").style.display="none";
+    document.getElementById("adModal")
+        .style.display="none";
 
 }
 
 
-/* ==========================
+/* =========================
    WHATSAPP
-========================== */
+========================= */
 
 function contactWhatsApp(){
 
-    let title=selectedAd
+    const title =
+        selectedAd
         ? selectedAd.dataset.title
         : "Elan";
 
-    let text=
+    const text =
         "Salam, Altap.Biz-də bu elanla maraqlanıram: "
         + title;
 
@@ -1504,27 +1659,29 @@ function contactWhatsApp(){
 }
 
 
-/* ==========================
+/* =========================
    ÖDƏNİŞ
-========================== */
+========================= */
 
 function showPayment(){
 
-    document.getElementById("paymentModal").style.display="flex";
+    document.getElementById("paymentModal")
+        .style.display="flex";
 
 }
 
 
 function closePayment(){
 
-    document.getElementById("paymentModal").style.display="none";
+    document.getElementById("paymentModal")
+        .style.display="none";
 
 }
 
 
 function goWhatsApp(){
 
-    let text=
+    const text =
         "Salam, Altap.Biz-də elan yerləşdirmək istəyirəm. Elan yerləşdirmə haqqı 3 AZN-dir.";
 
     window.open(
@@ -1536,21 +1693,21 @@ function goWhatsApp(){
 }
 
 
-/* ==========================
+/* =========================
    KATEQORİYA
-========================== */
+========================= */
 
 function filterAds(category,button){
 
     currentCategory=category;
 
     document
-    .querySelectorAll(".categories button")
-    .forEach(function(btn){
+        .querySelectorAll(".categories button")
+        .forEach(function(btn){
 
-        btn.classList.remove("active");
+            btn.classList.remove("active");
 
-    });
+        });
 
     button.classList.add("active");
 
@@ -1559,36 +1716,36 @@ function filterAds(category,button){
 }
 
 
-/* ==========================
+/* =========================
    AXTARIŞ
-========================== */
+========================= */
 
 function searchAds(){
 
-    let search=
+    const search =
         document.getElementById("searchInput")
         .value
         .toLowerCase()
         .trim();
 
-    let cards=
+    const cards =
         document.querySelectorAll(".card");
 
     let visible=0;
 
     cards.forEach(function(card){
 
-        let title=
+        const title =
             card.dataset.title.toLowerCase();
 
-        let category=
+        const category =
             card.dataset.category;
 
-        let categoryMatch=
+        const categoryMatch =
             currentCategory==="all" ||
             category===currentCategory;
 
-        let searchMatch=
+        const searchMatch =
             title.includes(search);
 
         if(categoryMatch && searchMatch){
@@ -1605,31 +1762,32 @@ function searchAds(){
 
     });
 
-    document.getElementById("empty").style.display=
+    document.getElementById("empty")
+        .style.display =
         visible===0 ? "block" : "none";
 
 }
 
 
-/* ==========================
-   MODAL ÇÖLƏ BASILANDA
-========================== */
+/* =========================
+   MODAL BAĞLAMA
+========================= */
 
 document
-.querySelectorAll(".overlay")
-.forEach(function(overlay){
+    .querySelectorAll(".overlay")
+    .forEach(function(overlay){
 
-    overlay.addEventListener("click",function(e){
+        overlay.addEventListener("click",function(e){
 
-        if(e.target===overlay){
+            if(e.target===overlay){
 
-            overlay.style.display="none";
+                overlay.style.display="none";
 
-        }
+            }
+
+        });
 
     });
-
-});
 
 
 /* ESC */
@@ -1638,11 +1796,14 @@ document.addEventListener("keydown",function(e){
 
     if(e.key==="Escape"){
 
-        document.getElementById("welcomeModal").style.display="none";
+        document.getElementById("welcomeModal")
+            .style.display="none";
 
-        document.getElementById("adModal").style.display="none";
+        document.getElementById("adModal")
+            .style.display="none";
 
-        document.getElementById("paymentModal").style.display="none";
+        document.getElementById("paymentModal")
+            .style.display="none";
 
     }
 
