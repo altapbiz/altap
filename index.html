@@ -3,332 +3,208 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Premium Proqramlar</title>
+<title>Poz-Qazan</title>
 
 <style>
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
+    font-family:Arial,sans-serif;
 }
 
 body{
-    background:
-        radial-gradient(circle at 50% 0%, #123b32 0%, #050505 35%),
-        #050505;
-    color:#fff;
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Arial,sans-serif;
     min-height:100vh;
+    background:linear-gradient(135deg,#eef2ff,#ffffff);
+    color:#151a45;
 }
 
 .header{
-    padding:45px 20px 32px;
+    background:linear-gradient(135deg,#16245f,#385cff);
+    color:white;
+    padding:22px 18px;
     text-align:center;
-    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .header h1{
-    font-size:34px;
-    font-weight:900;
-    letter-spacing:-1px;
+    font-size:30px;
+    margin-bottom:7px;
 }
 
 .header p{
-    margin-top:9px;
-    color:#8d8d8d;
-    font-size:14px;
+    opacity:.9;
 }
 
-.container{
+/* KOD GIRIŞI */
+
+.login{
+    max-width:420px;
+    margin:70px auto;
+    padding:30px 22px;
+    background:white;
+    border-radius:24px;
+    box-shadow:0 10px 35px rgba(0,0,0,.12);
+    text-align:center;
+}
+
+.login h2{
+    margin-bottom:12px;
+}
+
+.login p{
+    color:#777;
+    margin-bottom:22px;
+}
+
+#codeInput{
     width:100%;
-    max-width:650px;
-    margin:auto;
-    padding:22px 15px 45px;
+    padding:15px;
+    border:2px solid #e1e4f0;
+    border-radius:14px;
+    font-size:18px;
+    text-align:center;
+    outline:none;
+}
+
+#codeInput:focus{
+    border-color:#4c63ff;
+}
+
+.login button{
+    width:100%;
+    margin-top:14px;
+    padding:15px;
+    border:0;
+    border-radius:14px;
+    background:linear-gradient(135deg,#425cff,#7047ff);
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#error{
+    color:#e53935;
+    margin-top:13px;
+    display:none;
+}
+
+/* OYUN */
+
+.game{
+    display:none;
+    max-width:950px;
+    margin:35px auto;
+    padding:15px;
+}
+
+.game-title{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.game-title h2{
+    font-size:28px;
+}
+
+.game-title p{
+    color:#777;
+    margin-top:7px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
 }
 
 .card{
     position:relative;
-    display:flex;
-    align-items:center;
-    gap:15px;
-    padding:18px;
-    margin-bottom:15px;
-
-    background:linear-gradient(
-        145deg,
-        rgba(30,30,30,.96),
-        rgba(9,9,9,.98)
-    );
-
-    border:1px solid rgba(255,255,255,.10);
-    border-radius:24px;
-
-    box-shadow:
-        0 10px 35px rgba(0,0,0,.45),
-        inset 0 1px rgba(255,255,255,.05);
-
+    height:220px;
+    border-radius:22px;
     overflow:hidden;
+    background:white;
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
 }
 
-.card:before{
-    content:"";
+.prize{
     position:absolute;
-    left:0;
-    top:12px;
-    bottom:12px;
-    width:4px;
-    border-radius:0 5px 5px 0;
-    background:linear-gradient(#00ff91,#00b7ff);
-    box-shadow:0 0 15px #00ff91;
-}
-
-.icon{
-    width:70px;
-    height:70px;
-    min-width:70px;
-    border-radius:19px;
-
+    inset:0;
     display:flex;
     align-items:center;
     justify-content:center;
-
-    font-size:38px;
-    font-weight:900;
-
-    box-shadow:
-        0 8px 22px rgba(0,0,0,.5),
-        inset 0 1px rgba(255,255,255,.25);
+    flex-direction:column;
+    background:white;
+    z-index:1;
 }
 
-.whatsapp{
-    background:linear-gradient(145deg,#25D366,#078c42);
-}
-
-.instagram{
-    background:linear-gradient(
-        145deg,
-        #ffdc80,
-        #fcaf45,
-        #f77737,
-        #e1306c,
-        #833ab4
-    );
-}
-
-.telegram{
-    background:linear-gradient(145deg,#29b6f6,#087eb5);
-}
-
-.youtube{
-    background:linear-gradient(145deg,#ff3030,#b40000);
-}
-
-.netflix{
-    background:linear-gradient(145deg,#e50914,#7b0007);
-}
-
-.icon svg{
-    width:39px;
-    height:39px;
-    fill:white;
-}
-
-.details{
-    flex:1;
-    min-width:0;
-}
-
-.name{
-    font-size:17px;
-    font-weight:800;
-    line-height:1.25;
+.prize .emoji{
+    font-size:40px;
     margin-bottom:8px;
 }
 
-.price{
-    font-size:21px;
-    font-weight:900;
+.prize strong{
+    font-size:26px;
+    color:#3158e8;
 }
 
-.year{
-    color:#8e8e8e;
-    font-size:12px;
-    font-weight:600;
+.prize small{
+    color:#777;
+    margin-top:5px;
 }
 
-.download{
-    margin-top:11px;
-    width:100%;
-    border:none;
-    padding:12px 15px;
-
-    border-radius:13px;
-
-    background:linear-gradient(
-        90deg,
-        #00f27d,
-        #00d5b4
-    );
-
-    color:#00150d;
-    font-size:15px;
-    font-weight:900;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 5px 18px rgba(0,255,140,.18);
-}
-
-.download:active{
-    transform:scale(.96);
-}
-
-/* MODAL */
-
-.modal{
-    display:none;
-    position:fixed;
+canvas{
+    position:absolute;
     inset:0;
-    z-index:999;
-
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
-
-    background:rgba(0,0,0,.82);
-    backdrop-filter:blur(10px);
-}
-
-.modal-box{
     width:100%;
-    max-width:390px;
-
-    padding:27px 22px;
-
-    text-align:center;
-
-    border-radius:26px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #191919,
-            #080808
-        );
-
-    border:1px solid rgba(255,255,255,.13);
-
-    box-shadow:
-        0 20px 70px rgba(0,0,0,.8),
-        0 0 35px rgba(0,255,140,.08);
-}
-
-.modal-icon{
-    width:65px;
-    height:65px;
-    margin:0 auto 15px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:18px;
-
-    background:linear-gradient(
-        145deg,
-        #00f28b,
-        #00aebc
-    );
-
-    color:#00150d;
-    font-size:31px;
-    font-weight:900;
-}
-
-.modal-box h2{
-    font-size:23px;
-    margin-bottom:13px;
-}
-
-.modal-box p{
-    color:#d0d0d0;
-    line-height:1.55;
-    font-size:15px;
-}
-
-.modal-program{
-    color:#fff;
-    font-weight:900;
-}
-
-.modal-price{
-    display:block;
-    margin:10px 0;
-    color:#00ff91;
-    font-size:24px;
-    font-weight:900;
-}
-
-.modal-buttons{
-    display:flex;
-    gap:10px;
-    margin-top:20px;
-}
-
-.whatsapp-btn,
-.close-btn{
-    flex:1;
-    border:none;
-    padding:14px 10px;
-    border-radius:14px;
-    font-size:15px;
-    font-weight:900;
+    height:100%;
+    z-index:2;
+    touch-action:none;
     cursor:pointer;
 }
 
-.whatsapp-btn{
-    background:#25D366;
-    color:#001b0b;
+.card-number{
+    position:absolute;
+    top:10px;
+    left:12px;
+    z-index:3;
+    color:white;
+    font-weight:bold;
+    font-size:14px;
+    pointer-events:none;
 }
 
-.close-btn{
-    background:#292929;
-    color:#fff;
+.reset{
+    display:block;
+    margin:28px auto;
+    padding:13px 25px;
+    border:0;
+    border-radius:13px;
+    background:#16245f;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
 }
 
-@media(max-width:420px){
+.note{
+    text-align:center;
+    color:#777;
+    margin-top:15px;
+    font-size:13px;
+}
 
-    .header h1{
-        font-size:30px;
+@media(max-width:650px){
+
+    .cards{
+        grid-template-columns:1fr;
     }
 
     .card{
-        padding:15px;
-        gap:12px;
+        height:210px;
     }
 
-    .icon{
-        width:61px;
-        height:61px;
-        min-width:61px;
-        border-radius:17px;
-    }
-
-    .icon svg{
-        width:34px;
-        height:34px;
-    }
-
-    .name{
-        font-size:15px;
-    }
-
-    .price{
-        font-size:19px;
+    .login{
+        margin:45px 15px;
     }
 }
 </style>
@@ -336,197 +212,508 @@ body{
 
 <body>
 
-<div class="header">
-    <h1>Premium Proqramlar</h1>
-    <p>iPhone və Android</p>
-</div>
+<header class="header">
+    <h1>🎁 POZ-QAZAN</h1>
+    <p>Şansını sınamaq üçün kartı poz</p>
+</header>
 
-<div class="container">
 
-    <!-- WHATSAPP -->
+<!-- KOD GIRIŞI -->
 
-    <div class="card">
+<section class="login" id="loginBox">
 
-        <div class="icon whatsapp">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.18-1.36A10 10 0 1 0 12 2zm5.3 14.17c-.22.62-1.27 1.18-1.75 1.25-.45.07-1.02.1-1.65-.1-.38-.12-.86-.28-1.48-.55-2.6-1.12-4.3-3.74-4.43-3.91-.13-.17-1.06-1.41-1.06-2.69s.67-1.91.91-2.17c.23-.26.51-.32.68-.32h.5c.16 0 .38-.06.59.45.22.53.76 1.86.83 2 .07.14.12.3.02.48-.09.18-.14.29-.28.45-.14.17-.29.36-.41.48-.14.14-.29.29-.13.57.16.28.7 1.15 1.51 1.86 1.04.93 1.91 1.22 2.19 1.36.28.14.44.12.6-.07.16-.18.69-.8.87-1.08.18-.28.36-.23.61-.14.25.09 1.59.75 1.86.89.28.14.46.21.53.32.07.12.07.65-.15 1.27z"/>
-            </svg>
-        </div>
+    <h2>🔐 Giriş kodu</h2>
 
-        <div class="details">
-            <div class="name">WhatsApp Plus İphone 2026</div>
-            <div class="price">15 ₼</div>
-            <button class="download"
-                onclick="openModal('WhatsApp Plus İphone 2026','15 ₼','whatsapp')">
-                Yüklə
-            </button>
-        </div>
+    <p>
+        Sizə verilən kodu aşağıya yazın.
+    </p>
 
+    <input
+        type="password"
+        id="codeInput"
+        placeholder="Kodu daxil edin"
+        autocomplete="off"
+    >
+
+    <button onclick="checkCode()">
+        Daxil ol
+    </button>
+
+    <div id="error">
+        ❌ Kod səhvdir!
     </div>
 
-
-    <!-- INSTAGRAM -->
-
-    <div class="card">
-
-        <div class="icon instagram">
-            <svg viewBox="0 0 24 24">
-                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 12 16.5 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 12 14.5 2.5 2.5 0 0 0 12 9.5zM17.5 6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/>
-            </svg>
-        </div>
-
-        <div class="details">
-            <div class="name">Instagram Plus İphone 2026</div>
-            <div class="price">10 ₼</div>
-            <button class="download"
-                onclick="openModal('Instagram Plus İphone 2026','10 ₼','instagram')">
-                Yüklə
-            </button>
-        </div>
-
-    </div>
+</section>
 
 
-    <!-- TELEGRAM -->
+<!-- POZ-QAZAN -->
 
-    <div class="card">
+<section class="game" id="game">
 
-        <div class="icon telegram">
-            <svg viewBox="0 0 24 24">
-                <path d="M21.9 3.4 18.6 20c-.25 1.18-.9 1.47-1.82.92l-5.02-3.7-2.42 2.33c-.27.27-.5.5-1.02.5l.36-5.1 9.28-8.38c.4-.36-.09-.56-.62-.2L5.88 13.3.93 11.75c-1.08-.34-1.1-1.08.23-1.6L20.5 2.92c.87-.32 1.63.2 1.4.48z"/>
-            </svg>
-        </div>
+    <div class="game-title">
 
-        <div class="details">
-            <div class="name">Telegram Plus İphone 2026</div>
-            <div class="price">8.99 ₼</div>
-            <button class="download"
-                onclick="openModal('Telegram Plus İphone 2026','8.99 ₼','telegram')">
-                Yüklə
-            </button>
-        </div>
-
-    </div>
-
-
-    <!-- YOUTUBE -->
-
-    <div class="card">
-
-        <div class="icon youtube">
-            <svg viewBox="0 0 24 24">
-                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.12C19.55 3.5 12 3.5 12 3.5s-7.55 0-9.4.58A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.12c1.85.58 9.4.58 9.4.58s7.55 0 9.4-.58a3 3 0 0 0 2.1-2.12A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.9V8.1l6.5 3.9-6.5 3.9z"/>
-            </svg>
-        </div>
-
-        <div class="details">
-            <div class="name">Youtube Premium 2026</div>
-            <div class="price">33.77 ₼</div>
-            <button class="download"
-                onclick="openModal('Youtube Premium 2026','33.77 ₼','youtube')">
-                Yüklə
-            </button>
-        </div>
-
-    </div>
-
-
-    <!-- NETFLIX -->
-
-    <div class="card">
-
-        <div class="icon netflix">
-            <svg viewBox="0 0 24 24">
-                <path d="M5 2h4.2l5.6 12.2V2H19v20h-4.2L9.2 9.8V22H5V2z"/>
-            </svg>
-        </div>
-
-        <div class="details">
-            <div class="name">Netflix Premium 2026</div>
-            <div class="price">29.39 ₼</div>
-            <button class="download"
-                onclick="openModal('Netflix Premium 2026','29.39 ₼','netflix')">
-                Yüklə
-            </button>
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- BİLDİRİŞ -->
-
-<div class="modal" id="modal">
-
-    <div class="modal-box">
-
-        <div class="modal-icon">!</div>
-
-        <h2>Diqqət</h2>
+        <h2>🎉 Poz-Qazan</h2>
 
         <p>
-            <span class="modal-program" id="modalProgram"></span>
-            <span class="modal-price" id="modalPrice"></span>
-            proqram 1 illik üçün bu qiymətədir
+            4 kartdan birini seç və barmağınla sürt.
         </p>
 
-        <div class="modal-buttons">
+    </div>
 
-            <button class="whatsapp-btn" onclick="goWhatsApp()">
-                WhatsApp
-            </button>
 
-            <button class="close-btn" onclick="closeModal()">
-                Bağla
-            </button>
+    <div class="cards">
+
+
+        <!-- KART 1 -->
+
+        <div class="card">
+
+            <div class="prize">
+
+                <div class="emoji">🎁</div>
+
+                <strong>10 AZN</strong>
+
+                <small>Təbriklər!</small>
+
+            </div>
+
+            <canvas></canvas>
+
+            <span class="card-number">
+                KART 1
+            </span>
+
+        </div>
+
+
+        <!-- KART 2 -->
+
+        <div class="card">
+
+            <div class="prize">
+
+                <div class="emoji">⭐</div>
+
+                <strong>5 AZN</strong>
+
+                <small>Təbriklər!</small>
+
+            </div>
+
+            <canvas></canvas>
+
+            <span class="card-number">
+                KART 2
+            </span>
+
+        </div>
+
+
+        <!-- KART 3 -->
+
+        <div class="card">
+
+            <div class="prize">
+
+                <div class="emoji">🎉</div>
+
+                <strong>25 AZN</strong>
+
+                <small>Təbriklər!</small>
+
+            </div>
+
+            <canvas></canvas>
+
+            <span class="card-number">
+                KART 3
+            </span>
+
+        </div>
+
+
+        <!-- KART 4 -->
+
+        <div class="card">
+
+            <div class="prize">
+
+                <div class="emoji">🍀</div>
+
+                <strong>1 AZN</strong>
+
+                <small>Təbriklər!</small>
+
+            </div>
+
+            <canvas></canvas>
+
+            <span class="card-number">
+                KART 4
+            </span>
 
         </div>
 
     </div>
 
-</div>
+
+    <button class="reset" onclick="location.reload()">
+        🔄 Yenidən başla
+    </button>
+
+    <div class="note">
+        Demo oyun interfeysi — real ödəniş funksiyası yoxdur.
+    </div>
+
+</section>
 
 
 <script>
 
-let selectedProgram = "";
+/* =========================================
+   BURADA GIRIŞ KODUNU DƏYIŞ
+   ========================================= */
 
-function openModal(program,price,icon){
+const SECRET_CODE = "123456";
 
-    selectedProgram = program;
 
-    document.getElementById("modalProgram").innerText = program;
-    document.getElementById("modalPrice").innerText = price;
+/* KODU YOXLAYIR */
 
-    document.getElementById("modal").style.display = "flex";
+function checkCode(){
+
+    const input =
+        document.getElementById("codeInput").value.trim();
+
+    const error =
+        document.getElementById("error");
+
+
+    if(input === SECRET_CODE){
+
+        document.getElementById("loginBox")
+            .style.display = "none";
+
+        document.getElementById("game")
+            .style.display = "block";
+
+        createScratchCards();
+
+    }
+
+    else{
+
+        error.style.display = "block";
+
+        setTimeout(function(){
+
+            error.style.display = "none";
+
+        },2500);
+
+    }
+
 }
 
-function closeModal(){
 
-    document.getElementById("modal").style.display = "none";
+/* ENTER DÜYMƏSI */
 
-}
+document.getElementById("codeInput")
+.addEventListener("keydown",function(e){
 
-function goWhatsApp(){
+    if(e.key === "Enter"){
 
-    let message =
-        "Salam, " + selectedProgram +
-        " almaq istəyirəm.";
+        checkCode();
 
-    window.location.href =
-        "https://wa.me/994556145657?text=" +
-        encodeURIComponent(message);
-
-}
-
-document.getElementById("modal").addEventListener("click",function(e){
-
-    if(e.target === this){
-        closeModal();
     }
 
 });
+
+
+/* =========================================
+   POZ-QAZAN SISTEMI
+   ========================================= */
+
+function createScratchCards(){
+
+    const canvases =
+        document.querySelectorAll("canvas");
+
+
+    canvases.forEach(function(canvas){
+
+        const card =
+            canvas.parentElement;
+
+
+        const width =
+            card.clientWidth;
+
+        const height =
+            card.clientHeight;
+
+
+        const dpr =
+            window.devicePixelRatio || 1;
+
+
+        canvas.width =
+            width * dpr;
+
+        canvas.height =
+            height * dpr;
+
+
+        canvas.style.width =
+            width + "px";
+
+        canvas.style.height =
+            height + "px";
+
+
+        const ctx =
+            canvas.getContext("2d");
+
+
+        ctx.scale(dpr,dpr);
+
+
+        /* POZULAN ÜST QAT */
+
+        const gradient =
+            ctx.createLinearGradient(
+                0,
+                0,
+                width,
+                height
+            );
+
+
+        gradient.addColorStop(
+            0,
+            "#9ca3af"
+        );
+
+        gradient.addColorStop(
+            0.5,
+            "#6b7280"
+        );
+
+        gradient.addColorStop(
+            1,
+            "#374151"
+        );
+
+
+        ctx.fillStyle =
+            gradient;
+
+
+        ctx.fillRect(
+            0,
+            0,
+            width,
+            height
+        );
+
+
+        /* ÜST YAZI */
+
+        ctx.fillStyle =
+            "#ffffff";
+
+        ctx.textAlign =
+            "center";
+
+
+        ctx.font =
+            "bold 25px Arial";
+
+
+        ctx.fillText(
+            "POZ",
+            width / 2,
+            height / 2 - 5
+        );
+
+
+        ctx.font =
+            "16px Arial";
+
+
+        ctx.fillText(
+            "Barmağınla sürt",
+            width / 2,
+            height / 2 + 28
+        );
+
+
+        let drawing = false;
+
+
+        /* KOORDINAT */
+
+        function getPosition(e){
+
+            const rect =
+                canvas.getBoundingClientRect();
+
+
+            let point;
+
+
+            if(
+                e.touches &&
+                e.touches.length > 0
+            ){
+
+                point =
+                    e.touches[0];
+
+            }
+
+            else{
+
+                point = e;
+
+            }
+
+
+            return {
+
+                x:
+                    point.clientX -
+                    rect.left,
+
+                y:
+                    point.clientY -
+                    rect.top
+
+            };
+
+        }
+
+
+        /* POZMA FUNKSIYASI */
+
+        function scratch(e){
+
+            if(!drawing)
+                return;
+
+
+            e.preventDefault();
+
+
+            const pos =
+                getPosition(e);
+
+
+            ctx.globalCompositeOperation =
+                "destination-out";
+
+
+            ctx.beginPath();
+
+
+            ctx.arc(
+                pos.x,
+                pos.y,
+                25,
+                0,
+                Math.PI * 2
+            );
+
+
+            ctx.fill();
+
+        }
+
+
+        /* MAUS */
+
+        canvas.addEventListener(
+            "mousedown",
+            function(e){
+
+                drawing = true;
+
+                scratch(e);
+
+            }
+        );
+
+
+        canvas.addEventListener(
+            "mousemove",
+            scratch
+        );
+
+
+        canvas.addEventListener(
+            "mouseup",
+            function(){
+
+                drawing = false;
+
+            }
+        );
+
+
+        canvas.addEventListener(
+            "mouseleave",
+            function(){
+
+                drawing = false;
+
+            }
+        );
+
+
+        /* TELEFON BARMAĞI */
+
+        canvas.addEventListener(
+            "touchstart",
+            function(e){
+
+                drawing = true;
+
+                scratch(e);
+
+            },
+            {passive:false}
+        );
+
+
+        canvas.addEventListener(
+            "touchmove",
+            scratch,
+            {passive:false}
+        );
+
+
+        canvas.addEventListener(
+            "touchend",
+            function(){
+
+                drawing = false;
+
+            }
+        );
+
+
+        canvas.addEventListener(
+            "touchcancel",
+            function(){
+
+                drawing = false;
+
+            }
+        );
+
+    });
+
+}
 
 </script>
 
