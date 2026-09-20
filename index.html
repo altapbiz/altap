@@ -7,6 +7,7 @@
 <title>POZ-QAZAN</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -28,419 +29,680 @@ body{
 .header{
     position:relative;
     overflow:hidden;
-    padding:42px 20px 48px;
+    padding:32px 15px 40px;
     text-align:center;
     color:white;
+
     background:
         radial-gradient(circle at 20% 20%,rgba(255,255,255,.16),transparent 25%),
         linear-gradient(135deg,#18286f,#314de0 55%,#6847ed);
-    border-radius:0 0 38px 38px;
-    box-shadow:0 15px 45px rgba(42,59,180,.28);
-}
 
-.header:after{
-    content:"";
-    position:absolute;
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    background:rgba(255,255,255,.07);
-    right:-70px;
-    top:-70px;
+    border-radius:0 0 35px 35px;
+
+    box-shadow:
+        0 15px 45px rgba(42,59,180,.28);
 }
 
 .logo{
-    position:relative;
-    z-index:2;
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:12px;
+    gap:10px;
 }
 
 .logo-icon{
-    width:54px;
-    height:54px;
+    width:50px;
+    height:50px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:18px;
+
+    border-radius:17px;
+
     background:rgba(255,255,255,.15);
+
     backdrop-filter:blur(10px);
-    font-size:31px;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.3);
+
+    font-size:28px;
 }
 
 .logo h1{
-    font-size:38px;
+    font-size:32px;
     font-weight:900;
     letter-spacing:1px;
 }
 
 .header p{
-    position:relative;
-    z-index:2;
-    margin-top:13px;
-    font-size:16px;
+    margin-top:10px;
+    font-size:15px;
     opacity:.9;
 }
+
 
 /* LOGIN */
 
 .login-wrapper{
     width:100%;
     max-width:500px;
-    margin:-28px auto 0;
-    padding:0 18px 50px;
+
+    margin:-25px auto 0;
+
+    padding:0 16px 45px;
+
     position:relative;
     z-index:5;
 }
 
 .login-card{
-    background:rgba(255,255,255,.92);
+
+    background:rgba(255,255,255,.94);
+
     backdrop-filter:blur(18px);
+
     border:1px solid rgba(255,255,255,.8);
-    border-radius:32px;
-    padding:38px 27px;
+
+    border-radius:30px;
+
+    padding:35px 22px;
+
     box-shadow:
         0 25px 70px rgba(31,45,110,.15),
         0 3px 12px rgba(31,45,110,.06);
+
 }
 
 .lock{
-    width:72px;
-    height:72px;
-    margin:0 auto 20px;
-    border-radius:24px;
+
+    width:68px;
+    height:68px;
+
+    margin:0 auto 18px;
+
+    border-radius:22px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:38px;
-    background:linear-gradient(135deg,#eef1ff,#e3e7ff);
-    box-shadow:inset 0 1px 0 white;
+
+    font-size:36px;
+
+    background:
+        linear-gradient(135deg,#eef1ff,#e3e7ff);
+
 }
 
 .login-card h2{
+
     text-align:center;
-    font-size:30px;
+
+    font-size:28px;
+
     font-weight:800;
-    margin-bottom:9px;
+
+    margin-bottom:8px;
+
 }
 
 .subtitle{
+
     text-align:center;
+
     color:#777f9c;
+
     font-size:15px;
-    margin-bottom:27px;
+
+    margin-bottom:25px;
+
 }
 
-.input-box{
-    position:relative;
-}
+#codeInput{
 
-.input-box input{
     width:100%;
-    height:61px;
-    padding:0 20px;
-    border-radius:18px;
+
+    height:60px;
+
+    padding:0 18px;
+
+    border-radius:17px;
+
     border:2px solid #e5e8f3;
+
     outline:none;
+
     font-size:17px;
+
     color:#151a42;
+
     background:#fafbff;
+
     text-align:center;
-    transition:.25s;
+
 }
 
-.input-box input:focus{
+#codeInput:focus{
+
     border-color:#5365ff;
+
     background:white;
-    box-shadow:0 0 0 5px rgba(83,101,255,.08);
+
+    box-shadow:
+        0 0 0 5px rgba(83,101,255,.08);
+
 }
 
 .enter-btn{
+
     width:100%;
-    height:61px;
-    margin-top:15px;
+
+    height:60px;
+
+    margin-top:14px;
+
     border:0;
-    border-radius:18px;
+
+    border-radius:17px;
+
     color:white;
+
     font-size:17px;
+
     font-weight:800;
+
     cursor:pointer;
-    background:linear-gradient(135deg,#435cff,#7146ef);
-    box-shadow:0 12px 25px rgba(75,77,230,.25);
-    transition:.2s;
-}
 
-.enter-btn:active{
-    transform:scale(.98);
-}
+    background:
+        linear-gradient(135deg,#435cff,#7146ef);
 
-.enter-btn:hover{
-    box-shadow:0 16px 32px rgba(75,77,230,.32);
+    box-shadow:
+        0 12px 25px rgba(75,77,230,.25);
+
 }
 
 .error{
+
     display:none;
-    margin-top:15px;
-    padding:12px;
-    border-radius:13px;
+
+    margin-top:14px;
+
+    padding:11px;
+
+    border-radius:12px;
+
     text-align:center;
+
     color:#d9304f;
+
     background:#fff0f3;
+
     font-size:14px;
+
 }
+
 
 /* GAME */
 
 .game{
+
     display:none;
-    max-width:1050px;
-    margin:35px auto;
-    padding:0 18px 50px;
+
+    width:100%;
+
+    max-width:1100px;
+
+    margin:30px auto;
+
+    padding:0 12px 45px;
+
 }
 
+
+/* WELCOME */
+
 .welcome{
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
-    margin-bottom:25px;
+
+    margin-bottom:20px;
+
 }
 
 .welcome h2{
-    font-size:25px;
+
+    font-size:23px;
+
 }
 
 .welcome p{
+
     color:#7c839d;
-    margin-top:5px;
+
+    margin-top:4px;
+
+    font-size:13px;
+
 }
 
 .status{
-    padding:10px 15px;
-    border-radius:14px;
+
+    padding:9px 12px;
+
+    border-radius:13px;
+
     background:#e9edff;
+
     color:#4356d8;
+
     font-weight:700;
-    font-size:13px;
+
+    font-size:11px;
+
 }
+
 
 /* BALANCE */
 
 .balance{
+
     position:relative;
+
     overflow:hidden;
-    padding:28px;
+
+    padding:23px;
+
     color:white;
-    border-radius:28px;
+
+    border-radius:25px;
+
     background:
         radial-gradient(circle at 85% 20%,rgba(255,255,255,.2),transparent 23%),
         linear-gradient(135deg,#1e3194,#4166f4 55%,#714be9);
-    box-shadow:0 18px 45px rgba(47,72,205,.25);
+
+    box-shadow:
+        0 18px 45px rgba(47,72,205,.25);
+
     margin-bottom:25px;
+
 }
 
 .balance small{
+
     opacity:.8;
-    font-size:14px;
+
+    font-size:13px;
+
 }
 
 .balance h1{
-    margin-top:6px;
-    font-size:42px;
+
+    margin-top:5px;
+
+    font-size:34px;
+
 }
 
 .balance p{
-    margin-top:8px;
+
+    margin-top:6px;
+
     opacity:.82;
+
 }
 
 .coin{
+
     position:absolute;
-    right:28px;
-    top:27px;
-    font-size:70px;
+
+    right:20px;
+
+    top:20px;
+
+    font-size:55px;
+
 }
 
-/* GAME TITLE */
+
+/* TITLE */
 
 .section-title{
+
     text-align:center;
-    margin:30px 0 20px;
+
+    margin:25px 0 18px;
+
 }
 
 .section-title h2{
-    font-size:28px;
+
+    font-size:25px;
+
 }
 
 .section-title p{
+
     color:#7b8198;
-    margin-top:7px;
+
+    margin-top:6px;
+
+    font-size:13px;
+
 }
 
-/* CARDS */
+
+/* ==================================================
+   4 KART YAN-YANA
+   ================================================== */
 
 .cards{
+
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:22px;
+
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+    gap:10px;
+
+    width:100%;
+
 }
 
+
+/* CARD */
+
 .card{
+
     position:relative;
-    height:225px;
+
+    height:190px;
+
     overflow:hidden;
-    border-radius:25px;
+
+    border-radius:20px;
+
     background:white;
-    box-shadow:0 15px 40px rgba(35,47,105,.11);
+
+    box-shadow:
+        0 15px 40px rgba(35,47,105,.11);
+
+    min-width:0;
+
 }
 
 .prize{
+
     position:absolute;
+
     inset:0;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     flex-direction:column;
+
+    text-align:center;
+
     background:
         radial-gradient(circle at 50% 30%,#f5f7ff,#fff);
+
 }
 
 .prize-icon{
-    font-size:45px;
-    margin-bottom:7px;
+
+    font-size:32px;
+
+    margin-bottom:5px;
+
 }
 
 .prize strong{
-    font-size:29px;
+
+    font-size:21px;
+
     color:#3657e9;
+
 }
 
 .prize span{
+
     color:#8b91a7;
-    font-size:14px;
-    margin-top:5px;
+
+    font-size:12px;
+
+    margin-top:4px;
+
 }
 
+
+/* SCRATCH */
+
 canvas{
+
     position:absolute;
+
     inset:0;
+
     width:100%;
+
     height:100%;
+
     z-index:5;
+
     touch-action:none;
+
     cursor:pointer;
+
 }
 
 .card-label{
+
     position:absolute;
+
     z-index:6;
-    left:14px;
-    top:13px;
+
+    left:9px;
+
+    top:9px;
+
     color:white;
-    font-size:12px;
+
+    font-size:9px;
+
     font-weight:800;
+
     pointer-events:none;
+
 }
+
 
 /* BOTTOM */
 
 .info{
-    margin-top:25px;
-    padding:20px;
+
+    margin-top:20px;
+
+    padding:17px;
+
     text-align:center;
-    border-radius:20px;
+
+    border-radius:18px;
+
     background:white;
-    box-shadow:0 10px 30px rgba(30,45,100,.07);
+
+    box-shadow:
+        0 10px 30px rgba(30,45,100,.07);
+
     color:#777f99;
-    font-size:13px;
+
+    font-size:12px;
+
 }
 
 .restart{
+
     display:block;
-    margin:25px auto 0;
-    padding:14px 24px;
+
+    margin:20px auto 0;
+
+    padding:13px 22px;
+
     border:0;
-    border-radius:15px;
+
+    border-radius:14px;
+
     background:#17245e;
+
     color:white;
+
     font-weight:700;
+
     cursor:pointer;
+
 }
 
-/* MOBILE */
+
+/* ==================================================
+   TELEFONDA DA 4-Ü YAN-YANA QALIR
+   ================================================== */
 
 @media(max-width:650px){
 
-    .header{
-        padding:32px 15px 42px;
-    }
-
-    .logo h1{
-        font-size:31px;
-    }
-
-    .logo-icon{
-        width:48px;
-        height:48px;
-        font-size:27px;
-    }
-
-    .login-wrapper{
-        margin-top:-23px;
-    }
-
-    .login-card{
-        padding:32px 20px;
-        border-radius:28px;
-    }
-
-    .login-card h2{
-        font-size:27px;
-    }
-
-    .game{
-        margin-top:25px;
-    }
-
-    .welcome{
-        align-items:flex-start;
-    }
-
-    .welcome h2{
-        font-size:21px;
-    }
-
-    .status{
-        font-size:11px;
-    }
-
-    .balance{
-        padding:24px;
-    }
-
-    .balance h1{
-        font-size:34px;
-    }
-
-    .coin{
-        font-size:50px;
-        right:20px;
-    }
-
     .cards{
-        grid-template-columns:1fr;
+
+        grid-template-columns:
+            repeat(4,minmax(0,1fr));
+
+        gap:7px;
+
     }
 
     .card{
-        height:215px;
+
+        height:175px;
+
+        border-radius:16px;
+
     }
+
+    .prize-icon{
+
+        font-size:25px;
+
+    }
+
+    .prize strong{
+
+        font-size:16px;
+
+    }
+
+    .prize span{
+
+        font-size:9px;
+
+    }
+
+    .card-label{
+
+        font-size:7px;
+
+        left:6px;
+
+        top:7px;
+
+    }
+
 }
+
+
+/* ÇOX DAR TELEFONLAR */
+
+@media(max-width:380px){
+
+    .cards{
+
+        gap:5px;
+
+    }
+
+    .card{
+
+        height:155px;
+
+        border-radius:14px;
+
+    }
+
+    .prize-icon{
+
+        font-size:20px;
+
+    }
+
+    .prize strong{
+
+        font-size:14px;
+
+    }
+
+    .prize span{
+
+        font-size:8px;
+
+    }
+
+}
+
+
+/* DESKTOP */
+
+@media(min-width:900px){
+
+    .card{
+
+        height:230px;
+
+    }
+
+    .cards{
+
+        gap:16px;
+
+    }
+
+    .prize-icon{
+
+        font-size:42px;
+
+    }
+
+    .prize strong{
+
+        font-size:27px;
+
+    }
+
+}
+
+
+/* ==================================================
+   KOD
+   ================================================== */
+
+const_dummy{}
+
 </style>
 </head>
 
+
 <body>
+
 
 <!-- HEADER -->
 
@@ -456,14 +718,20 @@ canvas{
 
     </div>
 
-    <p>Şansını sınamaq üçün kartı poz</p>
+    <p>
+        Şansını sınamaq üçün kartı poz
+    </p>
 
 </header>
 
 
+
 <!-- LOGIN -->
 
-<div class="login-wrapper" id="loginBox">
+<div
+    class="login-wrapper"
+    id="loginBox"
+>
 
     <div class="login-card">
 
@@ -471,32 +739,32 @@ canvas{
             🔐
         </div>
 
-        <h2>Giriş kodu</h2>
+        <h2>
+            Giriş kodu
+        </h2>
 
         <div class="subtitle">
             Sizə verilən kodu aşağıya yazın
         </div>
 
-        <div class="input-box">
-
-            <input
-                type="password"
-                id="codeInput"
-                placeholder="Kodu daxil edin"
-                autocomplete="off"
-            >
-
-        </div>
+        <input
+            type="password"
+            id="codeInput"
+            placeholder="Kodu daxil edin"
+            autocomplete="off"
+        >
 
         <button
             class="enter-btn"
-            onclick="login()">
+            onclick="login()"
+        >
             Daxil ol
         </button>
 
         <div
             class="error"
-            id="error">
+            id="error"
+        >
             ❌ Daxil etdiyiniz kod düzgün deyil
         </div>
 
@@ -505,16 +773,29 @@ canvas{
 </div>
 
 
+
 <!-- GAME -->
 
-<section class="game" id="game">
+<section
+    class="game"
+    id="game"
+>
+
 
     <div class="welcome">
 
         <div>
-            <h2>Salam 👋</h2>
-            <p>Poz-Qazan bölməsinə xoş gəlmisiniz</p>
+
+            <h2>
+                Salam 👋
+            </h2>
+
+            <p>
+                Poz-Qazan bölməsinə xoş gəlmisiniz
+            </p>
+
         </div>
+
 
         <div class="status">
             ● AKTİV
@@ -523,13 +804,22 @@ canvas{
     </div>
 
 
+
+    <!-- BALANS -->
+
     <div class="balance">
 
-        <small>Balans</small>
+        <small>
+            Balans
+        </small>
 
-        <h1>0.00 AZN</h1>
+        <h1>
+            0.00 AZN
+        </h1>
 
-        <p>Uğurlar arzulayırıq ✨</p>
+        <p>
+            Uğurlar arzulayırıq ✨
+        </p>
 
         <div class="coin">
             🪙
@@ -538,20 +828,27 @@ canvas{
     </div>
 
 
+
     <div class="section-title">
 
-        <h2>🎁 Poz-Qazan</h2>
+        <h2>
+            🎁 Poz-Qazan
+        </h2>
 
         <p>
-            Kartı barmağınla sürt və altındakı nəticəni gör
+            Kartı barmağınla sürt və nəticəni gör
         </p>
 
     </div>
 
 
+
+    <!-- 4 KART -->
+
     <div class="cards">
 
-        <!-- 1 -->
+
+        <!-- KART 1 -->
 
         <div class="card">
 
@@ -561,9 +858,13 @@ canvas{
                     🎁
                 </div>
 
-                <strong>10 AZN</strong>
+                <strong>
+                    10 AZN
+                </strong>
 
-                <span>Təbriklər!</span>
+                <span>
+                    Təbriklər!
+                </span>
 
             </div>
 
@@ -576,7 +877,8 @@ canvas{
         </div>
 
 
-        <!-- 2 -->
+
+        <!-- KART 2 -->
 
         <div class="card">
 
@@ -586,9 +888,13 @@ canvas{
                     ⭐
                 </div>
 
-                <strong>5 AZN</strong>
+                <strong>
+                    5 AZN
+                </strong>
 
-                <span>Təbriklər!</span>
+                <span>
+                    Təbriklər!
+                </span>
 
             </div>
 
@@ -601,7 +907,8 @@ canvas{
         </div>
 
 
-        <!-- 3 -->
+
+        <!-- KART 3 -->
 
         <div class="card">
 
@@ -611,9 +918,13 @@ canvas{
                     🎉
                 </div>
 
-                <strong>25 AZN</strong>
+                <strong>
+                    25 AZN
+                </strong>
 
-                <span>Təbriklər!</span>
+                <span>
+                    Təbriklər!
+                </span>
 
             </div>
 
@@ -626,7 +937,8 @@ canvas{
         </div>
 
 
-        <!-- 4 -->
+
+        <!-- KART 4 -->
 
         <div class="card">
 
@@ -636,9 +948,13 @@ canvas{
                     🍀
                 </div>
 
-                <strong>1 AZN</strong>
+                <strong>
+                    1 AZN
+                </strong>
 
-                <span>Təbriklər!</span>
+                <span>
+                    Təbriklər!
+                </span>
 
             </div>
 
@@ -650,27 +966,36 @@ canvas{
 
         </div>
 
+
     </div>
+
 
 
     <div class="info">
-        👆 Kartın üstünü barmağınla sürtərək nəticəni görə bilərsən.
+
+        👆 Kartların üzərini barmağınla sürtərək
+        nəticəni görə bilərsən.
+
     </div>
+
 
 
     <button
         class="restart"
-        onclick="location.reload()">
+        onclick="location.reload()"
+    >
         🔄 Yenidən başla
     </button>
 
+
 </section>
+
 
 
 <script>
 
 /* ==================================================
-   SƏNİN TƏYİN ETDİYİN GİRİŞ KODU
+   SƏNİN GİRİŞ KODUN
    ================================================== */
 
 const SECRET_CODE = "123456";
@@ -681,7 +1006,10 @@ const SECRET_CODE = "123456";
 function login(){
 
     const input =
-        document.getElementById("codeInput").value.trim();
+        document
+        .getElementById("codeInput")
+        .value
+        .trim();
 
     const error =
         document.getElementById("error");
@@ -689,11 +1017,15 @@ function login(){
 
     if(input === SECRET_CODE){
 
-        document.getElementById("loginBox")
-            .style.display = "none";
+        document
+        .getElementById("loginBox")
+        .style.display = "none";
 
-        document.getElementById("game")
-            .style.display = "block";
+
+        document
+        .getElementById("game")
+        .style.display = "block";
+
 
         createCards();
 
@@ -702,6 +1034,7 @@ function login(){
     else{
 
         error.style.display = "block";
+
 
         setTimeout(function(){
 
@@ -714,17 +1047,22 @@ function login(){
 }
 
 
-/* ENTER */
+/* ENTER İLƏ GİRİŞ */
 
 document
 .getElementById("codeInput")
-.addEventListener("keydown",function(e){
+.addEventListener(
+    "keydown",
+    function(e){
 
-    if(e.key === "Enter"){
-        login();
+        if(e.key === "Enter"){
+
+            login();
+
+        }
+
     }
-
-});
+);
 
 
 /* ==================================================
@@ -737,14 +1075,18 @@ function createCards(){
     .querySelectorAll("canvas")
     .forEach(function(canvas){
 
+
         const card =
             canvas.parentElement;
+
 
         const width =
             card.clientWidth;
 
+
         const height =
             card.clientHeight;
+
 
         const dpr =
             window.devicePixelRatio || 1;
@@ -753,12 +1095,14 @@ function createCards(){
         canvas.width =
             width * dpr;
 
+
         canvas.height =
             height * dpr;
 
 
         canvas.style.width =
             width + "px";
+
 
         canvas.style.height =
             height + "px";
@@ -775,7 +1119,10 @@ function createCards(){
 
         const gradient =
             ctx.createLinearGradient(
-                0,0,width,height
+                0,
+                0,
+                width,
+                height
             );
 
 
@@ -784,10 +1131,12 @@ function createCards(){
             "#aeb4c3"
         );
 
+
         gradient.addColorStop(
             .45,
             "#737b8e"
         );
+
 
         gradient.addColorStop(
             1,
@@ -798,8 +1147,12 @@ function createCards(){
         ctx.fillStyle =
             gradient;
 
+
         ctx.fillRect(
-            0,0,width,height
+            0,
+            0,
+            width,
+            height
         );
 
 
@@ -808,44 +1161,50 @@ function createCards(){
         ctx.fillStyle =
             "rgba(255,255,255,.95)";
 
+
         ctx.textAlign =
             "center";
 
 
         ctx.font =
-            "800 28px Arial";
+            "800 20px Arial";
 
 
         ctx.fillText(
             "POZ",
-            width/2,
-            height/2-5
+            width / 2,
+            height / 2 - 4
         );
 
 
         ctx.font =
-            "15px Arial";
+            "11px Arial";
 
 
         ctx.fillText(
             "Barmağınla sürt",
-            width/2,
-            height/2+25
+            width / 2,
+            height / 2 + 19
         );
 
 
-        let drawing=false;
+        let drawing = false;
 
 
-        function position(e){
+        /* KOORDİNAT */
+
+        function getPosition(e){
 
             const rect =
                 canvas.getBoundingClientRect();
 
+
             const point =
-                e.touches && e.touches.length
+                e.touches &&
+                e.touches.length
                 ? e.touches[0]
                 : e;
+
 
             return {
 
@@ -862,15 +1221,19 @@ function createCards(){
         }
 
 
+        /* POZMA */
+
         function scratch(e){
 
             if(!drawing)
                 return;
 
+
             e.preventDefault();
 
+
             const p =
-                position(e);
+                getPosition(e);
 
 
             ctx.globalCompositeOperation =
@@ -879,13 +1242,15 @@ function createCards(){
 
             ctx.beginPath();
 
+
             ctx.arc(
                 p.x,
                 p.y,
-                27,
+                20,
                 0,
-                Math.PI*2
+                Math.PI * 2
             );
+
 
             ctx.fill();
 
@@ -898,7 +1263,8 @@ function createCards(){
             "mousedown",
             function(e){
 
-                drawing=true;
+                drawing = true;
+
                 scratch(e);
 
             }
@@ -915,7 +1281,7 @@ function createCards(){
             "mouseup",
             function(){
 
-                drawing=false;
+                drawing = false;
 
             }
         );
@@ -925,7 +1291,7 @@ function createCards(){
             "mouseleave",
             function(){
 
-                drawing=false;
+                drawing = false;
 
             }
         );
@@ -937,7 +1303,8 @@ function createCards(){
             "touchstart",
             function(e){
 
-                drawing=true;
+                drawing = true;
+
                 scratch(e);
 
             },
@@ -956,7 +1323,7 @@ function createCards(){
             "touchend",
             function(){
 
-                drawing=false;
+                drawing = false;
 
             }
         );
@@ -966,7 +1333,7 @@ function createCards(){
             "touchcancel",
             function(){
 
-                drawing=false;
+                drawing = false;
 
             }
         );
