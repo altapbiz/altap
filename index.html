@@ -2,770 +2,945 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>POZ-QAZAN</title>
 
 <style>
-
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+}
+
+:root{
+    --bg:#070b14;
+    --panel:#0e1422;
+    --panel2:#121a2b;
+    --line:rgba(255,255,255,.09);
+    --gold:#d7b76a;
+    --gold2:#f3d993;
+    --text:#f4f5f8;
+    --muted:#8e97aa;
+    --blue:#4767ff;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
 }
 
 body{
-    min-height:100vh;
     background:
-        radial-gradient(circle at 10% 10%,rgba(75,91,255,.12),transparent 30%),
-        radial-gradient(circle at 90% 20%,rgba(126,75,255,.12),transparent 30%),
-        linear-gradient(180deg,#f7f8ff,#eef1ff);
-    color:#111936;
+        radial-gradient(circle at 15% 0%,rgba(64,87,180,.20),transparent 28%),
+        radial-gradient(circle at 90% 15%,rgba(183,145,58,.10),transparent 25%),
+        linear-gradient(180deg,#080c16 0%,#0a0f1b 55%,#070a12 100%);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 }
 
-/* HEADER */
+/* TOP */
 
-.header{
-    position:relative;
-    overflow:hidden;
-    padding:32px 15px 40px;
-    text-align:center;
-    color:white;
+.top{
+    width:100%;
+    border-bottom:1px solid rgba(255,255,255,.07);
+    background:rgba(6,9,16,.78);
+    backdrop-filter:blur(18px);
+}
 
+.top-inner{
+    max-width:1180px;
+    margin:auto;
+    min-height:76px;
+    padding:0 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.brand-mark{
+    width:43px;
+    height:43px;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     background:
-        radial-gradient(circle at 20% 20%,rgba(255,255,255,.16),transparent 25%),
-        linear-gradient(135deg,#18286f,#314de0 55%,#6847ed);
-
-    border-radius:0 0 35px 35px;
-
+        linear-gradient(145deg,#e7c978,#a77c2d);
+    color:#111;
     box-shadow:
-        0 15px 45px rgba(42,59,180,.28);
+        0 7px 25px rgba(211,169,75,.18),
+        inset 0 1px 0 rgba(255,255,255,.65);
 }
 
-.logo{
+.brand-mark svg{
+    width:24px;
+    height:24px;
+}
+
+.brand-name{
+    font-size:18px;
+    font-weight:800;
+    letter-spacing:1.7px;
+}
+
+.brand-sub{
+    color:#7f899d;
+    font-size:10px;
+    letter-spacing:1.8px;
+    margin-top:3px;
+}
+
+.secure{
     display:flex;
     align-items:center;
-    justify-content:center;
-    gap:10px;
+    gap:7px;
+    color:#9aa4b8;
+    font-size:11px;
 }
 
-.logo-icon{
-    width:50px;
-    height:50px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:17px;
-
-    background:rgba(255,255,255,.15);
-
-    backdrop-filter:blur(10px);
-
-    font-size:28px;
+.secure svg{
+    width:15px;
+    height:15px;
+    color:#c8a957;
 }
 
-.logo h1{
-    font-size:32px;
-    font-weight:900;
-    letter-spacing:1px;
+/* HERO */
+
+.hero{
+    max-width:1180px;
+    margin:0 auto;
+    padding:52px 20px 34px;
+    text-align:center;
 }
 
-.header p{
-    margin-top:10px;
-    font-size:15px;
-    opacity:.9;
+.hero-kicker{
+    color:var(--gold2);
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:13px;
 }
 
+.hero h1{
+    font-size:42px;
+    line-height:1.05;
+    letter-spacing:-1.5px;
+    font-weight:850;
+}
+
+.hero h1 span{
+    color:var(--gold2);
+}
+
+.hero p{
+    max-width:560px;
+    margin:14px auto 0;
+    color:#8f98aa;
+    line-height:1.6;
+    font-size:14px;
+}
 
 /* LOGIN */
 
-.login-wrapper{
+.login-wrap{
     width:100%;
-    max-width:500px;
-
-    margin:-25px auto 0;
-
-    padding:0 16px 45px;
-
-    position:relative;
-    z-index:5;
+    max-width:470px;
+    margin:5px auto 70px;
+    padding:0 18px;
 }
 
 .login-card{
-
-    background:rgba(255,255,255,.94);
-
-    backdrop-filter:blur(18px);
-
-    border:1px solid rgba(255,255,255,.8);
-
-    border-radius:30px;
-
-    padding:35px 22px;
-
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(145deg,rgba(22,29,45,.97),rgba(11,16,27,.98));
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:27px;
+    padding:34px 27px 29px;
     box-shadow:
-        0 25px 70px rgba(31,45,110,.15),
-        0 3px 12px rgba(31,45,110,.06);
-
+        0 30px 80px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.04);
 }
 
-.lock{
+.login-card:before{
+    content:"";
+    position:absolute;
+    width:230px;
+    height:230px;
+    right:-150px;
+    top:-150px;
+    border-radius:50%;
+    background:rgba(214,178,91,.08);
+}
 
-    width:68px;
-    height:68px;
-
+.login-icon{
+    width:57px;
+    height:57px;
     margin:0 auto 18px;
-
-    border-radius:22px;
-
+    border-radius:17px;
     display:flex;
     align-items:center;
     justify-content:center;
+    background:linear-gradient(145deg,#202b42,#111827);
+    border:1px solid rgba(215,183,106,.28);
+    color:var(--gold2);
+}
 
-    font-size:36px;
-
-    background:
-        linear-gradient(135deg,#eef1ff,#e3e7ff);
-
+.login-icon svg{
+    width:28px;
+    height:28px;
 }
 
 .login-card h2{
-
     text-align:center;
-
-    font-size:28px;
-
-    font-weight:800;
-
+    font-size:25px;
     margin-bottom:8px;
-
 }
 
-.subtitle{
-
+.login-desc{
     text-align:center;
-
-    color:#777f9c;
-
-    font-size:15px;
-
-    margin-bottom:25px;
-
+    color:#7f899d;
+    font-size:13px;
+    margin-bottom:24px;
 }
 
-#codeInput{
-
+.input{
     width:100%;
-
-    height:60px;
-
-    padding:0 18px;
-
-    border-radius:17px;
-
-    border:2px solid #e5e8f3;
-
+    height:56px;
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.10);
+    background:#080d17;
+    color:#fff;
     outline:none;
-
-    font-size:17px;
-
-    color:#151a42;
-
-    background:#fafbff;
-
+    padding:0 17px;
     text-align:center;
-
+    font-size:16px;
+    letter-spacing:1px;
+    transition:.2s;
 }
 
-#codeInput:focus{
-
-    border-color:#5365ff;
-
-    background:white;
-
-    box-shadow:
-        0 0 0 5px rgba(83,101,255,.08);
-
+.input:focus{
+    border-color:rgba(215,183,106,.65);
+    box-shadow:0 0 0 4px rgba(215,183,106,.08);
 }
 
-.enter-btn{
-
+.enter{
     width:100%;
-
-    height:60px;
-
-    margin-top:14px;
-
+    height:56px;
+    margin-top:12px;
     border:0;
-
-    border-radius:17px;
-
-    color:white;
-
-    font-size:17px;
-
-    font-weight:800;
-
+    border-radius:15px;
+    background:linear-gradient(135deg,#d9ba6d,#a57a2d);
+    color:#111;
+    font-size:15px;
+    font-weight:850;
+    letter-spacing:.3px;
     cursor:pointer;
+    box-shadow:0 12px 28px rgba(190,148,55,.17);
+}
 
-    background:
-        linear-gradient(135deg,#435cff,#7146ef);
-
-    box-shadow:
-        0 12px 25px rgba(75,77,230,.25);
-
+.enter:active{
+    transform:scale(.985);
 }
 
 .error{
-
     display:none;
-
-    margin-top:14px;
-
-    padding:11px;
-
-    border-radius:12px;
-
     text-align:center;
-
-    color:#d9304f;
-
-    background:#fff0f3;
-
-    font-size:14px;
-
+    color:#e68c8c;
+    font-size:12px;
+    margin-top:13px;
 }
-
 
 /* GAME */
 
 .game{
-
     display:none;
-
-    width:100%;
-
-    max-width:1100px;
-
-    margin:30px auto;
-
-    padding:0 12px 45px;
-
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 18px 60px;
 }
 
+/* ACCOUNT BAR */
 
-/* WELCOME */
-
-.welcome{
-
+.account{
     display:flex;
-
-    align-items:center;
-
     justify-content:space-between;
-
-    margin-bottom:20px;
-
+    align-items:center;
+    gap:15px;
+    padding:17px 19px;
+    border:1px solid var(--line);
+    border-radius:19px;
+    background:rgba(14,20,34,.82);
+    box-shadow:0 15px 40px rgba(0,0,0,.20);
 }
 
-.welcome h2{
-
-    font-size:23px;
-
+.account-left{
+    display:flex;
+    align-items:center;
+    gap:11px;
 }
 
-.welcome p{
+.account-icon{
+    width:39px;
+    height:39px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--gold2);
+    background:#151e31;
+    border:1px solid rgba(215,183,106,.16);
+}
 
-    color:#7c839d;
+.account-icon svg{
+    width:20px;
+    height:20px;
+}
 
-    margin-top:4px;
-
+.account-title{
     font-size:13px;
-
-}
-
-.status{
-
-    padding:9px 12px;
-
-    border-radius:13px;
-
-    background:#e9edff;
-
-    color:#4356d8;
-
     font-weight:700;
-
-    font-size:11px;
-
 }
 
+.account-small{
+    color:#788296;
+    font-size:10px;
+    margin-top:3px;
+}
+
+.active{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    color:#8ebd9d;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.6px;
+}
+
+.active-dot{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#68b984;
+    box-shadow:0 0 8px rgba(104,185,132,.6);
+}
 
 /* BALANCE */
 
 .balance{
-
+    margin-top:18px;
+    padding:24px 25px;
+    border-radius:22px;
     position:relative;
-
     overflow:hidden;
-
-    padding:23px;
-
-    color:white;
-
-    border-radius:25px;
-
     background:
-        radial-gradient(circle at 85% 20%,rgba(255,255,255,.2),transparent 23%),
-        linear-gradient(135deg,#1e3194,#4166f4 55%,#714be9);
-
-    box-shadow:
-        0 18px 45px rgba(47,72,205,.25);
-
-    margin-bottom:25px;
-
+        radial-gradient(circle at 90% 10%,rgba(255,255,255,.10),transparent 22%),
+        linear-gradient(135deg,#151f39,#0d1424);
+    border:1px solid rgba(255,255,255,.08);
 }
 
-.balance small{
-
-    opacity:.8;
-
-    font-size:13px;
-
-}
-
-.balance h1{
-
-    margin-top:5px;
-
-    font-size:34px;
-
-}
-
-.balance p{
-
-    margin-top:6px;
-
-    opacity:.82;
-
-}
-
-.coin{
-
+.balance:after{
+    content:"";
     position:absolute;
-
-    right:20px;
-
-    top:20px;
-
-    font-size:55px;
-
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    right:-80px;
+    bottom:-100px;
+    border:1px solid rgba(215,183,106,.15);
 }
 
-
-/* TITLE */
-
-.section-title{
-
-    text-align:center;
-
-    margin:25px 0 18px;
-
+.balance-label{
+    color:#818ca2;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1.6px;
 }
 
-.section-title h2{
-
-    font-size:25px;
-
+.balance-value{
+    margin-top:5px;
+    font-size:31px;
+    font-weight:800;
 }
 
-.section-title p{
-
-    color:#7b8198;
-
+.balance-bottom{
+    display:flex;
+    align-items:center;
+    gap:7px;
     margin-top:6px;
-
-    font-size:13px;
-
+    color:#788397;
+    font-size:11px;
 }
 
+.balance-bottom svg{
+    width:13px;
+    height:13px;
+    color:var(--gold);
+}
 
-/* ==================================================
-   4 KART YAN-YANA
-   ================================================== */
+/* SECTION */
+
+.section-head{
+    text-align:center;
+    padding:42px 0 24px;
+}
+
+.section-line{
+    width:46px;
+    height:2px;
+    margin:0 auto 14px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+
+.section-head h2{
+    font-size:25px;
+    letter-spacing:-.4px;
+}
+
+.section-head p{
+    color:#7f899d;
+    font-size:12px;
+    margin-top:7px;
+}
+
+/* CARDS */
 
 .cards{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,minmax(0,1fr));
-
-    gap:10px;
-
     width:100%;
-
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:13px;
 }
-
-
-/* CARD */
 
 .card{
-
     position:relative;
-
-    height:190px;
-
-    overflow:hidden;
-
-    border-radius:20px;
-
-    background:white;
-
-    box-shadow:
-        0 15px 40px rgba(35,47,105,.11);
-
     min-width:0;
-
+    height:255px;
+    border-radius:21px;
+    overflow:hidden;
+    background:#101827;
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.04);
 }
 
-.prize{
+/* card result */
 
+.result{
     position:absolute;
-
     inset:0;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     flex-direction:column;
-
     text-align:center;
-
     background:
-        radial-gradient(circle at 50% 30%,#f5f7ff,#fff);
-
+        radial-gradient(circle at 50% 30%,rgba(215,183,106,.11),transparent 35%),
+        linear-gradient(145deg,#151f31,#0b111d);
 }
 
-.prize-icon{
-
-    font-size:32px;
-
-    margin-bottom:5px;
-
+.result-icon{
+    width:48px;
+    height:48px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:11px;
+    color:var(--gold2);
+    border:1px solid rgba(215,183,106,.22);
+    background:rgba(215,183,106,.07);
 }
 
-.prize strong{
-
-    font-size:21px;
-
-    color:#3657e9;
-
+.result-icon svg{
+    width:23px;
+    height:23px;
 }
 
-.prize span{
-
-    color:#8b91a7;
-
-    font-size:12px;
-
-    margin-top:4px;
-
+.result-amount{
+    color:#f0d68e;
+    font-size:25px;
+    font-weight:850;
+    letter-spacing:.3px;
 }
 
+.result-label{
+    margin-top:5px;
+    color:#737e93;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1.3px;
+}
 
-/* SCRATCH */
+/* scratch canvas */
 
 canvas{
-
     position:absolute;
-
     inset:0;
-
-    width:100%;
-
-    height:100%;
-
     z-index:5;
-
+    width:100%;
+    height:100%;
+    cursor:crosshair;
     touch-action:none;
-
-    cursor:pointer;
-
 }
 
-.card-label{
+/* CARD TOP */
 
+.card-number{
     position:absolute;
-
-    z-index:6;
-
-    left:9px;
-
-    top:9px;
-
-    color:white;
-
+    z-index:7;
+    left:13px;
+    top:12px;
+    color:rgba(255,255,255,.85);
     font-size:9px;
-
     font-weight:800;
-
+    letter-spacing:1.3px;
     pointer-events:none;
-
 }
 
+.card-corner{
+    position:absolute;
+    z-index:7;
+    right:13px;
+    top:11px;
+    color:rgba(215,183,106,.9);
+    pointer-events:none;
+}
 
-/* BOTTOM */
+.card-corner svg{
+    width:15px;
+    height:15px;
+}
+
+/* INFO */
 
 .info{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    margin-top:22px;
+    padding:15px;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:16px;
+    color:#778196;
+    background:rgba(13,19,31,.65);
+    font-size:11px;
+}
 
-    margin-top:20px;
-
-    padding:17px;
-
-    text-align:center;
-
-    border-radius:18px;
-
-    background:white;
-
-    box-shadow:
-        0 10px 30px rgba(30,45,100,.07);
-
-    color:#777f99;
-
-    font-size:12px;
-
+.info svg{
+    width:15px;
+    height:15px;
+    color:var(--gold);
+    flex:none;
 }
 
 .restart{
-
     display:block;
-
-    margin:20px auto 0;
-
-    padding:13px 22px;
-
-    border:0;
-
-    border-radius:14px;
-
-    background:#17245e;
-
-    color:white;
-
+    margin:17px auto 0;
+    padding:12px 21px;
+    border-radius:13px;
+    border:1px solid rgba(255,255,255,.08);
+    background:#111827;
+    color:#aeb6c6;
+    font-size:11px;
     font-weight:700;
-
     cursor:pointer;
-
 }
 
+/* TABLET */
 
-/* ==================================================
-   TELEFONDA DA 4-Ü YAN-YANA QALIR
-   ================================================== */
+@media(max-width:850px){
 
-@media(max-width:650px){
+    .hero{
+        padding-top:38px;
+    }
+
+    .hero h1{
+        font-size:35px;
+    }
 
     .cards{
-
-        grid-template-columns:
-            repeat(4,minmax(0,1fr));
-
-        gap:7px;
-
+        gap:9px;
     }
 
     .card{
-
-        height:175px;
-
-        border-radius:16px;
-
+        height:220px;
     }
 
-    .prize-icon{
-
-        font-size:25px;
-
-    }
-
-    .prize strong{
-
-        font-size:16px;
-
-    }
-
-    .prize span{
-
-        font-size:9px;
-
-    }
-
-    .card-label{
-
-        font-size:7px;
-
-        left:6px;
-
-        top:7px;
-
-    }
-
-}
-
-
-/* ÇOX DAR TELEFONLAR */
-
-@media(max-width:380px){
-
-    .cards{
-
-        gap:5px;
-
-    }
-
-    .card{
-
-        height:155px;
-
-        border-radius:14px;
-
-    }
-
-    .prize-icon{
-
+    .result-amount{
         font-size:20px;
-
     }
 
-    .prize strong{
-
-        font-size:14px;
-
-    }
-
-    .prize span{
-
-        font-size:8px;
-
+    .result-icon{
+        width:41px;
+        height:41px;
     }
 
 }
 
+/* PHONE */
 
-/* DESKTOP */
+@media(max-width:600px){
 
-@media(min-width:900px){
-
-    .card{
-
-        height:230px;
-
+    .top-inner{
+        min-height:65px;
+        padding:0 14px;
     }
+
+    .brand-mark{
+        width:38px;
+        height:38px;
+    }
+
+    .brand-name{
+        font-size:15px;
+    }
+
+    .brand-sub{
+        font-size:8px;
+    }
+
+    .secure{
+        font-size:9px;
+    }
+
+    .hero{
+        padding:35px 15px 25px;
+    }
+
+    .hero h1{
+        font-size:31px;
+    }
+
+    .hero p{
+        font-size:12px;
+    }
+
+    .login-wrap{
+        margin-bottom:50px;
+    }
+
+    .login-card{
+        padding:29px 19px 25px;
+        border-radius:23px;
+    }
+
+    .game{
+        padding:0 9px 45px;
+    }
+
+    .account{
+        padding:14px;
+    }
+
+    .balance{
+        padding:20px;
+    }
+
+    .balance-value{
+        font-size:27px;
+    }
+
+    .section-head{
+        padding:31px 0 19px;
+    }
+
+    .section-head h2{
+        font-size:21px;
+    }
+
+    /*
+       4 KART TELEFONDA DA YAN-YANA
+    */
 
     .cards{
-
-        gap:16px;
-
+        grid-template-columns:repeat(4,minmax(0,1fr));
+        gap:6px;
     }
 
-    .prize-icon{
-
-        font-size:42px;
-
+    .card{
+        height:178px;
+        border-radius:14px;
     }
 
-    .prize strong{
+    .card-number{
+        left:7px;
+        top:7px;
+        font-size:6px;
+        letter-spacing:.7px;
+    }
 
-        font-size:27px;
+    .card-corner{
+        right:7px;
+        top:7px;
+    }
 
+    .card-corner svg{
+        width:11px;
+        height:11px;
+    }
+
+    .result-icon{
+        width:29px;
+        height:29px;
+        border-radius:9px;
+        margin-bottom:6px;
+    }
+
+    .result-icon svg{
+        width:15px;
+        height:15px;
+    }
+
+    .result-amount{
+        font-size:13px;
+    }
+
+    .result-label{
+        font-size:6px;
+        letter-spacing:.5px;
+        margin-top:3px;
+    }
+
+    .info{
+        font-size:9px;
+        padding:12px 7px;
+    }
+
+    .info svg{
+        width:12px;
+        height:12px;
     }
 
 }
 
+/* VERY SMALL PHONE */
 
-/* ==================================================
-   KOD
-   ================================================== */
+@media(max-width:370px){
 
-const_dummy{}
+    .cards{
+        gap:4px;
+    }
 
+    .card{
+        height:160px;
+        border-radius:12px;
+    }
+
+    .result-icon{
+        width:25px;
+        height:25px;
+    }
+
+    .result-icon svg{
+        width:13px;
+        height:13px;
+    }
+
+    .result-amount{
+        font-size:11px;
+    }
+
+}
+
+/* DESKTOP LARGE */
+
+@media(min-width:1000px){
+
+    .card{
+        height:290px;
+    }
+
+    .result-amount{
+        font-size:28px;
+    }
+
+}
 </style>
 </head>
 
-
 <body>
+
+<!-- SVG ICON SYMBOLS -->
+
+<svg width="0" height="0" style="position:absolute">
+<defs>
+
+<symbol id="lock" viewBox="0 0 24 24">
+    <rect x="4" y="10" width="16" height="11" rx="2"
+          fill="none" stroke="currentColor" stroke-width="1.8"/>
+    <path d="M7 10V7a5 5 0 0 1 10 0v3"
+          fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round"/>
+    <circle cx="12" cy="15.5" r="1.3" fill="currentColor"/>
+</symbol>
+
+<symbol id="gift" viewBox="0 0 24 24">
+    <path d="M4 10h16v10H4z" fill="none"
+          stroke="currentColor" stroke-width="1.7"/>
+    <path d="M3 7h18v4H3z"
+          fill="none" stroke="currentColor" stroke-width="1.7"/>
+    <path d="M12 7v13"
+          stroke="currentColor" stroke-width="1.7"/>
+    <path d="M12 7H8.5C6.5 7 6 5.2 7.3 4.2c1.8-1.3 4.2 1.1 4.7 2.8Z"
+          fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M12 7h3.5c2 0 2.5-1.8 1.2-2.8-1.8-1.3-4.2 1.1-4.7 2.8Z"
+          fill="none" stroke="currentColor" stroke-width="1.5"/>
+</symbol>
+
+<symbol id="shield" viewBox="0 0 24 24">
+    <path d="M12 3l7 3v5c0 4.6-2.8 8-7 10-4.2-2-7-5.4-7-10V6l7-3Z"
+          fill="none" stroke="currentColor" stroke-width="1.7"/>
+    <path d="m8.5 12 2.2 2.2 4.8-5"
+          fill="none" stroke="currentColor" stroke-width="1.7"
+          stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+
+<symbol id="user" viewBox="0 0 24 24">
+    <circle cx="12" cy="8" r="3.2"
+            fill="none" stroke="currentColor" stroke-width="1.7"/>
+    <path d="M5 20c.8-3.5 3-5.2 7-5.2s6.2 1.7 7 5.2"
+            fill="none" stroke="currentColor" stroke-width="1.7"
+            stroke-linecap="round"/>
+</symbol>
+
+<symbol id="wallet" viewBox="0 0 24 24">
+    <path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H19v16H6.5A2.5 2.5 0 0 1 4 17.5v-11Z"
+          fill="none" stroke="currentColor" stroke-width="1.7"/>
+    <path d="M4 8h15"
+          stroke="currentColor" stroke-width="1.7"/>
+    <path d="M15 12h5v4h-5a2 2 0 1 1 0-4Z"
+          fill="none" stroke="currentColor" stroke-width="1.7"/>
+</symbol>
+
+<symbol id="info" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9"
+            fill="none" stroke="currentColor" stroke-width="1.7"/>
+    <path d="M12 10.5v5"
+          stroke="currentColor" stroke-width="1.7"
+          stroke-linecap="round"/>
+    <circle cx="12" cy="7.5" r="1"
+            fill="currentColor"/>
+</symbol>
+
+<symbol id="diamond" viewBox="0 0 24 24">
+    <path d="m12 3 8 7-8 11-8-11 8-7Z"
+          fill="none" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M4 10h16M8 4.5l4 5.5 4-5.5"
+          fill="none" stroke="currentColor" stroke-width="1.3"/>
+</symbol>
+
+<symbol id="star" viewBox="0 0 24 24">
+    <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"
+          fill="none" stroke="currentColor" stroke-width="1.5"
+          stroke-linejoin="round"/>
+</symbol>
+
+</defs>
+</svg>
 
 
 <!-- HEADER -->
 
-<header class="header">
+<header class="top">
 
-    <div class="logo">
+    <div class="top-inner">
 
-        <div class="logo-icon">
-            🎁
+        <div class="brand">
+
+            <div class="brand-mark">
+                <svg><use href="#gift"></use></svg>
+            </div>
+
+            <div>
+                <div class="brand-name">
+                    POZ-QAZAN
+                </div>
+
+                <div class="brand-sub">
+                    PREMIUM EXPERIENCE
+                </div>
+            </div>
+
         </div>
 
-        <h1>POZ-QAZAN</h1>
+        <div class="secure">
+            <svg><use href="#shield"></use></svg>
+            Təhlükəsiz giriş
+        </div>
 
     </div>
-
-    <p>
-        Şansını sınamaq üçün kartı poz
-    </p>
 
 </header>
 
 
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-kicker">
+        PREMIUM POZ-QAZAN
+    </div>
+
+    <h1>
+        Şansını <span>sına</span>
+    </h1>
+
+    <p>
+        Sizə təqdim olunan kartı seçin və örtülü sahəni
+        barmağınızla sürtərək nəticəni görün.
+    </p>
+
+</section>
+
 
 <!-- LOGIN -->
 
-<div
-    class="login-wrapper"
-    id="loginBox"
->
+<div class="login-wrap" id="loginBox">
 
     <div class="login-card">
 
-        <div class="lock">
-            🔐
+        <div class="login-icon">
+            <svg><use href="#lock"></use></svg>
         </div>
 
         <h2>
             Giriş kodu
         </h2>
 
-        <div class="subtitle">
-            Sizə verilən kodu aşağıya yazın
+        <div class="login-desc">
+            Davam etmək üçün sizə verilmiş kodu daxil edin.
         </div>
 
         <input
-            type="password"
+            class="input"
             id="codeInput"
-            placeholder="Kodu daxil edin"
+            type="password"
+            placeholder="Giriş kodunu daxil edin"
             autocomplete="off"
         >
 
         <button
-            class="enter-btn"
-            onclick="login()"
-        >
-            Daxil ol
+            class="enter"
+            onclick="login()">
+            Davam et
         </button>
 
         <div
             class="error"
-            id="error"
-        >
-            ❌ Daxil etdiyiniz kod düzgün deyil
+            id="error">
+            Daxil etdiyiniz kod düzgün deyil.
         </div>
 
     </div>
@@ -773,230 +948,247 @@ const_dummy{}
 </div>
 
 
-
 <!-- GAME -->
 
-<section
-    class="game"
-    id="game"
->
+<main class="game" id="game">
 
+    <div class="account">
 
-    <div class="welcome">
+        <div class="account-left">
 
-        <div>
+            <div class="account-icon">
+                <svg><use href="#user"></use></svg>
+            </div>
 
-            <h2>
-                Salam 👋
-            </h2>
+            <div>
 
-            <p>
-                Poz-Qazan bölməsinə xoş gəlmisiniz
-            </p>
+                <div class="account-title">
+                    İştirakçı
+                </div>
+
+                <div class="account-small">
+                    Giriş təsdiqləndi
+                </div>
+
+            </div>
 
         </div>
 
+        <div class="active">
 
-        <div class="status">
-            ● AKTİV
+            <span class="active-dot"></span>
+
+            AKTİV
+
         </div>
 
     </div>
-
 
 
     <!-- BALANS -->
 
     <div class="balance">
 
-        <small>
-            Balans
-        </small>
+        <div class="balance-label">
+            Cari balans
+        </div>
 
-        <h1>
+        <div class="balance-value">
             0.00 AZN
-        </h1>
+        </div>
 
-        <p>
-            Uğurlar arzulayırıq ✨
-        </p>
+        <div class="balance-bottom">
 
-        <div class="coin">
-            🪙
+            <svg><use href="#wallet"></use></svg>
+
+            Test hesabı
+
         </div>
 
     </div>
 
 
+    <!-- SECTION -->
 
-    <div class="section-title">
+    <div class="section-head">
+
+        <div class="section-line"></div>
 
         <h2>
-            🎁 Poz-Qazan
+            Poz-Qazan kartları
         </h2>
 
         <p>
-            Kartı barmağınla sürt və nəticəni gör
+            Kartı seçin və örtüyü sürtərək açın
         </p>
 
     </div>
 
 
-
-    <!-- 4 KART -->
+    <!-- CARDS -->
 
     <div class="cards">
 
 
-        <!-- KART 1 -->
+        <!-- CARD 01 -->
 
         <div class="card">
 
-            <div class="prize">
+            <div class="result">
 
-                <div class="prize-icon">
-                    🎁
+                <div class="result-icon">
+                    <svg><use href="#gift"></use></svg>
                 </div>
 
-                <strong>
+                <div class="result-amount">
                     10 AZN
-                </strong>
+                </div>
 
-                <span>
-                    Təbriklər!
-                </span>
+                <div class="result-label">
+                    Nəticə
+                </div>
 
             </div>
 
             <canvas></canvas>
 
-            <div class="card-label">
+            <div class="card-number">
                 KART 01
             </div>
 
+            <div class="card-corner">
+                <svg><use href="#diamond"></use></svg>
+            </div>
+
         </div>
 
 
-
-        <!-- KART 2 -->
+        <!-- CARD 02 -->
 
         <div class="card">
 
-            <div class="prize">
+            <div class="result">
 
-                <div class="prize-icon">
-                    ⭐
+                <div class="result-icon">
+                    <svg><use href="#star"></use></svg>
                 </div>
 
-                <strong>
+                <div class="result-amount">
                     5 AZN
-                </strong>
+                </div>
 
-                <span>
-                    Təbriklər!
-                </span>
+                <div class="result-label">
+                    Nəticə
+                </div>
 
             </div>
 
             <canvas></canvas>
 
-            <div class="card-label">
+            <div class="card-number">
                 KART 02
             </div>
 
+            <div class="card-corner">
+                <svg><use href="#diamond"></use></svg>
+            </div>
+
         </div>
 
 
-
-        <!-- KART 3 -->
+        <!-- CARD 03 -->
 
         <div class="card">
 
-            <div class="prize">
+            <div class="result">
 
-                <div class="prize-icon">
-                    🎉
+                <div class="result-icon">
+                    <svg><use href="#diamond"></use></svg>
                 </div>
 
-                <strong>
+                <div class="result-amount">
                     25 AZN
-                </strong>
+                </div>
 
-                <span>
-                    Təbriklər!
-                </span>
+                <div class="result-label">
+                    Nəticə
+                </div>
 
             </div>
 
             <canvas></canvas>
 
-            <div class="card-label">
+            <div class="card-number">
                 KART 03
             </div>
 
+            <div class="card-corner">
+                <svg><use href="#diamond"></use></svg>
+            </div>
+
         </div>
 
 
-
-        <!-- KART 4 -->
+        <!-- CARD 04 -->
 
         <div class="card">
 
-            <div class="prize">
+            <div class="result">
 
-                <div class="prize-icon">
-                    🍀
+                <div class="result-icon">
+                    <svg><use href="#gift"></use></svg>
                 </div>
 
-                <strong>
+                <div class="result-amount">
                     1 AZN
-                </strong>
+                </div>
 
-                <span>
-                    Təbriklər!
-                </span>
+                <div class="result-label">
+                    Nəticə
+                </div>
 
             </div>
 
             <canvas></canvas>
 
-            <div class="card-label">
+            <div class="card-number">
                 KART 04
+            </div>
+
+            <div class="card-corner">
+                <svg><use href="#star"></use></svg>
             </div>
 
         </div>
 
 
     </div>
-
 
 
     <div class="info">
 
-        👆 Kartların üzərini barmağınla sürtərək
-        nəticəni görə bilərsən.
+        <svg><use href="#info"></use></svg>
+
+        Örtüyü barmağınızla sürtərək kartın
+        altındakı test nəticəsini görə bilərsiniz.
 
     </div>
 
 
-
     <button
         class="restart"
-        onclick="location.reload()"
-    >
-        🔄 Yenidən başla
+        onclick="location.reload()">
+        Yenidən başla
     </button>
 
-
-</section>
-
+</main>
 
 
 <script>
 
-/* ==================================================
-   SƏNİN GİRİŞ KODUN
-   ================================================== */
+/* ============================================
+   SƏNİN TƏYİN ETDİYİN GİRİŞ KODU
+   ============================================ */
 
 const SECRET_CODE = "123456";
 
@@ -1014,27 +1206,26 @@ function login(){
     const error =
         document.getElementById("error");
 
-
     if(input === SECRET_CODE){
 
         document
         .getElementById("loginBox")
         .style.display = "none";
 
-
         document
         .getElementById("game")
         .style.display = "block";
 
+        createScratchCards();
 
-        createCards();
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
 
-    }
-
-    else{
+    }else{
 
         error.style.display = "block";
-
 
         setTimeout(function(){
 
@@ -1043,79 +1234,63 @@ function login(){
         },2500);
 
     }
-
 }
 
 
-/* ENTER İLƏ GİRİŞ */
+/* ENTER */
 
 document
 .getElementById("codeInput")
-.addEventListener(
-    "keydown",
-    function(e){
+.addEventListener("keydown",function(e){
 
-        if(e.key === "Enter"){
-
-            login();
-
-        }
-
+    if(e.key === "Enter"){
+        login();
     }
-);
+
+});
 
 
-/* ==================================================
-   POZMA SİSTEMİ
-   ================================================== */
+/* ============================================
+   SCRATCH CARD
+   ============================================ */
 
-function createCards(){
+function createScratchCards(){
 
     document
-    .querySelectorAll("canvas")
-    .forEach(function(canvas){
+    .querySelectorAll(".card")
+    .forEach(function(card){
 
-
-        const card =
-            canvas.parentElement;
-
+        const canvas =
+            card.querySelector("canvas");
 
         const width =
             card.clientWidth;
 
-
         const height =
             card.clientHeight;
 
-
         const dpr =
-            window.devicePixelRatio || 1;
-
+            Math.min(window.devicePixelRatio || 1,2);
 
         canvas.width =
             width * dpr;
 
-
         canvas.height =
             height * dpr;
-
 
         canvas.style.width =
             width + "px";
 
-
         canvas.style.height =
             height + "px";
-
 
         const ctx =
             canvas.getContext("2d");
 
-
         ctx.scale(dpr,dpr);
 
 
-        /* ÜST QAT */
+        /* PREMIUM FOLQA */
 
         const gradient =
             ctx.createLinearGradient(
@@ -1125,28 +1300,33 @@ function createCards(){
                 height
             );
 
-
         gradient.addColorStop(
             0,
-            "#aeb4c3"
+            "#343c4d"
         );
-
 
         gradient.addColorStop(
-            .45,
-            "#737b8e"
+            .28,
+            "#7d8798"
         );
 
+        gradient.addColorStop(
+            .48,
+            "#454e60"
+        );
+
+        gradient.addColorStop(
+            .72,
+            "#8b94a3"
+        );
 
         gradient.addColorStop(
             1,
-            "#424a5d"
+            "#30394a"
         );
-
 
         ctx.fillStyle =
             gradient;
-
 
         ctx.fillRect(
             0,
@@ -1156,55 +1336,72 @@ function createCards(){
         );
 
 
-        /* POZ YAZISI */
+        /* FOLQA XƏTTİ */
+
+        ctx.strokeStyle =
+            "rgba(255,255,255,.12)";
+
+        ctx.lineWidth = 1;
+
+        for(
+            let x=-height;
+            x<width+height;
+            x+=20
+        ){
+
+            ctx.beginPath();
+
+            ctx.moveTo(x,0);
+
+            ctx.lineTo(x+height,height);
+
+            ctx.stroke();
+
+        }
+
+
+        /* MƏRKƏZ */
+
+        ctx.textAlign = "center";
 
         ctx.fillStyle =
-            "rgba(255,255,255,.95)";
-
-
-        ctx.textAlign =
-            "center";
-
+            "rgba(255,255,255,.94)";
 
         ctx.font =
             "800 20px Arial";
 
-
         ctx.fillText(
             "POZ",
-            width / 2,
-            height / 2 - 4
+            width/2,
+            height/2-5
         );
 
+        ctx.fillStyle =
+            "rgba(255,255,255,.62)";
 
         ctx.font =
-            "11px Arial";
-
+            "10px Arial";
 
         ctx.fillText(
-            "Barmağınla sürt",
-            width / 2,
-            height / 2 + 19
+            "NƏTİCƏNİ GÖR",
+            width/2,
+            height/2+16
         );
 
 
-        let drawing = false;
+        let drawing=false;
 
-
-        /* KOORDİNAT */
 
         function getPosition(e){
 
             const rect =
                 canvas.getBoundingClientRect();
 
-
             const point =
                 e.touches &&
                 e.touches.length
                 ? e.touches[0]
                 : e;
-
 
             return {
 
@@ -1221,89 +1418,78 @@ function createCards(){
         }
 
 
-        /* POZMA */
-
         function scratch(e){
 
             if(!drawing)
                 return;
 
-
             e.preventDefault();
-
 
             const p =
                 getPosition(e);
 
-
             ctx.globalCompositeOperation =
                 "destination-out";
 
-
             ctx.beginPath();
-
 
             ctx.arc(
                 p.x,
                 p.y,
-                20,
+                21,
                 0,
-                Math.PI * 2
+                Math.PI*2
             );
-
 
             ctx.fill();
 
         }
 
 
-        /* MAUS */
+        /* MOUSE */
 
         canvas.addEventListener(
             "mousedown",
             function(e){
 
-                drawing = true;
+                drawing=true;
 
                 scratch(e);
 
             }
         );
 
-
         canvas.addEventListener(
             "mousemove",
             scratch
         );
 
-
         canvas.addEventListener(
             "mouseup",
             function(){
 
-                drawing = false;
+                drawing=false;
 
             }
         );
-
 
         canvas.addEventListener(
             "mouseleave",
             function(){
 
-                drawing = false;
+                drawing=false;
 
             }
         );
 
 
-        /* TELEFON */
+        /* TOUCH */
 
         canvas.addEventListener(
             "touchstart",
             function(e){
 
-                drawing = true;
+                drawing=true;
 
                 scratch(e);
 
@@ -1311,29 +1497,26 @@ function createCards(){
             {passive:false}
         );
 
-
         canvas.addEventListener(
             "touchmove",
             scratch,
             {passive:false}
         );
 
-
         canvas.addEventListener(
             "touchend",
             function(){
 
-                drawing = false;
+                drawing=false;
 
             }
         );
-
 
         canvas.addEventListener(
             "touchcancel",
             function(){
 
-                drawing = false;
+                drawing=false;
 
             }
         );
