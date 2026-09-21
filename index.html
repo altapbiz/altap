@@ -2,1528 +2,557 @@
 <html lang="az">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-<title>POZ-QAZAN</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Altap.Biz — Premium Store</title>
 
 <style>
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
-}
-
-:root{
-    --bg:#070b14;
-    --panel:#0e1422;
-    --panel2:#121a2b;
-    --line:rgba(255,255,255,.09);
-    --gold:#d7b76a;
-    --gold2:#f3d993;
-    --text:#f4f5f8;
-    --muted:#8e97aa;
-    --blue:#4767ff;
-}
-
-html,body{
-    width:100%;
-    min-height:100%;
-}
-
-body{
-    background:
-        radial-gradient(circle at 15% 0%,rgba(64,87,180,.20),transparent 28%),
-        radial-gradient(circle at 90% 15%,rgba(183,145,58,.10),transparent 25%),
-        linear-gradient(180deg,#080c16 0%,#0a0f1b 55%,#070a12 100%);
-    color:var(--text);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 }
 
-/* TOP */
-
-.top{
-    width:100%;
-    border-bottom:1px solid rgba(255,255,255,.07);
-    background:rgba(6,9,16,.78);
-    backdrop-filter:blur(18px);
-}
-
-.top-inner{
-    max-width:1180px;
-    margin:auto;
-    min-height:76px;
-    padding:0 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.brand{
-    display:flex;
-    align-items:center;
-    gap:13px;
-}
-
-.brand-mark{
-    width:43px;
-    height:43px;
-    border-radius:13px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+body{
+    min-height:100vh;
+    color:white;
     background:
-        linear-gradient(145deg,#e7c978,#a77c2d);
-    color:#111;
-    box-shadow:
-        0 7px 25px rgba(211,169,75,.18),
-        inset 0 1px 0 rgba(255,255,255,.65);
+    radial-gradient(circle at 20% 0%,#27346b 0%,transparent 35%),
+    radial-gradient(circle at 90% 20%,#401d55 0%,transparent 35%),
+    #05060b;
 }
 
-.brand-mark svg{
-    width:24px;
-    height:24px;
-}
-
-.brand-name{
-    font-size:18px;
-    font-weight:800;
-    letter-spacing:1.7px;
-}
-
-.brand-sub{
-    color:#7f899d;
-    font-size:10px;
-    letter-spacing:1.8px;
-    margin-top:3px;
-}
-
-.secure{
+header{
+    padding:25px 20px;
     display:flex;
+    justify-content:space-between;
     align-items:center;
-    gap:7px;
-    color:#9aa4b8;
-    font-size:11px;
+    max-width:1150px;
+    margin:auto;
 }
 
-.secure svg{
-    width:15px;
-    height:15px;
-    color:#c8a957;
+.logo{
+    font-size:27px;
+    font-weight:900;
 }
 
-/* HERO */
+.logo span{
+    color:#786cff;
+}
+
+.status{
+    padding:8px 13px;
+    border-radius:30px;
+    background:rgba(83,255,152,.09);
+    border:1px solid rgba(83,255,152,.2);
+    color:#64f69c;
+    font-size:12px;
+}
 
 .hero{
-    max-width:1180px;
-    margin:0 auto;
-    padding:52px 20px 34px;
     text-align:center;
-}
-
-.hero-kicker{
-    color:var(--gold2);
-    font-size:10px;
-    font-weight:800;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    margin-bottom:13px;
+    padding:45px 20px 35px;
 }
 
 .hero h1{
     font-size:42px;
-    line-height:1.05;
-    letter-spacing:-1.5px;
-    font-weight:850;
+    font-weight:900;
+    letter-spacing:-1px;
 }
 
 .hero h1 span{
-    color:var(--gold2);
+    color:#8177ff;
 }
 
 .hero p{
-    max-width:560px;
-    margin:14px auto 0;
-    color:#8f98aa;
-    line-height:1.6;
-    font-size:14px;
-}
-
-/* LOGIN */
-
-.login-wrap{
-    width:100%;
-    max-width:470px;
-    margin:5px auto 70px;
-    padding:0 18px;
-}
-
-.login-card{
-    position:relative;
-    overflow:hidden;
-    background:
-        linear-gradient(145deg,rgba(22,29,45,.97),rgba(11,16,27,.98));
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:27px;
-    padding:34px 27px 29px;
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.35),
-        inset 0 1px 0 rgba(255,255,255,.04);
-}
-
-.login-card:before{
-    content:"";
-    position:absolute;
-    width:230px;
-    height:230px;
-    right:-150px;
-    top:-150px;
-    border-radius:50%;
-    background:rgba(214,178,91,.08);
-}
-
-.login-icon{
-    width:57px;
-    height:57px;
-    margin:0 auto 18px;
-    border-radius:17px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:linear-gradient(145deg,#202b42,#111827);
-    border:1px solid rgba(215,183,106,.28);
-    color:var(--gold2);
-}
-
-.login-icon svg{
-    width:28px;
-    height:28px;
-}
-
-.login-card h2{
-    text-align:center;
-    font-size:25px;
-    margin-bottom:8px;
-}
-
-.login-desc{
-    text-align:center;
-    color:#7f899d;
-    font-size:13px;
-    margin-bottom:24px;
-}
-
-.input{
-    width:100%;
-    height:56px;
-    border-radius:15px;
-    border:1px solid rgba(255,255,255,.10);
-    background:#080d17;
-    color:#fff;
-    outline:none;
-    padding:0 17px;
-    text-align:center;
-    font-size:16px;
-    letter-spacing:1px;
-    transition:.2s;
-}
-
-.input:focus{
-    border-color:rgba(215,183,106,.65);
-    box-shadow:0 0 0 4px rgba(215,183,106,.08);
-}
-
-.enter{
-    width:100%;
-    height:56px;
+    color:#9fa8bd;
     margin-top:12px;
-    border:0;
-    border-radius:15px;
-    background:linear-gradient(135deg,#d9ba6d,#a57a2d);
-    color:#111;
-    font-size:15px;
-    font-weight:850;
-    letter-spacing:.3px;
-    cursor:pointer;
-    box-shadow:0 12px 28px rgba(190,148,55,.17);
+    line-height:1.6;
 }
 
-.enter:active{
-    transform:scale(.985);
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:15px 20px 50px;
 }
 
-.error{
-    display:none;
-    text-align:center;
-    color:#e68c8c;
-    font-size:12px;
-    margin-top:13px;
-}
-
-/* GAME */
-
-.game{
-    display:none;
-    max-width:1180px;
-    margin:0 auto;
-    padding:0 18px 60px;
-}
-
-/* ACCOUNT BAR */
-
-.account{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
-    padding:17px 19px;
-    border:1px solid var(--line);
-    border-radius:19px;
-    background:rgba(14,20,34,.82);
-    box-shadow:0 15px 40px rgba(0,0,0,.20);
-}
-
-.account-left{
-    display:flex;
-    align-items:center;
-    gap:11px;
-}
-
-.account-icon{
-    width:39px;
-    height:39px;
-    border-radius:12px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--gold2);
-    background:#151e31;
-    border:1px solid rgba(215,183,106,.16);
-}
-
-.account-icon svg{
-    width:20px;
-    height:20px;
-}
-
-.account-title{
-    font-size:13px;
-    font-weight:700;
-}
-
-.account-small{
-    color:#788296;
-    font-size:10px;
-    margin-top:3px;
-}
-
-.active{
-    display:flex;
-    align-items:center;
-    gap:6px;
-    color:#8ebd9d;
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:.6px;
-}
-
-.active-dot{
-    width:6px;
-    height:6px;
-    border-radius:50%;
-    background:#68b984;
-    box-shadow:0 0 8px rgba(104,185,132,.6);
-}
-
-/* BALANCE */
-
-.balance{
-    margin-top:18px;
-    padding:24px 25px;
-    border-radius:22px;
-    position:relative;
-    overflow:hidden;
-    background:
-        radial-gradient(circle at 90% 10%,rgba(255,255,255,.10),transparent 22%),
-        linear-gradient(135deg,#151f39,#0d1424);
-    border:1px solid rgba(255,255,255,.08);
-}
-
-.balance:after{
-    content:"";
-    position:absolute;
-    width:170px;
-    height:170px;
-    border-radius:50%;
-    right:-80px;
-    bottom:-100px;
-    border:1px solid rgba(215,183,106,.15);
-}
-
-.balance-label{
-    color:#818ca2;
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:1.6px;
-}
-
-.balance-value{
-    margin-top:5px;
-    font-size:31px;
-    font-weight:800;
-}
-
-.balance-bottom{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    margin-top:6px;
-    color:#788397;
-    font-size:11px;
-}
-
-.balance-bottom svg{
-    width:13px;
-    height:13px;
-    color:var(--gold);
-}
-
-/* SECTION */
-
-.section-head{
-    text-align:center;
-    padding:42px 0 24px;
-}
-
-.section-line{
-    width:46px;
-    height:2px;
-    margin:0 auto 14px;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);
-}
-
-.section-head h2{
-    font-size:25px;
-    letter-spacing:-.4px;
-}
-
-.section-head p{
-    color:#7f899d;
-    font-size:12px;
-    margin-top:7px;
-}
-
-/* CARDS */
-
-.cards{
-    width:100%;
+.products{
     display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:13px;
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+    gap:22px;
 }
 
 .card{
     position:relative;
-    min-width:0;
-    height:255px;
-    border-radius:21px;
+    padding:28px;
+    border-radius:28px;
+    background:rgba(255,255,255,.065);
+    border:1px solid rgba(255,255,255,.11);
+    backdrop-filter:blur(20px);
+    box-shadow:0 25px 70px rgba(0,0,0,.35);
+    transition:.3s;
     overflow:hidden;
-    background:#101827;
-    border:1px solid rgba(255,255,255,.08);
-    box-shadow:
-        0 20px 45px rgba(0,0,0,.28),
-        inset 0 1px 0 rgba(255,255,255,.04);
 }
 
-/* card result */
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#746bff;
+}
 
-.result{
+.card:before{
+    content:"";
     position:absolute;
-    inset:0;
+    width:130px;
+    height:130px;
+    background:#746bff;
+    filter:blur(70px);
+    opacity:.12;
+    right:-50px;
+    top:-50px;
+}
+
+.icon{
+    width:86px;
+    height:86px;
+    border-radius:22px;
     display:flex;
     align-items:center;
     justify-content:center;
-    flex-direction:column;
-    text-align:center;
-    background:
-        radial-gradient(circle at 50% 30%,rgba(215,183,106,.11),transparent 35%),
-        linear-gradient(145deg,#151f31,#0b111d);
+    margin-bottom:20px;
+    overflow:hidden;
+    box-shadow:0 15px 30px rgba(0,0,0,.3);
 }
 
-.result-icon{
-    width:48px;
-    height:48px;
-    border-radius:15px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-bottom:11px;
-    color:var(--gold2);
-    border:1px solid rgba(215,183,106,.22);
-    background:rgba(215,183,106,.07);
-}
-
-.result-icon svg{
-    width:23px;
-    height:23px;
-}
-
-.result-amount{
-    color:#f0d68e;
-    font-size:25px;
-    font-weight:850;
-    letter-spacing:.3px;
-}
-
-.result-label{
-    margin-top:5px;
-    color:#737e93;
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:1.3px;
-}
-
-/* scratch canvas */
-
-canvas{
-    position:absolute;
-    inset:0;
-    z-index:5;
+.icon img{
     width:100%;
     height:100%;
-    cursor:crosshair;
-    touch-action:none;
+    object-fit:cover;
 }
 
-/* CARD TOP */
+.whatsapp{
+    background:#25D366;
+}
 
-.card-number{
-    position:absolute;
-    z-index:7;
-    left:13px;
-    top:12px;
-    color:rgba(255,255,255,.85);
-    font-size:9px;
+.netflix{
+    background:#000;
+}
+
+.telegram{
+    background:#229ED9;
+}
+
+.icon-text{
+    font-size:45px;
+    font-weight:900;
+}
+
+.netflix .icon-text{
+    color:#e50914;
+}
+
+.telegram .icon-text{
+    color:white;
+}
+
+.badge{
+    display:inline-block;
+    padding:6px 10px;
+    border-radius:30px;
+    background:rgba(126,115,255,.14);
+    color:#aaa3ff;
+    font-size:11px;
     font-weight:800;
-    letter-spacing:1.3px;
-    pointer-events:none;
+    margin-bottom:12px;
 }
 
-.card-corner{
-    position:absolute;
-    z-index:7;
-    right:13px;
-    top:11px;
-    color:rgba(215,183,106,.9);
-    pointer-events:none;
+.card h2{
+    font-size:23px;
+    margin-bottom:5px;
 }
 
-.card-corner svg{
-    width:15px;
-    height:15px;
+.version{
+    color:#858da1;
+    font-size:13px;
 }
 
-/* INFO */
+.price{
+    font-size:34px;
+    font-weight:900;
+    margin-top:20px;
+}
 
-.info{
+.duration{
+    color:#aab1c1;
+    font-size:14px;
+    margin:5px 0 22px;
+}
+
+.download{
+    width:100%;
+    border:0;
+    padding:16px;
+    border-radius:16px;
+    color:white;
+    background:linear-gradient(135deg,#8177ff,#5549e9);
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
+    box-shadow:0 12px 30px rgba(91,78,240,.28);
+}
+
+.download:active{
+    transform:scale(.98);
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#646c80;
+    font-size:12px;
+}
+
+
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(12px);
+    z-index:999;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal-box{
+    width:100%;
+    max-width:420px;
+    background:#111522;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:28px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 30px 90px rgba(0,0,0,.6);
+    animation:popup .25s ease;
+}
+
+@keyframes popup{
+    from{
+        opacity:0;
+        transform:translateY(20px) scale(.95);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.warning{
+    width:60px;
+    height:60px;
+    border-radius:18px;
+    margin:0 auto 15px;
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:8px;
-    margin-top:22px;
-    padding:15px;
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:16px;
-    color:#778196;
-    background:rgba(13,19,31,.65);
-    font-size:11px;
+    font-size:29px;
+    background:rgba(255,183,0,.12);
+    border:1px solid rgba(255,183,0,.2);
 }
 
-.info svg{
-    width:15px;
-    height:15px;
-    color:var(--gold);
-    flex:none;
+.modal-box h2{
+    margin-bottom:10px;
 }
 
-.restart{
+.modal-box p{
+    color:#aeb5c6;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.modal-product{
+    margin:20px 0;
+    padding:17px;
+    border-radius:17px;
+    background:rgba(255,255,255,.05);
+}
+
+.modal-product strong{
     display:block;
-    margin:17px auto 0;
-    padding:12px 21px;
-    border-radius:13px;
-    border:1px solid rgba(255,255,255,.08);
-    background:#111827;
-    color:#aeb6c6;
-    font-size:11px;
-    font-weight:700;
+    font-size:19px;
+}
+
+.modal-price{
+    color:#8177ff;
+    font-size:27px;
+    font-weight:900;
+    margin-top:7px;
+}
+
+.buttons{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+.buttons button{
+    flex:1;
+    padding:14px;
+    border:0;
+    border-radius:14px;
+    font-weight:800;
     cursor:pointer;
 }
 
-/* TABLET */
-
-@media(max-width:850px){
-
-    .hero{
-        padding-top:38px;
-    }
-
-    .hero h1{
-        font-size:35px;
-    }
-
-    .cards{
-        gap:9px;
-    }
-
-    .card{
-        height:220px;
-    }
-
-    .result-amount{
-        font-size:20px;
-    }
-
-    .result-icon{
-        width:41px;
-        height:41px;
-    }
-
+.cancel{
+    color:white;
+    background:#282d3a;
 }
 
-/* PHONE */
-
-@media(max-width:600px){
-
-    .top-inner{
-        min-height:65px;
-        padding:0 14px;
-    }
-
-    .brand-mark{
-        width:38px;
-        height:38px;
-    }
-
-    .brand-name{
-        font-size:15px;
-    }
-
-    .brand-sub{
-        font-size:8px;
-    }
-
-    .secure{
-        font-size:9px;
-    }
-
-    .hero{
-        padding:35px 15px 25px;
-    }
-
-    .hero h1{
-        font-size:31px;
-    }
-
-    .hero p{
-        font-size:12px;
-    }
-
-    .login-wrap{
-        margin-bottom:50px;
-    }
-
-    .login-card{
-        padding:29px 19px 25px;
-        border-radius:23px;
-    }
-
-    .game{
-        padding:0 9px 45px;
-    }
-
-    .account{
-        padding:14px;
-    }
-
-    .balance{
-        padding:20px;
-    }
-
-    .balance-value{
-        font-size:27px;
-    }
-
-    .section-head{
-        padding:31px 0 19px;
-    }
-
-    .section-head h2{
-        font-size:21px;
-    }
-
-    /*
-       4 KART TELEFONDA DA YAN-YANA
-    */
-
-    .cards{
-        grid-template-columns:repeat(4,minmax(0,1fr));
-        gap:6px;
-    }
-
-    .card{
-        height:178px;
-        border-radius:14px;
-    }
-
-    .card-number{
-        left:7px;
-        top:7px;
-        font-size:6px;
-        letter-spacing:.7px;
-    }
-
-    .card-corner{
-        right:7px;
-        top:7px;
-    }
-
-    .card-corner svg{
-        width:11px;
-        height:11px;
-    }
-
-    .result-icon{
-        width:29px;
-        height:29px;
-        border-radius:9px;
-        margin-bottom:6px;
-    }
-
-    .result-icon svg{
-        width:15px;
-        height:15px;
-    }
-
-    .result-amount{
-        font-size:13px;
-    }
-
-    .result-label{
-        font-size:6px;
-        letter-spacing:.5px;
-        margin-top:3px;
-    }
-
-    .info{
-        font-size:9px;
-        padding:12px 7px;
-    }
-
-    .info svg{
-        width:12px;
-        height:12px;
-    }
-
-}
-
-/* VERY SMALL PHONE */
-
-@media(max-width:370px){
-
-    .cards{
-        gap:4px;
-    }
-
-    .card{
-        height:160px;
-        border-radius:12px;
-    }
-
-    .result-icon{
-        width:25px;
-        height:25px;
-    }
-
-    .result-icon svg{
-        width:13px;
-        height:13px;
-    }
-
-    .result-amount{
-        font-size:11px;
-    }
-
-}
-
-/* DESKTOP LARGE */
-
-@media(min-width:1000px){
-
-    .card{
-        height:290px;
-    }
-
-    .result-amount{
-        font-size:28px;
-    }
-
+.continue{
+    color:white;
+    background:#6559f0;
 }
 </style>
 </head>
 
 <body>
 
-<!-- SVG ICON SYMBOLS -->
-
-<svg width="0" height="0" style="position:absolute">
-<defs>
-
-<symbol id="lock" viewBox="0 0 24 24">
-    <rect x="4" y="10" width="16" height="11" rx="2"
-          fill="none" stroke="currentColor" stroke-width="1.8"/>
-    <path d="M7 10V7a5 5 0 0 1 10 0v3"
-          fill="none" stroke="currentColor" stroke-width="1.8"
-          stroke-linecap="round"/>
-    <circle cx="12" cy="15.5" r="1.3" fill="currentColor"/>
-</symbol>
-
-<symbol id="gift" viewBox="0 0 24 24">
-    <path d="M4 10h16v10H4z" fill="none"
-          stroke="currentColor" stroke-width="1.7"/>
-    <path d="M3 7h18v4H3z"
-          fill="none" stroke="currentColor" stroke-width="1.7"/>
-    <path d="M12 7v13"
-          stroke="currentColor" stroke-width="1.7"/>
-    <path d="M12 7H8.5C6.5 7 6 5.2 7.3 4.2c1.8-1.3 4.2 1.1 4.7 2.8Z"
-          fill="none" stroke="currentColor" stroke-width="1.5"/>
-    <path d="M12 7h3.5c2 0 2.5-1.8 1.2-2.8-1.8-1.3-4.2 1.1-4.7 2.8Z"
-          fill="none" stroke="currentColor" stroke-width="1.5"/>
-</symbol>
-
-<symbol id="shield" viewBox="0 0 24 24">
-    <path d="M12 3l7 3v5c0 4.6-2.8 8-7 10-4.2-2-7-5.4-7-10V6l7-3Z"
-          fill="none" stroke="currentColor" stroke-width="1.7"/>
-    <path d="m8.5 12 2.2 2.2 4.8-5"
-          fill="none" stroke="currentColor" stroke-width="1.7"
-          stroke-linecap="round" stroke-linejoin="round"/>
-</symbol>
-
-<symbol id="user" viewBox="0 0 24 24">
-    <circle cx="12" cy="8" r="3.2"
-            fill="none" stroke="currentColor" stroke-width="1.7"/>
-    <path d="M5 20c.8-3.5 3-5.2 7-5.2s6.2 1.7 7 5.2"
-            fill="none" stroke="currentColor" stroke-width="1.7"
-            stroke-linecap="round"/>
-</symbol>
-
-<symbol id="wallet" viewBox="0 0 24 24">
-    <path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H19v16H6.5A2.5 2.5 0 0 1 4 17.5v-11Z"
-          fill="none" stroke="currentColor" stroke-width="1.7"/>
-    <path d="M4 8h15"
-          stroke="currentColor" stroke-width="1.7"/>
-    <path d="M15 12h5v4h-5a2 2 0 1 1 0-4Z"
-          fill="none" stroke="currentColor" stroke-width="1.7"/>
-</symbol>
-
-<symbol id="info" viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="9"
-            fill="none" stroke="currentColor" stroke-width="1.7"/>
-    <path d="M12 10.5v5"
-          stroke="currentColor" stroke-width="1.7"
-          stroke-linecap="round"/>
-    <circle cx="12" cy="7.5" r="1"
-            fill="currentColor"/>
-</symbol>
-
-<symbol id="diamond" viewBox="0 0 24 24">
-    <path d="m12 3 8 7-8 11-8-11 8-7Z"
-          fill="none" stroke="currentColor" stroke-width="1.6"/>
-    <path d="M4 10h16M8 4.5l4 5.5 4-5.5"
-          fill="none" stroke="currentColor" stroke-width="1.3"/>
-</symbol>
-
-<symbol id="star" viewBox="0 0 24 24">
-    <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"
-          fill="none" stroke="currentColor" stroke-width="1.5"
-          stroke-linejoin="round"/>
-</symbol>
-
-</defs>
-</svg>
-
-
-<!-- HEADER -->
-
-<header class="top">
-
-    <div class="top-inner">
-
-        <div class="brand">
-
-            <div class="brand-mark">
-                <svg><use href="#gift"></use></svg>
-            </div>
-
-            <div>
-                <div class="brand-name">
-                    POZ-QAZAN
-                </div>
-
-                <div class="brand-sub">
-                    PREMIUM EXPERIENCE
-                </div>
-            </div>
-
-        </div>
-
-        <div class="secure">
-            <svg><use href="#shield"></use></svg>
-            Təhlükəsiz giriş
-        </div>
-
-    </div>
-
+<header>
+    <div class="logo">Altap<span>.Biz</span></div>
+    <div class="status">● ONLINE STORE</div>
 </header>
 
-
-<!-- HERO -->
-
 <section class="hero">
-
-    <div class="hero-kicker">
-        PREMIUM POZ-QAZAN
-    </div>
-
-    <h1>
-        Şansını <span>sına</span>
-    </h1>
-
+    <h1>Premium <span>iPhone</span> Store</h1>
     <p>
-        Sizə təqdim olunan kartı seçin və örtülü sahəni
-        barmağınızla sürtərək nəticəni görün.
+        2026 üçün premium paketlər<br>
+        Sürətli sifariş və WhatsApp dəstəyi
     </p>
-
 </section>
 
+<div class="container">
 
-<!-- LOGIN -->
+<div class="products">
 
-<div class="login-wrap" id="loginBox">
+<!-- WHATSAPP -->
 
-    <div class="login-card">
+<div class="card">
 
-        <div class="login-icon">
-            <svg><use href="#lock"></use></svg>
+    <div class="icon whatsapp">
+        <div class="icon-text">☏</div>
+    </div>
+
+    <div class="badge">PREMIUM</div>
+
+    <h2>WhatsApp Plus</h2>
+
+    <div class="version">iPhone • 2026</div>
+
+    <div class="price">15₼</div>
+
+    <div class="duration">3 illik istifadə</div>
+
+    <button
+        class="download"
+        onclick="showWarning(
+        'WhatsApp Plus',
+        '15₼',
+        '3 illik istifadə'
+        )">
+        Yüklə
+    </button>
+
+</div>
+
+
+<!-- NETFLIX -->
+
+<div class="card">
+
+    <div class="icon netflix">
+        <div class="icon-text">N</div>
+    </div>
+
+    <div class="badge">ENTERTAINMENT</div>
+
+    <h2>Netflix Plus</h2>
+
+    <div class="version">iPhone • 2026</div>
+
+    <div class="price">40₼</div>
+
+    <div class="duration">1 illik istifadə</div>
+
+    <button
+        class="download"
+        onclick="showWarning(
+        'Netflix Plus',
+        '40₼',
+        '1 illik istifadə'
+        )">
+        Yüklə
+    </button>
+
+</div>
+
+
+<!-- TELEGRAM -->
+
+<div class="card">
+
+    <div class="icon telegram">
+        <div class="icon-text">➤</div>
+    </div>
+
+    <div class="badge">PREMIUM</div>
+
+    <h2>Telegram Plus</h2>
+
+    <div class="version">iPhone • 2026</div>
+
+    <div class="price">27₼</div>
+
+    <div class="duration">3 illik istifadə</div>
+
+    <button
+        class="download"
+        onclick="showWarning(
+        'Telegram Plus',
+        '27₼',
+        '3 illik istifadə'
+        )">
+        Yüklə
+    </button>
+
+</div>
+
+</div>
+</div>
+
+
+<footer>
+    © 2026 Altap.Biz — Premium Store
+</footer>
+
+
+<!-- XƏBƏRDARLIQ -->
+
+<div class="modal" id="modal">
+
+<div class="modal-box">
+
+    <div class="warning">⚠️</div>
+
+    <h2>Qiymət barədə xəbərdarlıq</h2>
+
+    <p>
+        Davam etməzdən əvvəl seçdiyiniz məhsulun
+        qiymətini və istifadə müddətini yoxlayın.
+    </p>
+
+    <div class="modal-product">
+
+        <strong id="productName">
+            Məhsul
+        </strong>
+
+        <div class="modal-price" id="productPrice">
+            0₼
         </div>
 
-        <h2>
-            Giriş kodu
-        </h2>
+        <p id="productDuration">
+            Müddət
+        </p>
 
-        <div class="login-desc">
-            Davam etmək üçün sizə verilmiş kodu daxil edin.
-        </div>
+    </div>
 
-        <input
-            class="input"
-            id="codeInput"
-            type="password"
-            placeholder="Giriş kodunu daxil edin"
-            autocomplete="off"
-        >
+    <p>
+        Sifariş üçün WhatsApp üzərindən əlaqə saxlanılacaq.
+    </p>
+
+    <div class="buttons">
 
         <button
-            class="enter"
-            onclick="login()">
-            Davam et
+            class="cancel"
+            onclick="closeModal()">
+            Ləğv et
         </button>
 
-        <div
-            class="error"
-            id="error">
-            Daxil etdiyiniz kod düzgün deyil.
-        </div>
+        <button
+            class="continue"
+            onclick="goWhatsApp()">
+            Davam et
+        </button>
 
     </div>
 
 </div>
 
-
-<!-- GAME -->
-
-<main class="game" id="game">
-
-    <div class="account">
-
-        <div class="account-left">
-
-            <div class="account-icon">
-                <svg><use href="#user"></use></svg>
-            </div>
-
-            <div>
-
-                <div class="account-title">
-                    İştirakçı
-                </div>
-
-                <div class="account-small">
-                    Giriş təsdiqləndi
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="active">
-
-            <span class="active-dot"></span>
-
-            AKTİV
-
-        </div>
-
-    </div>
-
-
-    <!-- BALANS -->
-
-    <div class="balance">
-
-        <div class="balance-label">
-            Cari balans
-        </div>
-
-        <div class="balance-value">
-            0.00 AZN
-        </div>
-
-        <div class="balance-bottom">
-
-            <svg><use href="#wallet"></use></svg>
-
-            Test hesabı
-
-        </div>
-
-    </div>
-
-
-    <!-- SECTION -->
-
-    <div class="section-head">
-
-        <div class="section-line"></div>
-
-        <h2>
-            Poz-Qazan kartları
-        </h2>
-
-        <p>
-            Kartı seçin və örtüyü sürtərək açın
-        </p>
-
-    </div>
-
-
-    <!-- CARDS -->
-
-    <div class="cards">
-
-
-        <!-- CARD 01 -->
-
-        <div class="card">
-
-            <div class="result">
-
-                <div class="result-icon">
-                    <svg><use href="#gift"></use></svg>
-                </div>
-
-                <div class="result-amount">
-                    10 AZN
-                </div>
-
-                <div class="result-label">
-                    Nəticə
-                </div>
-
-            </div>
-
-            <canvas></canvas>
-
-            <div class="card-number">
-                KART 01
-            </div>
-
-            <div class="card-corner">
-                <svg><use href="#diamond"></use></svg>
-            </div>
-
-        </div>
-
-
-        <!-- CARD 02 -->
-
-        <div class="card">
-
-            <div class="result">
-
-                <div class="result-icon">
-                    <svg><use href="#star"></use></svg>
-                </div>
-
-                <div class="result-amount">
-                    5 AZN
-                </div>
-
-                <div class="result-label">
-                    Nəticə
-                </div>
-
-            </div>
-
-            <canvas></canvas>
-
-            <div class="card-number">
-                KART 02
-            </div>
-
-            <div class="card-corner">
-                <svg><use href="#diamond"></use></svg>
-            </div>
-
-        </div>
-
-
-        <!-- CARD 03 -->
-
-        <div class="card">
-
-            <div class="result">
-
-                <div class="result-icon">
-                    <svg><use href="#diamond"></use></svg>
-                </div>
-
-                <div class="result-amount">
-                    25 AZN
-                </div>
-
-                <div class="result-label">
-                    Nəticə
-                </div>
-
-            </div>
-
-            <canvas></canvas>
-
-            <div class="card-number">
-                KART 03
-            </div>
-
-            <div class="card-corner">
-                <svg><use href="#diamond"></use></svg>
-            </div>
-
-        </div>
-
-
-        <!-- CARD 04 -->
-
-        <div class="card">
-
-            <div class="result">
-
-                <div class="result-icon">
-                    <svg><use href="#gift"></use></svg>
-                </div>
-
-                <div class="result-amount">
-                    1 AZN
-                </div>
-
-                <div class="result-label">
-                    Nəticə
-                </div>
-
-            </div>
-
-            <canvas></canvas>
-
-            <div class="card-number">
-                KART 04
-            </div>
-
-            <div class="card-corner">
-                <svg><use href="#star"></use></svg>
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-    <div class="info">
-
-        <svg><use href="#info"></use></svg>
-
-        Örtüyü barmağınızla sürtərək kartın
-        altındakı test nəticəsini görə bilərsiniz.
-
-    </div>
-
-
-    <button
-        class="restart"
-        onclick="location.reload()">
-        Yenidən başla
-    </button>
-
-</main>
+</div>
 
 
 <script>
 
-/* ============================================
-   SƏNİN TƏYİN ETDİYİN GİRİŞ KODU
-   ============================================ */
+let selectedProduct = "";
+let selectedPrice = "";
+let selectedDuration = "";
 
-const SECRET_CODE = "123456";
+function showWarning(product,price,duration){
 
+    selectedProduct = product;
+    selectedPrice = price;
+    selectedDuration = duration;
 
-/* LOGIN */
+    document.getElementById("productName").innerText = product;
 
-function login(){
+    document.getElementById("productPrice").innerText = price;
 
-    const input =
-        document
-        .getElementById("codeInput")
-        .value
-        .trim();
+    document.getElementById("productDuration").innerText =
+        duration;
 
-    const error =
-        document.getElementById("error");
-
-    if(input === SECRET_CODE){
-
-        document
-        .getElementById("loginBox")
-        .style.display = "none";
-
-        document
-        .getElementById("game")
-        .style.display = "block";
-
-        createScratchCards();
-
-        window.scrollTo({
-            top:0,
-            behavior:"smooth"
-        });
-
-    }else{
-
-        error.style.display = "block";
-
-        setTimeout(function(){
-
-            error.style.display = "none";
-
-        },2500);
-
-    }
+    document.getElementById("modal").style.display = "flex";
 }
 
+function closeModal(){
 
-/* ENTER */
+    document.getElementById("modal").style.display = "none";
+}
 
-document
-.getElementById("codeInput")
-.addEventListener("keydown",function(e){
+function goWhatsApp(){
 
-    if(e.key === "Enter"){
-        login();
+    const phone = "994552334814";
+
+    const message =
+        "Salam, " +
+        selectedProduct +
+        " sifariş etmək istəyirəm. " +
+        "Qiymət: " +
+        selectedPrice +
+        ". İstifadə müddəti: " +
+        selectedDuration +
+        ".";
+
+    const url =
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        encodeURIComponent(message);
+
+    window.location.href = url;
+}
+
+window.onclick = function(event){
+
+    const modal = document.getElementById("modal");
+
+    if(event.target === modal){
+        closeModal();
     }
 
-});
-
-
-/* ============================================
-   SCRATCH CARD
-   ============================================ */
-
-function createScratchCards(){
-
-    document
-    .querySelectorAll(".card")
-    .forEach(function(card){
-
-        const canvas =
-            card.querySelector("canvas");
-
-        const width =
-            card.clientWidth;
-
-        const height =
-            card.clientHeight;
-
-        const dpr =
-            Math.min(window.devicePixelRatio || 1,2);
-
-        canvas.width =
-            width * dpr;
-
-        canvas.height =
-            height * dpr;
-
-        canvas.style.width =
-            width + "px";
-
-        canvas.style.height =
-            height + "px";
-
-        const ctx =
-            canvas.getContext("2d");
-
-        ctx.scale(dpr,dpr);
-
-
-        /* PREMIUM FOLQA */
-
-        const gradient =
-            ctx.createLinearGradient(
-                0,
-                0,
-                width,
-                height
-            );
-
-        gradient.addColorStop(
-            0,
-            "#343c4d"
-        );
-
-        gradient.addColorStop(
-            .28,
-            "#7d8798"
-        );
-
-        gradient.addColorStop(
-            .48,
-            "#454e60"
-        );
-
-        gradient.addColorStop(
-            .72,
-            "#8b94a3"
-        );
-
-        gradient.addColorStop(
-            1,
-            "#30394a"
-        );
-
-        ctx.fillStyle =
-            gradient;
-
-        ctx.fillRect(
-            0,
-            0,
-            width,
-            height
-        );
-
-
-        /* FOLQA XƏTTİ */
-
-        ctx.strokeStyle =
-            "rgba(255,255,255,.12)";
-
-        ctx.lineWidth = 1;
-
-        for(
-            let x=-height;
-            x<width+height;
-            x+=20
-        ){
-
-            ctx.beginPath();
-
-            ctx.moveTo(x,0);
-
-            ctx.lineTo(x+height,height);
-
-            ctx.stroke();
-
-        }
-
-
-        /* MƏRKƏZ */
-
-        ctx.textAlign = "center";
-
-        ctx.fillStyle =
-            "rgba(255,255,255,.94)";
-
-        ctx.font =
-            "800 20px Arial";
-
-        ctx.fillText(
-            "POZ",
-            width/2,
-            height/2-5
-        );
-
-        ctx.fillStyle =
-            "rgba(255,255,255,.62)";
-
-        ctx.font =
-            "10px Arial";
-
-        ctx.fillText(
-            "NƏTİCƏNİ GÖR",
-            width/2,
-            height/2+16
-        );
-
-
-        let drawing=false;
-
-
-        function getPosition(e){
-
-            const rect =
-                canvas.getBoundingClientRect();
-
-            const point =
-                e.touches &&
-                e.touches.length
-                ? e.touches[0]
-                : e;
-
-            return {
-
-                x:
-                    point.clientX -
-                    rect.left,
-
-                y:
-                    point.clientY -
-                    rect.top
-
-            };
-
-        }
-
-
-        function scratch(e){
-
-            if(!drawing)
-                return;
-
-            e.preventDefault();
-
-            const p =
-                getPosition(e);
-
-            ctx.globalCompositeOperation =
-                "destination-out";
-
-            ctx.beginPath();
-
-            ctx.arc(
-                p.x,
-                p.y,
-                21,
-                0,
-                Math.PI*2
-            );
-
-            ctx.fill();
-
-        }
-
-
-        /* MOUSE */
-
-        canvas.addEventListener(
-            "mousedown",
-            function(e){
-
-                drawing=true;
-
-                scratch(e);
-
-            }
-        );
-
-        canvas.addEventListener(
-            "mousemove",
-            scratch
-        );
-
-        canvas.addEventListener(
-            "mouseup",
-            function(){
-
-                drawing=false;
-
-            }
-        );
-
-        canvas.addEventListener(
-            "mouseleave",
-            function(){
-
-                drawing=false;
-
-            }
-        );
-
-
-        /* TOUCH */
-
-        canvas.addEventListener(
-            "touchstart",
-            function(e){
-
-                drawing=true;
-
-                scratch(e);
-
-            },
-            {passive:false}
-        );
-
-        canvas.addEventListener(
-            "touchmove",
-            scratch,
-            {passive:false}
-        );
-
-        canvas.addEventListener(
-            "touchend",
-            function(){
-
-                drawing=false;
-
-            }
-        );
-
-        canvas.addEventListener(
-            "touchcancel",
-            function(){
-
-                drawing=false;
-
-            }
-        );
-
-    });
-
-}
+};
 
 </script>
 
