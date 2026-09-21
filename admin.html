@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Altap.Biz | Admin Panel</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+background:#070911;
+color:#fff;
+min-height:100vh
+}
+
+button,input{
+font:inherit
+}
+
+header{
+background:#0d101b;
+border-bottom:1px solid rgba(255,255,255,.08);
+padding:16px 20px;
+position:sticky;
+top:0;
+z-index:10
+}
+
+.nav{
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center
+}
+
+.logo{
+font-size:22px;
+font-weight:900
+}
+
+.logo span{
+color:#766bff
+}
+
+.admin-label{
+font-size:12px;
+color:#65f59b
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:25px 18px 60px
+}
+
+.login{
+max-width:430px;
+margin:70px auto;
+padding:28px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.09);
+border-radius:22px
+}
+
+.login h1{
+font-size:25px;
+margin-bottom:8px
+}
+
+.login p{
+font-size:12px;
+color:#8991a5;
+margin-bottom:20px
+}
+
+input{
+width:100%;
+padding:13px;
+background:#121724;
+border:1px solid rgba(255,255,255,.1);
+border-radius:12px;
+color:#fff;
+outline:none;
+margin-bottom:10px
+}
+
+button{
+border:0;
+border-radius:11px;
+padding:11px 15px;
+cursor:pointer;
+font-weight:800
+}
+
+.primary{
+width:100%;
+background:#6559ed;
+color:#fff
+}
+
+.danger{
+background:#e5484d;
+color:#fff
+}
+
+.success{
+background:#249d62;
+color:#fff
+}
+
+.secondary{
+background:#292f3d;
+color:#fff
+}
+
+.message{
+margin-top:12px;
+font-size:12px;
+color:#aab1c2;
+line-height:1.5
+}
+
+.hidden{
+display:none!important
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+margin-bottom:22px
+}
+
+.top h1{
+font-size:27px
+}
+
+.top p{
+font-size:12px;
+color:#7f8799;
+margin-top:4px
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:13px;
+margin-bottom:25px
+}
+
+.stat{
+padding:20px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:18px
+}
+
+.stat-title{
+font-size:11px;
+color:#858da1
+}
+
+.stat-value{
+font-size:28px;
+font-weight:900;
+margin-top:5px
+}
+
+.section{
+margin-top:25px
+}
+
+.section h2{
+font-size:20px;
+margin-bottom:13px
+}
+
+.card{
+background:rgba(255,255,255,.045);
+border:1px solid rgba(255,255,255,.08);
+border-radius:18px;
+padding:18px;
+margin-bottom:12px
+}
+
+.card-top{
+display:flex;
+justify-content:space-between;
+gap:15px
+}
+
+.name{
+font-size:16px;
+font-weight:900
+}
+
+.email{
+font-size:11px;
+color:#7f8799;
+margin-top:4px
+}
+
+.amount{
+font-size:20px;
+font-weight:900;
+color:#65f59b
+}
+
+.info{
+font-size:12px;
+color:#a3aabd;
+line-height:1.7;
+margin-top:12px
+}
+
+.info a{
+color:#8d83ff
+}
+
+.actions{
+display:flex;
+gap:8px;
+margin-top:13px;
+flex-wrap:wrap
+}
+
+.actions button{
+font-size:12px
+}
+
+.badge{
+display:inline-block;
+font-size:10px;
+padding:5px 9px;
+border-radius:20px;
+background:#292f3d;
+color:#bbc2d0;
+margin-top:8px
+}
+
+.pending{
+background:rgba(246,190,70,.12);
+color:#f6c85f
+}
+
+.approved{
+background:rgba(72,211,132,.12);
+color:#65f59b
+}
+
+.rejected{
+background:rgba(229,72,77,.12);
+color:#ff777c
+}
+
+.empty{
+padding:20px 0;
+font-size:12px;
+color:#6f7789
+}
+
+@media(max-width:850px){
+.stats{
+grid-template-columns:repeat(2,1fr)
+}
+}
+
+@media(max-width:550px){
+.container{
+padding:18px 12px 50px
+}
+
+.stats{
+grid-template-columns:1fr 1fr
+}
+
+.stat-value{
+font-size:22px
+}
+
+.top{
+align-items:flex-start;
+flex-direction:column
+}
+
+.card-top{
+flex-direction:column
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="nav">
+<div class="logo">Altap<span>.Biz</span> ADMIN</div>
+<div class="admin-label">● Admin Panel</div>
+</div>
+</header>
+
+<div class="container">
+
+<!-- LOGIN -->
+
+<section id="loginSection" class="login">
+
+<h1>Admin Panel</h1>
+
+<p>
+Yalnız Altap.Biz admin hesabı ilə daxil olun.
+</p>
+
+<input
+id="adminEmail"
+type="email"
+placeholder="Admin e-poçtu">
+
+<input
+id="adminPassword"
+type="password"
+placeholder="Şifrə">
+
+<button
+class="primary"
+onclick="adminLogin()">
+Admin kimi daxil ol
+</button>
+
+<div
+id="loginMessage"
+class="message">
+</div>
+
+</section>
+
+
+<!-- ADMIN -->
+
+<section id="adminSection" class="hidden">
+
+<div class="top">
+
+<div>
+<h1>Altap.Biz İdarəetmə</h1>
+<p id="adminEmailText"></p>
+</div>
+
+<button
+class="secondary"
+onclick="adminLogout()">
+Çıxış
+</button>
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat">
+<div class="stat-title">
+İstifadəçilər
+</div>
+<div
+id="usersCount"
+class="stat-value">
+0
+</div>
+</div>
+
+<div class="stat">
+<div class="stat-title">
+Gözləyən tapşırıqlar
+</div>
+<div
+id="pendingCount"
+class="stat-value">
+0
+</div>
+</div>
+
+<div class="stat">
+<div class="stat-title">
+Gözləyən çıxarışlar
+</div>
+<div
+id="withdrawCount"
+class="stat-value">
+0
+</div>
+</div>
+
+<div class="stat">
+<div class="stat-title">
+Ümumi balans
+</div>
+<div
+id="totalBalance"
+class="stat-value">
+0.00₼
+</div>
+</div>
+
+</div>
+
+
+<!-- SUBMISSIONS -->
+
+<div class="section">
+
+<h2>🎯 TikTok Tapşırıqları</h2>
+
+<div id="submissions">
+<div class="empty">
+Yüklənir...
+</div>
+</div>
+
+</div>
+
+
+<!-- WITHDRAWALS -->
+
+<div class="section">
+
+<h2>💸 Çıxarış Sorğuları</h2>
+
+<div id="withdrawals">
+<div class="empty">
+Yüklənir...
+</div>
+</div>
+
+</div>
+
+
+<!-- USERS -->
+
+<div class="section">
+
+<h2>👥 İstifadəçilər</h2>
+
+<div id="users">
+<div class="empty">
+Yüklənir...
+</div>
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<script>
+
+const SUPABASE_URL =
+"https://gefbhrdjddgpdeulmgru.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_xopjwCK8Aw2wXUhIuK24Ew_lG5uCYRx";
+
+const supabaseClient =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+const ADMIN_EMAIL =
+"makmudof@gmail.com";
+
+let currentUser = null;
+
+
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
+
+async function adminLogin(){
+
+const email =
+document
+.getElementById("adminEmail")
+.value
+.trim()
+.toLowerCase();
+
+const password =
+document
+.getElementById("adminPassword")
+.value;
+
+const message =
+document.getElementById("loginMessage");
+
+message.innerText =
+"Yoxlanılır...";
+
+if(!email || !password){
+
+message.innerText =
+"E-poçt və şifrəni daxil edin.";
+
+return;
+
+}
+
+if(email !== ADMIN_EMAIL){
+
+message.innerText =
+"Bu hesab admin deyil.";
+
+return;
+
+}
+
+try{
+
+const {data,error} =
+await supabaseClient.auth.signInWithPassword({
+
+email:email,
+password:password
+
+});
+
+if(error){
+
+throw error;
+
+}
+
+if(!data.user){
+
+throw new Error(
+"İstifadəçi tapılmadı."
+);
+
+}
+
+const adminCheck =
+await supabaseClient
+.rpc("is_admin");
+
+if(adminCheck.error){
+
+throw adminCheck.error;
+
+}
+
+if(adminCheck.data !== true){
+
+await supabaseClient.auth.signOut();
+
+message.innerText =
+"Admin icazəsi yoxdur.";
+
+return;
+
+}
+
+currentUser =
+data.user;
+
+document
+.getElementById("loginSection")
+.classList.add("hidden");
+
+document
+.getElementById("adminSection")
+.classList.remove("hidden");
+
+document
+.getElementById("adminEmailText")
+.innerText =
+currentUser.email;
+
+await loadAdminData();
+
+}catch(error){
+
+console.error(error);
+
+message.innerText =
+error.message ||
+"Admin girişində xəta baş verdi.";
+
+}
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function adminLogout(){
+
+await supabaseClient.auth.signOut();
+
+currentUser = null;
+
+document
+.getElementById("adminSection")
+.classList.add("hidden");
+
+document
+.getElementById("loginSection")
+.classList.remove("hidden");
+
+}
+
+
+/* =====================================================
+   LOAD ALL DATA
+===================================================== */
+
+async function loadAdminData(){
+
+await loadUsers();
+await loadSubmissions();
+await loadWithdrawals();
+
+}
+
+
+/* =====================================================
+   USERS
+===================================================== */
+
+async function loadUsers(){
+
+const container =
+document.getElementById("users");
+
+const {data,error} =
+await supabaseClient
+.from("profiles")
+.select("id,username,balance,created_at")
+.order("created_at",{ascending:false});
+
+if(error){
+
+console.error(error);
+
+container.innerHTML =
+'<div class="empty">İstifadəçiləri yükləmək mümkün olmadı.</div>';
+
+return;
+
+}
+
+document
+.getElementById("usersCount")
+.innerText =
+data.length;
+
+let total = 0;
+
+data.forEach(user => {
+
+total +=
+Number(user.balance || 0);
+
+});
+
+document
+.getElementById("totalBalance")
+.innerText =
+total.toFixed(2) + "₼";
+
+
+if(!data.length){
+
+container.innerHTML =
+'<div class="empty">İstifadəçi yoxdur.</div>';
+
+return;
+
+}
+
+container.innerHTML = "";
+
+data.forEach(user => {
+
+const div =
+document.createElement("div");
+
+div.className =
+"card";
+
+const date =
+new Date(user.created_at)
+.toLocaleString("az-AZ");
+
+div.innerHTML = `
+
+<div class="card-top">
+
+<div>
+
+<div class="name">
+${escapeHTML(user.username || "İstifadəçi")}
+</div>
+
+<div class="email">
+ID: ${escapeHTML(user.id)}
+</div>
+
+</div>
+
+<div class="amount">
+${Number(user.balance || 0).toFixed(2)}₼
+</div>
+
+</div>
+
+<div class="info">
+Qeydiyyat: ${date}
+</div>
+
+`;
+
+container.appendChild(div);
+
+});
+
+}
+
+
+/* =====================================================
+   SUBMISSIONS
+===================================================== */
+
+async function loadSubmissions(){
+
+const container =
+document.getElementById("submissions");
+
+const {data,error} =
+await supabaseClient
+.from("submissions")
+.select("*")
+.order("created_at",{ascending:false});
+
+if(error){
+
+console.error(error);
+
+container.innerHTML =
+'<div class="empty">Tapşırıqları yükləmək mümkün olmadı.</div>';
+
+return;
+
+}
+
+const pending =
+data.filter(
+x => x.status === "pending"
+).length;
+
+document
+.getElementById("pendingCount")
+.innerText =
+pending;
+
+if(!data.length){
+
+container.innerHTML =
+'<div class="empty">Heç bir tapşırıq yoxdur.</div>';
+
+return;
+
+}
+
+container.innerHTML = "";
+
+data.forEach(item => {
+
+const div =
+document.createElement("div");
+
+div.className =
+"card";
+
+const date =
+new Date(item.created_at)
+.toLocaleString("az-AZ");
+
+let badgeClass =
+"pending";
+
+if(item.status === "approved"){
+badgeClass = "approved";
+}
+
+if(item.status === "rejected"){
+badgeClass = "rejected";
+}
+
+let buttons = "";
+
+if(item.status === "pending"){
+
+buttons = `
+
+<div class="actions">
+
+<button
+class="success"
+onclick="approveSubmission(${item.id})">
+✓ Təsdiqlə
+</button>
+
+<button
+class="danger"
+onclick="rejectSubmission(${item.id})">
+✕ Rədd et
+</button>
+
+</div>
+
+`;
+
+}
+
+div.innerHTML = `
+
+<div class="card-top">
+
+<div>
+
+<div class="name">
+Tapşırıq #${item.task_id}
+</div>
+
+<div class="email">
+İstifadəçi ID: ${escapeHTML(item.user_id)}
+</div>
+
+</div>
+
+<span class="badge ${badgeClass}">
+${escapeHTML(item.status)}
+</span>
+
+</div>
+
+<div class="info">
+
+TikTok:
+<a
+href="${escapeAttribute(item.video_url)}"
+target="_blank"
+rel="noopener noreferrer">
+Videonu aç
+</a>
+
+<br>
+
+Tarix: ${date}
+
+${item.admin_note
+? "<br>Qeyd: " +
+escapeHTML(item.admin_note)
+: ""}
+
+</div>
+
+${buttons}
+
+`;
+
+container.appendChild(div);
+
+});
+
+}
+
+
+/* =====================================================
+   APPROVE SUBMISSION
+===================================================== */
+
+async function approveSubmission(id){
+
+if(!confirm(
+"Bu tapşırığı təsdiqləyib istifadəçinin balansına mükafatı əlavə etmək istəyirsiniz?"
+)){
+
+return;
+
+}
+
+const {data,error} =
+await supabaseClient
+.rpc(
+"admin_approve_submission",
+{
+submission_id:id
+}
+);
+
+if(error){
+
+alert(
+"Xəta: " +
+error.message
+);
+
+return;
+
+}
+
+alert(
+"Tapşırıq təsdiqləndi. Mükafat balansına əlavə edildi."
+);
+
+await loadAdminData();
+
+}
+
+
+/* =====================================================
+   REJECT SUBMISSION
+===================================================== */
+
+async function rejectSubmission(id){
+
+const note =
+prompt(
+"Rədd səbəbini yazın:",
+"Tapşırıq şərtlərə uyğun deyil."
+);
+
+if(note === null){
+return;
+}
+
+const {error} =
+await supabaseClient
+.rpc(
+"admin_reject_submission",
+{
+submission_id:id,
+note:note
+}
+);
+
+if(error){
+
+alert(
+"Xəta: " +
+error.message
+);
+
+return;
+
+}
+
+alert(
+"Tapşırıq rədd edildi."
+);
+
+await loadAdminData();
+
+}
+
+
+/* =====================================================
+   WITHDRAWALS
+===================================================== */
+
+async function loadWithdrawals(){
+
+const container =
+document.getElementById("withdrawals");
+
+const {data,error} =
+await supabaseClient
+.from("withdrawals")
+.select("*")
+.order("created_at",{ascending:false});
+
+if(error){
+
+console.error(error);
+
+container.innerHTML =
+'<div class="empty">Çıxarışları yükləmək mümkün olmadı.</div>';
+
+return;
+
+}
+
+const pending =
+data.filter(
+x => x.status === "pending"
+).length;
+
+document
+.getElementById("withdrawCount")
+.innerText =
+pending;
+
+if(!data.length){
+
+container.innerHTML =
+'<div class="empty">Çıxarış sorğusu yoxdur.</div>';
+
+return;
+
+}
+
+container.innerHTML = "";
+
+data.forEach(item => {
+
+const div =
+document.createElement("div");
+
+div.className =
+"card";
+
+const date =
+new Date(item.created_at)
+.toLocaleString("az-AZ");
+
+let badgeClass =
+"pending";
+
+if(item.status === "approved"){
+badgeClass = "approved";
+}
+
+if(item.status === "rejected"){
+badgeClass = "rejected";
+}
+
+let buttons = "";
+
+if(item.status === "pending"){
+
+buttons = `
+
+<div class="actions">
+
+<button
+class="success"
+onclick="approveWithdrawal(${item.id})">
+✓ Ödənişi təsdiqlə
+</button>
+
+<button
+class="danger"
+onclick="rejectWithdrawal(${item.id})">
+✕ Rədd et
+</button>
+
+</div>
+
+`;
+
+}
+
+div.innerHTML = `
+
+<div class="card-top">
+
+<div>
+
+<div class="name">
+Çıxarış #${item.id}
+</div>
+
+<div class="email">
+İstifadəçi ID: ${escapeHTML(item.user_id)}
+</div>
+
+</div>
+
+<div>
+
+<div class="amount">
+${Number(item.amount).toFixed(2)}₼
+</div>
+
+<span class="badge ${badgeClass}">
+${escapeHTML(item.status)}
+</span>
+
+</div>
+
+</div>
+
+<div class="info">
+
+Metod:
+${escapeHTML(item.payment_method || "-")}
+
+<br>
+
+Hesab:
+${escapeHTML(item.payment_account || "-")}
+
+<br>
+
+Tarix:
+${date}
+
+</div>
+
+${buttons}
+
+`;
+
+container.appendChild(div);
+
+});
+
+}
+
+
+/* =====================================================
+   APPROVE WITHDRAWAL
+===================================================== */
+
+async function approveWithdrawal(id){
+
+if(!confirm(
+"Bu çıxarışı təsdiqləmək istəyirsiniz? Məbləğ istifadəçinin balansından çıxılacaq."
+)){
+
+return;
+
+}
+
+const {error} =
+await supabaseClient
+.rpc(
+"admin_approve_withdrawal",
+{
+withdrawal_id:id
+}
+);
+
+if(error){
+
+alert(
+"Xəta: " +
+error.message
+);
+
+return;
+
+}
+
+alert(
+"Çıxarış təsdiqləndi."
+);
+
+await loadAdminData();
+
+}
+
+
+/* =====================================================
+   REJECT WITHDRAWAL
+===================================================== */
+
+async function rejectWithdrawal(id){
+
+const note =
+prompt(
+"Rədd səbəbini yazın:",
+"Ödəniş məlumatları düzgün deyil."
+);
+
+if(note === null){
+return;
+}
+
+const {error} =
+await supabaseClient
+.rpc(
+"admin_reject_withdrawal",
+{
+withdrawal_id:id,
+note:note
+}
+);
+
+if(error){
+
+alert(
+"Xəta: " +
+error.message
+);
+
+return;
+
+}
+
+alert(
+"Çıxarış rədd edildi."
+);
+
+await loadAdminData();
+
+}
+
+
+/* =====================================================
+   SECURITY HELPERS
+===================================================== */
+
+function escapeHTML(value){
+
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+function escapeAttribute(value){
+
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll('"',"&quot;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;");
+
+}
+
+
+/* =====================================================
+   AUTO LOGIN CHECK
+===================================================== */
+
+async function init(){
+
+const {data} =
+await supabaseClient
+.auth
+.getSession();
+
+if(
+data.session &&
+data.session.user.email?.toLowerCase()
+===
+ADMIN_EMAIL
+){
+
+const {data:adminCheck} =
+await supabaseClient
+.rpc("is_admin");
+
+if(adminCheck === true){
+
+currentUser =
+data.session.user;
+
+document
+.getElementById("loginSection")
+.classList.add("hidden");
+
+document
+.getElementById("adminSection")
+.classList.remove("hidden");
+
+document
+.getElementById("adminEmailText")
+.innerText =
+currentUser.email;
+
+await loadAdminData();
+
+}
+
+}
+
+}
+
+init();
+
+</script>
+
+</body>
+</html>
