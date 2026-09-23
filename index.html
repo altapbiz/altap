@@ -3,1539 +3,1237 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Altap.Biz | VIP</title>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<meta name="description" content="Premium rəqəmsal xidmətlər və xarici nömrələr">
+<title>DIGITALSTORE — Premium Digital Services</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#03050a;
+    --card:#090d15;
+    --white:#fff;
+    --muted:#8d96a8;
+    --green:#20ff62;
+    --red:#ff2048;
+    --blue:#08bfff;
+    --purple:#a52cff;
+    --border:rgba(255,255,255,.09);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-background:
-radial-gradient(circle at 10% 0%,#1c2750 0%,transparent 35%),
-radial-gradient(circle at 100% 10%,#32144a 0%,transparent 30%),
-#070911;
-color:#fff;
-min-height:100vh
+    font-family:Inter,Arial,sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(32,255,98,.08),transparent 30%),
+        radial-gradient(circle at 90% 15%,rgba(165,44,255,.09),transparent 30%),
+        var(--bg);
+    color:var(--white);
+    min-height:100vh;
 }
-button,input,select{font:inherit}
-header{
-border-bottom:1px solid rgba(255,255,255,.08);
-background:rgba(5,7,15,.8);
-backdrop-filter:blur(20px);
-position:sticky;
-top:0;
-z-index:100
+
+a{
+    color:inherit;
+    text-decoration:none;
 }
-.nav{
-max-width:1100px;
-margin:auto;
-min-height:70px;
-padding:12px 20px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
 }
-.logo{font-size:24px;font-weight:900}
-.logo span{color:#796cff}
-.nav-right{display:flex;align-items:center;gap:10px}
-.online{
-font-size:11px;
-color:#65f59b;
-padding:7px 12px;
-border:1px solid rgba(101,245,155,.3);
-border-radius:30px;
-background:rgba(101,245,155,.06)
+
+/* NAVBAR */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    height:76px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+    background:rgba(3,5,10,.78);
+    backdrop-filter:blur(20px);
 }
-.nav-btn{
-border:0;
-background:#6358ed;
-color:#fff;
-border-radius:10px;
-padding:9px 13px;
-cursor:pointer;
-font-weight:800;
-font-size:12px
+
+.nav-inner{
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:-1px;
+}
+
+.logo span{
+    color:var(--green);
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    color:#9da5b6;
+    font-size:14px;
+    transition:.2s;
+}
+
+.nav-links a:hover{
+    color:#fff;
+}
+
+.nav-button{
+    padding:11px 18px;
+    border:1px solid rgba(32,255,98,.35);
+    border-radius:12px;
+    color:var(--green);
+    font-weight:700;
+    font-size:14px;
+    transition:.25s;
+}
+
+.nav-button:hover{
+    background:rgba(32,255,98,.08);
+    box-shadow:0 0 25px rgba(32,255,98,.15);
+}
+
+/* HERO */
+
 .hero{
-max-width:1100px;
-margin:auto;
-padding:45px 20px 25px;
-text-align:center
-}
-.hero h1{font-size:42px;line-height:1.1;font-weight:900}
-.hero h1 span{color:#7c70ff}
-.hero p{
-max-width:650px;
-margin:14px auto 0;
-color:#a4acc0;
-line-height:1.6;
-font-size:14px
-}
-.container{max-width:1100px;margin:auto;padding:10px 20px 60px}
-.hidden{display:none!important}
-
-.auth-box{
-max-width:430px;
-margin:25px auto;
-padding:25px;
-border-radius:24px;
-background:rgba(255,255,255,.055);
-border:1px solid rgba(255,255,255,.1);
-box-shadow:0 20px 60px rgba(0,0,0,.35)
-}
-.auth-tabs{display:flex;gap:8px;margin-bottom:20px}
-.auth-tab{
-flex:1;
-border:0;
-padding:12px;
-border-radius:12px;
-background:#202535;
-color:#aeb5c6;
-cursor:pointer;
-font-weight:800
-}
-.auth-tab.active{background:#6358ed;color:#fff}
-.field{margin-bottom:12px}
-.field label{
-display:block;
-color:#aeb5c6;
-font-size:12px;
-margin-bottom:6px
-}
-.field input{
-width:100%;
-padding:13px;
-border-radius:12px;
-border:1px solid rgba(255,255,255,.1);
-background:#111625;
-color:#fff;
-outline:none
-}
-.primary-btn{
-width:100%;
-border:0;
-border-radius:13px;
-padding:13px;
-background:#6358ed;
-color:#fff;
-cursor:pointer;
-font-weight:900;
-margin-top:5px
-}
-.primary-btn:disabled{opacity:.6;cursor:not-allowed}
-.auth-message{
-margin-top:12px;
-color:#aeb5c6;
-font-size:12px;
-line-height:1.5;
-text-align:center
+    padding:105px 0 80px;
+    text-align:center;
 }
 
-.dashboard{
-display:grid;
-grid-template-columns:280px 1fr;
-gap:18px
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:8px 14px;
+    border-radius:30px;
+    border:1px solid rgba(32,255,98,.25);
+    background:rgba(32,255,98,.05);
+    color:#9cffb8;
+    font-size:13px;
+    font-weight:700;
 }
-.sidebar{
-padding:20px;
-border-radius:22px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.09);
-height:max-content
-}
-.user-avatar{
-width:58px;
-height:58px;
-border-radius:18px;
-background:linear-gradient(135deg,#7c70ff,#4f43d6);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:23px;
-font-weight:900;
-margin-bottom:12px
-}
-.username{font-size:18px;font-weight:900}
-.user-email{
-color:#7f879a;
-font-size:11px;
-margin-top:3px;
-word-break:break-all
-}
-.balance-card{
-margin-top:20px;
-padding:18px;
-border-radius:17px;
-background:linear-gradient(135deg,rgba(124,112,255,.18),rgba(255,255,255,.035));
-border:1px solid rgba(124,112,255,.22)
-}
-.balance-label{color:#929bae;font-size:11px}
-.balance{font-size:30px;font-weight:900;margin-top:4px}
-.logout{
-width:100%;
-border:0;
-border-radius:12px;
-padding:11px;
-margin-top:15px;
-background:#292e3b;
-color:#fff;
-cursor:pointer;
-font-weight:800
-}
-.content{min-width:0}
-.section-title{font-size:22px;font-weight:900;margin-bottom:15px}
-.vip-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:14px;
-margin-bottom:22px
-}
-.vip-card{
-padding:20px;
-border-radius:20px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.09)
-}
-.vip-card.active{
-border-color:#7064f5;
-box-shadow:0 15px 45px rgba(99,88,237,.15)
-}
-.vip-number{font-size:11px;color:#aaa2ff;font-weight:900}
-.vip-card h3{margin-top:7px;font-size:19px}
-.vip-card p{
-margin-top:7px;
-color:#929bae;
-font-size:12px;
-line-height:1.5
-}
-.reward{margin-top:13px;font-size:22px;font-weight:900}
 
-.task-card{
-padding:22px;
-border-radius:22px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.09);
-margin-bottom:15px
+.status-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 14px var(--green);
 }
-.task-top{
-display:flex;
-justify-content:space-between;
-gap:15px
-}
-.task-title{font-size:18px;font-weight:900}
-.task-desc{
-color:#9da5b8;
-font-size:12px;
-line-height:1.6;
-margin-top:8px
-}
-.task-reward{
-color:#65f59b;
-font-size:20px;
-font-weight:900;
-white-space:nowrap
-}
-.task-form{margin-top:17px;display:flex;gap:8px}
-.task-form input{
-flex:1;
-min-width:0;
-border:1px solid rgba(255,255,255,.1);
-background:#111625;
-color:#fff;
-border-radius:12px;
-padding:12px;
-outline:none
-}
-.task-form button{
-border:0;
-border-radius:12px;
-padding:0 17px;
-background:#6358ed;
-color:#fff;
-font-weight:900;
-cursor:pointer
-}
-.status{margin-top:10px;font-size:11px;color:#9da5b8}
 
-.withdraw-box{
-margin-top:20px;
-padding:22px;
-border-radius:22px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.09)
+.hero h1{
+    max-width:900px;
+    margin:25px auto 20px;
+    font-size:clamp(44px,7vw,78px);
+    line-height:.98;
+    letter-spacing:-4px;
 }
-.withdraw-box h3{font-size:18px}
-.withdraw-form{
-margin-top:15px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px
-}
-.withdraw-form input,
-.withdraw-form select{
-width:100%;
-padding:12px;
-border-radius:12px;
-border:1px solid rgba(255,255,255,.1);
-background:#111625;
-color:#fff;
-outline:none
-}
-.withdraw-form button{
-grid-column:1/-1;
-border:0;
-border-radius:12px;
-padding:13px;
-background:#6358ed;
-color:#fff;
-font-weight:900;
-cursor:pointer
-}
-.history{margin-top:20px}
-.history-item{
-padding:13px;
-margin-bottom:8px;
-border-radius:13px;
-background:rgba(255,255,255,.035);
-border:1px solid rgba(255,255,255,.06);
-font-size:12px
-}
-.empty{color:#7e8799;font-size:12px;padding:15px 0}
 
-.ai-button{
-position:fixed;
-right:20px;
-bottom:20px;
-width:62px;
-height:62px;
-border:0;
-border-radius:50%;
-background:linear-gradient(135deg,#7c70ff,#5b4ee8);
-color:#fff;
-font-size:28px;
-cursor:pointer;
-z-index:10001;
-box-shadow:0 12px 35px rgba(93,79,240,.5)
+.gradient-text{
+    background:linear-gradient(
+        90deg,
+        #ffffff,
+        #72ff9c 45%,
+        #b765ff
+    );
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
 }
-.ai-chat{
-display:none;
-position:fixed;
-right:20px;
-bottom:95px;
-width:370px;
-height:530px;
-max-width:calc(100vw - 25px);
-background:#101421;
-border:1px solid rgba(255,255,255,.12);
-border-radius:24px;
-overflow:hidden;
-z-index:10000;
-box-shadow:0 25px 80px rgba(0,0,0,.65);
-flex-direction:column
+
+.hero-description{
+    max-width:690px;
+    margin:auto;
+    color:var(--muted);
+    font-size:17px;
+    line-height:1.7;
 }
-.ai-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:16px;
-border-bottom:1px solid rgba(255,255,255,.08)
+
+.hero-buttons{
+    margin-top:32px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
 }
-.ai-title{font-size:17px;font-weight:900}
-.ai-status{color:#65f59b;font-size:11px;margin-top:3px}
-.ai-close{
-background:none;
-border:0;
-color:#fff;
-font-size:25px;
-cursor:pointer
+
+.primary-button,
+.secondary-button{
+    padding:14px 23px;
+    border-radius:13px;
+    font-weight:800;
+    transition:.25s;
 }
-.ai-messages{flex:1;overflow-y:auto;padding:15px}
-.ai-message{
-max-width:85%;
-padding:11px 13px;
-margin-bottom:10px;
-border-radius:15px;
-font-size:13px;
-line-height:1.5;
-white-space:pre-wrap
+
+.primary-button{
+    background:var(--green);
+    color:#031008;
+    box-shadow:0 0 30px rgba(32,255,98,.18);
 }
-.ai-bot{background:rgba(255,255,255,.07)}
-.ai-user{margin-left:auto;background:#6358ed}
-.ai-input-area{
-display:flex;
-gap:8px;
-padding:12px;
-border-top:1px solid rgba(255,255,255,.08)
+
+.primary-button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 40px rgba(32,255,98,.3);
 }
-.ai-input{
-flex:1;
-min-width:0;
-border:1px solid rgba(255,255,255,.1);
-border-radius:13px;
-padding:12px;
-background:#171c2a;
-color:#fff;
-outline:none
+
+.secondary-button{
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.025);
 }
-.ai-send{
-width:48px;
-border:0;
-border-radius:13px;
-background:#6358ed;
-color:#fff;
-cursor:pointer
+
+.secondary-button:hover{
+    background:rgba(255,255,255,.06);
 }
+
+/* SECTION */
+
+.section{
+    padding:30px 0 80px;
+}
+
+.section-title{
+    margin-bottom:22px;
+}
+
+.section-title h2{
+    font-size:32px;
+    letter-spacing:-1px;
+}
+
+.section-title p{
+    color:var(--muted);
+    margin-top:7px;
+    font-size:14px;
+}
+
+/* PRODUCTS */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.product{
+    position:relative;
+    overflow:hidden;
+    padding:27px;
+    min-height:315px;
+    border:1px solid var(--border);
+    border-radius:25px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.012)
+        );
+    transition:.3s;
+}
+
+.product:hover{
+    transform:translateY(-6px);
+}
+
+.product.green:hover{
+    border-color:rgba(32,255,98,.45);
+    box-shadow:0 20px 70px rgba(32,255,98,.10);
+}
+
+.product.red:hover{
+    border-color:rgba(255,32,72,.45);
+    box-shadow:0 20px 70px rgba(255,32,72,.08);
+}
+
+.product.blue:hover{
+    border-color:rgba(8,191,255,.45);
+    box-shadow:0 20px 70px rgba(8,191,255,.08);
+}
+
+.product.purple:hover{
+    border-color:rgba(165,44,255,.45);
+    box-shadow:0 20px 70px rgba(165,44,255,.08);
+}
+
+.product::after{
+    content:"";
+    position:absolute;
+    width:260px;
+    height:120px;
+    left:50%;
+    bottom:-100px;
+    transform:translateX(-50%);
+    filter:blur(50px);
+    opacity:.18;
+}
+
+.green::after{
+    background:var(--green);
+}
+
+.red::after{
+    background:var(--red);
+}
+
+.blue::after{
+    background:var(--blue);
+}
+
+.purple::after{
+    background:var(--purple);
+}
+
+.product-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+}
+
+.product-icon{
+    width:68px;
+    height:68px;
+    display:grid;
+    place-items:center;
+    border-radius:18px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.product-icon svg{
+    width:42px;
+    height:42px;
+}
+
+.green .product-icon{
+    color:var(--green);
+}
+
+.red .product-icon{
+    color:var(--red);
+}
+
+.blue .product-icon{
+    color:var(--blue);
+}
+
+.purple .product-icon{
+    color:var(--purple);
+}
+
+.price{
+    font-size:25px;
+    font-weight:900;
+}
+
+.green .price{
+    color:var(--green);
+}
+
+.red .price{
+    color:#ff5c77;
+}
+
+.blue .price{
+    color:var(--blue);
+}
+
+.purple .price{
+    color:#bd72ff;
+}
+
+.product h3{
+    font-size:26px;
+    margin-top:23px;
+}
+
+.product-subtitle{
+    color:var(--muted);
+    font-size:14px;
+    margin-top:5px;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:19px 0;
+}
+
+.tag{
+    padding:7px 10px;
+    border-radius:9px;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.05);
+    color:#c7cedb;
+    font-size:12px;
+}
+
+.buy-button{
+    position:relative;
+    z-index:5;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    background:#fff;
+    color:#05060a;
+    font-weight:900;
+    transition:.2s;
+}
+
+.buy-button svg{
+    width:17px;
+    height:17px;
+}
+
+.buy-button:hover{
+    transform:scale(1.015);
+    background:#eef1f7;
+}
+
+/* HOW IT WORKS */
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-top:25px;
+}
+
+.step{
+    padding:25px;
+    border-radius:19px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.025);
+}
+
+.step-number{
+    color:var(--green);
+    font-size:12px;
+    font-weight:900;
+}
+
+.step-icon{
+    margin-top:15px;
+    width:42px;
+    height:42px;
+    color:var(--green);
+}
+
+.step h3{
+    margin-top:13px;
+    font-size:18px;
+}
+
+.step p{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* FAQ */
+
+.faq{
+    max-width:850px;
+    margin:20px auto 100px;
+}
+
+.faq details{
+    border-bottom:1px solid var(--border);
+    padding:20px 4px;
+}
+
+.faq summary{
+    cursor:pointer;
+    list-style:none;
+    font-weight:750;
+}
+
+.faq summary::-webkit-details-marker{
+    display:none;
+}
+
+.faq p{
+    color:var(--muted);
+    padding-top:12px;
+    line-height:1.6;
+    font-size:14px;
+}
+
+/* FOOTER */
 
 footer{
-text-align:center;
-padding:25px;
-color:#626b7d;
-font-size:11px
+    border-top:1px solid var(--border);
+    padding:30px 0;
+    color:#727b8e;
+    font-size:13px;
 }
 
-@media(max-width:800px){
-.dashboard{grid-template-columns:1fr}
-.vip-grid{grid-template-columns:1fr}
-.sidebar{width:100%}
-.hero h1{font-size:32px}
+.footer-inner{
+    display:flex;
+    justify-content:space-between;
 }
 
-@media(max-width:500px){
-.nav{padding:10px 14px}
-.online{display:none}
-.hero{padding-top:35px}
-.hero h1{font-size:29px}
-.container{padding-left:14px;padding-right:14px}
-.task-top{flex-direction:column}
-.task-form{flex-direction:column}
-.task-form button{padding:12px}
-.withdraw-form{grid-template-columns:1fr}
-.withdraw-form button{grid-column:auto}
-.ai-chat{
-right:10px;
-bottom:85px;
-width:calc(100vw - 20px)
+/* WHATSAPP BUTTON */
+
+.whatsapp-float{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:#20d66b;
+    color:#fff;
+    box-shadow:0 10px 35px rgba(32,214,107,.3);
+    z-index:900;
+    transition:.25s;
 }
+
+.whatsapp-float:hover{
+    transform:translateY(-4px) scale(1.04);
+}
+
+.whatsapp-float svg{
+    width:29px;
+    height:29px;
+}
+
+/* MOBILE */
+
+@media(max-width:760px){
+
+    .navbar{
+        height:68px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .nav-button{
+        padding:9px 13px;
+        font-size:12px;
+    }
+
+    .hero{
+        padding:70px 0 55px;
+    }
+
+    .hero h1{
+        font-size:45px;
+        letter-spacing:-2.5px;
+    }
+
+    .hero-description{
+        font-size:15px;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .footer-inner{
+        display:block;
+    }
+
+    .footer-inner p+p{
+        margin-top:8px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<div class="nav">
-<div class="logo">Altap<span>.Biz</span></div>
+<nav class="navbar">
 
-<div class="nav-right">
-<div class="online">● ONLINE</div>
+    <div class="container nav-inner">
 
-<button id="navAuthBtn" class="nav-btn" onclick="scrollToAuth()">
-Giriş / Qeydiyyat
-</button>
-</div>
-</div>
-</header>
+        <a href="#" class="logo">
+            DIGITAL<span>STORE</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#products">Məhsullar</a>
+            <a href="#how">Necə işləyir?</a>
+            <a href="#faq">FAQ</a>
+        </div>
+
+        <a href="#products" class="nav-button">
+            Alışa başla
+        </a>
+
+    </div>
+
+</nav>
+
 
 <section class="hero">
-<h1>Altap.Biz <span>VIP</span></h1>
 
-<p>
-Altap.Biz-də real tanıtım tapşırıqlarını yerinə yetir,
-tapşırığı göndər və təsdiqdən sonra mükafatını balansında gör.
-</p>
-</section>
+    <div class="container">
 
-<div class="container">
+        <div class="hero-badge">
+            <span class="status-dot"></span>
+            Sürətli rəqəmsal xidmətlər
+        </div>
 
-<section id="authSection" class="auth-box">
+        <h1>
+            İstədiyin xidməti
+            <span class="gradient-text">
+                bir kliklə al.
+            </span>
+        </h1>
 
-<div class="auth-tabs">
+        <p class="hero-description">
+            Premium rəqəmsal xidmətlər, hesablar və xarici nömrələr.
+            Məhsulu seç, sifariş düyməsinə bas və birbaşa WhatsApp
+            üzərindən sifarişini tamamla.
+        </p>
 
-<button id="loginTab" class="auth-tab active" onclick="switchAuth('login')">
-Giriş
-</button>
+        <div class="hero-buttons">
 
-<button id="registerTab" class="auth-tab" onclick="switchAuth('register')">
-Qeydiyyat
-</button>
+            <a href="#products" class="primary-button">
+                Məhsullara bax
+            </a>
 
-</div>
+            <a href="#how" class="secondary-button">
+                Necə işləyir?
+            </a>
 
-<div id="usernameField" class="field hidden">
+        </div>
 
-<label>İstifadəçi adı</label>
-
-<input
-id="usernameInput"
-type="text"
-placeholder="Məsələn: altap_user"
-autocomplete="username">
-
-</div>
-
-<div class="field">
-
-<label>E-poçt</label>
-
-<input
-id="emailInput"
-type="email"
-placeholder="E-poçt ünvanınız"
-autocomplete="email">
-
-</div>
-
-<div class="field">
-
-<label>Şifrə</label>
-
-<input
-id="passwordInput"
-type="password"
-placeholder="Minimum 8 simvol"
-autocomplete="current-password">
-
-</div>
-
-<button id="authButton" class="primary-btn" onclick="submitAuth()">
-<span id="authButtonText">Daxil ol</span>
-</button>
-
-<div id="authMessage" class="auth-message"></div>
+    </div>
 
 </section>
 
-<section id="dashboardSection" class="dashboard hidden">
 
-<aside class="sidebar">
+<section id="products" class="section">
 
-<div class="user-avatar" id="avatar">A</div>
+    <div class="container">
 
-<div class="username" id="profileUsername">
-İstifadəçi
-</div>
+        <div class="section-title">
 
-<div class="user-email" id="profileEmail">-</div>
+            <h2>
+                Premium məhsullar
+            </h2>
 
-<div class="balance-card">
+            <p>
+                Məhsulu seç və sifarişi birbaşa WhatsApp-dan göndər.
+            </p>
 
-<div class="balance-label">Cari balans</div>
+        </div>
 
-<div class="balance" id="profileBalance">0.00₼</div>
 
-</div>
+        <div class="products">
 
-<button class="logout" onclick="logout()">Çıxış</button>
 
-</aside>
+            <!-- WHATSAPP PLUS -->
 
-<main class="content">
+            <article class="product green">
 
-<div class="section-title">VIP səviyyələri</div>
+                <div class="product-top">
 
-<div class="vip-grid">
+                    <div class="product-icon">
 
-<div class="vip-card active">
-<div class="vip-number">VIP 1</div>
-<h3>Başlanğıc</h3>
-<p>TikTok tanıtım tapşırıqları.</p>
-<div class="reward">1₼</div>
-</div>
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.7"
+                             stroke-linecap="round"
+                             stroke-linejoin="round">
 
-<div class="vip-card">
-<div class="vip-number">VIP 2</div>
-<h3>Aktiv</h3>
-<p>Daha yüksək mükafatlı tapşırıqlar.</p>
-<div class="reward">3₼</div>
-</div>
+                            <path d="M20 11.5a8.2 8.2 0 0 1-12.1 7.2L4 20l1.3-3.8A8.2 8.2 0 1 1 20 11.5Z"/>
 
-<div class="vip-card">
-<div class="vip-number">VIP 3</div>
-<h3>Pro</h3>
-<p>Yüksək mükafatlı tapşırıqlar.</p>
-<div class="reward">5₼</div>
-</div>
+                            <path d="M8.7 8.1c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4-.1.6l-.6.7c-.1.1-.1.3 0 .5.5.9 1.2 1.6 2.1 2.1.2.1.4.1.5 0l.7-.6c.2-.2.4-.2.6-.1l1.6.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.4.2-1 .3-1.5.1-1.3-.3-2.7-1.1-3.8-2.2-1.1-1.1-1.9-2.5-2.2-3.8-.2-.5-.1-1.1.1-1.5Z"/>
 
-</div>
+                        </svg>
 
-<div class="section-title">Mövcud tapşırıqlar</div>
+                    </div>
 
-<div id="tasksContainer">
-<div class="empty">Tapşırıqlar yüklənir...</div>
-</div>
+                    <div class="price">
+                        ₼15
+                    </div>
 
-<div class="withdraw-box">
+                </div>
 
-<h3>Balansdan çıxarış</h3>
+                <h3>
+                    WhatsApp Plus
+                </h3>
 
-<div class="withdraw-form">
+                <div class="product-subtitle">
+                    iPhone üçün
+                </div>
 
-<input
-id="withdrawAmount"
-type="number"
-step="0.01"
-min="0"
-placeholder="Məbləğ (₼)">
+                <div class="tags">
+                    <span class="tag">3 il</span>
+                    <span class="tag">Aktivləşdirmə</span>
+                    <span class="tag">WhatsApp</span>
+                </div>
 
-<select id="withdrawMethod">
+                <a
+                    href="#"
+                    class="buy-button"
+                    data-product="WhatsApp Plus — iPhone üçün — 3 il — ₼15"
+                >
+                    İndi al
 
-<option value="WhatsApp">WhatsApp</option>
-<option value="Bank">Bank hesabı</option>
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
 
-</select>
+                        <path d="M5 12h14"/>
+                        <path d="m13 6 6 6-6 6"/>
 
-<input
-id="withdrawAccount"
-type="text"
-placeholder="Ödəniş hesabı / məlumat">
+                    </svg>
 
-<button onclick="requestWithdrawal()">
-Çıxarış sorğusu göndər
-</button>
+                </a>
 
-</div>
+            </article>
 
-<div id="withdrawMessage" class="status"></div>
 
-</div>
+            <!-- NETFLIX -->
 
-<div class="history">
+            <article class="product red">
 
-<div class="section-title">Göndərdiyim tapşırıqlar</div>
+                <div class="product-top">
 
-<div id="submissionsContainer">
-<div class="empty">Yüklənir...</div>
-</div>
+                    <div class="product-icon">
 
-</div>
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.5">
 
-</main>
+                            <path d="M7 3v18"/>
+                            <path d="M17 3v18"/>
+                            <path d="M7 3l10 18"/>
+                            <path d="M17 3 7 21"/>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="price">
+                        ₼20
+                    </div>
+
+                </div>
+
+                <h3>
+                    Netflix
+                </h3>
+
+                <div class="product-subtitle">
+                    iPhone üçün
+                </div>
+
+                <div class="tags">
+                    <span class="tag">1 il</span>
+                    <span class="tag">Netflix</span>
+                    <span class="tag">Premium</span>
+                </div>
+
+                <a
+                    href="#"
+                    class="buy-button"
+                    data-product="Netflix — iPhone üçün — 1 il — ₼20"
+                >
+                    İndi al
+
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+
+                        <path d="M5 12h14"/>
+                        <path d="m13 6 6 6-6 6"/>
+
+                    </svg>
+
+                </a>
+
+            </article>
+
+
+            <!-- TELEGRAM PLUS -->
+
+            <article class="product blue">
+
+                <div class="product-top">
+
+                    <div class="product-icon">
+
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.7"
+                             stroke-linecap="round"
+                             stroke-linejoin="round">
+
+                            <path d="M21 4 3.8 10.7c-.7.3-.7 1.3 0 1.6l4.3 1.7 1.6 4.9c.2.6 1 .8 1.4.3l2.5-2.9 4.5 3.2c.6.4 1.4.1 1.6-.6L22 5c.2-.7-.3-1.3-1-1Z"/>
+
+                            <path d="m8.2 14 9.4-6.5"/>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="price">
+                        ₼20
+                    </div>
+
+                </div>
+
+                <h3>
+                    Telegram Plus
+                </h3>
+
+                <div class="product-subtitle">
+                    Premium xidmət
+                </div>
+
+                <div class="tags">
+                    <span class="tag">3 il</span>
+                    <span class="tag">Telegram</span>
+                    <span class="tag">Sürətli</span>
+                </div>
+
+                <a
+                    href="#"
+                    class="buy-button"
+                    data-product="Telegram Plus — 3 il — ₼20"
+                >
+                    İndi al
+
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+
+                        <path d="M5 12h14"/>
+                        <path d="m13 6 6 6-6 6"/>
+
+                    </svg>
+
+                </a>
+
+            </article>
+
+
+            <!-- XARICI NOMRE -->
+
+            <article class="product purple">
+
+                <div class="product-top">
+
+                    <div class="product-icon">
+
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.6"
+                             stroke-linecap="round"
+                             stroke-linejoin="round">
+
+                            <rect x="5" y="2.5" width="9" height="19" rx="1.8"/>
+
+                            <path d="M8 18h3"/>
+
+                            <circle cx="18" cy="10" r="3.5"/>
+
+                            <path d="M18 6.5v7"/>
+                            <path d="M14.5 10h7"/>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="price">
+                        Sorğu ilə
+                    </div>
+
+                </div>
+
+                <h3>
+                    Xarici Nömrə
+                </h3>
+
+                <div class="product-subtitle">
+                    Dünyanın istənilən ölkəsi
+                </div>
+
+                <div class="tags">
+                    <span class="tag">Ölkə seçimi</span>
+                    <span class="tag">SIM / eSIM</span>
+                    <span class="tag">Xarici nömrə</span>
+                </div>
+
+                <a
+                    href="#"
+                    class="buy-button"
+                    data-product="Xarici nömrə — ölkə seçimi ilə"
+                >
+                    Nömrə sifariş et
+
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+
+                        <path d="M5 12h14"/>
+                        <path d="m13 6 6 6-6 6"/>
+
+                    </svg>
+
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
 
 </section>
 
-</div>
+
+<section id="how" class="section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                Sifariş necə işləyir?
+            </h2>
+
+            <p>
+                Cəmi üç addımda sifarişini tamamla.
+            </p>
+
+        </div>
+
+
+        <div class="steps">
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    01 / SEÇ
+                </div>
+
+                <svg class="step-icon"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.6"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+
+                    <rect x="3" y="4" width="18" height="16" rx="2"/>
+                    <path d="M7 8h10"/>
+                    <path d="M7 12h5"/>
+                    <path d="M7 16h7"/>
+
+                </svg>
+
+                <h3>
+                    Məhsulu seç
+                </h3>
+
+                <p>
+                    Sənə uyğun xidməti məhsullar bölməsindən seç.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    02 / WHATSAPP
+                </div>
+
+                <svg class="step-icon"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.6"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+
+                    <path d="M20 11.5a8.2 8.2 0 0 1-12.1 7.2L4 20l1.3-3.8A8.2 8.2 0 1 1 20 11.5Z"/>
+
+                    <path d="M8.7 8.1c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4-.1.6l-.6.7c-.1.1-.1.3 0 .5.5.9 1.2 1.6 2.1 2.1.2.1.4.1.5 0l.7-.6c.2-.2.4-.2.6-.1l1.6.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.4.2-1 .3-1.5.1-1.3-.3-2.7-1.1-3.8-2.2-1.1-1.1-1.9-2.5-2.2-3.8-.2-.5-.1-1.1.1-1.5Z"/>
+
+                </svg>
+
+                <h3>
+                    WhatsApp-a keç
+                </h3>
+
+                <p>
+                    Al düyməsinə basdıqda hazır sifariş mesajı açılır.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    03 / TAMAMLA
+                </div>
+
+                <svg class="step-icon"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.6"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="m7 12 3.2 3.2L17 8.5"/>
+
+                </svg>
+
+                <h3>
+                    Sifarişi tamamla
+                </h3>
+
+                <p>
+                    WhatsApp üzərindən məlumatları dəqiqləşdir və sifarişi tamamla.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="faq" class="section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                Tez-tez verilən suallar
+            </h2>
+
+        </div>
+
+
+        <div class="faq">
+
+            <details>
+
+                <summary>
+                    Sifarişi necə verə bilərəm?
+                </summary>
+
+                <p>
+                    Məhsulun "İndi al" düyməsinə basın.
+                    WhatsApp avtomatik açılacaq və məhsul haqqında hazır mesaj yaradılacaq.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Ödəniş necə edilir?
+                </summary>
+
+                <p>
+                    Ödəniş üsulu sifariş zamanı WhatsApp üzərindən sizə bildirilir.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Xarici nömrə hansı ölkələr üçün mövcuddur?
+                </summary>
+
+                <p>
+                    Mövcud ölkələri və qiymətləri WhatsApp üzərindən soruşa bilərsiniz.
+                </p>
+
+            </details>
+
+        </div>
+
+    </div>
+
+</section>
+
 
 <footer>
-©️ 2026 Altap.Biz — Bütün hüquqlar qorunur.
+
+    <div class="container footer-inner">
+
+        <p>
+            © 2026 DIGITALSTORE. Bütün hüquqlar qorunur.
+        </p>
+
+        <p>
+            Premium rəqəmsal xidmətlər
+        </p>
+
+    </div>
+
 </footer>
 
-<button class="ai-button" onclick="toggleAI()">✦</button>
 
-<div class="ai-chat" id="aiChat">
+<a
+    href="#"
+    id="whatsappFloat"
+    class="whatsapp-float"
+    aria-label="WhatsApp"
+>
 
-<div class="ai-header">
+    <svg viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="1.7"
+         stroke-linecap="round"
+         stroke-linejoin="round">
 
-<div>
+        <path d="M20 11.5a8.2 8.2 0 0 1-12.1 7.2L4 20l1.3-3.8A8.2 8.2 0 1 1 20 11.5Z"/>
 
-<div class="ai-title">Altap AI</div>
+        <path d="M8.7 8.1c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4-.1.6l-.6.7c-.1.1-.1.3 0 .5.5.9 1.2 1.6 2.1 2.1.2.1.4.1.5 0l.7-.6c.2-.2.4-.2.6-.1l1.6.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.4.2-1 .3-1.5.1-1.3-.3-2.7-1.1-3.8-2.2-1.1-1.1-1.9-2.5-2.2-3.8-.2-.5-.1-1.1.1-1.5Z"/>
 
-<div class="ai-status">● Süni intellekt aktivdir</div>
+    </svg>
 
-</div>
+</a>
 
-<button class="ai-close" onclick="toggleAI()">×</button>
-
-</div>
-
-<div class="ai-messages" id="aiMessages">
-
-<div class="ai-message ai-bot">
-Salam! Mən Altap AI-yam. Altap.Biz və tapşırıqlar haqqında suallarını cavablandıra bilərəm.
-</div>
-
-</div>
-
-<div class="ai-input-area">
-
-<input
-id="aiInput"
-class="ai-input"
-type="text"
-placeholder="Sualınızı yazın..."
-autocomplete="off">
-
-<button id="aiSend" class="ai-send" onclick="sendAI()">➤</button>
-
-</div>
-
-</div>
 
 <script>
 
-const SUPABASE_URL =
-"https://gefbhrdjddgpdeulmgru.supabase.co";
+/*
+===========================================
+WHATSAPP NÖMRƏSİ
+===========================================
 
-const SUPABASE_KEY =
-"sb_publishable_xopjwCK8Aw2wXUhIuK24Ew_lG5uCYRx";
+Sənin nömrən:
 
-const supabaseClient =
-window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
+055-233-48-14
 
-let authMode = "login";
-let currentUser = null;
+WhatsApp formatında:
 
-function switchAuth(mode){
+994552334814
+*/
 
-authMode = mode;
+const WHATSAPP_NUMBER = "994552334814";
 
-const loginTab = document.getElementById("loginTab");
-const registerTab = document.getElementById("registerTab");
-const usernameField = document.getElementById("usernameField");
-const buttonText = document.getElementById("authButtonText");
-const message = document.getElementById("authMessage");
 
-if(mode === "register"){
+/*
+===========================================
+WHATSAPP LINK YARADILIR
+===========================================
+*/
 
-loginTab.classList.remove("active");
-registerTab.classList.add("active");
-usernameField.classList.remove("hidden");
-buttonText.innerText = "Qeydiyyatdan keç";
+function createWhatsAppLink(product){
 
-}else{
+    const message =
+        "Salam! " +
+        product +
+        " almaq istəyirəm. Zəhmət olmasa məlumat verin.";
 
-registerTab.classList.remove("active");
-loginTab.classList.add("active");
-usernameField.classList.add("hidden");
-buttonText.innerText = "Daxil ol";
-
+    return (
+        "https://wa.me/" +
+        WHATSAPP_NUMBER +
+        "?text=" +
+        encodeURIComponent(message)
+    );
 }
 
-message.innerText = "";
 
-}
+/*
+===========================================
+MƏHSUL DÜYMƏLƏRİ
+===========================================
+*/
 
-async function submitAuth(){
+document
+.querySelectorAll(".buy-button")
+.forEach(function(button){
 
-const email =
-document.getElementById("emailInput").value.trim();
+    const product =
+        button.getAttribute("data-product");
 
-const password =
-document.getElementById("passwordInput").value;
+    button.href =
+        createWhatsAppLink(product);
 
-const username =
-document.getElementById("usernameInput").value.trim();
+    button.target = "_blank";
 
-const message =
-document.getElementById("authMessage");
-
-const button =
-document.getElementById("authButton");
-
-message.innerText = "Yoxlanılır...";
-button.disabled = true;
-
-try{
-
-if(!email){
-
-message.innerText =
-"E-poçt ünvanını daxil edin.";
-
-return;
-
-}
-
-if(!password){
-
-message.innerText =
-"Şifrəni daxil edin.";
-
-return;
-
-}
-
-if(password.length < 8){
-
-message.innerText =
-"Şifrə minimum 8 simvol olmalıdır.";
-
-return;
-
-}
-
-if(authMode === "register"){
-
-if(!username){
-
-message.innerText =
-"İstifadəçi adını daxil edin.";
-
-return;
-
-}
-
-if(username.length < 3){
-
-message.innerText =
-"İstifadəçi adı minimum 3 simvol olmalıdır.";
-
-return;
-
-}
-
-const {data,error} =
-await supabaseClient.auth.signUp({
-
-email: email,
-password: password,
-
-options:{
-data:{
-username: username
-}
-}
+    button.rel =
+        "noopener noreferrer";
 
 });
 
-if(error){
-throw error;
-}
 
-if(data.session){
+/*
+===========================================
+AŞAĞIDAKI WHATSAPP DÜYMƏSİ
+===========================================
+*/
 
-message.innerText =
-"Qeydiyyat uğurludur.";
+const whatsappFloat =
+    document.getElementById("whatsappFloat");
 
-await showLoggedIn(data.user);
+whatsappFloat.href =
+    createWhatsAppLink(
+        "Məhsullar haqqında məlumat almaq istəyirəm."
+    );
 
-}else{
+whatsappFloat.target = "_blank";
 
-message.innerText =
-"Qeydiyyat tamamlandı. E-poçt təsdiqi tələb olunursa, e-poçtunuzu yoxlayın.";
-
-}
-
-}else{
-
-const {data,error} =
-await supabaseClient.auth.signInWithPassword({
-
-email: email,
-password: password
-
-});
-
-if(error){
-throw error;
-}
-
-message.innerText =
-"Giriş uğurludur.";
-
-await showLoggedIn(data.user);
-
-}
-
-}catch(error){
-
-console.error("AUTH ERROR:",error);
-
-message.innerText =
-error.message ||
-"Əməliyyat zamanı xəta baş verdi.";
-
-}finally{
-
-button.disabled = false;
-
-}
-
-}
-
-async function logout(){
-
-await supabaseClient.auth.signOut();
-
-currentUser = null;
-
-showLoggedOut();
-
-}
-
-function scrollToAuth(){
-
-document
-.getElementById("authSection")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-function showLoggedOut(){
-
-document
-.getElementById("authSection")
-.classList.remove("hidden");
-
-document
-.getElementById("dashboardSection")
-.classList.add("hidden");
-
-document
-.getElementById("navAuthBtn")
-.classList.remove("hidden");
-
-}
-
-async function showLoggedIn(user){
-
-if(!user){
-return;
-}
-
-currentUser = user;
-
-document
-.getElementById("authSection")
-.classList.add("hidden");
-
-document
-.getElementById("dashboardSection")
-.classList.remove("hidden");
-
-document
-.getElementById("navAuthBtn")
-.classList.add("hidden");
-
-document
-.getElementById("profileEmail")
-.innerText =
-user.email || "-";
-
-await loadProfile();
-await loadTasks();
-await loadSubmissions();
-
-}
-
-async function loadProfile(){
-
-if(!currentUser){
-return;
-}
-
-const {data,error} =
-await supabaseClient
-.from("profiles")
-.select("username,balance")
-.eq("id",currentUser.id)
-.single();
-
-if(error){
-
-console.error("PROFILE ERROR:",error);
-
-document
-.getElementById("profileUsername")
-.innerText =
-currentUser.user_metadata?.username ||
-"İstifadəçi";
-
-return;
-
-}
-
-document
-.getElementById("profileUsername")
-.innerText =
-data.username || "İstifadəçi";
-
-document
-.getElementById("profileBalance")
-.innerText =
-Number(data.balance || 0).toFixed(2) + "₼";
-
-document
-.getElementById("avatar")
-.innerText =
-(data.username || "A")
-.charAt(0)
-.toUpperCase();
-
-}
-
-async function loadTasks(){
-
-const container =
-document.getElementById("tasksContainer");
-
-container.innerHTML =
-'<div class="empty">Tapşırıqlar yüklənir...</div>';
-
-const {data,error} =
-await supabaseClient
-.from("tasks")
-.select("*")
-.eq("active",true)
-.order("id");
-
-if(error){
-
-console.error("TASK ERROR:",error);
-
-container.innerHTML =
-'<div class="empty">Tapşırıqları yükləmək mümkün olmadı.</div>';
-
-return;
-
-}
-
-if(!data || !data.length){
-
-container.innerHTML =
-'<div class="empty">Hazırda aktiv tapşırıq yoxdur.</div>';
-
-return;
-
-}
-
-container.innerHTML = "";
-
-data.forEach(task => {
-
-const card =
-document.createElement("div");
-
-card.className =
-"task-card";
-
-card.innerHTML = `
-
-<div class="task-top">
-
-<div>
-
-<div class="task-title">
-${escapeHTML(task.title)}
-</div>
-
-<div class="task-desc">
-${escapeHTML(task.description || "")}
-</div>
-
-</div>
-
-<div class="task-reward">
-+${Number(task.reward).toFixed(2)}₼
-</div>
-
-</div>
-
-<div class="task-form">
-
-<input
-id="task-${task.id}"
-type="url"
-placeholder="TikTok video linkini daxil edin">
-
-<button onclick="submitTask(${task.id})">
-Göndər
-</button>
-
-</div>
-
-<div
-class="status"
-id="status-${task.id}">
-Minimum 30 saniyəlik TikTok videosu hazırlayın və linki göndərin.
-</div>
-
-`;
-
-container.appendChild(card);
-
-});
-
-}
-
-async function submitTask(taskId){
-
-if(!currentUser){
-return;
-}
-
-const input =
-document.getElementById("task-" + taskId);
-
-const status =
-document.getElementById("status-" + taskId);
-
-const videoURL =
-input.value.trim();
-
-if(!videoURL){
-
-status.innerText =
-"TikTok video linkini daxil edin.";
-
-return;
-
-}
-
-/* DÜZƏLDİLİB */
-if(!/^https?:\/\//i.test(videoURL)){
-
-status.innerText =
-"Düzgün link daxil edin.";
-
-return;
-
-}
-
-status.innerText =
-"Göndərilir...";
-
-const {error} =
-await supabaseClient
-.from("submissions")
-.insert({
-
-user_id: currentUser.id,
-task_id: taskId,
-video_url: videoURL,
-status: "pending"
-
-});
-
-if(error){
-
-console.error("SUBMISSION ERROR:",error);
-
-status.innerText =
-"Tapşırıq göndərilmədi: " +
-error.message;
-
-return;
-
-}
-
-input.value = "";
-
-status.innerText =
-"Tapşırıq göndərildi. Admin yoxlamasındadır.";
-
-await loadSubmissions();
-
-}
-
-async function loadSubmissions(){
-
-const container =
-document.getElementById("submissionsContainer");
-
-if(!currentUser){
-return;
-}
-
-const {data,error} =
-await supabaseClient
-.from("submissions")
-.select("id,video_url,status,admin_note,created_at,task_id")
-.eq("user_id",currentUser.id)
-.order("created_at",{ascending:false});
-
-if(error){
-
-console.error("SUBMISSIONS ERROR:",error);
-
-container.innerHTML =
-'<div class="empty">Məlumatları yükləmək mümkün olmadı.</div>';
-
-return;
-
-}
-
-if(!data || !data.length){
-
-container.innerHTML =
-'<div class="empty">Hələ heç bir tapşırıq göndərməmisiniz.</div>';
-
-return;
-
-}
-
-container.innerHTML = "";
-
-data.forEach(item => {
-
-const div =
-document.createElement("div");
-
-div.className =
-"history-item";
-
-const date =
-new Date(item.created_at)
-.toLocaleString("az-AZ");
-
-div.innerHTML = `
-
-<b>Tapşırıq #${item.task_id}</b><br>
-
-Status:
-${escapeHTML(item.status)}
-
-<br>
-
-Link:
-<a
-href="${escapeAttribute(item.video_url)}"
-target="_blank"
-rel="noopener noreferrer"
-style="color:#8c82ff">
-Videoya bax
-</a>
-
-<br>
-
-${item.admin_note
-? "Qeyd: " + escapeHTML(item.admin_note)
-: ""}
-
-<br>
-
-<span style="color:#6f7789">
-${date}
-</span>
-
-`;
-
-container.appendChild(div);
-
-});
-
-}
-
-async function requestWithdrawal(){
-
-if(!currentUser){
-return;
-}
-
-const amount =
-Number(
-document.getElementById("withdrawAmount").value
-);
-
-const method =
-document.getElementById("withdrawMethod").value;
-
-const account =
-document.getElementById("withdrawAccount").value.trim();
-
-const message =
-document.getElementById("withdrawMessage");
-
-if(!amount || amount <= 0){
-
-message.innerText =
-"Düzgün məbləğ daxil edin.";
-
-return;
-
-}
-
-if(!account){
-
-message.innerText =
-"Ödəniş hesabını daxil edin.";
-
-return;
-
-}
-
-message.innerText =
-"Göndərilir...";
-
-const profile =
-await supabaseClient
-.from("profiles")
-.select("balance")
-.eq("id",currentUser.id)
-.single();
-
-if(profile.error){
-
-message.innerText =
-"Balans yoxlanılmadı.";
-
-return;
-
-}
-
-if(amount > Number(profile.data.balance || 0)){
-
-message.innerText =
-"Balansınız kifayət etmir.";
-
-return;
-
-}
-
-const {error} =
-await supabaseClient
-.from("withdrawals")
-.insert({
-
-user_id:currentUser.id,
-amount:amount,
-payment_method:method,
-payment_account:account,
-status:"pending"
-
-});
-
-if(error){
-
-console.error("WITHDRAW ERROR:",error);
-
-message.innerText =
-"Çıxarış sorğusu göndərilmədi.";
-
-return;
-
-}
-
-message.innerText =
-"Çıxarış sorğunuz admin yoxlamasına göndərildi.";
-
-document
-.getElementById("withdrawAmount")
-.value = "";
-
-document
-.getElementById("withdrawAccount")
-.value = "";
-
-}
-
-function toggleAI(){
-
-const chat =
-document.getElementById("aiChat");
-
-if(chat.style.display === "flex"){
-
-chat.style.display = "none";
-
-}else{
-
-chat.style.display = "flex";
-
-setTimeout(() => {
-
-document
-.getElementById("aiInput")
-.focus();
-
-},100);
-
-}
-
-}
-
-function addAIMessage(text,type){
-
-const messages =
-document.getElementById("aiMessages");
-
-const div =
-document.createElement("div");
-
-div.className =
-"ai-message " +
-(type === "user"
-? "ai-user"
-: "ai-bot");
-
-div.innerText = text;
-
-messages.appendChild(div);
-
-messages.scrollTop =
-messages.scrollHeight;
-
-return div;
-
-}
-
-async function sendAI(){
-
-const input =
-document.getElementById("aiInput");
-
-const button =
-document.getElementById("aiSend");
-
-const message =
-input.value.trim();
-
-if(!message){
-return;
-}
-
-addAIMessage(message,"user");
-
-input.value = "";
-
-button.disabled = true;
-
-const loading =
-addAIMessage("Yazır...","bot");
-
-try{
-
-const response =
-await fetch("/api/chat",{
-
-method:"POST",
-
-headers:{
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-message:message
-})
-
-});
-
-const data =
-await response.json();
-
-loading.remove();
-
-if(!response.ok){
-
-addAIMessage(
-data.error ||
-"AI serverində xəta baş verdi.",
-"bot"
-);
-
-return;
-
-}
-
-addAIMessage(
-data.answer ||
-"Cavab alınmadı.",
-"bot"
-);
-
-}catch(error){
-
-console.error("AI ERROR:",error);
-
-loading.remove();
-
-addAIMessage(
-"AI serverinə qoşulmaq mümkün olmadı.",
-"bot"
-);
-
-}finally{
-
-button.disabled = false;
-input.focus();
-
-}
-
-}
-
-function escapeHTML(value){
-
-return String(value)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-
-}
-
-function escapeAttribute(value){
-
-return String(value)
-.replaceAll("&","&amp;")
-.replaceAll('"',"&quot;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;");
-
-}
-
-async function init(){
-
-try{
-
-const {data,error} =
-await supabaseClient.auth.getSession();
-
-if(error){
-
-console.error("SESSION ERROR:",error);
-showLoggedOut();
-return;
-
-}
-
-if(data.session){
-
-await showLoggedIn(
-data.session.user
-);
-
-}else{
-
-showLoggedOut();
-
-}
-
-supabaseClient.auth.onAuthStateChange(
-async (event,session) => {
-
-if(session){
-
-await showLoggedIn(
-session.user
-);
-
-}else{
-
-showLoggedOut();
-
-}
-
-});
-
-}catch(error){
-
-console.error("INIT ERROR:",error);
-showLoggedOut();
-
-}
-
-}
-
-document
-.getElementById("aiInput")
-.addEventListener(
-"keydown",
-event => {
-
-if(event.key === "Enter"){
-sendAI();
-}
-
-});
-
-init();
+whatsappFloat.rel =
+    "noopener noreferrer";
 
 </script>
 
