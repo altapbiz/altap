@@ -49,7 +49,9 @@ a{
     margin:auto;
 }
 
-/* NAVBAR */
+/* =========================
+   NAVBAR
+========================= */
 
 .navbar{
     position:sticky;
@@ -108,7 +110,9 @@ a{
     box-shadow:0 0 25px rgba(32,255,98,.15);
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
     padding:105px 0 80px;
@@ -200,7 +204,9 @@ a{
     background:rgba(255,255,255,.06);
 }
 
-/* SECTION */
+/* =========================
+   SECTION
+========================= */
 
 .section{
     padding:30px 0 80px;
@@ -221,7 +227,9 @@ a{
     font-size:14px;
 }
 
-/* PRODUCTS */
+/* =========================
+   PRODUCTS
+========================= */
 
 .products{
     display:grid;
@@ -408,7 +416,9 @@ a{
     background:#eef1f7;
 }
 
-/* HOW IT WORKS */
+/* =========================
+   HOW IT WORKS
+========================= */
 
 .steps{
     display:grid;
@@ -449,7 +459,9 @@ a{
     line-height:1.6;
 }
 
-/* FAQ */
+/* =========================
+   FAQ
+========================= */
 
 .faq{
     max-width:850px;
@@ -478,7 +490,9 @@ a{
     font-size:14px;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
     border-top:1px solid var(--border);
@@ -492,7 +506,9 @@ footer{
     justify-content:space-between;
 }
 
-/* WHATSAPP BUTTON */
+/* =========================
+   WHATSAPP FLOAT
+========================= */
 
 .whatsapp-float{
     position:fixed;
@@ -519,7 +535,9 @@ footer{
     height:29px;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:760px){
 
@@ -570,6 +588,8 @@ footer{
 
 <body>
 
+<!-- NAVBAR -->
+
 <nav class="navbar">
 
     <div class="container nav-inner">
@@ -592,6 +612,8 @@ footer{
 
 </nav>
 
+
+<!-- HERO -->
 
 <section class="hero">
 
@@ -631,6 +653,8 @@ footer{
 
 </section>
 
+
+<!-- PRODUCTS -->
 
 <section id="products" class="section">
 
@@ -930,6 +954,8 @@ footer{
 </section>
 
 
+<!-- HOW IT WORKS -->
+
 <section id="how" class="section">
 
     <div class="container">
@@ -1050,6 +1076,8 @@ footer{
 </section>
 
 
+<!-- FAQ -->
+
 <section id="faq" class="section">
 
     <div class="container">
@@ -1111,6 +1139,8 @@ footer{
 </section>
 
 
+<!-- FOOTER -->
+
 <footer>
 
     <div class="container footer-inner">
@@ -1127,6 +1157,8 @@ footer{
 
 </footer>
 
+
+<!-- FLOATING WHATSAPP -->
 
 <a
     href="#"
@@ -1153,28 +1185,17 @@ footer{
 
 <script>
 
-/*
-===========================================
-WHATSAPP NÖMRƏSİ
-===========================================
+/* =========================================
+   WHATSAPP NÖMRƏSİ
+   +90 530 843 47 67
+========================================= */
 
-Sənin nömrən:
-
-055-233-48-14
-
-WhatsApp formatında:
-
-994552334814
-*/
-
-const WHATSAPP_NUMBER = "994552334814";
+const WHATSAPP_NUMBER = "905308434767";
 
 
-/*
-===========================================
-WHATSAPP LINK YARADILIR
-===========================================
-*/
+/* =========================================
+   WHATSAPP LINK YARADICI
+========================================= */
 
 function createWhatsAppLink(product){
 
@@ -1192,11 +1213,9 @@ function createWhatsAppLink(product){
 }
 
 
-/*
-===========================================
-MƏHSUL DÜYMƏLƏRİ
-===========================================
-*/
+/* =========================================
+   BÜTÜN MƏHSUL DÜYMƏLƏRİ
+========================================= */
 
 document
 .querySelectorAll(".buy-button")
@@ -1208,7 +1227,8 @@ document
     button.href =
         createWhatsAppLink(product);
 
-    button.target = "_blank";
+    button.target =
+        "_blank";
 
     button.rel =
         "noopener noreferrer";
@@ -1216,11 +1236,9 @@ document
 });
 
 
-/*
-===========================================
-AŞAĞIDAKI WHATSAPP DÜYMƏSİ
-===========================================
-*/
+/* =========================================
+   SAĞ AŞAĞIDAKI WHATSAPP DÜYMƏSİ
+========================================= */
 
 const whatsappFloat =
     document.getElementById("whatsappFloat");
@@ -1230,7 +1248,8 @@ whatsappFloat.href =
         "Məhsullar haqqında məlumat almaq istəyirəm."
     );
 
-whatsappFloat.target = "_blank";
+whatsappFloat.target =
+    "_blank";
 
 whatsappFloat.rel =
     "noopener noreferrer";
